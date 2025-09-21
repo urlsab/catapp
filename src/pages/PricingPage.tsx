@@ -1,85 +1,117 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { Check, Star } from 'lucide-react';
 
 const PricingPage: React.FC = () => {
-  const { t } = useLanguage();
+  const sectionRef = React.useRef<HTMLDivElement>(null);
 
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const handleFade = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          entry.target.classList.remove('fade-out');
+        } else {
+          entry.target.classList.remove('fade-in');
+          entry.target.classList.add('fade-out');
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleFade, {
+      threshold: 0.1
+    });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
   const pricingPlans = [
     {
-      name: t('pricing.landing'),
-      price: t('pricing.landingPrice'),
+      name: 'דף נחיתה',
+      price: 'החל מ-2,000 ₪',
       icon: '🚀',
-      features: ['עיצוב מותאם אישית', 'רספונסיבי לכל המכשירים', 'אופטימיזציה לגוגל', 'טופס יצירת קשר'],
-      examples: ['orbenji.com', 'refael-law.com']
+  features: ['עיצוב מותאם אישית', 'רספונסיבי לכל המכשירים', 'אופטימיזציה לגוגל', 'טופס יצירת קשר'],
+  examples: ['orbenji.com', 'refael-law.com'],
     },
     {
-      name: t('pricing.business'),
-      price: t('pricing.businessPrice'),
+      name: 'אתר תדמית',
+      price: 'החל מ-5,000 ₪',
       icon: '🏢',
-      features: ['עד 10 עמודים', 'מערכת ניהול תוכן', 'גלריית תמונות', 'אינטגרציה עם רשתות חברתיות', 'אופטימיזציה מתקדמת'],
-      examples: ['atliz.co.il'],
-      popular: true
+  features: ['עד 10 עמודים', 'מערכת ניהול תוכן', 'גלריית תמונות', 'אינטגרציה עם רשתות חברתיות', 'אופטימיזציה מתקדמת'],
+  examples: ['atliz.co.il'],
+  popular: true,
     },
     {
-      name: t('pricing.portfolio'),
-      price: t('pricing.portfolioPrice'),
+      name: 'אתר תיק עבודות',
+      price: 'החל מ-8,000 ₪',
       icon: '🎨',
-      features: ['עיצוב יוניק ומותאם', 'גלרית עבודות מתקדמת', 'אנימציות מרהיבות', 'בלוג מובנה', 'כלים לקידום עצמי'],
-      examples: ['portfolio-uriel-yair-sabag.vercel.app']
+  features: ['עיצוב יוניק ומותאם', 'גלרית עבודות מתקדמת', 'אנימציות מרהיבות', 'בלוג מובנה', 'כלים לקידום עצמי'],
+  examples: ['portfolio-uriel-yair-sabag.vercel.app'],
     },
     {
-      name: t('pricing.ecommerce'),
-      price: t('pricing.ecommercePrice'),
+      name: 'אתר מכירות עם סליקה',
+      price: 'החל מ-10,000 ₪',
       icon: '🛒',
-      features: ['קטלוג מוצרים', 'עגלת קניות', 'מערכת תשלומים', 'ניהול הזמנות', 'דוחות מכירות', 'אינטגרציה עם מלאי']
+  features: ['קטלוג מוצרים', 'עגלת קניות', 'מערכת תשלומים', 'ניהול הזמנות', 'דוחות מכירות', 'אינטגרציה עם מלאי'],
     },
     {
-      name: t('pricing.blog'),
-      price: t('pricing.blogPrice'),
+      name: 'אתר בלוג',
+      price: 'החל מ-7,000 ₪',
       icon: '📝',
-      features: ['מערכת פרסום פוסטים', 'קטגוריות ותגים', 'חיפוש מתקדם', 'תגובות וליייקים', 'שיתוף ברשתות חברתיות']
+  features: ['מערכת פרסום פוסטים', 'קטגוריות ותגים', 'חיפוש מתקדם', 'תגובות וליייקים', 'שיתוף ברשתות חברתיות'],
     },
     {
-      name: t('pricing.social'),
-      price: t('pricing.socialPrice'),
+      name: 'אתר גלריה',
+      price: 'החל מ-8,000 ₪',
+      icon: '🖼️',
+  features: ['גלריית תמונות מתקדמת', 'עיצוב ייחודי', 'התאמה אישית', 'שיתוף ברשתות חברתיות'],
+    },
+    {
+      name: 'רשת חברתית',
+      price: 'החל מ-10,000 ₪',
       icon: '👥',
-      features: ['מערכת משתמשים', 'פרופילים אישיים', 'פיד חברתי', 'מסרים פרטיים', 'קבוצות ואירועים'],
-      examples: ['yelp--camp--project.herokuapp.com']
+  features: ['מערכת משתמשים', 'פרופילים אישיים', 'פיד חברתי', 'מסרים פרטיים', 'קבוצות ואירועים'],
+  examples: ['yelp--camp--project.herokuapp.com'],
+    },
+    {
+      name: 'בניית מוצר SaaS לפי הזמנה',
+      price: 'החל מ-10,000 ₪',
+      icon: '💻',
+  features: ['פיתוח בהתאמה אישית', 'מערכת ניהול', 'אינטגרציות מתקדמות', 'תמיכה טכנית'],
+  examples: ['resumes-builder.web.app'],
     }
   ];
 
   const maintenancePlans = [
     {
-      name: t('maintenance.crash'),
-      price: t('maintenance.crashPrice'),
+      name: 'הגנה מפני קריסות ותיקון באגים',
+      price: '300 ₪ לחודש',
       icon: '🛡️',
       features: ['ניטור 24/7', 'תיקון באגים מיידי', 'גיבויים יומיים', 'עדכוני אבטחה']
     },
     {
-      name: t('maintenance.seo'),
-      price: t('maintenance.seoPrice'),
+      name: 'קידום בגוגל',
+      price: 'החל מ-400 ₪ לחודש',
       icon: '📈',
       features: ['אופטימיזציית תוכן', 'בניית קישורים', 'ניתוח מתחרים', 'דוחות ביצועים חודשיים']
     },
     {
-      name: t('maintenance.content'),
-      price: t('maintenance.contentPrice'),
+      name: 'עדכון תכנים שוטפים',
+      price: 'החל מ-300 ₪ לחודש',
       icon: '✏️',
       features: ['עדכון תוכן שוטף', 'הוספת עמודים חדשים', 'עדכון תמונות', 'שיפור UX']
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black pt-16">
+    <div ref={sectionRef} className="min-h-screen bg-gray-50 dark:bg-black pt-16 fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Main Pricing */}
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('pricing.title')}
+            מחירי בניית אתרים
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
-            {t('pricing.subtitle')}
+            כל המחירים כוללים עיצוב אישי, התאמה מלאה לצרכי הלקוח ושירות מקצועי.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto"></div>
         </div>
@@ -116,12 +148,16 @@ const PricingPage: React.FC = () => {
               </ul>
 
               {plan.examples && (
-                <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">דוגמאות:</p>
+                <div className="border-t border-gray-200 dark:border-gray-700 pt-4 flex gap-2 flex-wrap">
                   {plan.examples.map((example, exampleIndex) => (
-                    <a key={exampleIndex} href={`https://${example}`} target="_blank" rel="noopener noreferrer" 
-                       className="block text-sm text-[#1a79f6] hover:underline mb-1">
-                      {example}
+                    <a
+                      key={exampleIndex}
+                      href={`https://${example}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow transition-all text-sm mb-2"
+                    >
+                      לדוגמא
                     </a>
                   ))}
                 </div>
@@ -133,7 +169,7 @@ const PricingPage: React.FC = () => {
         {/* Maintenance Pricing */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('maintenance.title')}
+            מחירי תחזוקה חודשית
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-700 mx-auto"></div>
         </div>

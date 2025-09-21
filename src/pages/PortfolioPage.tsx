@@ -1,10 +1,30 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+// import { useLanguage } from '../contexts/LanguageContext';
 import { ExternalLink } from 'lucide-react';
 
 const PortfolioPage: React.FC = () => {
-  const { t } = useLanguage();
+  const sectionRef = React.useRef<HTMLDivElement>(null);
 
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const handleFade = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          entry.target.classList.remove('fade-out');
+        } else {
+          entry.target.classList.remove('fade-in');
+          entry.target.classList.add('fade-out');
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleFade, {
+      threshold: 0.1
+    });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
   const portfolioItems = [
     {
       title: 'Resume Builder',
@@ -51,11 +71,12 @@ const PortfolioPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black pt-16">
+    <div ref={sectionRef} className="min-h-screen bg-gray-50 dark:bg-black pt-16 fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('portfolio.title')}
+          
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 mt-0">
+            תיק עבודות
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -103,10 +124,9 @@ const PortfolioPage: React.FC = () => {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-[#1a79f6] hover:text-blue-700 font-semibold text-sm transition-colors"
+                  className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow transition-all text-sm"
                 >
-                  {t('btn.viewProject')}
-                  <ExternalLink size={14} className="mr-1 ml-0" />
+                  לדוגמא
                 </a>
               </div>
             </div>

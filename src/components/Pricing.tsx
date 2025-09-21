@@ -1,70 +1,82 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { Check, Star } from 'lucide-react';
 
 const Pricing: React.FC = () => {
-  const { t } = useLanguage();
+  // const { t } = useLanguage();
 
   const pricingPlans = [
     {
-      name: t('pricing.landing'),
-      price: t('pricing.landingPrice'),
+      name: 'דף נחיתה',
+      price: 'החל מ-2000 ₪',
       icon: '🚀',
       features: ['עיצוב מותאם אישית', 'רספונסיבי לכל המכשירים', 'אופטימיזציה לגוגל', 'טופס יצירת קשר'],
       examples: ['orbenji.com', 'refael-law.com']
     },
     {
-      name: t('pricing.business'),
-      price: t('pricing.businessPrice'),
+      name: 'אתר תדמית',
+      price: 'החל מ-5000 ₪',
       icon: '🏢',
       features: ['עד 10 עמודים', 'מערכת ניהול תוכן', 'גלריית תמונות', 'אינטגרציה עם רשתות חברתיות', 'אופטימיזציה מתקדמת'],
       examples: ['atliz.co.il'],
       popular: true
     },
     {
-      name: t('pricing.portfolio'),
-      price: t('pricing.portfolioPrice'),
+      name: 'אתר תיק עבודות',
+      price: 'החל מ-8000 ₪',
       icon: '🎨',
       features: ['עיצוב יוניק ומותאם', 'גלרית עבודות מתקדמת', 'אנימציות מרהיבות', 'בלוג מובנה', 'כלים לקידום עצמי'],
       examples: ['portfolio-uriel-yair-sabag.vercel.app']
     },
     {
-      name: t('pricing.ecommerce'),
-      price: t('pricing.ecommercePrice'),
+      name: 'אתר מכירות עם סליקה',
+      price: 'החל מ-10,000 ₪',
       icon: '🛒',
       features: ['קטלוג מוצרים', 'עגלת קניות', 'מערכת תשלומים', 'ניהול הזמנות', 'דוחות מכירות', 'אינטגרציה עם מלאי']
     },
     {
-      name: t('pricing.blog'),
-      price: t('pricing.blogPrice'),
+      name: 'אתר בלוג',
+      price: 'החל מ-7000 ₪',
       icon: '📝',
       features: ['מערכת פרסום פוסטים', 'קטגוריות ותגים', 'חיפוש מתקדם', 'תגובות וליייקים', 'שיתוף ברשתות חברתיות']
     },
     {
-      name: t('pricing.social'),
-      price: t('pricing.socialPrice'),
+      name: 'אתר גלריה',
+      price: 'החל מ-8000 ₪',
+      icon: '🖼️',
+      features: ['גלריית תמונות מתקדמת', 'עיצוב ייחודי', 'התאמה אישית', 'שיתוף ברשתות חברתיות']
+    },
+    {
+      name: 'רשת חברתית',
+      price: 'החל מ-10000 ₪',
       icon: '👥',
       features: ['מערכת משתמשים', 'פרופילים אישיים', 'פיד חברתי', 'מסרים פרטיים', 'קבוצות ואירועים'],
       examples: ['yelp--camp--project.herokuapp.com']
+    },
+    {
+      name: 'בניית מוצר SaaS לפי הזמנה',
+      price: 'החל מ-10000 ₪',
+      icon: '💻',
+      features: ['פיתוח בהתאמה אישית', 'מערכת ניהול', 'אינטגרציות מתקדמות', 'תמיכה טכנית'],
+      examples: ['resumes-builder.web.app']
     }
   ];
 
   const maintenancePlans = [
     {
-      name: t('maintenance.crash'),
-      price: t('maintenance.crashPrice'),
+      name: 'הגנה מפני קריסות ותיקון באגים',
+      price: '300 ₪ לחודש',
       icon: '🛡️',
       features: ['ניטור 24/7', 'תיקון באגים מיידי', 'גיבויים יומיים', 'עדכוני אבטחה']
     },
     {
-      name: t('maintenance.seo'),
-      price: t('maintenance.seoPrice'),
+      name: 'קידום בגוגל',
+      price: 'החל מ-400 ₪ לחודש',
       icon: '📈',
       features: ['אופטימיזציית תוכן', 'בניית קישורים', 'ניתוח מתחרים', 'דוחות ביצועים חודשיים']
     },
     {
-      name: t('maintenance.content'),
-      price: t('maintenance.contentPrice'),
+      name: 'עדכון תכנים שוטפים',
+      price: 'החל מ-300 ₪ לחודש',
       icon: '✏️',
       features: ['עדכון תוכן שוטף', 'הוספת עמודים חדשים', 'עדכון תמונות', 'שיפור UX']
     }
@@ -76,10 +88,10 @@ const Pricing: React.FC = () => {
         {/* Main Pricing */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('pricing.title')}
+            מחירון
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
-            {t('pricing.subtitle')}
+            בחרו את החבילה המתאימה לכם
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-700 mx-auto"></div>
         </div>
@@ -133,7 +145,7 @@ const Pricing: React.FC = () => {
         {/* Maintenance Pricing */}
         <div className="text-center mb-12">
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('maintenance.title')}
+            חבילות תחזוק
           </h3>
           <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-700 mx-auto"></div>
         </div>
