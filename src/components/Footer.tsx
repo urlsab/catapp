@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
-import { Code, Heart, Phone, Mail, MessageCircle } from 'lucide-react';
+import logo from '../../Assets/catapp logo no bg.png';
+// import { useLanguage } from '../contexts/LanguageContext';
+import { Phone, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  const { t } = useLanguage();
+  // const { t } = useLanguage();
 
-  const handleWhatsApp = () => {
-    window.open('https://wa.me/972556611594', '_blank');
-  };
+  // const handleWhatsApp = () => {
+  //   window.open('https://wa.me/972556611594', '_blank');
+  // };
 
   const handleEmail = () => {
     window.open('mailto:yairsabag213@gmail.com', '_self');
@@ -25,34 +26,14 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <img src="/logo.png" alt="CatApp" className="h-8 mr-3 ml-0" />
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-[#1a79f6] to-blue-600 bg-clip-text text-transparent">
-                CatApp
-              </h3>
+              <img src={logo} alt="Catapp Logo" className="h-8 mr-3 ml-0" />
+              
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              מספקים שירותי תוכן וטכנולוגיה המתמחים בפיתוח, תחזוק ועיצוב אתרים. 
-              פתרונות מקצועיים ומותאמים אישית לכל לקוח.
+          Catapp עוסקת בשירותי תוכן וטכנולוגיה, עם התמחות בבניית אתרים, תחזוקה ועיצוב. בניית קורות חיים מותאמים להייטק, הקמה ליווי וייעוץ לעסקים קטנים.
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
-              <button
-                onClick={handleWhatsApp}
-                className="bg-green-600 hover:bg-green-700 p-2 rounded-lg transition-colors"
-              >
-                <MessageCircle size={20} />
-              </button>
-              <button
-                onClick={handleEmail}
-                className="bg-[#1a79f6] hover:bg-blue-700 p-2 rounded-lg transition-colors"
-              >
-                <Mail size={20} />
-              </button>
-              <button
-                onClick={handlePhone}
-                className="bg-gray-600 hover:bg-gray-700 p-2 rounded-lg transition-colors"
-              >
-                <Phone size={20} />
-              </button>
+              
             </div>
           </div>
 
@@ -65,7 +46,7 @@ const Footer: React.FC = () => {
                   to="/"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  {t('nav.home')}
+                  בית
                 </Link>
               </li>
               <li>
@@ -73,7 +54,7 @@ const Footer: React.FC = () => {
                   to="/pricing"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  {t('nav.pricing')}
+                  מחירון
                 </Link>
               </li>
               <li>
@@ -81,7 +62,7 @@ const Footer: React.FC = () => {
                   to="/portfolio"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  {t('nav.portfolio')}
+                  תיק עבודות
                 </Link>
               </li>
               <li>
@@ -89,7 +70,7 @@ const Footer: React.FC = () => {
                   to="/contact"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  {t('nav.contact')}
+                  צור קשר
                 </Link>
               </li>
             </ul>
@@ -100,13 +81,13 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">יצירת קשר</h4>
             <ul className="space-y-2 text-gray-400">
               <li className="flex items-center">
-                <Phone size={16} className="mr-2 ml-0" />
+                <Phone size={16} className="mr-2 ml-1" />
                 <button onClick={handlePhone} className="hover:text-white transition-colors">
                   0556611594
                 </button>
               </li>
               <li className="flex items-center">
-                <Mail size={16} className="mr-2 ml-0" />
+                <Mail size={16} className="mr-2 ml-1" />
                 <button onClick={handleEmail} className="hover:text-white transition-colors">
                   yairsabag213@gmail.com
                 </button>
@@ -116,29 +97,22 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 mb-4 md:mb-0">
-              {t('footer.rights')}
+          <div className="flex flex-wrap justify-between items-center gap-4 text-center md:text-right">
+            <div className="text-gray-400 flex-1 min-w-[120px]">
+              כל הזכויות שמורות ל-Catapp
             </div>
-            <div className="flex items-center space-x-4 rtl:space-x-reverse text-gray-400">
+            <div className="flex items-center justify-center space-x-4 rtl:space-x-reverse text-gray-400 flex-1 min-w-[180px]">
               <Link to="/terms" className="hover:text-white transition-colors">
-                {t('footer.terms')}
+                תנאי שימוש
               </Link>
               <span>•</span>
               <Link to="/privacy" className="hover:text-white transition-colors">
-                {t('footer.privacy')}
+                מדיניות פרטיות
               </Link>
             </div>
-          </div>
-          
-          <div className="mt-4 text-center">
-            <p className="text-gray-500 flex items-center justify-center">
-              <span>נבנה באהבה עם</span>
-              <Heart size={16} className="text-red-500 mx-1" />
-              <span>ו</span>
-              <Code size={16} className="text-[#1a79f6] mx-1" />
-              <span>על ידי CatApp</span>
-            </p>
+            <div className="text-gray-500 flex-1 min-w-[120px]">
+              <span>נבנה ע"י Catapp</span>
+            </div>
           </div>
         </div>
       </div>

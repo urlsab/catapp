@@ -10,7 +10,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
-import QuotePage from './pages/QuotePage';
+// import QuotePage from './pages/QuotePage';
 import AboutFullPage from './pages/AboutFullPage';
 import FAQPage from './pages/FaqPage';
 
@@ -39,9 +39,9 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
-              <Route path="/quote" element={<QuotePage />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/about-full" element={<AboutFullPage />} />
+              {/* <Route path="/quote" element={<QuotePage />} /> */}
+              {/* <Route path="/faq" element={<FAQPage />} /> */}
+              {/* <Route path="/about-full" element={<AboutFullPage />} /> */}
             </Routes>
             <Footer />
 
