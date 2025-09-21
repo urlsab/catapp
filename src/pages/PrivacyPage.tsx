@@ -1,15 +1,36 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+// import { useLanguage } from '../contexts/LanguageContext';
 
 const PrivacyPage: React.FC = () => {
-  const { t } = useLanguage();
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const handleFade = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          entry.target.classList.remove('fade-out');
+        } else {
+          entry.target.classList.remove('fade-in');
+          entry.target.classList.add('fade-out');
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleFade, {
+      threshold: 0.1
+    });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black pt-16">
+    <div ref={sectionRef} className="min-h-screen bg-white dark:bg-black pt-16 fade-in">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('privacy.title')}
+            מדיניות פרטיות
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto"></div>
         </div>

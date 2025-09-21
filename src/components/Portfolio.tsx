@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { ExternalLink } from 'lucide-react';
 
 const Portfolio: React.FC = () => {
-  const { t } = useLanguage();
+  // const { t } = useLanguage();
 
   const portfolioItems = [
     {
@@ -55,7 +54,7 @@ const Portfolio: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('portfolio.title')}
+            תיק עבודות
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-700 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -105,7 +104,7 @@ const Portfolio: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold text-sm transition-colors"
                 >
-                  {t('btn.viewProject')}
+                  צפה בפרויקט
                   <ExternalLink size={14} className="mr-1 ml-0" />
                 </a>
               </div>

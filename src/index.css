@@ -1,3 +1,51 @@
+/* FAQ answer fade-in animation */
+.animate-fade-in-faq {
+	animation: fadeInFaq 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes fadeInFaq {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fade-in animation for all elements */
+
+.fade-in {
+	opacity: 0;
+	animation: fadeIn 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+	will-change: opacity, transform;
+}
+
+.fade-out {
+	opacity: 1;
+	animation: fadeOut 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+	will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.fade-in, .fade-out {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
+@keyframes fadeOut {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+	}
+}

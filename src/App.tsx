@@ -10,7 +10,11 @@ import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
+<<<<<<< Updated upstream
 // import QuotePage from './pages/QuotePage';
+=======
+import QuotePage from './pages/QuotePage';
+>>>>>>> Stashed changes
 import AboutFullPage from './pages/AboutFullPage';
 import FAQPage from './pages/FaqPage';
 
@@ -39,9 +43,15 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
+<<<<<<< Updated upstream
               {/* <Route path="/quote" element={<QuotePage />} /> */}
               {/* <Route path="/faq" element={<FAQPage />} /> */}
               {/* <Route path="/about-full" element={<AboutFullPage />} /> */}
+=======
+              <Route path="/quote" element={<QuotePage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/about-full" element={<AboutFullPage />} />
+>>>>>>> Stashed changes
             </Routes>
             <Footer />
 

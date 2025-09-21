@@ -1,63 +1,83 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { Code, Search, Smartphone, Wrench, Shield, DollarSign, Zap, Globe } from 'lucide-react';
 
 const Values: React.FC = () => {
-  const { t } = useLanguage();
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const handleFade = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          entry.target.classList.remove('fade-out');
+        } else {
+          entry.target.classList.remove('fade-in');
+          entry.target.classList.add('fade-out');
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleFade, {
+      threshold: 0.1
+    });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const values = [
     {
       icon: <Code className="w-6 h-6" />,
-      title: t('values.tech'),
+      title: 'טכנולוגיה מתקדמת',
       description: 'React, TypeScript, JavaScript ועוד',
     },
     {
       icon: <Search className="w-6 h-6" />,
-      title: t('values.seo'),
+      title: 'קידום אורגני (SEO)',
       description: 'הגעה למקום הראשון בתוצאות החיפוש',
     },
     {
       icon: <Smartphone className="w-6 h-6" />,
-      title: t('values.responsive'),
+      title: 'ריספונסיביות מלאה',
       description: 'מותאם למחשב, טאבלט וטלפון נייד',
     },
     {
       icon: <Wrench className="w-6 h-6" />,
-      title: t('values.maintenance'),
+      title: 'תחזוקה ושדרוגים',
       description: 'תמיכה מתמשכת ושיפורים שוטפים',
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: t('values.security'),
+      title: 'אבטחה מתקדמת',
       description: 'אבטחה מתקדמת והגנה מפני וירוסים',
     },
     {
       icon: <DollarSign className="w-6 h-6" />,
-      title: t('values.price'),
+      title: 'מחירים הוגנים',
       description: 'מחירים הוגנים ללא עלויות נסתרות',
     },
     {
       icon: <Zap className="w-6 h-6" />,
-      title: t('values.speed'),
+      title: 'פיתוח מהיר',
       description: 'משך פיתוח קצר ומסירה מהירה',
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      title: t('values.domain'),
+      title: 'דומיינים מקצועיים',
       description: 'רכישה וניהול דומיינים מקצועי',
     },
   ];
 
   return (
-    <section className="py-20 bg-white dark:bg-black">
+    <section ref={sectionRef} className="py-20 bg-white dark:bg-black fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('values.title')}
+            הערכים שלנו
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            {t('values.religious')}
+            אנו מתחייבים לשירות מקצועי, אמין, מותאם אישית ולשביעות רצון מלאה של הלקוח.
           </p>
         </div>
 
