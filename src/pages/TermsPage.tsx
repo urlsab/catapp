@@ -1,4 +1,6 @@
 import React from 'react';
+import { TypingContent } from '../utils/TypingContent';
+// import SmoothScroll from '../components/SmoothScroll';
 // import { useLanguage } from '../contexts/LanguageContext';
 
 const TermsPage: React.FC = () => {
@@ -26,7 +28,8 @@ const TermsPage: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-white dark:bg-black pt-16 fade-in">
+    <div ref={sectionRef} className="min-h-screen pt-16 fade-in">
+      {/* <SmoothScroll /> */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -35,45 +38,50 @@ const TermsPage: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto"></div>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
-          <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">תנאי השירות</h2>
+        <div className="border-4 border-blue-600 rounded-2xl p-8">
+          <div className="prose prose-lg max-w-none">
             
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">1. כללי</h3>
-            <p className="mb-4">
-              תנאי השירות הללו חלים על כל השירותים הניתנים על ידי Catapp, לרבות פיתוח אתרים, עיצוב, תחזוק ושירותים נוספים.
+            <TypingContent>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">1. הסכמה לתנאי השימוש</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              השימוש באתר CatApp ובשירותים המוצעים בו מהווה הסכמה לתנאי השימוש. אנא קרא/י בעיון את התנאים לפני השימוש באתר.
             </p>
 
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">2. הזמנת שירותים</h3>
-            <p className="mb-4">
-              הזמנת שירותים מתבצעת באמצעות יצירת קשר טלפוני, אימייל או מילוי טופס. ההזמנה תיחשב מאושרת לאחר קבלת אישור בכתב.
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">2. השירותים המוצעים</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              האתר מציע שירותי פיתוח ועיצוב אתרים, כתיבה וייעוץ, וכן שירותי תחזוקה שוטפת. התכנים והשירותים באתר מיועדים למטרות מסחריות וכפופים לזכויות יוצרים.
             </p>
 
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">3. תשלומים</h3>
-            <p className="mb-4">
-              התשלום יבוצע לפי ההסכם שנחתם. בדרך כלל נדרש מקדמה של 50% מהסכום הכולל לפני תחילת העבודה.
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">3. תהליך העבודה והתשלום</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              מחירי השירותים מוצגים באתר ועשויים להשתנות מעת לעת. בעת הזמנת שירות, תידרש מקדמה של 50% מהסכום הכולל. יתרת התשלום תשולם עם השלמת הפרויקט ולפני העברת הקבצים הסופיים.
             </p>
 
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">4. זכויות יוצרים</h3>
-            <p className="mb-4">
-              זכויות היוצרים על העיצוב והקוד יועברו ללקוח לאחר תשלום מלא של הפרויקט.
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">4. זכויות יוצרים וקניין רוחני</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              כל התכנים באתר, לרבות טקסטים, תמונות, לוגואים ועיצובים, מוגנים בזכויות יוצרים. העתקה או שימוש בתכנים ללא אישור מפורש בכתב אסורים בהחלט. בפרויקטים מותאמים אישית, זכויות היוצרים יועברו ללקוח לאחר התשלום המלא.
             </p>
 
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">5. אחריות ותמיכה</h3>
-            <p className="mb-4">
-              אנו מעניקים אחריות של 30 יום על באגים טכניים. תמיכה נוספת תינתן במסגרת חבילות התחזוק.
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">5. תקופת אחריות ותחזוקה</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              כל פרויקט מגיע עם אחריות של 30 ימים על באגים טכניים. שירותי תחזוקה מתמשכים כוללים עדכוני אבטחה, גיבויים, ותיקוני באגים במסגרת חבילות התחזוקה החודשיות.
             </p>
 
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">6. ביטול הזמנה</h3>
-            <p className="mb-4">
-              ביטול הזמנה לאחר תחילת העבודה יחויב בתשלום עבור העבודה שבוצעה עד לנקודת הביטול.
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">6. מדיניות ביטולים</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              ניתן לבטל הזמנת שירות תוך 14 יום מיום ההזמנה. ביטול לאחר תחילת העבודה יחייב תשלום עבור השעות שהושקעו בפרויקט עד לרגע הביטול. המקדמה אינה מוחזרת לאחר תחילת העבודה.
             </p>
 
-            <div className="mt-8 p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                תנאים אלו עודכנו לאחרונה בתאריך: ינואר 2024
-              </p>
-            </div>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">7. אחריות מוגבלת</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              CatApp עושה כל מאמץ לספק שירות מקצועי ואיכותי, אך איננו אחראים לנזקים עקיפים או תוצאתיים שעלולים להיגרם משימוש באתר או בשירותים. מומלץ לגבות תכנים ומידע באופן עצמאי.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">8. יצירת קשר</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
+              לכל שאלה או בירור בנוגע לתנאי השימוש, ניתן ליצור קשר בטלפון 0556611594 או באימייל yairsabag213@gmail.com. אנו מתחייבים להגיב לכל פנייה בהקדם.
+            </p>
+            </TypingContent>
           </div>
         </div>
       </div>

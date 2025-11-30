@@ -83,7 +83,7 @@ const Pricing: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="pricing">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Pricing */}
         <div className="text-center mb-16">
@@ -102,7 +102,7 @@ const Pricing: React.FC = () => {
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-1 rounded-full text-sm flex items-center">
-                    <Star size={14} className="mr-1 ml-0" />
+                    <Star size={14} className="mr-1 ml-1" />
                     פופולרי
                   </div>
                 </div>

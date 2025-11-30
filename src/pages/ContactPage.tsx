@@ -1,5 +1,6 @@
 import React from 'react';
 import Contact from '../components/Contact';
+// import SmoothScroll from '../components/SmoothScroll';
 
 const ContactPage: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
@@ -26,7 +27,8 @@ const ContactPage: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-white dark:bg-black pt-16 fade-in">
+    <div ref={sectionRef} className="min-h-screen pt-16 fade-in">
+      {/* <SmoothScroll /> */}
       <Contact />
     </div>
   );

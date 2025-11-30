@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import SmoothScroll from '../components/SmoothScroll';
 
 const faqList = [
   {
@@ -37,36 +38,46 @@ const FaqPage: React.FC = () => {
     setOpenIdx(openIdx === idx ? null : idx);
   };
   return (
-    <div className="min-h-screen bg-white dark:bg-black pt-16 fade-in">
-      <div className="max-w-3xl mx-auto px-4 py-20">
+    <div>
+      {/* <SmoothScroll /> */}
+      <div className="max-w-3xl mx-auto px-4 py-20 mt-16">
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">שאלות נפוצות</h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-8"></div>
+          <div className="w-24 h-1 mx-auto mb-8"></div>
         </div>
         <div className="space-y-4">
           {faqList.map((faq, idx) => (
-            <div key={idx} className="bg-gray-50 dark:bg-gray-900 rounded-2xl shadow p-4">
-              <button
-                className="flex items-center w-full text-right focus:outline-none"
-                onClick={() => handleToggle(idx)}
-                aria-expanded={openIdx === idx}
-              >
-                <span className="flex-1 text-xl font-bold text-[#1a79f6]">{faq.question}</span>
-                <span className={`ml-2 transition-transform duration-200 ${openIdx === idx ? 'rotate-180' : ''}`}>
-                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-[#1a79f6]">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ${openIdx === idx ? 'max-h-40 opacity-100 animate-fade-in-faq' : 'max-h-0 opacity-0'}`}
-                style={{ transitionDelay: openIdx === idx ? '100ms' : '0ms' }}
-              >
-                {openIdx === idx && (
-                  <div className="mt-4 text-gray-700 dark:text-gray-300 text-lg">
-                    {faq.answer}
-                  </div>
-                )}
+            <div key={idx} className="relative group rounded-2xl shadow-lg border border-[#1a79f6]/30 hover:border-[#1a79f6]/60 transition-all"
+              style={{
+                backgroundSize: '300% 300%',
+                backgroundColor: 'transparent',
+                borderRadius: '1rem'
+              }}>
+              
+              {/* Content container */}
+              <div className="relative rounded-2xl p-4 bg-white/5 backdrop-blur-sm">
+                <button
+                  className="flex items-center w-full text-right focus:outline-none"
+                  onClick={() => handleToggle(idx)}
+                  aria-expanded={openIdx === idx}
+                >
+                  <span className="flex-1 text-xl font-bold text-white">{faq.question}</span>
+                  <span className={`ml-2 transition-transform duration-200 ${openIdx === idx ? 'rotate-180' : ''}`}>
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-[#1a79f6]">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-500 ${openIdx === idx ? 'max-h-40 opacity-100 animate-fade-in-faq' : 'max-h-0 opacity-0'}`}
+                  style={{ transitionDelay: openIdx === idx ? '100ms' : '0ms' }}
+                >
+                  {openIdx === idx && (
+                    <div className="mt-4 text-white text-lg">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}

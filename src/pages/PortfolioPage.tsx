@@ -1,6 +1,7 @@
 import React from 'react';
 // import { useLanguage } from '../contexts/LanguageContext';
 import { ExternalLink } from 'lucide-react';
+// import SmoothScroll from '../components/SmoothScroll';
 
 const PortfolioPage: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
@@ -71,11 +72,12 @@ const PortfolioPage: React.FC = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-gray-50 dark:bg-black pt-16 fade-in">
+    <div ref={sectionRef} className="min-h-screen pt-16 fade-in">
+      {/* <SmoothScroll /> */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 mt-0">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 mt-0">
             תיק עבודות
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-8"></div>
@@ -86,7 +88,7 @@ const PortfolioPage: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioItems.map((item, index) => (
-            <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+            <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               <div className="relative overflow-hidden">
                 <img
                   src={item.image}
@@ -120,14 +122,16 @@ const PortfolioPage: React.FC = () => {
                   {item.description}
                 </p>
                 
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow transition-all text-sm"
-                >
-                  לדוגמא
-                </a>
+                <div className="text-center">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow transition-all text-sm"
+                  >
+                    לאתר
+                  </a>
+                </div>
               </div>
             </div>
           ))}

@@ -16,19 +16,29 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-white/90 dark:bg-black/90 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-700 fade-in">
+    <header className="fixed top-0 w-full bg-black/30 backdrop-blur-sm z-50 border-b border-gray-700/50 fade-in"
+    style={{
+      background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2))'
+    }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center fade-in">
-            <img src={logo} alt="Catapp Logo" className="h-10 w-auto" />
+            <div className="relative overflow-hidden rounded-full">
+              <img 
+                src={logo} 
+                alt="Catapp Logo" 
+                className="h-10 w-auto rounded-full relative z-10"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 rtl:space-x-reverse fade-in">
             <Link
               to="/"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
               בית
               <span
@@ -37,7 +47,7 @@ const Header: React.FC = () => {
             </Link>
             <Link
               to="/pricing"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
               מחירון
               <span
@@ -46,7 +56,7 @@ const Header: React.FC = () => {
             </Link>
             <Link
               to="/portfolio"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
               תיק עבודות
               <span
@@ -55,7 +65,7 @@ const Header: React.FC = () => {
             </Link>
             <Link
               to="/about-full"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
               אודות
               <span
@@ -64,7 +74,7 @@ const Header: React.FC = () => {
             </Link>
             <Link
               to="/quote"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
               להצעת מחיר
               <span
@@ -73,7 +83,7 @@ const Header: React.FC = () => {
             </Link>
             <Link
             to="/faq"
-            className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/faq') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+            className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/faq') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
           >
             שאלות נפוצות
             <span
@@ -82,7 +92,7 @@ const Header: React.FC = () => {
           </Link>
             <Link
               to="/contact"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'} group`}
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
               צור קשר
               <span

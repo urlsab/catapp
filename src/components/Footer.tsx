@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
               <li className="flex items-center">
                 <Phone size={16} className="mr-2 ml-1" />
                 <button onClick={handlePhone} className="hover:text-white transition-colors">
-                  0556611594
+                  055-6611594
                 </button>
               </li>
               <li className="flex items-center">
@@ -97,22 +97,23 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-wrap justify-between items-center gap-4 text-center md:text-right">
-            <div className="text-gray-400 flex-1 min-w-[120px]">
-              כל הזכויות שמורות ל-Catapp
+          <div className="flex flex-wrap justify-center items-center gap-3 text-sm text-gray-400">
+            <Link to="/terms" className="hover:text-white transition-colors">
+              תנאי שימוש
+            </Link>
+            <span className="text-gray-600">|</span>
+            <Link to="/privacy" className="hover:text-white transition-colors">
+              מדיניות פרטיות
+            </Link>
+            <span className="text-gray-600">|</span>
+            <div className="flex items-center gap-2">
+              <span>נבנה ע"י</span>
+              <img src={logo} alt="Catapp Logo" className="h-5 w-auto" />
             </div>
-            <div className="flex items-center justify-center space-x-4 rtl:space-x-reverse text-gray-400 flex-1 min-w-[180px]">
-              <Link to="/terms" className="hover:text-white transition-colors">
-                תנאי שימוש
-              </Link>
-              <span>•</span>
-              <Link to="/privacy" className="hover:text-white transition-colors">
-                מדיניות פרטיות
-              </Link>
-            </div>
-            <div className="text-gray-500 flex-1 min-w-[120px]">
-              <span>נבנה ע"י Catapp</span>
-            </div>
+            <span className="text-gray-600">|</span>
+            <span>{new Date().getFullYear()}</span>
+            <span className="text-gray-600">|</span>
+            <span>כל הזכויות שמורות</span>
           </div>
         </div>
       </div>

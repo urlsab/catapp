@@ -104,7 +104,7 @@ const Portfolio: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold text-sm transition-colors"
                 >
-                  צפה בפרויקט
+                  לאתר
                   <ExternalLink size={14} className="mr-1 ml-0" />
                 </a>
               </div>
