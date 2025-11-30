@@ -471,7 +471,7 @@ const HomePage: React.FC = () => {
               to="/portfolio"
               className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
             >
-              לצפייה בתיק העבודות
+            לצפייה בתיק העבודות המלא
             </Link>
           </div>
         </div>
