@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp, Edit, PenTool, Puzzle, File, Target, Briefcase } from 'lucide-react';
+import { Check, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp, Edit, Puzzle, File, Target, Briefcase } from 'lucide-react';
 // import SmoothScroll from '../components/SmoothScroll';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -19,26 +19,26 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 const PricingPage: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const handleFade = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          entry.target.classList.remove('fade-out');
-        } else {
-          entry.target.classList.remove('fade-in');
-          entry.target.classList.add('fade-out');
-        }
-      });
-    };
-    const observer = new IntersectionObserver(handleFade, {
-      threshold: 0.1
-    });
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+  // React.useEffect(() => {
+  //   const section = sectionRef.current;
+  //   if (!section) return;
+  //   const handleFade = (entries: IntersectionObserverEntry[]) => {
+  //     entries.forEach(entry => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.add('fade-in');
+  //         entry.target.classList.remove('fade-out');
+  //       } else {
+  //         entry.target.classList.remove('fade-in');
+  //         entry.target.classList.add('fade-out');
+  //       }
+  //     });
+  //   };
+  //   const observer = new IntersectionObserver(handleFade, {
+  //     threshold: 0.1
+  //   });
+  //   observer.observe(section);
+  //   return () => observer.disconnect();
+  // }, []);
   const pricingPlans = [
     {
       name: 'דף נחיתה',
@@ -159,7 +159,7 @@ const PricingPage: React.FC = () => {
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
-                    <Check size={16} className="text-green-500 mr-2 ml-0 flex-shrink-0" />
+                    <Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
                   </li>
                 ))}
@@ -210,7 +210,7 @@ const PricingPage: React.FC = () => {
               <ul className="space-y-2">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
-                    <Check size={14} className="text-green-500 mr-2 ml-0 flex-shrink-0" />
+                    <Check size={14} className="text-green-500 mr-2 ml-2 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
                   </li>
                 ))}

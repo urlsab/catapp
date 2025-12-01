@@ -6,26 +6,26 @@ import { ArrowDown, Code, Palette, Zap } from 'lucide-react';
 const Hero: React.FC = () => {
   const sectionRef = React.useRef<HTMLElement>(null);
 
-  React.useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const handleFade = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          entry.target.classList.remove('fade-out');
-        } else {
-          entry.target.classList.remove('fade-in');
-          entry.target.classList.add('fade-out');
-        }
-      });
-    };
-    const observer = new IntersectionObserver(handleFade, {
-      threshold: 0.1
-    });
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+  // React.useEffect(() => {
+  //   const section = sectionRef.current;
+  //   if (!section) return;
+  //   const handleFade = (entries: IntersectionObserverEntry[]) => {
+  //     entries.forEach(entry => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.add('fade-in');
+  //         entry.target.classList.remove('fade-out');
+  //       } else {
+  //         entry.target.classList.remove('fade-in');
+  //         entry.target.classList.add('fade-out');
+  //       }
+  //     });
+  //   };
+  //   const observer = new IntersectionObserver(handleFade, {
+  //     threshold: 0.1
+  //   });
+  //   observer.observe(section);
+  //   return () => observer.disconnect();
+  // }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

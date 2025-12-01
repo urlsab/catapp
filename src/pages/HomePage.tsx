@@ -13,16 +13,19 @@ const pricingPreview = [
     name: 'דף נחיתה',
     price: 'החל מ-2,000 ₪',
     example: 'orbenji.com',
+    icon: 'Rocket',
   },
   {
     name: 'אתר תדמית',
     price: 'החל מ-5,000 ₪',
     example: 'atliz.co.il',
+    icon: 'Building2',
   },
   {
     name: 'אתר תיק עבודות',
     price: 'החל מ-8,000 ₪',
     example: 'portfolio-uriel-yair-sabag.vercel.app',
+    icon: 'Briefcase',
   },
 ];
 
@@ -54,7 +57,7 @@ const HomePage: React.FC = () => {
   const [logoAnimated, setLogoAnimated] = React.useState(false);
   const [typingStarted, setTypingStarted] = React.useState(false);
   const [showBlinkingCursor, setShowBlinkingCursor] = React.useState(false);
-  const [valuesAnimated, setValuesAnimated] = React.useState(false);
+  const valuesAnimated = true; // Set to true since observer is disabled
   const valuesRef = React.useRef<HTMLDivElement>(null);
 
   // אנימציה מדורגת - ראשית הלוגו ואז ההקלדה
@@ -110,30 +113,30 @@ const HomePage: React.FC = () => {
   }, [charIdx, isDeleting, textIdx, typingStarted]);
 
   // Intersection Observer for Values section animation
-  React.useEffect(() => {
-    const valuesSection = valuesRef.current;
-    if (!valuesSection) return;
+  // React.useEffect(() => {
+  //   const valuesSection = valuesRef.current;
+  //   if (!valuesSection) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !valuesAnimated) {
-            setValuesAnimated(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px'
-      }
-    );
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting && !valuesAnimated) {
+  //           setValuesAnimated(true);
+  //         }
+  //       });
+  //     },
+  //     {
+  //       threshold: 0.1,
+  //       rootMargin: '0px'
+  //     }
+  //   );
 
-    observer.observe(valuesSection);
+  //   observer.observe(valuesSection);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [valuesAnimated]);
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, [valuesAnimated]);
 
   return (
     <div>
@@ -555,34 +558,37 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 w-full">
             {/* פיתוח אתרים - שורה ראשונה */}
-            {pricingPreview.map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-white/5 backdrop-blur-sm border-2 border-[#1a79f6]/30 rounded-lg md:rounded-xl p-3 md:p-4 hover:border-[#1a79f6]/60 transition-all duration-300 hover:transform hover:scale-105 shadow-lg flex-1 min-h-[120px] md:min-h-[140px] flex flex-col justify-between"
-              >
-                <div className="text-center">
-                  <div className="mb-1 md:mb-2 flex justify-center">
-                    <Rocket className="w-6 h-6 md:w-8 md:h-8 text-[#1a79f6]" />
+            {pricingPreview.map((item, idx) => {
+              const IconComponent = item.icon === 'Rocket' ? Rocket : item.icon === 'Building2' ? Building2 : Briefcase;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white/5 backdrop-blur-sm border-2 border-[#1a79f6]/30 rounded-lg md:rounded-xl p-3 md:p-4 hover:border-[#1a79f6]/60 transition-all duration-300 hover:transform hover:scale-105 shadow-lg flex-1 min-h-[120px] md:min-h-[140px] flex flex-col justify-between"
+                >
+                  <div className="text-center">
+                    <div className="mb-1 md:mb-2 flex justify-center">
+                      <IconComponent className="w-6 h-6 md:w-8 md:h-8 text-[#1a79f6]" />
+                    </div>
+                    <h3 className="text-xs md:text-sm font-bold text-white mb-1">
+                      {item.name}
+                    </h3>
+                    <div className="text-base md:text-lg font-bold text-[#1a79f6] mb-1 md:mb-2">
+                      {item.price}
+                    </div>
                   </div>
-                  <h3 className="text-xs md:text-sm font-bold text-white mb-1">
-                    {item.name}
-                  </h3>
-                  <div className="text-base md:text-lg font-bold text-[#1a79f6] mb-1 md:mb-2">
-                    {item.price}
+                  <div className="text-center">
+                    <a
+                      href={`https://${item.example}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-1 px-2 md:px-3 rounded-lg shadow transition-all text-xs"
+                    >
+                      לאתר
+                    </a>
                   </div>
                 </div>
-                <div className="text-center">
-                  <a
-                    href={`https://${item.example}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-1 px-2 md:px-3 rounded-lg shadow transition-all text-xs"
-                  >
-                    לאתר
-                  </a>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-3 w-full">
@@ -610,26 +616,12 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="text-center mt-4">
-            <div className="flex gap-3 justify-center flex-wrap">
-              <Link
-                to="/pricing"
-                className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-              >
-                למחירון המלא
-              </Link>
-              <Link
-                to="/quote"
-                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-              >
-                לקבלת הצעת מחיר
-              </Link>
-              <Link
-                to="/contact"
-                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-              >
-                צור קשר
-              </Link>
-            </div>
+            <Link
+              to="/pricing"
+              className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
+            >
+              למחירון המלא
+            </Link>
           </div>
         </div>
       </section>
