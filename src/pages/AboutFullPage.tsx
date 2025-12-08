@@ -1,6 +1,6 @@
 import React from 'react';
 import logoBg from '../../Assets/catapp logo no bg.png';
-import { Rocket, FileText, Target, Zap, Shield, Code, Bot, Accessibility, Sparkles, Wrench, X, CheckCircle2, Package, Server, Palette } from 'lucide-react';
+import { Rocket, Building2, FileText, Target, Zap, Shield, Code, Bot, Accessibility, Sparkles, Wrench, X, CheckCircle2, Package, Server, Palette, Scale } from 'lucide-react';
 import { FaReact, FaNodeJs, FaWordpress, FaGithub, FaGitAlt } from 'react-icons/fa';
 import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku } from 'react-icons/si';
 // import SmoothScroll from '../components/SmoothScroll';
@@ -21,20 +21,20 @@ const AboutFullPage: React.FC = () => {
 
       {/* תוכן ראשי */}
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 pb-2 tracking-tight bg-gradient-to-r from-[#1a79f6] to-blue-400 bg-clip-text text-transparent leading-tight px-4">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 pb-2 tracking-tight bg-gradient-to-r from-[#1a79f6] to-blue-400 bg-clip-text text-transparent leading-tight px-2 sm:px-4">
             אודות Catapp
           </h1>
-          <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-4 md:mb-6 rounded-full"></div>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+          <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full"></div>
+          <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-3xl mx-auto px-3 sm:px-4">
             החברה המובילה בישראל לפתרונות דיגיטליים מתקדמים ושירותי תוכן מקצועיים
           </p>
         </div>
 
         <section className="mb-12 space-y-8 text-lg leading-relaxed rtl:text-right">
           {/* הצגת החברה */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-animated bg-white/5" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#1a79f6] mb-4 md:mb-6 text-center">למה Catapp שונה?</h2>
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-animated bg-white/5" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
+            <h2 className="text-base sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-3 sm:mb-4 md:mb-6 text-center">למה Catapp שונה?</h2>
             <p className="mb-4 md:mb-6 text-center text-sm sm:text-base">
               <span className="font-bold text-[#1a79f6]">Catapp</span> נוסדה מתוך צורך אמיתי - 
               <span className="font-semibold"> לפתור את בעיית המהירות והגמישות</span> בבניית אתרים מקצועיים. 
@@ -47,9 +47,9 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* לא WordPress - כן טכנולוגיות מתקדמות */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-red-900/10" style={{"--color1": "#dc2626"} as React.CSSProperties}>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-red-500 mb-4 md:mb-6 text-center flex flex-wrap items-center justify-center gap-2 md:gap-3">
-              אנחנו לא בונים ב-
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-red-900/10" style={{"--color1": "#dc2626"} as React.CSSProperties}>
+            <h2 className="text-base sm:text-lg md:text-2xl font-bold text-red-500 mb-3 sm:mb-4 md:mb-6 text-center flex flex-wrap items-center justify-center gap-2 md:gap-3">
+              אנחנו לא בונים עם
               <span className="relative inline-flex items-center gap-2">
                 <span className="text-[#21759b]">WordPress</span>
                 <span className="relative inline-block">
@@ -59,8 +59,8 @@ const AboutFullPage: React.FC = () => {
               </span>
             </h2>
             <p className="mb-3 md:mb-4 text-center text-lg sm:text-xl md:text-2xl font-bold">
-              <span className="text-white">אנחנו בונים ב-</span>
-              <span className="text-[#1a79f6]">World's Best</span>
+              <span className="text-white">אנחנו בונים עם</span>
+              <span className="text-[#1a79f6]"> World's Best</span>
             </p>
             <p className="mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg">
               פלטפורמות כמו WordPress, Wix ו-Shopify מגבילות אתכם לתבניות קבועות, איטיות וחסרות גמישות.
@@ -74,91 +74,91 @@ const AboutFullPage: React.FC = () => {
                     <div className="tech-orbit">
                       <div className="tech-icon-wrapper" style={{ '--icon-index': 0 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#61DAFB]/20 hover:scale-125">
-                      <FaReact className="text-2xl sm:text-3xl md:text-4xl text-[#61DAFB]" />
+                      <FaReact className="text-xs xs:text-base sm:text-xl md:text-2xl text-[#61DAFB]" />
                     </div>
                     <p className="tech-label">React</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 1 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#3178C6]/20 hover:scale-125">
-                      <SiTypescript className="text-xl sm:text-2xl md:text-3xl text-[#3178C6]" />
+                      <SiTypescript className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#3178C6]" />
                     </div>
                     <p className="tech-label">TypeScript</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 2 } as React.CSSProperties}>
                     <div className="tech-icon bg-yellow-500/20 hover:scale-125">
-                      <SiJavascript className="text-xl sm:text-2xl md:text-3xl text-yellow-500" />
+                      <SiJavascript className="text-[10px] xs:text-sm sm:text-base md:text-xl text-yellow-500" />
                     </div>
                     <p className="tech-label">JavaScript</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 3 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#646CFF]/20 hover:scale-125">
-                      <SiVite className="text-xl sm:text-2xl md:text-3xl text-[#646CFF]" />
+                      <SiVite className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#646CFF]" />
                     </div>
                     <p className="tech-label">Vite</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 4 } as React.CSSProperties}>
                     <div className="tech-icon bg-green-500/20 hover:scale-125">
-                      <SiMongodb className="text-xl sm:text-2xl md:text-3xl text-green-500" />
+                      <SiMongodb className="text-[10px] xs:text-sm sm:text-base md:text-xl text-green-500" />
                     </div>
                     <p className="tech-label">MongoDB</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 5 } as React.CSSProperties}>
                     <div className="tech-icon bg-blue-500/20 hover:scale-125">
-                      <SiMui className="text-xl sm:text-2xl md:text-3xl text-blue-500" />
+                      <SiMui className="text-[10px] xs:text-sm sm:text-base md:text-xl text-blue-500" />
                     </div>
                     <p className="tech-label">MUI</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 6 } as React.CSSProperties}>
                     <div className="tech-icon bg-black border border-white hover:scale-125">
-                      <SiVercel className="text-xl sm:text-2xl md:text-3xl text-white" />
+                      <SiVercel className="text-[10px] xs:text-sm sm:text-base md:text-xl text-white" />
                     </div>
                     <p className="tech-label">Vercel</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 7 } as React.CSSProperties}>
                     <div className="tech-icon bg-orange-600/20 hover:scale-125">
-                      <FaNodeJs className="text-xl sm:text-2xl md:text-3xl text-orange-600" />
+                      <FaNodeJs className="text-[10px] xs:text-sm sm:text-base md:text-xl text-orange-600" />
                     </div>
                     <p className="tech-label">Node.js</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 8 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#06B6D4]/20 hover:scale-125">
-                      <SiTailwindcss className="text-xl sm:text-2xl md:text-3xl text-[#06B6D4]" />
+                      <SiTailwindcss className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#06B6D4]" />
                     </div>
                     <p className="tech-label">Tailwind CSS</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 9 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#FFCA28]/20 hover:scale-125">
-                      <SiFirebase className="text-xl sm:text-2xl md:text-3xl text-[#FFCA28]" />
+                      <SiFirebase className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#FFCA28]" />
                     </div>
                     <p className="tech-label">Firebase</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 10 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#1BDBDB]/20 hover:scale-125">
-                      <SiGodaddy className="text-xl sm:text-2xl md:text-3xl text-[#1BDBDB]" />
+                      <SiGodaddy className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#1BDBDB]" />
                     </div>
                     <p className="tech-label">GoDaddy</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 11 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#430098]/20 hover:scale-125">
-                      <SiHeroku className="text-xl sm:text-2xl md:text-3xl text-[#430098]" />
+                      <SiHeroku className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#430098]" />
                     </div>
                     <p className="tech-label">Heroku</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 12 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#181717]/20 border border-gray-700 hover:scale-125">
-                      <FaGithub className="text-xl sm:text-2xl md:text-3xl text-white" />
+                      <FaGithub className="text-[10px] xs:text-sm sm:text-base md:text-xl text-white" />
                     </div>
                     <p className="tech-label">GitHub</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 13 } as React.CSSProperties}>
                     <div className="tech-icon bg-[#F05032]/20 hover:scale-125">
-                      <FaGitAlt className="text-xl sm:text-2xl md:text-3xl text-[#F05032]" />
+                      <FaGitAlt className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#F05032]" />
                     </div>
                     <p className="tech-label">Git</p>
                   </div>
                   <div className="tech-icon-wrapper" style={{ '--icon-index': 14 } as React.CSSProperties}>
                     <div className="tech-icon bg-purple-500/20 hover:scale-125">
-                      <span className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-500">✨</span>
+                      <span className="text-[10px] xs:text-sm sm:text-base md:text-xl font-bold text-purple-500">✨</span>
                     </div>
                     <p className="tech-label">AI</p>
                   </div>
@@ -214,52 +214,52 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* הנגשה - הגנה משפטית */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-green-900/10" style={{"--color1": "#16a34a"} as React.CSSProperties}>
+          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-cyan-900/10" style={{"--color1": "#06b6d4"} as React.CSSProperties}>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
-                <div className="relative w-64 h-64">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/20 to-green-600/20 animate-pulse"></div>
-                  <div className="absolute inset-6 sm:inset-8 rounded-full bg-gradient-to-br from-green-500/30 to-green-700/30 flex items-center justify-center">
-                    <Accessibility className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 text-green-400" />
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/20 to-cyan-600/20 animate-pulse"></div>
+                  <div className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full bg-gradient-to-br from-cyan-500/30 to-cyan-700/30 flex items-center justify-center">
+                    <Accessibility className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 text-cyan-400" />
                   </div>
-                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-green-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0s', animationDuration: '2s'}}>
-                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-green-400" />
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0s', animationDuration: '2s'}}>
+                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400" />
                   </div>
-                  <div className="absolute bottom-6 left-3 sm:bottom-8 sm:left-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-green-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2s'}}>
-                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-green-400" />
+                  <div className="absolute bottom-6 left-3 sm:bottom-8 sm:left-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2s'}}>
+                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400" />
                   </div>
-                  <div className="absolute top-8 left-2 sm:top-12 sm:left-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-green-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '1s', animationDuration: '2s'}}>
-                    <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-green-400" />
+                  <div className="absolute top-8 left-2 sm:top-12 sm:left-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '1s', animationDuration: '2s'}}>
+                    <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400" />
                   </div>
                 </div>
               </div>
               
               {/* Text on right */}
-              <div>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-green-400 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
-                  <Accessibility className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
-                  הנגשה מלאה - הגנה משפטית ואחריות חברתית
+              <div className="text-center md:text-right">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-cyan-400 mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
+                  <Accessibility className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
+                  <span className="text-center md:text-right">הנגשה מלאה - הגנה משפטית ואחריות חברתית</span>
                 </h2>
-                <p className="mb-3 md:mb-4 text-sm sm:text-base md:text-lg">
-                  <span className="font-bold text-green-400">כל אתר אצלנו מונגש באופן מלא!</span>
+                <p className="mb-3 md:mb-4 text-xs sm:text-sm md:text-lg text-center md:text-right">
+                  <span className="font-bold text-cyan-400">כל אתר אצלנו מונגש באופן מלא!</span>
                 </p>
-                <div className="bg-black/40 rounded-xl p-6">
-                  <ul className="space-y-3 text-gray-300">
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6">
+                  <ul className="space-y-2 sm:space-y-3 text-gray-300 text-xs sm:text-sm md:text-base">
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>הגנה משפטית:</strong> עמידה מלאה בחוק הנגשת שירותי אינטרנט - תגן על העסק שלך מתביעות</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>אחריות חברתית:</strong> נגישות לאנשים עם מוגבלויות - לך תדע אם הלקוח או הגולש הבא שלך צריך את זה</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>SEO משופר:</strong> אתרים מונגשים מקבלים דירוג טוב יותר בגוגל</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>חוויית משתמש טובה יותר:</strong> הנגשה משפרת את החוויה לכולם</span>
                     </li>
                   </ul>
@@ -269,11 +269,11 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* בוט AI חכם */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-purple-900/10" style={{"--color1": "#9333ea"} as React.CSSProperties}>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-purple-900/10" style={{"--color1": "#9333ea"} as React.CSSProperties}>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
-              <div>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-400 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+              <div className="text-center md:text-right">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-purple-400 mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Bot className="w-8 h-8" />
                   בוט AI חכם
                 </h2>
@@ -319,8 +319,8 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* פיצ'רים מתקדמים */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-yellow-900/10" style={{"--color1": "#ca8a04"} as React.CSSProperties}>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-yellow-900/10" style={{"--color1": "#ca8a04"} as React.CSSProperties}>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
                 <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72">
@@ -395,11 +395,11 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* תחזוקה ושיפור קוד */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-blue-900/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-blue-900/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
-              <div>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+              <div className="text-center md:text-right">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-[#1a79f6] mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Wrench className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 animate-spin" style={{animationDuration: '3s'}} />
                   תחזוקה מתמשכת ושיפור הקוד
                 </h2>
@@ -462,8 +462,8 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* שירותי תוכן */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-pink-900/10" style={{"--color1": "#db2777"} as React.CSSProperties}>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-pink-900/10" style={{"--color1": "#db2777"} as React.CSSProperties}>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
@@ -485,8 +485,8 @@ const AboutFullPage: React.FC = () => {
               </div>
               
               {/* Text on right */}
-              <div>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-pink-400 mb-4 md:mb-6">שירותי תוכן מתקדמים</h2>
+              <div className="text-center md:text-right">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-pink-400 mb-3 sm:mb-4 md:mb-6">שירותי תוכן מתקדמים</h2>
                 <div className="space-y-4 sm:space-y-6">
                   <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 flex items-center gap-2">
@@ -500,11 +500,14 @@ const AboutFullPage: React.FC = () => {
                   <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 flex items-center gap-2">
                       <Target className="w-5 h-5 sm:w-6 sm:h-6 text-pink-400" />
-                      ייעוץ עסקי
+                      הרצאות קורות חיים
                     </h3>
-                    <p className="text-gray-300 text-sm sm:text-base">
-                      ליווי מקצועי לעסקים קטנים בתחום ההקמה, הפיתוח והצמיחה, כולל הרצאות על אופטימיזציה דיגיטלית.
+                    <p className="text-gray-300 text-sm sm:text-base mb-3">
+                      הרצאות פרונטליות ודיגיטליות מקיפות על כתיבת קו"ח מנצח לתעשיית ההייטק.
                     </p>
+                    <a href="/cv-services" className="text-[#1a79f6] hover:underline text-sm inline-flex items-center gap-1">
+                      לעמוד קורות חיים →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -512,11 +515,11 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* תיק עבודות מובחר */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
-              <div>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-4 md:mb-6">פרויקטים מובחרים</h2>
+              <div className="text-center md:text-right">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-[#1a79f6] mb-3 sm:mb-4 md:mb-6">פרויקטים מובחרים</h2>
                 <p className="text-gray-300 mb-4 md:mb-6 text-sm sm:text-base">
                   כמה דוגמאות לפרויקטים שביצענו עבור לקוחות מרוצים:
                 </p>
@@ -534,7 +537,7 @@ const AboutFullPage: React.FC = () => {
                   </div>
                   <div className="bg-black/40 rounded-lg p-4 border-l-4 border-[#1a79f6]">
                     <h3 className="font-bold text-white mb-2 flex items-center gap-2">
-                      <Rocket className="w-5 h-5 text-[#1a79f6]" />
+                      <Building2 className="w-5 h-5 text-[#1a79f6]" />
                       Atliz
                     </h3>
                     <p className="text-gray-300 text-sm mb-2">אתר תדמית עסקי מתקדם</p>
@@ -545,7 +548,7 @@ const AboutFullPage: React.FC = () => {
                   </div>
                   <div className="bg-black/40 rounded-lg p-4 border-l-4 border-[#1a79f6]">
                     <h3 className="font-bold text-white mb-2 flex items-center gap-2">
-                      <Shield className="w-5 h-5 text-[#1a79f6]" />
+                      <Scale className="w-5 h-5 text-[#1a79f6]" />
                       Refael Law
                     </h3>
                     <p className="text-gray-300 text-sm mb-2">אתר משרד עורכי דין</p>
@@ -586,8 +589,8 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* קריאה לפעולה */}
-          <div className="relative text-center rounded-xl md:rounded-2xl p-6 sm:p-8 border-animated bg-white/10 backdrop-blur-sm" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">מוכנים להתחיל?</h2>
+          <div className="relative text-center rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 border-animated bg-white/10 backdrop-blur-sm" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 md:mb-4">מוכנים להתחיל?</h2>
             <p className="text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base px-4">
               עם ניסיון עשיר, טכנולוגיות עדכניות ותמיכה מתמשכת – Catapp היא הבחירה הטבעית שלכם להצלחה בעולם הדיגיטל.
             </p>

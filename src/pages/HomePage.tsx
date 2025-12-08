@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
   const typingTexts = [
     'בניית אתרים',
     'כתיבת קו"ח להייטק',
-    'ייעוץ לעסקים קטנים'
+    'הרצאות על קו"ח'
   ];
   const [currentText, setCurrentText] = React.useState('');
   const [textIdx, setTextIdx] = React.useState(0);
@@ -166,9 +166,7 @@ const HomePage: React.FC = () => {
                 style={{
                   maxWidth: '100%',
                   height: 'auto',
-                  animation: logoAnimated
-                    ? 'logoBreathing 4s ease-in-out infinite'
-                    : 'none',
+                  animation: 'none',
                 }}
               />
             </div>
@@ -514,10 +512,10 @@ const HomePage: React.FC = () => {
                 <div className="flex-shrink-0"><Briefcase className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-[#1a79f6]" /></div>
                 <div className="flex-grow">
                   <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                    ייעוץ עסקי
+                    הרצאות על קו"ח
                   </h3>
                   <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 md:mb-4">
-                    ייעוץ מקצועי לעסקים קטנים בתחום ההקמה, הפיתוח והצמיחה הדיגיטלית
+                    הרצאות פרונטליות ודיגיטליות על כתיבת קורות חיים מנצחים
                   </p>
                 </div>
               </div>

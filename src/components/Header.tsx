@@ -10,9 +10,31 @@ const Header: React.FC = () => {
   // const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
+  const [shouldRender, setShouldRender] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isMenuOpen) {
+      setShouldRender(true);
+    }
+  }, [isMenuOpen]);
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const handleMenuToggle = () => {
+    if (isMenuOpen) {
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsMenuOpen(false);
+        setIsClosing(false);
+        setShouldRender(false);
+      }, 300);
+    } else {
+      setIsMenuOpen(true);
+      setIsClosing(false);
+    }
   };
 
   return (
@@ -82,12 +104,12 @@ const Header: React.FC = () => {
               />
             </Link>
             <Link
-            to="/faq"
-            className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/faq') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+            to="/cv-services"
+            className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
           >
-            שאלות נפוצות
+            קורות חיים
             <span
-              className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/faq') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+              className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/cv-services') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
             />
           </Link>
             <Link
@@ -111,7 +133,7 @@ const Header: React.FC = () => {
             </button> */}
             {/* Mobile menu button */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={handleMenuToggle}
               className="md:hidden p-2 text-gray-500 dark:text-gray-400 hover:text-[#1a79f6]"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -120,41 +142,62 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
+        {shouldRender && (
+          <div className={`md:hidden ${isClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}>
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700">
               <Link 
                 to="/"
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 transition-colors ${isActive('/') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.05s' }}
               >
                 בית
               </Link>
               <Link 
                 to="/pricing"
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 transition-colors ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.1s' }}
               >
                 מחירון
               </Link>
               <Link 
                 to="/portfolio"
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 transition-colors ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.15s' }}
               >
                 תיק עבודות
               </Link>
-                <Link 
-                  to="/about-full"
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 transition-colors ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                >
-                  אודות
-                </Link>
+              <Link 
+                to="/about-full"
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.2s' }}
+              >
+                אודות
+              </Link>
+              <Link 
+                to="/quote"
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.25s' }}
+              >
+                להצעת מחיר
+              </Link>
+              <Link 
+                to="/cv-services"
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
+              >
+                קורות חיים
+              </Link>
               <Link 
                 to="/contact"
-                onClick={() => setIsMenuOpen(false)}
-                className={`block px-3 py-2 transition-colors ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                onClick={handleMenuToggle}
+                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.35s' }}
               >
                 צור קשר
               </Link>

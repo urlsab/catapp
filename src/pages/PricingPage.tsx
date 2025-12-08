@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp, Edit, Puzzle, File, Target, Briefcase } from 'lucide-react';
+import { Check, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp, Target } from 'lucide-react';
 // import SmoothScroll from '../components/SmoothScroll';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -12,8 +12,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Users,
   Laptop,
   Shield,
-  TrendingUp,
-  Edit
+  TrendingUp
 };
 
 const PricingPage: React.FC = () => {
@@ -112,7 +111,7 @@ const PricingPage: React.FC = () => {
     {
       name: 'עדכון תכנים שוטפים',
       price: 'החל מ-300 ₪ לחודש',
-      icon: 'Edit',
+      icon: 'FileText',
       features: ['עדכון תוכן שוטף', 'הוספת עמודים חדשים', 'עדכון תמונות', 'שיפור UX']
     }
   ];
@@ -219,128 +218,21 @@ const PricingPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Resume Building Services */}
+        {/* CV Services Link */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-            קורות חיים למשרות בהייטק - שוברים את השוק!
-            <Target className="w-8 h-8 text-[#1a79f6]" />
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-purple-700 mx-auto mb-6"></div>
-          
-          <div className="max-w-4xl mx-auto text-right mb-8">
-            <div className="bg-white/5 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-8 text-gray-300 space-y-4">
-              <p className="text-lg leading-relaxed">
-                <span className="font-bold text-white">מחפשים עבודה בהייטק אבל מרגישים שהקו"ח שלכם לא עושים את העבודה?</span>
-                <br />
-                אני כאן בדיוק בשביל זה
-              </p>
-              
-              <p className="leading-relaxed">
-                עם ניסיון רב בכתיבת קורות חיים מותאמים לעולם ההייטק — אני עוזר למועמדים לבלוט, 
-                לעבור מסננים אוטומטיים (ATS), ולהגיע לראיונות אמיתיים.
-              </p>
-              
-              <p className="leading-relaxed">
-                יש לי תבנית מושלמת שמדגישה את החוזקות שלכם, מציגה ניסיון בצורה מקצועית, 
-                ומדברת בשפה שהמגייסים (HR) באמת מבינים.
-              </p>
-              
-              <p className="text-sm text-purple-300 italic flex items-center gap-2">
-                <Briefcase className="w-4 h-4 flex-shrink-0" />
-                <span>מתאים במיוחד למועמדים לתפקידים טכנולוגיים, בוגרי קורסים או ג'וניורים שמחפשים 
-                את הדרך הנכונה להציג את עצמם.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm border-2 border-purple-500/40 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 p-8">
-            <div className="text-center mb-6">
-              <div className="mb-4 flex justify-center">
-                <Edit className="w-16 h-16 text-[#1a79f6]" />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">
-                הערות לקו"ח
-              </h4>
-              <div className="text-3xl font-bold text-purple-300 mb-4">
-                50 ₪
-              </div>
-              <p className="text-sm text-gray-300">
-                קבלו משוב מקצועי והערות לשיפור הקו"ח הקיים שלכם
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm border-2 border-purple-500/40 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 p-8">
-            <div className="text-center mb-6">
-              <div className="mb-4 flex justify-center">
-                <Puzzle className="w-16 h-16 text-[#1a79f6]" />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">
-                שכתוב מקצועי
-              </h4>
-              <div className="text-3xl font-bold text-purple-300 mb-4">
-                80 ₪
-              </div>
-              <p className="text-sm text-gray-300">
-                שכתוב מלא ומקצועי של הקו"ח הקיים שלכם בתבנית מושלמת
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm border-2 border-purple-500/40 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 p-8 ring-2 ring-purple-400">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-1 rounded-full text-sm flex items-center">
-                <Star size={14} className="mr-1 ml-1" />
-                מומלץ ביותר
-              </div>
-            </div>
-            <div className="text-center mb-6">
-              <div className="mb-4 flex justify-center">
-                <Rocket className="w-16 h-16 text-[#1a79f6]" />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">
-                בנייה מאפס
-              </h4>
-              <div className="text-3xl font-bold text-purple-300 mb-4">
-                100 ₪
-              </div>
-              <p className="text-sm text-gray-300">
-                בניית קו"ח מקצועי מאפס עם התבנית המושלמת שלנו
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm border-2 border-purple-500/40 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 p-8">
-            <div className="text-center mb-6">
-              <div className="mb-4 flex justify-center">
-                <File className="w-16 h-16 text-[#1a79f6]" />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">
-                קובץ תבנית
-              </h4>
-              <div className="text-3xl font-bold text-purple-300 mb-4">
-                30 ₪
-              </div>
-              <p className="text-sm text-gray-300">
-                קבלו את קובץ התבנית המקצועי למילוי עצמאי
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-12">
-          <div className="bg-purple-600/10 border border-purple-500/30 rounded-2xl p-6 max-w-2xl mx-auto">
-            <p className="text-gray-300 mb-4">
-              📩 מוזמנים לשלוח לי הודעה עם הקובץ הקיים או בקשה לתבנית – 
-              ואעזור לכם לבלוט מעל כולם!
+          <div className="bg-purple-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              <Target className="w-8 h-8 text-purple-400" />
+              קורות חיים למשרות בהייטק
+            </h2>
+            <p className="text-gray-300 mb-6">
+              מחפשים עבודה בהייטק? אנחנו עוזרים לכם לבלוט מול מערכות ATS ולהגיע לראיונות!
             </p>
             <a
-              href="/contact"
+              href="/cv-services"
               className="inline-block bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105"
             >
-              צור קשר עכשיו
+              לעמוד קורות חיים →
             </a>
           </div>
         </div>

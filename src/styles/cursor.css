@@ -3,12 +3,12 @@ html, body {
   overflow: visible !important;
 }
 
-* {
+/* * {
   cursor: pointer !important;
-}
+} */
 
 /* Main cursor - simple blue circle */
-.custom-cursor {
+/* .custom-cursor { */
   /* position: fixed;
   width: 12px;
   height: 12px;
@@ -18,8 +18,8 @@ html, body {
   z-index: 99999;
   transition: none;
   will-change: transform; */
-  cursor: pointer;
-}
+  /* cursor: pointer; */
+/* } */
 
 /* Hover state */
 .custom-cursor.hover {
@@ -42,9 +42,9 @@ html, body {
 }
 
 /* Hide default cursor on specific elements */
-a, button, input, textarea, select, [role="button"], [onclick] {
+/* a, button, input, textarea, select, [role="button"], [onclick] {
   cursor: none !important;
-}
+} */
 
 /* Mobile - hide custom cursor */
 @media (max-width: 768px) {

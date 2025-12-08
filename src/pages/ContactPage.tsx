@@ -1,35 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Contact from '../components/Contact';
 // import SmoothScroll from '../components/SmoothScroll';
 
+const faqList = [
+  {
+    question: 'מה היתרון של CatApp על פני חברות אחרות?',
+    answer: 'CatApp מתמחה בפיתוח אתרים חכמים, עיצוב מותאם אישית, קידום SEO, תחזוקה שוטפת ושירותי תוכן. אנו עובדים עם טכנולוגיות מתקדמות ומספקים שירות אישי וזמין.'
+  },
+  {
+    question: 'האם האתר שלי יהיה מותאם לכל סוגי המכשירים?',
+    answer: 'בהחלט! כל אתר שנבנה ב-CatApp מותאם באופן מלא למובייל, טאבלט ודסקטופ.'
+  },
+  {
+    question: 'האם אתם מספקים שירותי תחזוקה ותמיכה לאחר ההשקה?',
+    answer: 'כן, אנו מספקים שירותי תחזוקה, תיקון באגים, עדכוני אבטחה ותמיכה שוטפת לכל לקוח.'
+  },
+  {
+    question: 'האם אפשר לקבל הצעת מחיר מותאמת אישית?',
+    answer: 'בוודאי! ניתן לפנות אלינו דרך עמוד קבלת הצעת מחיר ואנו נתאים את ההצעה לצרכים שלך.'
+  },
+  {
+    question: 'האם אתם מספקים שירותי קידום בגוגל (SEO)?',
+    answer: 'כן, אנו מתמחים בקידום אתרים בגוגל ומספקים שירותי SEO מתקדמים.'
+  },
+  {
+    question: 'האם אפשר לקבל אתר גם לציבור הדתי והחרדי?',
+    answer: 'כן, אנו מתאימים את השירותים והעיצובים גם לציבור הדתי והחרדי.'
+  },
+  {
+    question: 'האם אפשר לקבל ייעוץ לבניית קורות חיים?',
+    answer: 'בהחלט! אנו מספקים שירותי בניית ושיפור קורות חיים, כולל ייעוץ אישי.'
+  }
+];
+
 const ContactPage: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
-
-  // React.useEffect(() => {
-  //   const section = sectionRef.current;
-  //   if (!section) return;
-  //   const handleFade = (entries: IntersectionObserverEntry[]) => {
-  //     entries.forEach(entry => {
-  //       if (entry.isIntersecting) {
-  //         entry.target.classList.add('fade-in');
-  //         entry.target.classList.remove('fade-out');
-  //       } else {
-  //         entry.target.classList.remove('fade-in');
-  //         entry.target.classList.add('fade-out');
-  //       }
-  //     });
-  //   };
-  //   const observer = new IntersectionObserver(handleFade, {
-  //     threshold: 0.1
-  //   });
-  //   observer.observe(section);
-  //   return () => observer.disconnect();
-  // }, []);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  
+  const handleToggle = (idx: number) => {
+    setOpenIdx(openIdx === idx ? null : idx);
+  };
 
   return (
     <div ref={sectionRef} className="min-h-screen pt-16 fade-in">
       {/* <SmoothScroll /> */}
       <Contact />
+      
+      {/* FAQ Section */}
+      <div className="max-w-3xl mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">שאלות נפוצות</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-8"></div>
+        </div>
+        <div className="space-y-4">
+          {faqList.map((faq, idx) => (
+            <div key={idx} className="relative group rounded-2xl shadow-lg border border-[#1a79f6]/30 hover:border-[#1a79f6]/60 transition-all"
+              style={{
+                backgroundSize: '300% 300%',
+                backgroundColor: 'transparent',
+                borderRadius: '1rem'
+              }}>
+              
+              {/* Content container */}
+              <div className="relative rounded-2xl p-4 bg-white/5 backdrop-blur-sm">
+                <button
+                  className="flex items-center w-full text-right focus:outline-none"
+                  onClick={() => handleToggle(idx)}
+                  aria-expanded={openIdx === idx}
+                >
+                  <span className="flex-1 text-lg md:text-xl font-bold text-white">{faq.question}</span>
+                  <span className={`ml-2 transition-transform duration-200 ${openIdx === idx ? 'rotate-180' : ''}`}>
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-[#1a79f6]">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-500 ${openIdx === idx ? 'max-h-40 opacity-100 animate-fade-in-faq' : 'max-h-0 opacity-0'}`}
+                  style={{ transitionDelay: openIdx === idx ? '100ms' : '0ms' }}
+                >
+                  {openIdx === idx && (
+                    <div className="mt-4 text-white text-base md:text-lg">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

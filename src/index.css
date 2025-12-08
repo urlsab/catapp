@@ -114,6 +114,55 @@
   animation: fadeFromTop 0.7s ease-out forwards;
 }
 
+/* Mobile menu animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0.95) translateY(-10px);
+  }
+}
+
+@keyframes menuItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top center;
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.25s cubic-bezier(0.4, 0, 1, 1) forwards;
+  transform-origin: top center;
+}
+
+.animate-menuItemIn {
+  opacity: 0;
+  animation: menuItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -271,17 +320,49 @@ html, body {
   animation: rotate-border 4s linear infinite;
 }
 
-/* Technology orbit animation - Responsive */
+/* Technology orbit animation - Fully Responsive (220px to desktop) */
 .tech-orbit {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 180px;
+  max-height: 180px;
   margin: 0 auto;
 }
 
-/* Mobile sizes */
+/* Tiny screens (240px+) */
+@media (min-width: 240px) {
+  .tech-orbit {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+
+/* Very small screens (280px+) */
+@media (min-width: 280px) {
+  .tech-orbit {
+    max-width: 240px;
+    max-height: 240px;
+  }
+}
+
+/* Extra small screens (320px+) */
+@media (min-width: 320px) {
+  .tech-orbit {
+    max-width: 260px;
+    max-height: 260px;
+  }
+}
+
+/* Small mobile (400px+) */
+@media (min-width: 400px) {
+  .tech-orbit {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+/* Large mobile (640px+) */
 @media (min-width: 640px) {
   .tech-orbit {
     max-width: 380px;
@@ -289,7 +370,7 @@ html, body {
   }
 }
 
-/* Desktop sizes */
+/* Desktop sizes (768px+) */
 @media (min-width: 768px) {
   .tech-orbit {
     max-width: 450px;
@@ -301,56 +382,132 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60px;
-  height: 60px;
-  margin: -30px 0 0 -30px;
-  animation: orbit-move-mobile 40s linear infinite;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  animation: orbit-move-xxs 40s linear infinite;
 }
 
-/* Mobile orbit - smaller radius */
-@keyframes orbit-move-mobile {
+/* Ultra small orbit - 220px screens (radius: 75px) */
+@keyframes orbit-move-xxs {
   from {
-    transform: rotate(calc(var(--icon-index) * 24deg)) translateX(150px) rotate(calc(var(--icon-index) * -24deg));
+    transform: rotate(calc(var(--icon-index) * 24deg)) translateX(75px) rotate(calc(var(--icon-index) * -24deg));
   }
   to {
-    transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(150px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+    transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(75px) rotate(calc(var(--icon-index) * -24deg - 360deg));
   }
 }
 
-/* Tablet orbit */
+/* Tiny screens 240px+ (radius: 85px) */
+@media (min-width: 240px) {
+  .tech-icon-wrapper {
+    width: 35px;
+    height: 35px;
+    margin: -17.5px 0 0 -17.5px;
+    animation: orbit-move-tiny 40s linear infinite;
+  }
+  
+  @keyframes orbit-move-tiny {
+    from {
+      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(85px) rotate(calc(var(--icon-index) * -24deg));
+    }
+    to {
+      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(85px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+    }
+  }
+}
+
+/* Very small orbit - 280px screens (radius: 100px) */
+@media (min-width: 280px) {
+  .tech-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    animation: orbit-move-xs 40s linear infinite;
+  }
+  
+  @keyframes orbit-move-xs {
+    from {
+      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(100px) rotate(calc(var(--icon-index) * -24deg));
+    }
+    to {
+      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(100px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+    }
+  }
+}
+
+/* Small screens 320px+ (radius: 110px) */
+@media (min-width: 320px) {
+  .tech-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    margin: -22.5px 0 0 -22.5px;
+    animation: orbit-move-sm 40s linear infinite;
+  }
+  
+  @keyframes orbit-move-sm {
+    from {
+      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(110px) rotate(calc(var(--icon-index) * -24deg));
+    }
+    to {
+      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(110px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+    }
+  }
+}
+
+/* Mobile 400px+ (radius: 130px) */
+@media (min-width: 400px) {
+  .tech-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    animation: orbit-move-mobile 40s linear infinite;
+  }
+  
+  @keyframes orbit-move-mobile {
+    from {
+      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(130px) rotate(calc(var(--icon-index) * -24deg));
+    }
+    to {
+      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(130px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+    }
+  }
+}
+
+/* Tablet 640px+ (radius: 170px) */
 @media (min-width: 640px) {
   .tech-icon-wrapper {
-    width: 70px;
-    height: 70px;
-    margin: -35px 0 0 -35px;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
     animation: orbit-move-tablet 40s linear infinite;
   }
   
   @keyframes orbit-move-tablet {
     from {
-      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(190px) rotate(calc(var(--icon-index) * -24deg));
+      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(170px) rotate(calc(var(--icon-index) * -24deg));
     }
     to {
-      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(190px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(170px) rotate(calc(var(--icon-index) * -24deg - 360deg));
     }
   }
 }
 
-/* Desktop orbit - full size */
+/* Desktop 768px+ - full size (radius: 205px) */
 @media (min-width: 768px) {
   .tech-icon-wrapper {
-    width: 80px;
-    height: 80px;
-    margin: -40px 0 0 -40px;
+    width: 70px;
+    height: 70px;
+    margin: -35px 0 0 -35px;
     animation: orbit-move 40s linear infinite;
   }
   
   @keyframes orbit-move {
     from {
-      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(225px) rotate(calc(var(--icon-index) * -24deg));
+      transform: rotate(calc(var(--icon-index) * 24deg)) translateX(205px) rotate(calc(var(--icon-index) * -24deg));
     }
     to {
-      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(225px) rotate(calc(var(--icon-index) * -24deg - 360deg));
+      transform: rotate(calc(var(--icon-index) * 24deg + 360deg)) translateX(205px) rotate(calc(var(--icon-index) * -24deg - 360deg));
     }
   }
 }
@@ -363,7 +520,7 @@ html, body {
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .tech-label {
