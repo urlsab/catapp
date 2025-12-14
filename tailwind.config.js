@@ -54,6 +54,9 @@ export default {
       colors: {
         primary: '#1a79f6',
       },
+      screens: {
+        'xs': '400px',
+      },
     },
   },
   plugins: [],

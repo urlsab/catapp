@@ -7,6 +7,23 @@
 	100% { background-position: 100% 50%; }
 }
 
+/* Hero orbit animations */
+.animate-spin-slow {
+	animation: spin-slow 30s linear infinite;
+}
+@keyframes spin-slow {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.animate-counter-spin-slow {
+	animation: counter-spin-slow 30s linear infinite;
+}
+@keyframes counter-spin-slow {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(-360deg); }
+}
+
 .animate-float-slow {
 	animation: floatSlow 8s ease-in-out infinite alternate;
 }
@@ -550,4 +567,138 @@ html, body {
 
 .tech-icon-wrapper:hover .tech-label {
   opacity: 1;
+}
+
+/* CV Services Page - Responsive Text Scaling */
+/* For very small screens (220-400px), text scales down gradually */
+@media (max-width: 399px) {
+  .cv-hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.75rem);
+  }
+  .cv-subtitle {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+  .cv-section-title {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+  .cv-text {
+    font-size: clamp(0.875rem, 4.5vw, 1.25rem);
+  }
+}
+
+
+/* Responsive Nagishli accessibility button */
+/* מיקום כפתור הנגישות - צמוד יותר לימין */
+#NagishLiTrigger {
+  z-index: 2000 !important;
+  right: 1px !important;
+  bottom: 1px !important;
+  position: fixed !important;
+  /* transform: scale(0.8) !important; */
+  /* width: 10px !important;
+  height: 20px !important; */
+  
+}
+
+/* הפיכת כפתור הנגישות לעגול לגמרי */
+.nagishli-trigger-icon {
+  border-radius: 50% !important;
+  transform: scale(0.9);
+  
+  /* width: 40px !important;
+  height: 40px !important; */
+}
+
+@media screen and (max-width: 929px) {
+  /* #NagishLiTrigger {
+    max-width: 75px !important;
+    max-height: 80px !important;
+  } */
+  .nagishli-trigger-icon {
+    /* padding: 9px !important; */
+    transform: scale(0.85);
+    padding: 10px !important;
+  }
+}
+
+.nagishli-trigger-icon img {
+    -webkit-transform: scaleX(-0.85) !important;
+    transform: scaleX(-0.85) !important;
+    /* padding: 8px !important; */
+}
+
+@media screen and (max-width: 850px) {
+  #NagishLiTrigger {
+    max-width: 70px !important;
+    max-height: 75px !important;
+  }
+  .nagishli-trigger-icon {
+    /* padding: 8px !important; */
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 770px) {
+  #NagishLiTrigger {
+    max-width: 65px !important;
+    max-height: 70px !important;
+  }
+  .nagishli-trigger-icon {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #NagishLiTrigger {
+    max-width: 60px !important;
+    max-height: 65px !important;
+  }
+  .nagishli-trigger-icon {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #NagishLiTrigger {
+    max-width: 55px !important;
+    max-height: 60px !important;
+  }
+  .nagishli-trigger-icon {
+    transform: scale(0.75);
+    padding: 8px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #NagishLiTrigger {
+    max-width: 55px !important;
+    max-height: 55px !important;
+  }
+  .nagishli-trigger-icon {
+    transform: scale(0.65);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #NagishLiTrigger {
+    max-width: 55px !important;
+    max-height: 55px !important;
+  }
+  .nagishli-trigger-icon {
+    padding: 8px !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #NagishLiTrigger {
+    max-width: 55px !important;
+    max-height: 55px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #NagishLiTrigger {
+    max-width: 55px !important;
+    max-height: 55px !important;
+  }
 }

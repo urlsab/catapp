@@ -18,6 +18,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import QuotePage from './pages/QuotePage';
 import AboutFullPage from './pages/AboutFullPage';
 import CVServicesPage from './pages/CVServicesPage';
+import WebsitesPage from './pages/WebsitesPage';
 // import AnimatedBackground from './components/AnimatedBackground';
 
 function usePageLoading() {
@@ -93,6 +94,7 @@ function AppContent() {
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/quote" element={<QuotePage />} />
             <Route path="/cv-services" element={<CVServicesPage />} />
+            <Route path="/websites" element={<WebsitesPage />} />
             <Route path="/about-full" element={<AboutFullPage />} />
           </Routes>
           <Footer />

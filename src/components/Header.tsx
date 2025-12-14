@@ -3,7 +3,7 @@ import logo from '../../Assets/catapp logo no bg.png';
 import { Link, useLocation } from 'react-router-dom';
 // import { useLanguage } from '../contexts/LanguageContext';
 // import { useTheme } from '../contexts/ThemeContext';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, DollarSign, Briefcase, Users, FileText, Globe, Phone, Calculator } from 'lucide-react';
 
 const Header: React.FC = () => {
   // const { t } = useLanguage();
@@ -68,12 +68,21 @@ const Header: React.FC = () => {
               />
             </Link>
             <Link
-              to="/pricing"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+              to="/about-full"
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
-              מחירון
+              אודות
               <span
-                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/pricing') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/about-full') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+              />
+            </Link>
+            <Link
+              to="/websites"
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/websites') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+            >
+              בניית אתרים
+              <span
+                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/websites') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
             <Link
@@ -86,12 +95,12 @@ const Header: React.FC = () => {
               />
             </Link>
             <Link
-              to="/about-full"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+              to="/pricing"
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
-              אודות
+              מחירון
               <span
-                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/about-full') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/pricing') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
             <Link
@@ -104,14 +113,14 @@ const Header: React.FC = () => {
               />
             </Link>
             <Link
-            to="/cv-services"
-            className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
-          >
-            קורות חיים
-            <span
-              className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/cv-services') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
-            />
-          </Link>
+              to="/cv-services"
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+            >
+              קו"ח להייטק
+              <span
+                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/cv-services') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+              />
+            </Link>
             <Link
               to="/contact"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
@@ -148,57 +157,73 @@ const Header: React.FC = () => {
               <Link 
                 to="/"
                 onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
                 style={{ animationDelay: isClosing ? '0s' : '0.05s' }}
               >
+                <Home size={18} />
                 בית
-              </Link>
-              <Link 
-                to="/pricing"
-                onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.1s' }}
-              >
-                מחירון
-              </Link>
-              <Link 
-                to="/portfolio"
-                onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.15s' }}
-              >
-                תיק עבודות
               </Link>
               <Link 
                 to="/about-full"
                 onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/about-full') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.1s' }}
+              >
+                <Users size={18} />
+                אודות
+              </Link>
+              <Link 
+                to="/websites"
+                onClick={handleMenuToggle}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/websites') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.15s' }}
+              >
+                <Globe size={18} />
+                בניית אתרים
+              </Link>
+              <Link 
+                to="/portfolio"
+                onClick={handleMenuToggle}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
                 style={{ animationDelay: isClosing ? '0s' : '0.2s' }}
               >
-                אודות
+                <Briefcase size={18} />
+                תיק עבודות
+              </Link>
+              <Link 
+                to="/pricing"
+                onClick={handleMenuToggle}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.25s' }}
+              >
+                <DollarSign size={18} />
+                מחירון
               </Link>
               <Link 
                 to="/quote"
                 onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.25s' }}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
               >
+                <Calculator size={18} />
                 להצעת מחיר
               </Link>
               <Link 
                 to="/cv-services"
                 onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.35s' }}
               >
-                קורות חיים
+                <FileText size={18} />
+                קו"ח להייטק
               </Link>
               <Link 
                 to="/contact"
                 onClick={handleMenuToggle}
-                className={`block px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.35s' }}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.4s' }}
               >
+                <Phone size={18} />
                 צור קשר
               </Link>
             </div>

@@ -40,54 +40,70 @@ const Footer: React.FC = () => {
           {/* Navigation */}
           <div>
             <h4 className="text-lg font-semibold mb-4">ניווט</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  to="/"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  בית
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/pricing"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  מחירון
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/portfolio"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  תיק עבודות
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/contact"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  צור קשר
-                </Link>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <Link 
+                to="/"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                בית
+              </Link>
+              <Link 
+                to="/pricing"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                מחירון
+              </Link>
+              <Link 
+                to="/about-full"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                אודות
+              </Link>
+              <Link 
+                to="/quote"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                להצעת מחיר
+              </Link>
+              <Link 
+                to="/websites"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                בניית אתרים
+              </Link>
+              <Link 
+                to="/cv-services"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                קו"ח להייטק
+              </Link>
+              <Link 
+                to="/portfolio"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                תיק עבודות
+              </Link>
+              <Link 
+                to="/contact"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                צור קשר
+              </Link>
+            </div>
           </div>
 
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-semibold mb-4">יצירת קשר</h4>
             <ul className="space-y-2 text-gray-400">
-              <li className="flex items-center">
-                <Phone size={16} className="mr-2 ml-1" />
+              <li className="flex items-center justify-start">
+                <Phone size={16} className="ml-2" />
                 <button onClick={handlePhone} className="hover:text-white transition-colors">
                   055-6611594
                 </button>
               </li>
-              <li className="flex items-center">
-                <Mail size={16} className="mr-2 ml-1" />
+              <li className="flex items-center justify-start">
+                <Mail size={16} className="ml-2" />
                 <button onClick={handleEmail} className="hover:text-white transition-colors">
                   yairsabag213@gmail.com
                 </button>
