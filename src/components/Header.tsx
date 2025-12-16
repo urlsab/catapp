@@ -3,7 +3,7 @@ import logo from '../../Assets/catapp logo no bg.png';
 import { Link, useLocation } from 'react-router-dom';
 // import { useLanguage } from '../contexts/LanguageContext';
 // import { useTheme } from '../contexts/ThemeContext';
-import { Menu, X, Home, DollarSign, Briefcase, Users, FileText, Globe, Phone, Calculator } from 'lucide-react';
+import { Menu, X, Home, DollarSign, Briefcase, Users, FileText, Globe, Phone } from 'lucide-react';
 
 const Header: React.FC = () => {
   // const { t } = useLanguage();
@@ -12,12 +12,25 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const [shouldRender, setShouldRender] = React.useState(false);
+  const [scrollProgress, setScrollProgress] = React.useState(0);
 
   React.useEffect(() => {
     if (isMenuOpen) {
       setShouldRender(true);
     }
   }, [isMenuOpen]);
+
+  // Scroll progress tracking
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -101,15 +114,6 @@ const Header: React.FC = () => {
               מחירון
               <span
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/pricing') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
-              />
-            </Link>
-            <Link
-              to="/quote"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
-            >
-              להצעת מחיר
-              <span
-                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/quote') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
             <Link
@@ -200,19 +204,10 @@ const Header: React.FC = () => {
                 מחירון
               </Link>
               <Link 
-                to="/quote"
-                onClick={handleMenuToggle}
-                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/quote') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
-              >
-                <Calculator size={18} />
-                להצעת מחיר
-              </Link>
-              <Link 
                 to="/cv-services"
                 onClick={handleMenuToggle}
                 className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.35s' }}
+                style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
               >
                 <FileText size={18} />
                 קו"ח להייטק
@@ -221,7 +216,7 @@ const Header: React.FC = () => {
                 to="/contact"
                 onClick={handleMenuToggle}
                 className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.4s' }}
+                style={{ animationDelay: isClosing ? '0s' : '0.35s' }}
               >
                 <Phone size={18} />
                 צור קשר
@@ -231,6 +226,13 @@ const Header: React.FC = () => {
         )}
       </div>
       
+      {/* Scroll Progress Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800/50">
+        <div 
+          className="h-full bg-[#1a79f6] transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
     </header>
   );
 };

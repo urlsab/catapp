@@ -4,7 +4,7 @@ import React from 'react';
 import logo from '../../Assets/catapp logo no bg.png';
 import '../styles/scroll.css';
 // import SmoothScroll from '../components/SmoothScroll';
-import { Zap, TrendingUp, Smartphone, Wrench, Shield, DollarSign, Globe, Rocket, Building2, Scale, FileText, Briefcase, Edit, Video, Mic, Monitor, Calendar, Users, Cpu, Target, Award, Code, ShoppingCart, CheckCircle2, Sparkles, GraduationCap } from 'lucide-react';
+import { Zap, TrendingUp, Shield, DollarSign, Rocket, Building2, Scale, FileText, Briefcase, Edit, Video, Mic, Monitor, Calendar, Users, Cpu, Eye, Clock, Palette, Star } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
 
@@ -212,7 +212,7 @@ const HomePage: React.FC = () => {
       {/* <SmoothScroll /> */}
 
       {/* Hero Section - Centered with Orbit */}
-      <div className="scroll-area w-full flex justify-center items-center relative min-h-screen">
+      <div className="scroll-area w-full flex justify-center items-center relative min-h-screen pt-16 md:pt-20">
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
           {/* Orbit Container with Logo and Typing */}
           <div className="relative w-full flex flex-col items-center">
@@ -280,7 +280,7 @@ const HomePage: React.FC = () => {
                 </div>
 
                 {/* Typing Text */}
-                <div className="mt-4">
+                <div className="mt-4 h-10 xs:h-11 sm:h-12 md:h-14 flex items-center justify-center">
                   <h1
                     className={`text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-[#1a79f6] flex items-center justify-center transition-all duration-800 transform ${
                       typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
@@ -373,224 +373,98 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Mission Statement Section */}
-      <div className="scroll-area w-full flex justify-center items-center relative py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          
-          {/* Main Title */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <Award className="w-8 h-8 md:w-10 md:h-10 text-[#1a79f6]" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                מציבים סטנדרט חדש
-              </h2>
-              <Award className="w-8 h-8 md:w-10 md:h-10 text-[#1a79f6]" />
-            </div>
-            <p className="text-lg md:text-xl text-[#1a79f6] font-semibold">
-              בבניית אתרים ובבניית קורות חיים להייטק
-            </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mt-4"></div>
-          </div>
-
-          {/* Website Services Section */}
-          <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-10 mb-8">
-            <div className="flex items-center gap-3 mb-6">
-              <Code className="w-8 h-8 text-[#1a79f6]" />
-              <h3 className="text-xl md:text-2xl font-bold text-white">בניית אתרים ברמה אחרת</h3>
-            </div>
-            
-            <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
-              בעולם שבו רבים מהאתרים נבנים בצורה מהירה, זולה ופשוטה — <span className="text-white font-semibold">אנחנו בחרנו ללכת בדרך אחרת.</span>
-              <br />
-              אצלנו לא מתפשרים: כל אתר שנבנה מקבל את אותה רמת השקעה, ביצועים ועיצוב שמאפיינת חברות הייטק מהשורה הראשונה.
-            </p>
-
-            <div className="bg-gradient-to-r from-[#1a79f6]/20 to-blue-600/10 rounded-xl p-6 mb-6 border border-[#1a79f6]/40">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-6 h-6 text-yellow-400" />
-                <h4 className="text-lg font-bold text-white">בונים לכם אתר מהיר יותר, חזק יותר ומעוצב ברמה גבוהה בהרבה ממה שהתרגלתם לראות</h4>
-              </div>
-              <p className="text-gray-300 mb-4">
-                אנו מתמחים בבניית אתרי תדמית, חנויות דיגיטליות ואתרי תוכן בחוויית משתמש מושלמת, בטכנולוגיות המתקדמות ביותר בשוק.
-              </p>
-            </div>
-
-            <h4 className="text-lg font-bold text-white mb-4">הגישה שלנו פשוטה:</h4>
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">נראות שמייצרת <span className="text-white font-semibold">אמון מיידי</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">ביצועים <span className="text-white font-semibold">מהירים במיוחד</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">יציבות גבוהה ו<span className="text-white font-semibold">מבנה קוד איכותי</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">עיצוב ברמה גבוהה — <span className="text-white font-semibold">ללא תבניות גנריות</span></span>
-              </div>
-            </div>
-
-            <div className="bg-[#1a79f6]/10 rounded-xl p-6 border border-[#1a79f6]/30">
-              <p className="text-gray-300 text-center">
-                הלקוחות שלנו מקבלים אתר ש<span className="text-white font-semibold">לא רק נראה מצוין – אלא עובד מצוין</span>. 
-                אתר שעוזר לעסק לגדול, שמרגיש מודרני, מתקדם, אמין ומדויק.
-              </p>
-              <p className="text-[#1a79f6] font-bold text-center mt-3 text-lg">
-                זה לא עוד אתר. זה נכס דיגיטלי אמיתי. 💎
-              </p>
-            </div>
-          </div>
-
-          {/* CV Services Section */}
-          <div className="bg-white/5 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 md:p-10">
-            <div className="flex items-center gap-3 mb-6">
-              <FileText className="w-8 h-8 text-purple-400" />
-              <h3 className="text-xl md:text-2xl font-bold text-white">שירותי קורות חיים להייטק</h3>
-            </div>
-            
-            <div className="bg-purple-500/10 rounded-xl p-5 mb-6 border border-purple-500/30">
-              <p className="text-purple-300 font-semibold text-center text-lg">
-                <Target className="w-5 h-5 inline-block ml-2" />
-                כי כדי לקבל עבודה צריך קודם להגיע לראיון
-              </p>
-            </div>
-
-            <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
-              בעיית הג'וניורים בהייטק אינה חדשה. תמיד היה קשה להתקבל למשרות ראשונות, ותמיד היה צורך להוכיח ידע, חכמה ויכולות מקצועיות.
-              <br /><br />
-              אבל בשנים האחרונות, <span className="text-white font-semibold">האתגר גדל: אפילו להגיע לראיון עבודה הפך למצב נדיר.</span>
-            </p>
-
-            <div className="text-center mb-6">
-              <p className="text-xl text-purple-300 font-bold">וכאן אנחנו נכנסים. 🚀</p>
-            </div>
-
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              אנחנו לא מבטיחים קסמים — אבל כן מבטיחים <span className="text-white font-semibold">יתרון אמיתי בשלב החשוב ביותר: להגיע לראיון.</span>
-              <br /><br />
-              עם ניסיון של שנים בתחום ועם מאות קורות חיים שעברו תחת הידיים שלנו, למדנו בדיוק מה עובד ומה גורם למעסיקים לפתוח את הדלת.
-            </p>
-
-            <h4 className="text-lg font-bold text-white mb-4">אנו מציעים:</h4>
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">כתיבת קורות חיים מאפס — <span className="text-white font-semibold">מותאם אישית לכל מועמד</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">מפגשי זום פרטיים — <span className="text-white font-semibold">לומדים יחד איך לנסח ולבנות</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">הרצאות מקצועיות וקורסים מקיפים</span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">סדנאות קבוצתיות או <span className="text-white font-semibold">אחד-על-אחד</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">לימוד עקרונות <span className="text-white font-semibold">שיעזרו לכם כל החיים</span></span>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-black/30 rounded-xl">
-                <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">תמחור <span className="text-white font-semibold">הוגן וברור</span> — ללא הפתעות</span>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/10 rounded-xl p-6 border border-purple-500/40">
-              <div className="flex items-center gap-2 mb-3 justify-center">
-                <GraduationCap className="w-6 h-6 text-purple-300" />
-                <h4 className="text-lg font-bold text-white">המטרה שלנו ברורה:</h4>
-              </div>
-              <p className="text-gray-300 text-center">
-                להעניק לכם ידע וכלים מעשיים שיאפשרו לכם <span className="text-white font-semibold">להגיע לראיון, לבלוט מעל האחרים</span>, 
-                ולצעוד צעד אחד גדול קדימה בדרך למשרה הבאה שלכם.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center mt-10">
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Link
-                to="/pricing"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              >
-                <ShoppingCart className="w-5 h-5" />
-                מחירון אתרים
-              </Link>
-              <Link
-                to="/cv-services"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
-              >
-                <FileText className="w-5 h-5" />
-                שירותי קורות חיים
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Values Section */}
       <div
         ref={valuesRef}
         className="scroll-area w-full flex justify-center items-center relative min-h-screen"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-32">
-          <div className="text-center mb-4">
+          <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
               הערכים שמנחים אותנו
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-2"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-4"></div>
             <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto px-4">
-              אנו מתחייבים לשירות מקצועי, אמין ומותאם אישית המבוסס על הטכנולוגיות המתקדמות ביותר
+              העקרונות שעומדים בבסיס כל פרויקט ושיתוף פעולה
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+            {/* שקיפות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
                 valuesAnimated
-                  ? { animationDelay: '0.3s', animationFillMode: 'forwards' }
+                  ? { animationDelay: '0.2s', animationFillMode: 'forwards' }
                   : {}
               }
             >
-              <div className="mb-3 md:mb-4 flex justify-center"><Zap className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                טכנולוגיה מתקדמת
+              <div className="mb-3 flex justify-center"><Eye className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                שקיפות
               </h3>
-              <p className="text-gray-300 text-sm md:text-base">React, TypeScript, JavaScript ועוד</p>
+              <p className="text-gray-400 text-xs md:text-sm">תקשורת פתוחה וברורה לאורך כל הדרך</p>
             </div>
+
+            {/* זמינות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
                 valuesAnimated
-                  ? { animationDelay: '0.5s', animationFillMode: 'forwards' }
+                  ? { animationDelay: '0.4s', animationFillMode: 'forwards' }
                   : {}
               }
             >
-              <div className="mb-3 md:mb-4 flex justify-center"><TrendingUp className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                קידום אורגני (SEO)
+              <div className="mb-3 flex justify-center"><Clock className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                זמינות
               </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                הגעה למקום הראשון בתוצאות החיפוש
-              </p>
+              <p className="text-gray-400 text-xs md:text-sm">תמיד כאן לענות, לעזור ולתמוך</p>
             </div>
+
+            {/* קידמה */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+                valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
+              }`}
+              style={
+                valuesAnimated
+                  ? { animationDelay: '0.6s', animationFillMode: 'forwards' }
+                  : {}
+              }
+            >
+              <div className="mb-3 flex justify-center"><TrendingUp className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                קידמה
+              </h3>
+              <p className="text-gray-400 text-xs md:text-sm">טכנולוגיות חדשניות ועדכניות</p>
+            </div>
+
+            {/* מהירות */}
+            <div
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+                valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
+              }`}
+              style={
+                valuesAnimated
+                  ? { animationDelay: '0.8s', animationFillMode: 'forwards' }
+                  : {}
+              }
+            >
+              <div className="mb-3 flex justify-center"><Zap className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                מהירות
+              </h3>
+              <p className="text-gray-400 text-xs md:text-sm">עבודה יעילה ומסירה בזמן</p>
+            </div>
+
+            {/* התאמה אישית */}
+            <div
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -599,107 +473,69 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 md:mb-4 flex justify-center"><Smartphone className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                ריספונסיביות מלאה
+              <div className="mb-3 flex justify-center"><Palette className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                התאמה אישית
               </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                מותאם למחשב, טאבלט וטלפון נייד
-              </p>
+              <p className="text-gray-400 text-xs md:text-sm">עיצוב ובנייה לפי הבקשות והצרכים שלכם</p>
             </div>
+
+            {/* מחירים הוגנים */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
                 valuesAnimated
-                  ? { animationDelay: '1.5s', animationFillMode: 'forwards' }
+                  ? { animationDelay: '1.2s', animationFillMode: 'forwards' }
                   : {}
               }
             >
-              <div className="mb-3 md:mb-4 flex justify-center"><Wrench className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                תחזוקה ושדרוגים
-              </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                תמיכה מתמשכת ושיפורים שוטפים
-              </p>
-            </div>
-            <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
-                valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
-              }`}
-              style={
-                valuesAnimated
-                  ? { animationDelay: '2s', animationFillMode: 'forwards' }
-                  : {}
-              }
-            >
-              <div className="mb-3 md:mb-4 flex justify-center"><Shield className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                אבטחה מתקדמת
-              </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                אבטחה מתקדמת והגנה מפני וירוסים
-              </p>
-            </div>
-            <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
-                valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
-              }`}
-              style={
-                valuesAnimated
-                  ? { animationDelay: '2.5s', animationFillMode: 'forwards' }
-                  : {}
-              }
-            >
-              <div className="mb-3 md:mb-4 flex justify-center"><DollarSign className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
+              <div className="mb-3 flex justify-center"><DollarSign className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
                 מחירים הוגנים
               </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                מחירים הוגנים ללא עלויות נסתרות
-              </p>
+              <p className="text-gray-400 text-xs md:text-sm">שקיפות מלאה ללא עלויות נסתרות</p>
             </div>
+
+            {/* אחריות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
                 valuesAnimated
-                  ? { animationDelay: '3s', animationFillMode: 'forwards' }
+                  ? { animationDelay: '1.4s', animationFillMode: 'forwards' }
                   : {}
               }
             >
-              <div className="mb-3 md:mb-4 flex justify-center"><Zap className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                פיתוח מהיר
+              <div className="mb-3 flex justify-center"><Shield className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                אחריות
               </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                משך פיתוח קצר ומסירה מהירה
-              </p>
+              <p className="text-gray-400 text-xs md:text-sm">עומדים מאחורי העבודה שלנו</p>
             </div>
+
+            {/* הגדלת ראש */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 md:p-8 lg:p-10 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
                 valuesAnimated
-                  ? { animationDelay: '3.5s', animationFillMode: 'forwards' }
+                  ? { animationDelay: '1.6s', animationFillMode: 'forwards' }
                   : {}
               }
             >
-              <div className="mb-3 md:mb-4 flex justify-center"><Globe className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-[#1a79f6]" /></div>
-              <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                דומיינים מקצועיים
+              <div className="mb-3 flex justify-center"><Star className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
+              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+                הגדלת ראש
               </h3>
-              <p className="text-gray-300 text-sm md:text-base">
-                רכישה וניהול דומיינים מקצועי
-              </p>
+              <p className="text-gray-400 text-xs md:text-sm">ההצלחה שלכם זו ההצלחה שלנו</p>
             </div>
           </div>
 
-          <div className="text-center mt-4">
+          <div className="text-center mt-8">
             <Link
               to="/about-full"
               className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"

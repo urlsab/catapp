@@ -38,7 +38,7 @@ const TermsPage: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto"></div>
         </div>
 
-        <div className="border-4 border-blue-600 rounded-2xl p-8">
+        <div className="border-2 border-blue-600 rounded-2xl p-8">
           <div className="prose prose-lg max-w-none">
             
             <TypingContent>

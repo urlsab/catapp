@@ -15,7 +15,6 @@ import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
-import QuotePage from './pages/QuotePage';
 import AboutFullPage from './pages/AboutFullPage';
 import CVServicesPage from './pages/CVServicesPage';
 import WebsitesPage from './pages/WebsitesPage';
@@ -56,7 +55,7 @@ function ScrollToTop({ canScrollToTop }: { canScrollToTop: boolean }) {
   return null;
 }
 
-import { MessageCircle, FileText } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 function App() {
   return (
@@ -92,14 +91,13 @@ function AppContent() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/quote" element={<QuotePage />} />
             <Route path="/cv-services" element={<CVServicesPage />} />
             <Route path="/websites" element={<WebsitesPage />} />
             <Route path="/about-full" element={<AboutFullPage />} />
           </Routes>
           <Footer />
 
-          {/* כפתורי פעולה קבועים בפינה שמאלית תחתונה */}
+          {/* כפתור וואטסאפ קבוע בפינה שמאלית תחתונה */}
           <div className="fixed left-2 bottom-2 flex flex-col gap-2 z-50">
             <a
               href="https://wa.me/972556611594"
@@ -108,12 +106,6 @@ function AppContent() {
               className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
             >
               <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
-            </a>
-            <a
-              href="/quote"
-              className="flex items-center justify-center bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white rounded-full shadow-lg transition-all w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
-            >
-              <FileText className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
             </a>
           </div>
         </div>

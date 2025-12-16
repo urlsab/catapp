@@ -1,8 +1,9 @@
 import React from 'react';
 import logoBg from '../../Assets/catapp logo no bg.png';
+import logoCenter from '../../Assets/logoiCatapp.png';
 import { Rocket, Building2, FileText, Target, Zap, Shield, Code, Bot, Accessibility, Sparkles, Wrench, X, CheckCircle2, Package, Server, Palette, Scale } from 'lucide-react';
-import { FaReact, FaNodeJs, FaWordpress, FaGithub, FaGitAlt } from 'react-icons/fa';
-import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaWordpress, FaGithub, FaGitAlt, FaSass, FaBolt } from 'react-icons/fa';
+import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini } from 'react-icons/si';
 // import SmoothScroll from '../components/SmoothScroll';
 
 const AboutFullPage: React.FC = () => {
@@ -47,14 +48,14 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* לא WordPress - כן טכנולוגיות מתקדמות */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-red-900/10" style={{"--color1": "#dc2626"} as React.CSSProperties}>
-            <h2 className="text-base sm:text-lg md:text-2xl font-bold text-red-500 mb-3 sm:mb-4 md:mb-6 text-center flex flex-wrap items-center justify-center gap-2 md:gap-3">
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#ffffff"} as React.CSSProperties}>
+            <h2 className="text-base sm:text-lg md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6 text-center flex flex-wrap items-center justify-center gap-2 md:gap-3">
               אנחנו לא בונים עם
               <span className="relative inline-flex items-center gap-2">
-                <span className="text-[#21759b]">WordPress</span>
+                <span className="text-gray-400">WordPress</span>
                 <span className="relative inline-block">
-                  <FaWordpress className="w-8 h-8 sm:w-10 sm:h-10 text-[#21759b]" />
-                  <X className="w-10 h-10 sm:w-14 sm:h-14 text-red-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 stroke-[2]" />
+                  <FaWordpress className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
+                  <X className="w-10 h-10 sm:w-14 sm:h-14 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 stroke-[2]" />
                 </span>
               </span>
             </h2>
@@ -163,6 +164,61 @@ const AboutFullPage: React.FC = () => {
                     <p className="tech-label">AI</p>
                   </div>
                     </div>
+                    
+                    {/* Inner orbit for AI tools */}
+                    <div className="tech-orbit-inner">
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 0 } as React.CSSProperties}>
+                        <div className="tech-icon bg-[#2563eb]/20 hover:scale-125">
+                          <span className="text-[8px] xs:text-xs sm:text-sm md:text-base font-bold text-[#2563eb]">B44</span>
+                        </div>
+                        <p className="tech-label">Base44</p>
+                      </div>
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 1 } as React.CSSProperties}>
+                        <div className="tech-icon bg-yellow-400/20 hover:scale-125">
+                          <FaBolt className="text-[8px] xs:text-xs sm:text-sm md:text-base text-yellow-400" />
+                        </div>
+                        <p className="tech-label">Bolt</p>
+                      </div>
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 2 } as React.CSSProperties}>
+                        <div className="tech-icon bg-white/10 border border-gray-500 hover:scale-125">
+                          <span className="text-[8px] xs:text-xs sm:text-sm md:text-base">🤖</span>
+                        </div>
+                        <p className="tech-label">Copilot</p>
+                      </div>
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 3 } as React.CSSProperties}>
+                        <div className="tech-icon bg-[#00CED1]/20 hover:scale-125">
+                          <span className="text-[8px] xs:text-xs sm:text-sm md:text-base font-bold text-[#00CED1]">▷</span>
+                        </div>
+                        <p className="tech-label">Cursor</p>
+                      </div>
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 4 } as React.CSSProperties}>
+                        <div className="tech-icon bg-blue-500/20 hover:scale-125">
+                          <SiGooglegemini className="text-[8px] xs:text-xs sm:text-sm md:text-base text-blue-400" />
+                        </div>
+                        <p className="tech-label">GenAI</p>
+                      </div>
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 5 } as React.CSSProperties}>
+                        <div className="tech-icon bg-[#DB7093]/20 hover:scale-125">
+                          <SiStyledcomponents className="text-[8px] xs:text-xs sm:text-sm md:text-base text-[#DB7093]" />
+                        </div>
+                        <p className="tech-label">Styled</p>
+                      </div>
+                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 6 } as React.CSSProperties}>
+                        <div className="tech-icon bg-[#CC6699]/20 hover:scale-125">
+                          <FaSass className="text-[8px] xs:text-xs sm:text-sm md:text-base text-[#CC6699]" />
+                        </div>
+                        <p className="tech-label">SCSS</p>
+                      </div>
+                    </div>
+                    
+                    {/* Center Logo - Static */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                      <img 
+                        src={logoCenter} 
+                        alt="Catapp Logo" 
+                        className="w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain opacity-90"
+                      />
+                    </div>
                   </div>
                 </div>
                 
@@ -205,7 +261,7 @@ const AboutFullPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="text-green-400 font-semibold mt-6">
+                  <p className="text-[#1a79f6] font-semibold mt-6">
                     הטכנולוגיות האלה מאפשרות לנו לבנות אתרים פי 10 יותר מהירים, יציבים ומאובטחים!
                   </p>
                 </div>
@@ -214,52 +270,52 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* הנגשה - הגנה משפטית */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-cyan-900/10" style={{"--color1": "#06b6d4"} as React.CSSProperties}>
+          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-[#1a79f6]/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
                 <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/20 to-cyan-600/20 animate-pulse"></div>
-                  <div className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full bg-gradient-to-br from-cyan-500/30 to-cyan-700/30 flex items-center justify-center">
-                    <Accessibility className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 text-cyan-400" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#1a79f6]/20 to-blue-600/20 animate-pulse"></div>
+                  <div className="absolute inset-4 sm:inset-6 md:inset-8 rounded-full bg-gradient-to-br from-[#1a79f6]/30 to-blue-700/30 flex items-center justify-center">
+                    <Accessibility className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 text-[#1a79f6]" />
                   </div>
-                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0s', animationDuration: '2s'}}>
-                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400" />
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#1a79f6]/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0s', animationDuration: '2s'}}>
+                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6]" />
                   </div>
-                  <div className="absolute bottom-6 left-3 sm:bottom-8 sm:left-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2s'}}>
-                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400" />
+                  <div className="absolute bottom-6 left-3 sm:bottom-8 sm:left-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#1a79f6]/30 flex items-center justify-center animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2s'}}>
+                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6]" />
                   </div>
-                  <div className="absolute top-8 left-2 sm:top-12 sm:left-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/30 flex items-center justify-center animate-bounce" style={{animationDelay: '1s', animationDuration: '2s'}}>
-                    <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400" />
+                  <div className="absolute top-8 left-2 sm:top-12 sm:left-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#1a79f6]/30 flex items-center justify-center animate-bounce" style={{animationDelay: '1s', animationDuration: '2s'}}>
+                    <Target className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6]" />
                   </div>
                 </div>
               </div>
               
               {/* Text on right */}
               <div className="text-center md:text-right">
-                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-cyan-400 mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-[#1a79f6] mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Accessibility className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
                   <span className="text-center md:text-right">הנגשה מלאה - הגנה משפטית ואחריות חברתית</span>
                 </h2>
                 <p className="mb-3 md:mb-4 text-xs sm:text-sm md:text-lg text-center md:text-right">
-                  <span className="font-bold text-cyan-400">כל אתר אצלנו מונגש באופן מלא!</span>
+                  <span className="font-bold text-[#1a79f6]">כל אתר אצלנו מונגש באופן מלא!</span>
                 </p>
                 <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6">
                   <ul className="space-y-2 sm:space-y-3 text-gray-300 text-xs sm:text-sm md:text-base">
                     <li className="flex items-start gap-2 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6] flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>הגנה משפטית:</strong> עמידה מלאה בחוק הנגשת שירותי אינטרנט - תגן על העסק שלך מתביעות</span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6] flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>אחריות חברתית:</strong> נגישות לאנשים עם מוגבלויות - לך תדע אם הלקוח או הגולש הבא שלך צריך את זה</span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6] flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>SEO משופר:</strong> אתרים מונגשים מקבלים דירוג טוב יותר בגוגל</span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-1" />
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1a79f6] flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span><strong>חוויית משתמש טובה יותר:</strong> הנגשה משפרת את החוויה לכולם</span>
                     </li>
                   </ul>
@@ -269,29 +325,29 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* בוט AI חכם */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-purple-900/10" style={{"--color1": "#9333ea"} as React.CSSProperties}>
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#ffffff"} as React.CSSProperties}>
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
               <div className="text-center md:text-right">
-                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-purple-400 mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-white mb-3 md:mb-6 flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-3">
                   <Bot className="w-8 h-8" />
                   בוט AI חכם
                 </h2>
                 <p className="mb-4 text-lg">
-                  <span className="font-bold text-purple-400">אפשרות להרחבת האתר עם בוט AI חכם!</span>
+                  <span className="font-bold text-white">אפשרות להרחבת האתר עם בוט AI חכם!</span>
                 </p>
                 <div className="bg-black/40 rounded-xl p-6">
                   <ul className="space-y-3 text-gray-300">
                     <li className="flex items-start gap-3">
-                      <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                      <Sparkles className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <span><strong>עונה על שאלות:</strong> הבוט לומד את תוכן האתר שלך ועונה לגולשים בצורה חכמה</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                      <Sparkles className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <span><strong>מידע ממקורות חיצוניים:</strong> יכול לחפש מידע גם מרחבי האינטרנט</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                      <Sparkles className="w-6 h-6 text-white flex-shrink-0 mt-1" />
                       <span><strong>חיסכון בזמן:</strong> הבוט עושה את העבודה הקשה במקומך</span>
                     </li>
                   </ul>
@@ -301,17 +357,17 @@ const AboutFullPage: React.FC = () => {
               {/* Visual on right */}
               <div className="flex items-center justify-center">
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 animate-pulse"></div>
-                  <div className="absolute inset-4 rounded-2xl bg-purple-900/30 border-2 border-purple-500/50 flex flex-col items-center justify-center p-4">
-                    <Bot className="w-24 h-24 text-purple-400 mb-3" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-gray-500/20 animate-pulse"></div>
+                  <div className="absolute inset-4 rounded-2xl bg-white/10 border-2 border-white/50 flex flex-col items-center justify-center p-4">
+                    <Bot className="w-24 h-24 text-white mb-3" />
                     <div className="w-full space-y-2">
-                      <div className="h-2 bg-purple-500/50 rounded animate-pulse" style={{animationDelay: '0s'}}></div>
-                      <div className="h-2 bg-purple-500/30 rounded w-3/4 animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                      <div className="h-2 bg-purple-500/40 rounded w-5/6 animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                      <div className="h-2 bg-white/50 rounded animate-pulse" style={{animationDelay: '0s'}}></div>
+                      <div className="h-2 bg-white/30 rounded w-3/4 animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                      <div className="h-2 bg-white/40 rounded w-5/6 animate-pulse" style={{animationDelay: '0.4s'}}></div>
                     </div>
                   </div>
-                  <div className="absolute -top-2 -right-2 w-16 h-16 rounded-full bg-purple-500/30 flex items-center justify-center animate-bounce">
-                    <Sparkles className="w-8 h-8 text-purple-300" />
+                  <div className="absolute -top-2 -right-2 w-16 h-16 rounded-full bg-white/30 flex items-center justify-center animate-bounce">
+                    <Sparkles className="w-8 h-8 text-white" />
                   </div>
                 </div>
               </div>
@@ -319,33 +375,33 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* פיצ'רים מתקדמים */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-yellow-900/10" style={{"--color1": "#ca8a04"} as React.CSSProperties}>
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-[#1a79f6]/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
                 <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-yellow-500/10 to-orange-500/10"></div>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#1a79f6]/10 to-blue-600/10"></div>
                   <div className="absolute inset-4 grid grid-cols-3 gap-2">
-                    <div className="bg-yellow-500/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0s'}}>
-                      <Palette className="w-8 h-8 text-yellow-400" />
+                    <div className="bg-[#1a79f6]/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0s'}}>
+                      <Palette className="w-8 h-8 text-[#1a79f6]" />
                     </div>
-                    <div className="bg-yellow-500/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.2s'}}>
-                      <FileText className="w-8 h-8 text-yellow-400" />
+                    <div className="bg-[#1a79f6]/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.2s'}}>
+                      <FileText className="w-8 h-8 text-[#1a79f6]" />
                     </div>
-                    <div className="bg-yellow-500/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.4s'}}>
-                      <Shield className="w-8 h-8 text-yellow-400" />
+                    <div className="bg-[#1a79f6]/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.4s'}}>
+                      <Shield className="w-8 h-8 text-[#1a79f6]" />
                     </div>
-                    <div className="bg-yellow-500/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.6s'}}>
-                      <Package className="w-8 h-8 text-yellow-400" />
+                    <div className="bg-[#1a79f6]/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.6s'}}>
+                      <Package className="w-8 h-8 text-[#1a79f6]" />
                     </div>
-                    <div className="col-span-1 row-span-1 bg-yellow-600/30 rounded-lg flex items-center justify-center border-2 border-yellow-500">
-                      <Zap className="w-12 h-12 text-yellow-300" />
+                    <div className="col-span-1 row-span-1 bg-[#1a79f6]/30 rounded-lg flex items-center justify-center border-2 border-[#1a79f6]">
+                      <Zap className="w-12 h-12 text-[#1a79f6]" />
                     </div>
-                    <div className="bg-yellow-500/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.8s'}}>
-                      <Server className="w-8 h-8 text-yellow-400" />
+                    <div className="bg-[#1a79f6]/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '0.8s'}}>
+                      <Server className="w-8 h-8 text-[#1a79f6]" />
                     </div>
-                    <div className="col-span-3 bg-yellow-500/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '1s'}}>
-                      <Rocket className="w-10 h-10 text-yellow-400" />
+                    <div className="col-span-3 bg-[#1a79f6]/20 rounded-lg flex items-center justify-center animate-pulse" style={{animationDelay: '1s'}}>
+                      <Rocket className="w-10 h-10 text-[#1a79f6]" />
                     </div>
                   </div>
                 </div>
@@ -353,7 +409,7 @@ const AboutFullPage: React.FC = () => {
               
               {/* Text on right */}
               <div>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-400 mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
                   <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                   פיצ'רים שלא תמצאו בשום מקום אחר
                 </h2>
@@ -362,28 +418,28 @@ const AboutFullPage: React.FC = () => {
                 </p>
                 <div className="space-y-2 sm:space-y-3">
                   <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4 flex items-start gap-2 sm:gap-3">
-                    <Palette className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                    <Palette className="w-6 h-6 text-[#1a79f6] flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-white mb-1">אנימציות מורכבות</h3>
                       <p className="text-sm text-gray-300">אפקטים ויזואליים מרהיבים שמושכים את העין</p>
                     </div>
                   </div>
                   <div className="bg-black/40 rounded-xl p-4 flex items-start gap-3">
-                    <FileText className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                    <FileText className="w-6 h-6 text-[#1a79f6] flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-white mb-1">קבלת הודעות למייל</h3>
                       <p className="text-sm text-gray-300">פניות מגולשים ישירות לתיבת הדואר שלך</p>
                     </div>
                   </div>
                   <div className="bg-black/40 rounded-xl p-4 flex items-start gap-3">
-                    <Shield className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                    <Shield className="w-6 h-6 text-[#1a79f6] flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-white mb-1">הרשמה מאובטחת</h3>
                       <p className="text-sm text-gray-300">מערכת משתמשים עם סיסמאות מוצפנות</p>
                     </div>
                   </div>
                   <div className="bg-black/40 rounded-xl p-4 flex items-start gap-3">
-                    <Rocket className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                    <Rocket className="w-6 h-6 text-[#1a79f6] flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-white mb-1">ועוד הרבה יותר!</h3>
                       <p className="text-sm text-gray-300">הדמיון הוא הגבול - כל פיצ'ר אפשרי</p>
@@ -462,35 +518,35 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* שירותי תוכן */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-pink-900/10" style={{"--color1": "#db2777"} as React.CSSProperties}>
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#ffffff"} as React.CSSProperties}>
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-yellow-500/10 to-orange-500/10"></div>
-                  <div className="absolute inset-8 bg-pink-900/40 rounded-xl border-2 border-pink-500/50 flex flex-col items-center justify-center gap-4 p-4 transition-all duration-500 hover:scale-105 hover:border-pink-400">
-                    <div className="w-full h-20 bg-pink-500/20 rounded-lg flex items-center justify-center animate-bounce">
-                      <FileText className="w-12 h-12 text-pink-400" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 to-gray-500/10"></div>
+                  <div className="absolute inset-8 bg-white/10 rounded-xl border-2 border-white/50 flex flex-col items-center justify-center gap-4 p-4 transition-all duration-500 hover:scale-105 hover:border-white">
+                    <div className="w-full h-20 bg-white/20 rounded-lg flex items-center justify-center animate-bounce">
+                      <FileText className="w-12 h-12 text-white" />
                     </div>
                     <div className="w-full space-y-2">
-                      <div className="h-2 bg-pink-500/40 rounded animate-pulse"></div>
-                      <div className="h-2 bg-pink-500/30 rounded w-4/5 animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                      <div className="h-2 bg-pink-500/20 rounded w-3/5 animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                      <div className="h-2 bg-white/40 rounded animate-pulse"></div>
+                      <div className="h-2 bg-white/30 rounded w-4/5 animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                      <div className="h-2 bg-white/20 rounded w-3/5 animate-pulse" style={{animationDelay: '0.4s'}}></div>
                     </div>
                   </div>
-                  <div className="absolute -bottom-3 -right-3 w-20 h-20 rounded-full bg-pink-600/30 flex items-center justify-center border-2 border-pink-500 animate-spin" style={{animationDuration: '4s'}}>
-                    <Target className="w-10 h-10 text-pink-300" style={{animation: 'spin 4s linear infinite reverse'}} />
+                  <div className="absolute -bottom-3 -right-3 w-20 h-20 rounded-full bg-white/30 flex items-center justify-center border-2 border-white animate-spin" style={{animationDuration: '4s'}}>
+                    <Target className="w-10 h-10 text-white" style={{animation: 'spin 4s linear infinite reverse'}} />
                   </div>
                 </div>
               </div>
               
               {/* Text on right */}
               <div className="text-center md:text-right">
-                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-pink-400 mb-3 sm:mb-4 md:mb-6">שירותי תוכן מתקדמים</h2>
+                <h2 className="text-base sm:text-lg md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6">שירותי תוכן מתקדמים</h2>
                 <div className="space-y-4 sm:space-y-6">
                   <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 flex items-center gap-2">
-                      <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-pink-400 animate-pulse" />
+                      <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-pulse" />
                       קורות חיים מקצועיים
                     </h3>
                     <p className="text-gray-300 text-sm sm:text-base">
@@ -499,7 +555,7 @@ const AboutFullPage: React.FC = () => {
                   </div>
                   <div className="bg-black/40 rounded-lg md:rounded-xl p-3 sm:p-4">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 flex items-center gap-2">
-                      <Target className="w-5 h-5 sm:w-6 sm:h-6 text-pink-400" />
+                      <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       הרצאות קורות חיים
                     </h3>
                     <p className="text-gray-300 text-sm sm:text-base mb-3">

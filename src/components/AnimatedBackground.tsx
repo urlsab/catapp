@@ -6,7 +6,7 @@ const AnimatedBackground: React.FC = () => {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   
   // Each bubble gets its own state for position
-  const NUM_BUBBLES = 26;
+  const NUM_BUBBLES = 14;
   const blueShades = [
     "#1a79f6",
     "#0e2a47",

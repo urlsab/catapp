@@ -9,7 +9,26 @@ const WebsitesPage: React.FC = () => {
   const [benefitIconVisible, setBenefitIconVisible] = React.useState(true);
   
   const benefitRef = React.useRef<HTMLDivElement>(null);
-  
+
+  // Scroll reveal effect
+  React.useEffect(() => {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    
+    revealElements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   const myths = [
     { text: 'זה יקר מדי', counter: 'יש פתרונות לכל תקציב' },
     { text: 'לא צריך אתר בימינו', counter: '81% מהלקוחות בודקים אתר לפני רכישה' },
@@ -74,14 +93,14 @@ const WebsitesPage: React.FC = () => {
     <div className="min-h-screen pt-16">
       
       {/* Hero - The Story Begins */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
-          <h1 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight cv-hero-title">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <h1 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight cv-hero-title">
             העסק שלך
             <br />
             <span className="text-[#1a79f6]">קיים?</span>
           </h1>
-          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-6 cv-subtitle">
+          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-4 cv-subtitle">
             בעולם הדיגיטלי של היום...
           </p>
           <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 cv-text">
@@ -91,32 +110,32 @@ const WebsitesPage: React.FC = () => {
       </section>
 
       {/* The Reality in Israel */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-red-950/20">
-        <div className="text-center max-w-5xl mx-auto">
-          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-8 cv-subtitle">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-red-950/20">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-6 cv-subtitle">
             המציאות בישראל?
           </p>
-          <h2 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight cv-hero-title">
+          <h2 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight cv-hero-title">
             רוב העסקים
             <br />
             <span className="text-red-400">מפסידים לקוחות.</span>
           </h2>
-          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mt-8 cv-text">
+          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mt-4 cv-text">
             בגלל אתרים ישנים, איטיים, או בכלל בלי אתר.
           </p>
         </div>
       </section>
 
       {/* Myths Section - What businesses think */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
-          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mb-12 cv-text">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mb-8 cv-text">
             מה עסקים חושבים...
           </p>
           
-          <div className="mb-16 min-h-[200px] sm:min-h-[250px] flex flex-col items-center justify-center">
+          <div className="min-h-[160px] sm:min-h-[200px] flex flex-col items-center justify-center">
             <div className={`transition-all duration-500 ${mythVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4">
                 <span className="text-[1.75rem] xs:text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-red-400 cv-myth-title">
                   "{myths[currentMythIndex].text}"
                 </span>
@@ -126,35 +145,24 @@ const WebsitesPage: React.FC = () => {
               </p>
             </div>
           </div>
-          
-          <div className="flex justify-center gap-2 sm:gap-3">
-            {myths.map((_, idx) => (
-              <div 
-                key={idx} 
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-                  idx === currentMythIndex ? 'bg-[#1a79f6] scale-125' : 'bg-gray-600'
-                }`}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
       {/* What customers do today */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-purple-950/20">
-        <div className="text-center max-w-5xl mx-auto">
-          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-8 cv-subtitle">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-purple-950/20">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-6 cv-subtitle">
             מה הלקוחות עושים היום?
           </p>
-          <h2 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight cv-hero-title">
+          <h2 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight cv-hero-title">
             מחפשים
             <br />
             <span className="text-purple-400">בגוגל.</span>
           </h2>
-          <div className="mt-12 flex items-center justify-center gap-4">
+          <div className="mt-8 flex items-center justify-center gap-4">
             <Search className="w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 text-purple-400" />
           </div>
-          <div className="mt-12 p-6 sm:p-8 bg-purple-500/10 border border-purple-500/30 rounded-2xl max-w-2xl mx-auto">
+          <div className="mt-8 p-6 sm:p-8 bg-purple-500/10 border border-purple-500/30 rounded-2xl max-w-2xl mx-auto">
             <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl font-bold text-purple-300 cv-text">
               אם לא מוצאים אותך - מוצאים את המתחרים.
             </p>
@@ -163,27 +171,27 @@ const WebsitesPage: React.FC = () => {
       </section>
 
       {/* The Solution */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
-          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mb-8 cv-text">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mb-6 cv-text">
             אז מה הפתרון?
           </p>
-          <h2 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white mb-12 leading-tight cv-hero-title">
+          <h2 className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight cv-hero-title">
             אתר שעובד בשבילך
           </h2>
           <div className="flex items-center justify-center gap-4 sm:gap-6">
             <Globe className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 text-[#1a79f6]" />
           </div>
-          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-300 mt-8 cv-text">
+          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-300 mt-6 cv-text">
             24 שעות ביממה. 7 ימים בשבוע.
           </p>
         </div>
       </section>
 
       {/* Here We Come In */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-cyan-950/20">
-        <div className="text-center max-w-5xl mx-auto">
-          <h2 className="text-[2.75rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold text-white mb-8 cv-hero-title">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-cyan-950/20">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <h2 className="text-[2.75rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold text-white mb-6 cv-hero-title">
             וכאן
             <br />
             <span className="text-cyan-400">אנחנו נכנסים.</span>
@@ -194,46 +202,35 @@ const WebsitesPage: React.FC = () => {
       {/* What we offer - Fading Icons */}
       <section 
         ref={benefitRef}
-        className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+        className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8"
       >
-        <div className="text-center max-w-5xl mx-auto">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
           <div className={`transition-all duration-700 ${benefitVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mb-8 cv-text">
+            <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mb-6 cv-text">
               אתר מקצועי מביא:
             </p>
-            <div className="mb-12 min-h-[180px] sm:min-h-[220px] flex flex-col items-center justify-center">
+            <div className="min-h-[140px] sm:min-h-[180px] flex flex-col items-center justify-center">
               <div className={`transition-all duration-400 ${benefitIconVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-                <CurrentBenefitIcon className="w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-28 md:h-28 text-[#1a79f6] mb-6 mx-auto" />
+                <CurrentBenefitIcon className="w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-28 md:h-28 text-[#1a79f6] mb-4 mx-auto" />
                 <p className="text-[1.75rem] xs:text-4xl sm:text-5xl md:text-4xl font-bold text-white cv-exp-title">
                   {benefits[currentBenefitIndex].text}
                 </p>
               </div>
-            </div>
-            
-            <div className="flex justify-center gap-2 sm:gap-3">
-              {benefits.map((_, idx) => (
-                <div 
-                  key={idx} 
-                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-                    idx === currentBenefitIndex ? 'bg-[#1a79f6] scale-125' : 'bg-gray-600'
-                  }`}
-                />
-              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* What We Build */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-green-950/20">
-        <div className="text-center max-w-5xl mx-auto">
-          <Award className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 text-green-400 mb-8 mx-auto" />
-          <h2 className="text-[1.75rem] xs:text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight cv-section-title">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-green-950/20">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <Award className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 text-green-400 mb-6 mx-auto" />
+          <h2 className="text-[1.75rem] xs:text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight cv-section-title">
             אנחנו בונים
             <br />
             <span className="text-green-400">אתרים שמוכרים</span>
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto mt-12">
+          <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto mt-8">
             <div className="p-6 bg-green-500/10 border border-green-500/30 rounded-2xl">
               <Smartphone className="w-14 h-14 xs:w-16 xs:h-16 sm:w-14 sm:h-14 text-green-400 mb-4 mx-auto" />
               <p className="text-xl xs:text-2xl sm:text-xl text-white font-bold">
@@ -267,23 +264,23 @@ const WebsitesPage: React.FC = () => {
       </section>
 
       {/* Our Approach */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
-          <Target className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 text-orange-400 mb-8 mx-auto" />
-          <h2 className="text-[1.75rem] xs:text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight cv-section-title">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <Target className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-24 md:h-24 text-orange-400 mb-6 mx-auto" />
+          <h2 className="text-[1.75rem] xs:text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight cv-section-title">
             הגישה שלנו?
           </h2>
-          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-300 mb-8 leading-relaxed cv-text">
+          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-300 mb-6 leading-relaxed cv-text">
             לא סתם אתר יפה.
             <br />
             <span className="text-orange-400 font-bold">אתר שמביא תוצאות.</span>
           </p>
-          <div className="p-6 sm:p-8 bg-orange-500/10 border border-orange-500/30 rounded-2xl max-w-2xl mx-auto">
-            <HeartHandshake className="w-14 h-14 xs:w-16 xs:h-16 sm:w-14 sm:h-14 text-orange-400 mb-4 mx-auto" />
+          <div className="p-5 sm:p-6 bg-orange-500/10 border border-orange-500/30 rounded-2xl max-w-2xl mx-auto">
+            <HeartHandshake className="w-12 h-12 xs:w-14 xs:h-14 sm:w-12 sm:h-12 text-orange-400 mb-3 mx-auto" />
             <p className="text-xl xs:text-2xl sm:text-2xl font-bold text-orange-300">
               ליווי אישי מההתחלה ועד הסוף
             </p>
-            <p className="text-lg xs:text-xl sm:text-xl text-gray-400 mt-4">
+            <p className="text-lg xs:text-xl sm:text-xl text-gray-400 mt-3">
               ותחזוקה שוטפת אחרי 🔧
             </p>
           </div>
@@ -291,9 +288,9 @@ const WebsitesPage: React.FC = () => {
       </section>
 
       {/* Pricing */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-[#1a79f6]/10">
-        <div className="text-center max-w-5xl mx-auto">
-          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-8 cv-subtitle">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-[#1a79f6]/10">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <p className="text-2xl xs:text-3xl sm:text-4xl md:text-3xl text-gray-300 mb-6 cv-subtitle">
             והמחיר?
           </p>
           <h2 className="text-[2.75rem] xs:text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold text-white mb-4 cv-hero-title">
@@ -301,19 +298,19 @@ const WebsitesPage: React.FC = () => {
             <br />
             <span className="text-[#1a79f6]">ושקוף.</span>
           </h2>
-          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mt-8 cv-text">
+          <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-400 mt-4 cv-text">
             בלי הפתעות. בלי עלויות נסתרות.
           </p>
         </div>
       </section>
 
       {/* Pricing Options */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
-          <h2 className="text-[1.75rem] xs:text-4xl sm:text-4xl md:text-3xl font-bold text-white text-center mb-12 cv-section-title">
+      <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto scroll-reveal">
+          <h2 className="text-[1.75rem] xs:text-4xl sm:text-4xl md:text-3xl font-bold text-white text-center mb-8 cv-section-title">
             חבילות מחירים
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {/* Basic */}
             <div className="p-6 sm:p-8 bg-gray-800/50 border border-gray-700 rounded-2xl">
               <Code className="w-12 h-12 text-gray-400 mb-4 mx-auto" />
