@@ -54,7 +54,7 @@ const ContactPage: React.FC = () => {
         </div>
         <div className="space-y-4">
           {faqList.map((faq, idx) => (
-            <div key={idx} className="relative group rounded-2xl shadow-lg border border-[#1a79f6]/30 hover:border-[#1a79f6]/60 transition-all"
+            <div key={idx} className="relative group rounded-2xl shadow-lg border border-[#1a79f6] hover:border-[#1a79f6]/80 transition-all"
               style={{
                 backgroundSize: '300% 300%',
                 backgroundColor: 'transparent',

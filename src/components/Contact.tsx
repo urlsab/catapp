@@ -77,17 +77,6 @@ const Contact: React.FC = () => {
                   yairsabag213@gmail.com
                 </button>
               </div>
-              <div className="flex items-center p-4 bg-white/10 backdrop-blur-sm border border-[#1a79f6] rounded-lg hover:border-[#1a79f6]/80 transition-all">
-                <Clock className="w-5 h-5 text-[#1a79f6] mr-3 ml-2 flex-shrink-0" />
-                <p className="text-white text-base">א'-ה' 9:00-18:00</p>
-              </div>
-              <button
-                onClick={handleWhatsApp}
-                className="flex items-center p-4 bg-white/10 backdrop-blur-sm border border-[#1a79f6] text-white rounded-lg hover:border-[#1a79f6]/80 hover:bg-white/15 transition-all duration-200 transform hover:scale-105 shadow-lg group"
-              >
-                <MessageCircle className="w-5 h-5 text-[#1a79f6] mr-3 ml-2 group-hover:scale-110 transition-transform flex-shrink-0" />
-                <span className="text-base font-semibold">וואטסאפ</span>
-              </button>
             </div>
           </div>
 

@@ -1,10 +1,14 @@
 import React from 'react';
 // import Values from '../components/Values';
 // import KnowledgeHub from '../components/KnowledgeHub';
-import logo from '../../Assets/catapp logo no bg.png';
+// import logo from '../../Assets/catapp logo no bg.png';
+import atlizWebsite from '../../Assets/atliz website.png';
+import benjiWebsite from '../../Assets/benji website.png';
+import refaelWebsite from '../../Assets/refael website.png';
+import resumesWebsite from '../../Assets/resumes builder website.png';
 import '../styles/scroll.css';
 // import SmoothScroll from '../components/SmoothScroll';
-import { Zap, TrendingUp, Shield, DollarSign, Rocket, Building2, Scale, FileText, Briefcase, Edit, Video, Mic, Monitor, Calendar, Users, Cpu, Eye, Clock, Palette, Star } from 'lucide-react';
+import { Zap, TrendingUp, Shield, DollarSign, Rocket, Building2, Scale, FileText, Briefcase, Edit, Calendar, Users, Cpu, Eye, Clock, Palette, Star } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
 
@@ -46,101 +50,101 @@ const maintenancePreview = [
 
 const HomePage: React.FC = () => {
   const typingTexts = [
-    'בניית אתרים',
-    'כתיבת קו"ח להייטק',
-    'הרצאות על קו"ח'
+    'דפי נחיתה ממוקדים',
+    'אתרי תדמית מקצועיים',
+    'עיצוב מחדש של אתרים קיימים',
+    'בנייה ושיפור קו"ח',
+    'אופטימזציה לפרופיל לינקדאין',
+    'הרצאות תוכן מקיפות',
+    'הטמעת AI לאתרים'
   ];
   const [currentText, setCurrentText] = React.useState('');
   const [textIdx, setTextIdx] = React.useState(0);
   const [charIdx, setCharIdx] = React.useState(0);
   const [isDeleting, setIsDeleting] = React.useState(false);
-  const [logoAnimated, setLogoAnimated] = React.useState(false);
+  const [headlineVisible, setHeadlineVisible] = React.useState(false);
   const [typingStarted, setTypingStarted] = React.useState(false);
+  const [heroStatsVisible, setHeroStatsVisible] = React.useState([false, false, false]);
   const [showBlinkingCursor, setShowBlinkingCursor] = React.useState(false);
-  const [statsVisible, setStatsVisible] = React.useState(false);
-  const [animatedStats, setAnimatedStats] = React.useState({ years: 0, clients: 0, tools: 0, growth: 0 });
+  const [heroImagesVisible, setHeroImagesVisible] = React.useState(false);
+  const [animatedStats] = React.useState({ years: 5, clients: 50, tools: 20, growth: 214 });
   const valuesAnimated = true; // Set to true since observer is disabled
   const valuesRef = React.useRef<HTMLDivElement>(null);
   const statsRef = React.useRef<HTMLDivElement>(null);
+  const heroImagesRef = React.useRef<HTMLDivElement>(null);
 
   // Stats data
-  const targetStats = { years: 5, clients: 50, tools: 20, growth: 214 };
+  // const targetStats = { years: 5, clients: 50, tools: 20, growth: 214 };
 
-  // אנימציה מדורגת - ראשית הלוגו ואז ההקלדה
+
+  // 1. Headline fade-in after spinner
   React.useEffect(() => {
-    const logoTimer = setTimeout(() => {
-      setLogoAnimated(true);
-      // התחלת האנימציה של ההקלדה אחרי הלוגו
-      setTimeout(() => {
-        setTypingStarted(true);
-      }, 800);
-    }, 1100); // 1100ms כדי להמתין לספינר (800ms + 200ms + 100ms מרווח בטיחות)
-    
-    return () => clearTimeout(logoTimer);
+    const timer = setTimeout(() => {
+      setHeadlineVisible(true);
+    }, 1100); // after spinner
+    return () => clearTimeout(timer);
   }, []);
 
-  // Intersection Observer for Stats section
+  // 2. Typing animation after headline
   React.useEffect(() => {
-    const statsSection = statsRef.current;
-    if (!statsSection) return;
+    if (!headlineVisible) return;
+    const timer = setTimeout(() => {
+      setTypingStarted(true);
+    }, 600); // after headline fade-in
+    return () => clearTimeout(timer);
+  }, [headlineVisible]);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !statsVisible) {
-            setStatsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(statsSection);
-    return () => observer.disconnect();
-  }, [statsVisible]);
-
-  // Animate stats numbers
+  // 3. Stats fade-in after typing animation
   React.useEffect(() => {
-    if (!statsVisible) return;
+    if (!typingStarted) return;
+    const timer = setTimeout(() => {
+      setHeroStatsVisible([true, false, false]);
+      setTimeout(() => setHeroStatsVisible([true, true, false]), 350);
+      setTimeout(() => setHeroStatsVisible([true, true, true]), 700);
+    }, 800); // after typing animation appears
+    return () => clearTimeout(timer);
+  }, [typingStarted]);
 
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const interval = duration / steps;
 
-    let currentStep = 0;
-    const timer = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-      const easeOut = 1 - Math.pow(1 - progress, 3); // cubic ease out
-
-      setAnimatedStats({
-        years: Math.round(targetStats.years * easeOut),
-        clients: Math.round(targetStats.clients * easeOut),
-        tools: Math.round(targetStats.tools * easeOut),
-        growth: Math.round(targetStats.growth * easeOut),
-      });
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setAnimatedStats(targetStats);
-      }
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [statsVisible]);
-
-  // אנימציה מדורגת - ראשית הלוגו ואז ההקלדה
+  // Fade-in animation for hero stats (after spinner, before hero images)
   React.useEffect(() => {
-    const logoTimer = setTimeout(() => {
-      setLogoAnimated(true);
-      // התחלת האנימציה של ההקלדה אחרי הלוגו
-      setTimeout(() => {
-        setTypingStarted(true);
-      }, 800);
-    }, 1100); // 1100ms כדי להמתין לספינר (800ms + 200ms + 100ms מרווח בטיחות)
-    
-    return () => clearTimeout(logoTimer);
+    // Start after spinner and typing animation
+    const timer = setTimeout(() => {
+      setHeroStatsVisible([true, false, false]);
+      setTimeout(() => setHeroStatsVisible([true, true, false]), 350);
+      setTimeout(() => setHeroStatsVisible([true, true, true]), 700);
+    }, 1200); // 1200ms after mount (spinner + logo + typing)
+    return () => clearTimeout(timer);
   }, []);
+
+  // 4. Animate hero images only after stats animation is done
+  React.useEffect(() => {
+    if (!heroStatsVisible[2]) return;
+    // Wait a bit after last stat appears, then show images
+    const heroImagesTimer = setTimeout(() => {
+      setHeroImagesVisible(true);
+    }, 400); // 400ms after last stat
+    return () => clearTimeout(heroImagesTimer);
+  }, [heroStatsVisible]);
+
+  // Intersection Observer for Hero Images section
+  React.useEffect(() => {
+    // מתחיל את האנימציה של התמונות אחרי שהספינר מסיים
+    const heroImagesTimer = setTimeout(() => {
+      setHeroImagesVisible(true);
+    }, 1300); // 1300ms - אחרי הספינר (1100ms) + מרווח קטן
+    
+    return () => clearTimeout(heroImagesTimer);
+  }, []);
+
+
+  // Animate stats numbers (if you want to trigger this, use heroStatsVisible or another trigger)
+  // React.useEffect(() => {
+  //   if (!heroStatsVisible[0]) return;
+  //   ...
+  // }, [heroStatsVisible]);
+
+
 
   React.useEffect(() => {
     if (!typingStarted) return;
@@ -211,96 +215,131 @@ const HomePage: React.FC = () => {
     <div>
       {/* <SmoothScroll /> */}
 
-      {/* Hero Section - Centered with Orbit */}
+      {/* Hero Section - New Layout inspired by GNO */}
       <div className="scroll-area w-full flex justify-center items-center relative min-h-screen pt-16 md:pt-20">
-        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
-          {/* Orbit Container with Logo and Typing */}
-          <div className="relative w-full flex flex-col items-center">
-            {/* Service Icons Orbiting */}
-            <div className="relative w-[240px] h-[240px] xs:w-[270px] xs:h-[270px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] lg:w-[400px] lg:h-[400px]">
-              {/* Orbit Ring */}
-              <div className="absolute inset-0 border-2 border-[#1a79f6]/20 rounded-full"></div>
-              
-              {/* Orbiting Icons */}
-              <div className="absolute inset-0 animate-spin-slow">
-                {/* Icon 1 - Websites */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-[#1a79f6]/20 backdrop-blur-sm rounded-xl border-2 border-[#1a79f6]/50 flex flex-col items-center justify-center animate-counter-spin-slow hover:scale-110 transition-transform p-1">
-                    <Monitor className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-[#1a79f6]" />
-                    <p className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs text-gray-300 mt-0.5 whitespace-nowrap">אתרים</p>
-                  </div>
-                </div>
-                
-                {/* Icon 2 - CV */}
-                <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
-                  <div className="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-purple-500/20 backdrop-blur-sm rounded-xl border-2 border-purple-500/50 flex flex-col items-center justify-center animate-counter-spin-slow hover:scale-110 transition-transform p-1">
-                    <FileText className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-purple-400" />
-                    <p className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs text-gray-300 mt-0.5 whitespace-nowrap">קו"ח</p>
-                  </div>
-                </div>
-                
-                {/* Icon 3 - Lectures */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-                  <div className="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-orange-500/20 backdrop-blur-sm rounded-xl border-2 border-orange-500/50 flex flex-col items-center justify-center animate-counter-spin-slow hover:scale-110 transition-transform p-1">
-                    <Mic className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-orange-400" />
-                    <p className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs text-gray-300 mt-0.5 whitespace-nowrap">הרצאות</p>
-                  </div>
-                </div>
-                
-                {/* Icon 4 - Zoom Meetings */}
-                <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-14 h-14 xs:w-16 xs:h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-cyan-500/20 backdrop-blur-sm rounded-xl border-2 border-cyan-500/50 flex flex-col items-center justify-center animate-counter-spin-slow hover:scale-110 transition-transform p-1">
-                    <Video className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-cyan-400" />
-                    <p className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-xs text-gray-300 mt-0.5 whitespace-nowrap">זום</p>
-                  </div>
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Side - Text Content (shows first on desktop) */}
+            <div className="text-right order-1 lg:order-1">
 
-              {/* Center Content - Logo and Typing */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                {/* Logo */}
-                <div
-                  className={`relative group transition-all duration-1500 transform ${
-                    logoAnimated
-                      ? 'opacity-100 translate-y-0 scale-100'
-                      : 'opacity-0 translate-y-12 scale-90'
+              {/* Main Headline - fade-in from top */}
+              <h1
+                className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                style={{ transitionDelay: headlineVisible ? '0ms' : '0ms' }}
+              >
+                תוכן וטכנולוגיה
+                <br />
+                <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
+              </h1>
+
+              {/* Typing Animation - RTL aligned with fixed height, appears after headline */}
+              <div className="mb-8 w-full min-h-[2rem] xs:min-h-[2.25rem] sm:min-h-[2.5rem] md:min-h-[3rem]" dir="rtl">
+                <h2
+                  className={`text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] inline-flex items-center transition-all duration-800 transform ${
+                    typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}
                 >
-                  {/* Glow effect background */}
-                  <div className="absolute -inset-6 bg-gradient-to-r from-[#1a79f6] via-blue-600 to-blue-700 rounded-full opacity-30 group-hover:opacity-40 transition-opacity duration-500 blur-2xl"></div>
+                  <span className="leading-tight whitespace-nowrap">{currentText || '\u00A0'}</span>
+                  {typingStarted && (
+                    <span
+                      className={`inline-block bg-[#1a79f6] align-middle ${
+                        showBlinkingCursor ? 'animate-blink' : ''
+                      }`}
+                      style={{
+                        width: '3px',
+                        height: '1.4em',
+                        borderRadius: '2px',
+                        marginRight: '2px',
+                      }}
+                    />
+                  )}
+                </h2>
+              </div>
 
-                  <img
-                    src={logo}
-                    alt="Catapp Logo"
-                    className={`relative h-28 w-28 xs:h-32 xs:w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 object-contain transition-all duration-1500 ${
-                      logoAnimated ? 'filter-none' : 'filter blur-sm'
-                    }`}
-                    style={{ maxWidth: '100%', height: 'auto', animation: 'none' }}
+              {/* Stats Row - animated fade-in from top */}
+              <div className="flex gap-8 sm:gap-12 justify-end">
+                <div
+                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  style={{ transitionDelay: heroStatsVisible[0] ? '0ms' : '0ms' }}
+                >
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-xs sm:text-sm">שנות ניסיון</p>
+                </div>
+                <div
+                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
+                >
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-xs sm:text-sm">לקוחות</p>
+                </div>
+                <div
+                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
+                >
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">100%</div>
+                  <p className="text-gray-400 text-xs sm:text-sm">שביעות רצון</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Screenshots Grid (shows second on desktop) */}
+            <div className="relative order-2 lg:order-2" ref={heroImagesRef}>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 auto-rows-min">
+                {/* Screenshot 1 - Benji */}
+                <div 
+                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg h-fit ${
+                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                  }`}
+                  style={{ transitionDelay: heroImagesVisible ? '0ms' : '0ms' }}
+                >
+                  <img 
+                    src={benjiWebsite} 
+                    alt="אתר Orbenji" 
+                    className="w-full h-auto block"
                   />
                 </div>
-
-                {/* Typing Text */}
-                <div className="mt-4 h-10 xs:h-11 sm:h-12 md:h-14 flex items-center justify-center">
-                  <h1
-                    className={`text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-[#1a79f6] flex items-center justify-center transition-all duration-800 transform ${
-                      typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}
-                  >
-                    <span className="leading-tight">{currentText}</span>
-                    {typingStarted && (
-                      <span
-                        className={`inline-block bg-white align-middle mr-2 ${
-                          showBlinkingCursor ? 'animate-blink' : ''
-                        }`}
-                        style={{
-                          width: '3px',
-                          height: '1.5rem',
-                          borderRadius: '2px',
-                          marginLeft: '6px',
-                        }}
-                      />
-                    )}
-                  </h1>
+                
+                {/* Screenshot 2 - Atliz */}
+                <div 
+                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 ${
+                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                  }`}
+                  style={{ transitionDelay: heroImagesVisible ? '200ms' : '0ms' }}
+                >
+                  <img 
+                    src={atlizWebsite} 
+                    alt="אטליז למהדרין" 
+                    className="w-full h-full block"
+                  />
+                </div>
+                
+                {/* Screenshot 3 - Lawyer */}
+                <div 
+                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-20 h-fit ${
+                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                  }`}
+                  style={{ transitionDelay: heroImagesVisible ? '400ms' : '0ms' }}
+                >
+                  <img 
+                    src={refaelWebsite} 
+                    alt="עורך דין רפאל סבג" 
+                    className="w-full h-auto block"
+                  />
+                </div>
+                
+                {/* Screenshot 4 - Resume Builder */}
+                <div 
+                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 h-fit ${
+                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                  }`}
+                  style={{ transitionDelay: heroImagesVisible ? '600ms' : '0ms' }}
+                >
+                  <img 
+                    src={resumesWebsite} 
+                    alt="בונה קורות חיים" 
+                    className="w-full h-auto block"
+                  />
                 </div>
               </div>
             </div>

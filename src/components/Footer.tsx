@@ -25,12 +25,11 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <div className="flex items-center mb-4">
-              <img src={logo} alt="Catapp Logo" className="h-8 mr-3 ml-0" />
-              
+            <div className="mb-4">
+              <img src={logo} alt="Catapp Logo" className="h-8 ml-auto block" />
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-          Catapp עוסקת בשירותי תוכן וטכנולוגיה, עם התמחות בבניית אתרים, תחזוקה ועיצוב. בניית קורות חיים מותאמים להייטק, הקמה ליווי וייעוץ לעסקים קטנים.
+              Catapp מתמחה בבניית דפי נחיתה ממוקדים, אתרי תדמית מקצועיים, עיצוב מחדש של אתרים קיימים, בנייה ושיפור קורות חיים, אופטימיזציה לפרופיל לינקדאין, הרצאות תוכן מקיפות והטמעת AI לאתרים.
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
               

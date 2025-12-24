@@ -218,25 +218,6 @@ const PricingPage: React.FC = () => {
           ))}
         </div>
 
-        {/* CV Services Link */}
-        <div className="text-center mb-12">
-          <div className="bg-purple-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-              <Target className="w-8 h-8 text-purple-400" />
-              קורות חיים למשרות בהייטק
-            </h2>
-            <p className="text-gray-300 mb-6">
-              מחפשים עבודה בהייטק? אנחנו עוזרים לכם לבלוט מול מערכות ATS ולהגיע לראיונות!
-            </p>
-            <a
-              href="/cv-services"
-              className="inline-block bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105"
-            >
-              לעמוד קורות חיים →
-            </a>
-          </div>
-        </div>
-
         {/* Quote Section */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">לקבלת הצעת מחיר</h2>

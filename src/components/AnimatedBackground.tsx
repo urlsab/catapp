@@ -6,7 +6,7 @@ const AnimatedBackground: React.FC = () => {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   
   // Each bubble gets its own state for position
-  const NUM_BUBBLES = 14;
+  const NUM_BUBBLES = 15;
   const blueShades = [
     "#1a79f6",
     "#0e2a47",
@@ -124,8 +124,8 @@ const AnimatedBackground: React.FC = () => {
           opacity: 0.6
         }}
         animate={{
-          x: mousePosition.x - 40,
-          y: mousePosition.y - 40
+          x: mousePosition.x - 10,
+          y: mousePosition.y - 10
         }}
         transition={{
           x: { type: "spring", stiffness: 150, damping: 15 },

@@ -313,44 +313,9 @@ const CVServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Additional Services */}
+      {/* Final CTA */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto scroll-reveal">
-          <h2 className="text-[1.75rem] xs:text-4xl sm:text-4xl md:text-3xl font-bold text-white text-center mb-8 cv-section-title">
-            שירותים נוספים
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            {/* Lectures */}
-            <div className="p-5 sm:p-6 bg-orange-500/10 border border-orange-500/30 rounded-2xl">
-              <div className="flex items-center gap-3 mb-3">
-                <Mic className="w-8 h-8 xs:w-10 xs:h-10 sm:w-8 sm:h-8 text-orange-400" />
-                <h3 className="text-xl xs:text-2xl sm:text-xl font-bold text-white">הרצאות וסדנאות</h3>
-              </div>
-              <p className="text-gray-300 text-base xs:text-lg sm:text-base mb-3">
-                לארגונים, חברות, קהילות הייטק ותוכניות הכשרה
-              </p>
-              <a href="/contact" className="text-orange-400 font-bold hover:text-orange-300 transition-colors text-base xs:text-lg sm:text-base">
-                צור קשר להזמנה →
-              </a>
-            </div>
-            
-            {/* CV Writing */}
-            <div className="p-5 sm:p-6 bg-purple-500/10 border border-purple-500/30 rounded-2xl">
-              <div className="flex items-center gap-3 mb-3">
-                <Edit className="w-8 h-8 xs:w-10 xs:h-10 sm:w-8 sm:h-8 text-purple-400" />
-                <h3 className="text-xl xs:text-2xl sm:text-xl font-bold text-white">כתיבת קו"ח</h3>
-              </div>
-              <p className="text-gray-300 text-base xs:text-lg sm:text-base mb-3">
-                הערות, שכתוב מקצועי או בנייה מאפס
-              </p>
-              <p className="text-purple-300 font-bold text-lg xs:text-xl sm:text-lg">
-                החל מ-50₪
-              </p>
-            </div>
-          </div>
-          
-          {/* Final CTA */}
           <div className="text-center p-6 sm:p-10 bg-gradient-to-r from-[#1a79f6]/20 to-purple-600/20 border border-[#1a79f6]/40 rounded-3xl">
             <h3 className="text-[1.75rem] xs:text-3xl sm:text-4xl md:text-3xl font-bold text-white mb-4 cv-section-title">
               מוכנים להתחיל?
