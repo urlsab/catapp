@@ -284,21 +284,7 @@ const CVServicesPage: React.FC = () => {
       <section className="py-20 sm:py-28 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto scroll-reveal">
           <div className="p-6 sm:p-10 bg-gradient-to-br from-[#1a79f6]/20 to-purple-600/20 border-2 border-[#1a79f6]/50 rounded-3xl">
-            <Video className="w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 md:w-16 md:h-16 text-[#1a79f6] mb-4 mx-auto" />
-            <div className="text-5xl xs:text-6xl sm:text-7xl md:text-6xl lg:text-7xl font-bold text-white mb-3">
-              200 ₪
-            </div>
-            <p className="text-xl xs:text-2xl sm:text-3xl md:text-2xl text-gray-300 mb-6 cv-text">
-              מפגש זום של שעה
-              <br />
-              מקיף על קו"ח
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 p-4 sm:p-5 bg-yellow-500/20 border border-yellow-500/40 rounded-2xl">
-              <Sparkles className="w-8 h-8 xs:w-10 xs:h-10 sm:w-8 sm:h-8 text-yellow-400" />
-              <span className="text-lg xs:text-xl sm:text-xl md:text-lg font-bold text-yellow-300 text-center">
-                + בונוס על לינקדאין בחינם!
-              </span>
-            </div>
+            {/* ...existing code... */}
           </div>
           
           <div className="mt-8">

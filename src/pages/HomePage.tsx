@@ -3,50 +3,23 @@ import React from 'react';
 // import KnowledgeHub from '../components/KnowledgeHub';
 // import logo from '../../Assets/catapp logo no bg.png';
 import atlizWebsite from '../../Assets/atliz website.png';
+import cvPic1 from '../../Assets/cv pic 1.png';
+import cvPic2 from '../../Assets/cv pic 2.png';
+import cvPic3 from '../../Assets/cv pic 3.png';
+import cvPic4 from '../../Assets/cv pic 4.png';
 import benjiWebsite from '../../Assets/benji website.png';
 import refaelWebsite from '../../Assets/refael website.png';
 import resumesWebsite from '../../Assets/resumes builder website.png';
 import '../styles/scroll.css';
 // import SmoothScroll from '../components/SmoothScroll';
-import { Zap, TrendingUp, Shield, DollarSign, Rocket, Building2, Scale, FileText, Briefcase, Edit, Calendar, Users, Cpu, Eye, Clock, Palette, Star } from 'lucide-react';
+import { Zap, TrendingUp, Shield, DollarSign, Rocket, Building2, Scale, FileText, Briefcase, Eye, Clock, Palette, Star } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import GroupsIcon from '@mui/icons-material/Groups';
+import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 
-const pricingPreview = [
-  {
-    name: 'דף נחיתה',
-    price: 'החל מ-2,000 ₪',
-    example: 'orbenji.com',
-    icon: 'Rocket',
-  },
-  {
-    name: 'אתר תדמית',
-    price: 'החל מ-5,000 ₪',
-    example: 'atliz.co.il',
-    icon: 'Building2',
-  },
-  {
-    name: 'אתר תיק עבודות',
-    price: 'החל מ-8,000 ₪',
-    example: 'portfolio-uriel-yair-sabag.vercel.app',
-    icon: 'Briefcase',
-  },
-];
 
-const maintenancePreview = [
-  {
-    name: 'הגנה מפני קריסות ותיקון באגים',
-    price: '300 ₪ לחודש',
-  },
-  {
-    name: 'קידום בגוגל',
-    price: 'החל מ-400 ₪ לחודש',
-  },
-  {
-    name: 'עדכון תכנים שוטפים',
-    price: 'החל מ-300 ₪ לחודש',
-  },
-];
 
 const HomePage: React.FC = () => {
   const typingTexts = [
@@ -65,8 +38,9 @@ const HomePage: React.FC = () => {
   const [headlineVisible, setHeadlineVisible] = React.useState(false);
   const [typingStarted, setTypingStarted] = React.useState(false);
   const [heroStatsVisible, setHeroStatsVisible] = React.useState([false, false, false]);
-  const [showBlinkingCursor, setShowBlinkingCursor] = React.useState(false);
-  const [heroImagesVisible, setHeroImagesVisible] = React.useState(false);
+  // Removed showBlinkingCursor state (cursor always blinks)
+  // For sequential image animation
+  const [heroImagesVisible, setHeroImagesVisible] = React.useState([false, false, false, false]);
   const [animatedStats] = React.useState({ years: 5, clients: 50, tools: 20, growth: 214 });
   const valuesAnimated = true; // Set to true since observer is disabled
   const valuesRef = React.useRef<HTMLDivElement>(null);
@@ -94,6 +68,7 @@ const HomePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [headlineVisible]);
 
+
   // 3. Stats fade-in after typing animation
   React.useEffect(() => {
     if (!typingStarted) return;
@@ -105,37 +80,18 @@ const HomePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [typingStarted]);
 
-
-  // Fade-in animation for hero stats (after spinner, before hero images)
-  React.useEffect(() => {
-    // Start after spinner and typing animation
-    const timer = setTimeout(() => {
-      setHeroStatsVisible([true, false, false]);
-      setTimeout(() => setHeroStatsVisible([true, true, false]), 350);
-      setTimeout(() => setHeroStatsVisible([true, true, true]), 700);
-    }, 1200); // 1200ms after mount (spinner + logo + typing)
-    return () => clearTimeout(timer);
-  }, []);
-
-  // 4. Animate hero images only after stats animation is done
+  // 4. Animate hero images sequentially after stats animation is done
   React.useEffect(() => {
     if (!heroStatsVisible[2]) return;
-    // Wait a bit after last stat appears, then show images
-    const heroImagesTimer = setTimeout(() => {
-      setHeroImagesVisible(true);
-    }, 400); // 400ms after last stat
-    return () => clearTimeout(heroImagesTimer);
+    // Wait longer after last stat appears before starting images
+    const timers: number[] = [];
+    const initialDelay = 900; // ms after last stat appears
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, false, false, false]), initialDelay));
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, false, false]), initialDelay + 300));
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, true, false]), initialDelay + 600));
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, true, true]), initialDelay + 900));
+    return () => timers.forEach(t => clearTimeout(t));
   }, [heroStatsVisible]);
-
-  // Intersection Observer for Hero Images section
-  React.useEffect(() => {
-    // מתחיל את האנימציה של התמונות אחרי שהספינר מסיים
-    const heroImagesTimer = setTimeout(() => {
-      setHeroImagesVisible(true);
-    }, 1300); // 1300ms - אחרי הספינר (1100ms) + מרווח קטן
-    
-    return () => clearTimeout(heroImagesTimer);
-  }, []);
 
 
   // Animate stats numbers (if you want to trigger this, use heroStatsVisible or another trigger)
@@ -146,42 +102,31 @@ const HomePage: React.FC = () => {
 
 
 
+  // Typing animation effect (cursor always blinks)
   React.useEffect(() => {
     if (!typingStarted) return;
-    
     let typingTimeout: NodeJS.Timeout;
     const fullText = typingTexts[textIdx];
-    
     if (!isDeleting && charIdx < fullText.length) {
-      // During typing - hide blinking cursor
-      setShowBlinkingCursor(false);
       typingTimeout = setTimeout(() => {
         setCurrentText(fullText.substring(0, charIdx + 1));
         setCharIdx(charIdx + 1);
       }, 100);
     } else if (isDeleting && charIdx > 0) {
-      // During deleting - hide blinking cursor
-      setShowBlinkingCursor(false);
       typingTimeout = setTimeout(() => {
         setCurrentText(fullText.substring(0, charIdx - 1));
         setCharIdx(charIdx - 1);
       }, 50);
     } else if (!isDeleting && charIdx === fullText.length) {
-      // Finished typing a line - show blinking cursor for pause
-      setShowBlinkingCursor(true);
       typingTimeout = setTimeout(() => {
-        setShowBlinkingCursor(false);
         setIsDeleting(true);
       }, 1500);
     } else if (isDeleting && charIdx === 0) {
-      // Finished deleting - hide blinking cursor
-      setShowBlinkingCursor(false);
       typingTimeout = setTimeout(() => {
         setIsDeleting(false);
         setTextIdx((textIdx + 1) % typingTexts.length);
       }, 500);
     }
-    
     return () => clearTimeout(typingTimeout);
   }, [charIdx, isDeleting, textIdx, typingStarted]);
 
@@ -236,16 +181,14 @@ const HomePage: React.FC = () => {
               {/* Typing Animation - RTL aligned with fixed height, appears after headline */}
               <div className="mb-8 w-full min-h-[2rem] xs:min-h-[2.25rem] sm:min-h-[2.5rem] md:min-h-[3rem]" dir="rtl">
                 <h2
-                  className={`text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] inline-flex items-center transition-all duration-800 transform ${
+                  className={`text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
                     typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}
                 >
                   <span className="leading-tight whitespace-nowrap">{currentText || '\u00A0'}</span>
                   {typingStarted && (
                     <span
-                      className={`inline-block bg-[#1a79f6] align-middle ${
-                        showBlinkingCursor ? 'animate-blink' : ''
-                      }`}
+                      className="inline-block bg-[#1a79f6] align-middle animate-blink"
                       style={{
                         width: '3px',
                         height: '1.4em',
@@ -263,6 +206,9 @@ const HomePage: React.FC = () => {
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[0] ? '0ms' : '0ms' }}
                 >
+                  <div className="flex justify-center mb-1">
+                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: '2rem' }} />
+                  </div>
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">+5</div>
                   <p className="text-gray-400 text-xs sm:text-sm">שנות ניסיון</p>
                 </div>
@@ -270,15 +216,21 @@ const HomePage: React.FC = () => {
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
                 >
+                  <div className="flex justify-center mb-1">
+                    <GroupsIcon style={{ color: '#1a79f6', fontSize: '2rem' }} />
+                  </div>
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">+50</div>
-                  <p className="text-gray-400 text-xs sm:text-sm">לקוחות</p>
+                  <p className="text-gray-400 text-xs sm:text-sm">לקוחות מרוצים</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">100%</div>
-                  <p className="text-gray-400 text-xs sm:text-sm">שביעות רצון</p>
+                  <div className="flex justify-center mb-1">
+                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: '2rem' }} />
+                  </div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-xs sm:text-sm">טכנולוגיות בשימוש</p>
                 </div>
               </div>
             </div>
@@ -289,9 +241,9 @@ const HomePage: React.FC = () => {
                 {/* Screenshot 1 - Benji */}
                 <div 
                   className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg h-fit ${
-                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                    heroImagesVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
                   }`}
-                  style={{ transitionDelay: heroImagesVisible ? '0ms' : '0ms' }}
+                  style={{ transitionDelay: heroImagesVisible[0] ? '0ms' : '0ms' }}
                 >
                   <img 
                     src={benjiWebsite} 
@@ -303,9 +255,9 @@ const HomePage: React.FC = () => {
                 {/* Screenshot 2 - Atliz */}
                 <div 
                   className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 ${
-                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                    heroImagesVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
                   }`}
-                  style={{ transitionDelay: heroImagesVisible ? '200ms' : '0ms' }}
+                  style={{ transitionDelay: heroImagesVisible[1] ? '0ms' : '0ms' }}
                 >
                   <img 
                     src={atlizWebsite} 
@@ -317,9 +269,9 @@ const HomePage: React.FC = () => {
                 {/* Screenshot 3 - Lawyer */}
                 <div 
                   className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-20 h-fit ${
-                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                    heroImagesVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
                   }`}
-                  style={{ transitionDelay: heroImagesVisible ? '400ms' : '0ms' }}
+                  style={{ transitionDelay: heroImagesVisible[2] ? '0ms' : '0ms' }}
                 >
                   <img 
                     src={refaelWebsite} 
@@ -331,9 +283,9 @@ const HomePage: React.FC = () => {
                 {/* Screenshot 4 - Resume Builder */}
                 <div 
                   className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 h-fit ${
-                    heroImagesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                    heroImagesVisible[3] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
                   }`}
-                  style={{ transitionDelay: heroImagesVisible ? '600ms' : '0ms' }}
+                  style={{ transitionDelay: heroImagesVisible[3] ? '0ms' : '0ms' }}
                 >
                   <img 
                     src={resumesWebsite} 
@@ -347,72 +299,37 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Section - Catapp במספרים */}
-      <div
-        ref={statsRef}
-        className="scroll-area w-full flex justify-center items-center relative py-16 md:py-24"
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-              Catapp במספרים
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto"></div>
+
+      {/* Values Section */}
+
+{/* CV Fan & Career Promo Section */}
+      <div className="scroll-area w-full flex justify-center items-center relative min-h-[400px] md:min-h-[500px] py-8 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center md:items-stretch justify-between gap-8">
+          {/* Marketing Text - left side */}
+          <div className="flex-1 flex flex-col justify-center items-start text-right gap-6 w-full md:w-auto md:max-w-[480px] md:items-end order-1 md:order-2">
+            <div className="rounded-xl p-5 md:p-7 shadow-lg w-full max-w-3xl lg:max-w-4xl ml-auto md:ml-0 md:mr-8 lg:mr-20">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-right text-white leading-snug break-words whitespace-pre-line">
+                אנחנו מייצרים קורות חיים
+                <span className="text-[#1a79f6]"> שעוברים כל סינון </span>
+                 אוטומטי
+                <span className="text-[#1a79f6]"> ושהכי בולטים </span>
+                למגייסים
+              </p>
+            </div>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {/* Years of Experience */}
-            <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-6 text-center hover:border-[#1a79f6]/60 hover:scale-105 transition-all duration-300">
-              <div className="mb-3 flex justify-center">
-                <Calendar className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-[#1a79f6] mb-2">
-                +{animatedStats.years}
-              </div>
-              <p className="text-white font-semibold text-sm md:text-base mb-1">שנות ניסיון</p>
-              <p className="text-gray-400 text-xs md:text-sm">בפיתוח אתרים וכתיבת קורות חיים מקצועיים</p>
-            </div>
-
-            {/* Happy Clients */}
-            <div className="bg-white/5 backdrop-blur-sm border border-green-500/30 rounded-2xl p-6 text-center hover:border-green-500/60 hover:scale-105 transition-all duration-300">
-              <div className="mb-3 flex justify-center">
-                <Users className="w-10 h-10 md:w-12 md:h-12 text-green-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">
-                +{animatedStats.clients}
-              </div>
-              <p className="text-white font-semibold text-sm md:text-base mb-1">לקוחות מרוצים</p>
-              <p className="text-gray-400 text-xs md:text-sm">עסקים ויחידים שסמכו עלינו והצליחו</p>
-            </div>
-
-            {/* Tech Tools */}
-            <div className="bg-white/5 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 text-center hover:border-purple-500/60 hover:scale-105 transition-all duration-300">
-              <div className="mb-3 flex justify-center">
-                <Cpu className="w-10 h-10 md:w-12 md:h-12 text-purple-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">
-                +{animatedStats.tools}
-              </div>
-              <p className="text-white font-semibold text-sm md:text-base mb-1">כלים טכנולוגיים</p>
-              <p className="text-gray-400 text-xs md:text-sm">הטכנולוגיות המתקדמות ביותר בשוק</p>
-            </div>
-
-            {/* Revenue Growth */}
-            <div className="bg-white/5 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-6 text-center hover:border-orange-500/60 hover:scale-105 transition-all duration-300">
-              <div className="mb-3 flex justify-center">
-                <TrendingUp className="w-10 h-10 md:w-12 md:h-12 text-orange-400" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-orange-400 mb-2">
-                {animatedStats.growth}%
-              </div>
-              <p className="text-white font-semibold text-sm md:text-base mb-1">גידול בהכנסות</p>
-              <p className="text-gray-400 text-xs md:text-sm">עליה מתמדת מאז הקמת החברה</p>
+          {/* Fan of CV Images - right side */}
+          <div className="relative flex-1 flex justify-end items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-8 md:mt-0">
+            <div className="relative w-[300px] h-[260px] md:w-[400px] md:h-[340px] flex items-end justify-center">
+              {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
+              <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-30deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
+              <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-10deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
+              <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(10deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
+              <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(30deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Values Section */}
       <div
         ref={valuesRef}
         className="scroll-area w-full flex justify-center items-center relative min-h-screen"
@@ -746,88 +663,7 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Pricing Section */}
-      <section className="scroll-area w-full flex justify-center items-center relative min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-32">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-              מחירון שירותים
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-2"></div>
-            <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto px-4">
-              מחירים שקופים והוגנים עבור פתרונות דיגיטליים מקצופיים
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 w-full">
-            {/* פיתוח אתרים - שורה ראשונה */}
-            {pricingPreview.map((item, idx) => {
-              const IconComponent = item.icon === 'Rocket' ? Rocket : item.icon === 'Building2' ? Building2 : Briefcase;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white/5 backdrop-blur-sm border-2 border-[#1a79f6]/30 rounded-lg md:rounded-xl p-3 md:p-4 hover:border-[#1a79f6]/60 transition-all duration-300 hover:transform hover:scale-105 shadow-lg flex-1 min-h-[120px] md:min-h-[140px] flex flex-col justify-between"
-                >
-                  <div className="text-center">
-                    <div className="mb-1 md:mb-2 flex justify-center">
-                      <IconComponent className="w-6 h-6 md:w-8 md:h-8 text-[#1a79f6]" />
-                    </div>
-                    <h3 className="text-xs md:text-sm font-bold text-white mb-1">
-                      {item.name}
-                    </h3>
-                    <div className="text-base md:text-lg font-bold text-[#1a79f6] mb-1 md:mb-2">
-                      {item.price}
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <a
-                      href={`https://${item.example}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-1 px-2 md:px-3 rounded-lg shadow transition-all text-xs"
-                    >
-                      לאתר
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-3 w-full">
-            {/* תחזוקה - שורה שנייה */}
-            {maintenancePreview.map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-white/5 backdrop-blur-sm border-2 border-green-600/30 rounded-lg md:rounded-xl p-3 md:p-4 hover:border-green-600/60 transition-all duration-300 hover:transform hover:scale-105 shadow-lg flex-1 min-h-[120px] md:min-h-[140px] flex flex-col justify-center"
-              >
-                <div className="text-center">
-                  <div className="mb-1 md:mb-2 flex justify-center">
-                    {idx === 0 ? <Shield className="w-6 h-6 md:w-8 md:h-8 text-[#1a79f6]" /> : 
-                     idx === 1 ? <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-[#1a79f6]" /> : 
-                     <Edit className="w-6 h-6 md:w-8 md:h-8 text-[#1a79f6]" />}
-                  </div>
-                  <h4 className="text-xs md:text-sm font-bold text-white mb-1">
-                    {item.name}
-                  </h4>
-                  <div className="text-base md:text-lg font-bold text-green-400">
-                    {item.price}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-4">
-            <Link
-              to="/pricing"
-              className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-            >
-              למחירון המלא
-            </Link>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };
