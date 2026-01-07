@@ -2,6 +2,7 @@ import React from 'react';
 // import { useLanguage } from '../contexts/LanguageContext';
 import { ExternalLink } from 'lucide-react';
 // import SmoothScroll from '../components/SmoothScroll';
+import ScrollProjects from '../components/ScrollProjects';
 
 const PortfolioPage: React.FC = () => {
   const sectionRef = React.useRef<HTMLDivElement>(null);
@@ -73,7 +74,62 @@ const PortfolioPage: React.FC = () => {
 
   return (
     <div ref={sectionRef} className="min-h-screen pt-16 fade-in">
-      {/* <SmoothScroll /> */}
+      {/* Scroll-Driven Projects Section */}
+      <ScrollProjects />
+
+      {/* New Projects Showcase Section - styled as in the reference image */}
+      <div className="w-full bg-black/80 py-16 mb-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-10 text-left flex items-center gap-4">
+            <span className="border-l-4 border-[#1a79f6] pl-4">Our Projects</span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Project Card 1 */}
+            <div className="relative rounded-2xl overflow-hidden bg-white/10 shadow-lg group flex flex-col justify-end min-h-[340px]">
+              <img src="https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Exterior Architecture" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-300" />
+              <div className="relative z-10 p-6 flex flex-col justify-end h-full">
+                <button className="w-12 h-12 bg-[#1a79f6] rounded-full flex items-center justify-center mb-4 shadow-lg hover:bg-blue-700 transition">
+                  <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19" /></svg>
+                </button>
+                <h3 className="text-xl font-bold text-white mb-2">Exterior Architecture Project</h3>
+                <p className="text-gray-200 text-sm">Learn more about our exterior, conceptual and practical design work, all delivered turnkey modules.</p>
+              </div>
+            </div>
+            {/* Project Card 2 */}
+            <div className="relative rounded-2xl overflow-hidden bg-white/10 shadow-lg group flex flex-col justify-end min-h-[340px]">
+              <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Interior Architecture" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-300" />
+              <div className="relative z-10 p-6 flex flex-col justify-end h-full">
+                <button className="w-12 h-12 bg-[#1a79f6] rounded-full flex items-center justify-center mb-4 shadow-lg hover:bg-blue-700 transition">
+                  <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19" /></svg>
+                </button>
+                <h3 className="text-xl font-bold text-white mb-2">Interior Architecture Project</h3>
+                <p className="text-gray-200 text-sm">Explore our interior design projects, from concept to completion, with a focus on modern living spaces.</p>
+              </div>
+            </div>
+            {/* Project Card 3 */}
+            <div className="relative rounded-2xl overflow-hidden bg-white/10 shadow-lg group flex flex-col justify-end min-h-[340px]">
+              <img src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Other Project" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-300" />
+              <div className="relative z-10 p-6 flex flex-col justify-end h-full">
+                <button className="w-12 h-12 bg-[#1a79f6] rounded-full flex items-center justify-center mb-4 shadow-lg hover:bg-blue-700 transition">
+                  <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19" /></svg>
+                </button>
+                <h3 className="text-xl font-bold text-white mb-2">Other Architecture Project</h3>
+                <p className="text-gray-200 text-sm">Discover more of our creative and technical work in architecture and design.</p>
+              </div>
+            </div>
+            {/* View All Projects Card */}
+            <div className="relative rounded-2xl border-2 border-[#1a79f6] flex flex-col items-center justify-center min-h-[340px] bg-transparent group hover:bg-[#1a79f6]/10 transition">
+              <div className="flex flex-col items-center gap-4">
+                <span className="text-white text-xl font-bold">View All Projects</span>
+                <button className="w-12 h-12 bg-[#1a79f6] rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+                  <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           

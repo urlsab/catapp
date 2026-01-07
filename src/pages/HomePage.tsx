@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 // import Values from '../components/Values';
 // import KnowledgeHub from '../components/KnowledgeHub';
 // import logo from '../../Assets/catapp logo no bg.png';
@@ -299,6 +299,225 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
+
+
+      {/* Recommendations Section - המלצות */}
+            {/* Services Section - השירותים שלנו */}
+            <div className="w-full flex justify-center items-center py-16 bg-gradient-to-b from-white/60 to-white/0 relative">
+              <div className="max-w-5xl w-full flex flex-col items-center px-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight">השירותים שלנו</h2>
+                <p className="text-gray-500 text-base md:text-lg mb-10 text-center max-w-2xl">הפתרונות שלנו לעסק ולקריירה שלך</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                  {/* Card 1 */}
+                  <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
+                    <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
+                      <img src='https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80' alt="בניית אתרים" className="w-full h-full object-cover object-center" />
+                    </div>
+                    <div className="relative w-full flex flex-col items-center -mt-8">
+                      <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1a79f6] to-blue-300 flex items-center justify-center shadow-lg border-4 border-white">
+                          <Rocket className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-2xl shadow-lg px-6 pt-12 pb-6 w-full flex flex-col items-center border border-gray-100">
+                        <h3 className="text-lg font-bold text-[#1a79f6] mb-1 text-center">בניית אתרים</h3>
+                        <p className="text-gray-700 text-sm text-center mb-4">אתרי תדמית, דפי נחיתה, חנויות אונליין, אתרים מותאמים אישית לעסק שלך</p>
+                        <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Card 2 */}
+                  <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
+                    <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
+                      <img src='https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80' alt="עריכת קו" className="w-full h-full object-cover object-center" />
+                    </div>
+                    <div className="relative w-full flex flex-col items-center -mt-8">
+                      <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1a79f6] to-blue-300 flex items-center justify-center shadow-lg border-4 border-white">
+                          <FileText className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-2xl shadow-lg px-6 pt-12 pb-6 w-full flex flex-col items-center border border-gray-100">
+                        <h3 className="text-lg font-bold text-[#1a79f6] mb-1 text-center">עריכת קו"ח</h3>
+                        <p className="text-gray-700 text-sm text-center mb-4">שדרוג, עיצוב וכתיבה מקצועית של קורות חיים שמבליטים אותך</p>
+                        <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Card 3 */}
+                  <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
+                    <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
+                      <img src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80' alt="לינקדאין" className="w-full h-full object-cover object-center" />
+                    </div>
+                    <div className="relative w-full flex flex-col items-center -mt-8">
+                      <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1a79f6] to-blue-300 flex items-center justify-center shadow-lg border-4 border-white">
+                          <TrendingUp className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-2xl shadow-lg px-6 pt-12 pb-6 w-full flex flex-col items-center border border-gray-100">
+                        <h3 className="text-lg font-bold text-[#1a79f6] mb-1 text-center">העצמת פרופיל לינקדאין</h3>
+                        <p className="text-gray-700 text-sm text-center mb-4">ייעוץ, אופטימיזציה והכוונה לפרופיל לינקדאין שמייצר הזדמנויות</p>
+                        <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Decorative arrows - left/right */}
+              <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2">
+                <div className="flex flex-col gap-2 ml-4">
+                  <div className="w-6 h-6 border-l-4 border-b-4 border-[#1a79f6] rotate-[-45deg] opacity-30"></div>
+                  <div className="w-6 h-6 border-l-4 border-b-4 border-[#1a79f6] rotate-[-45deg] opacity-20"></div>
+                  <div className="w-6 h-6 border-l-4 border-b-4 border-[#1a79f6] rotate-[-45deg] opacity-10"></div>
+                </div>
+              </div>
+              <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2">
+                <div className="flex flex-col gap-2 mr-4">
+                  <div className="w-6 h-6 border-r-4 border-t-4 border-[#1a79f6] rotate-[45deg] opacity-30"></div>
+                  <div className="w-6 h-6 border-r-4 border-t-4 border-[#1a79f6] rotate-[45deg] opacity-20"></div>
+                  <div className="w-6 h-6 border-r-4 border-t-4 border-[#1a79f6] rotate-[45deg] opacity-10"></div>
+                </div>
+              </div>
+            </div>
+      <div className="w-full flex justify-center items-center py-16 bg-gradient-to-b from-[#1a79f6]/10 to-white/0">
+        <div className="max-w-3xl w-full flex flex-col items-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">המלצות</h2>
+          <div className="w-full flex flex-col gap-8">
+            {/* Recommendation Card */}
+            <div className="bg-white/80 rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+              <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
+                פנינו לחברת קאטאפ עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדוייקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
+              </p>
+              <div className="flex items-center justify-end gap-3">
+                <span className="font-bold text-[#1a79f6] text-base md:text-lg">אור בנג'י פסיכותרפיה</span>
+                <Star className="w-5 h-5 text-yellow-400" />
+              </div>
+            </div>
+            {/* ניתן להוסיף המלצות נוספות כאן */}
+          </div>
+        </div>
+      </div>
+
+      {/* Process Section - תהליך העבודה */}
+      {(() => {
+        // קו מתקדם בצבע כחול לפי גלילה
+        const processRef = useRef<HTMLDivElement>(null);
+        const [progress, setProgress] = useState(0); // 0-1
+
+        useEffect(() => {
+          const handleScroll = () => {
+            if (!processRef.current) return;
+            const rect = processRef.current.getBoundingClientRect();
+            const windowH = window.innerHeight;
+            const sectionHeight = rect.height;
+            let percent = 0;
+            // Start animation only when the section top is within 60% of the viewport height (bottom 60%)
+            const triggerStart = windowH * 0.3;
+            if (rect.top < windowH && rect.top > triggerStart && rect.bottom > 0) {
+              // Not yet in the bottom 60%: don't animate
+              percent = 0;
+            } else if (rect.top <= triggerStart && rect.bottom > 0) {
+              const scrollY = windowH - rect.top;
+              percent = Math.min(1, Math.max(0, scrollY / (sectionHeight + windowH/2)));
+            }
+            setProgress(percent);
+          };
+          window.addEventListener('scroll', handleScroll);
+          window.addEventListener('resize', handleScroll);
+          handleScroll();
+          return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+          };
+        }, []);
+
+        return (
+          <div ref={processRef} className="w-full flex justify-center items-center py-16 bg-white/5 relative">
+            <div className="max-w-3xl w-full flex flex-col items-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">התהליך שלנו</h2>
+              <div className="relative flex w-full">
+                {/* Vertical line - לבן מלא בלבד */}
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-2 bg-white rounded-full z-0" style={{ minHeight: '100%' }} />
+                {/* קו כחול דק מעל הקו הלבן, מוצג רק לפי התקדמות הגלילה */}
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2 pointer-events-none z-10" style={{ height: '100%' }}>
+                  <div className="absolute left-1/2 -translate-x-1/2 w-1.5 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-200" style={{ height: `${progress === 0 ? 0 : progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
+                </div>
+                <div className="flex flex-col gap-12 w-full z-20">
+                  {/* שלבים */}
+                  {[
+                    {
+                      icon: <Rocket className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // פנייה
+                      title: 'פנייה ראשונית',
+                      desc: 'שיחה קצרה להיכרות והבנת הצורך. הצעת מחיר מותאמת.'
+                    },
+                    {
+                      icon: <FileText className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // אפיון
+                      title: 'אפיון האתר',
+                      desc: 'מגדירים יחד מה האתר יכלול ומה חשוב שיהיה בו.'
+                    },
+                    {
+                      icon: <Palette className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // חומרים/עיצוב
+                      title: 'איסוף חומרים',
+                      desc: 'מקבלים ממך חומרים ומעצבים דף בית ראשוני.'
+                    },
+                    {
+                      icon: <Briefcase className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // פיתוח
+                      title: 'פיתוח האתר',
+                      desc: 'הופכים את ההדמיה לאתר חי ודינמי.'
+                    },
+                    {
+                      icon: <Scale className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // QA
+                      title: 'בדיקות ותיקונים',
+                      desc: 'בודקים, מתקנים ומוודאים שהאתר מושלם.'
+                    },
+                    {
+                      icon: <Star className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // עלייה לאוויר
+                      title: 'עלייה לאוויר',
+                      desc: 'הדרכה קצרה, האתר באוויר – מזל טוב !!!'
+                    },
+                  ].map((step, idx, arr) => {
+                    // קובע האם המלבן מימין (זוגי) או משמאל (אי-זוגי)
+                    const isRight = idx % 2 === 0;
+                    return (
+                      <div key={idx} className="flex items-center w-full relative min-h-[80px]">
+                        {/* מלבן טקסט מימין */}
+                        {isRight && (
+                          <div className="flex-1 flex justify-end pr-0.5 xs:pr-1">
+                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2.5 xs:p-3.5 md:p-5 text-right max-w-[200px] xs:max-w-[240px] md:max-w-[340px] sm:max-w-[280px]"
+                              style={{ maxWidth: 'clamp(150px, 50vw, 200px)' }}>
+                              <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1 text-white">{step.title}</div>
+                              <div className="text-white text-xs xs:text-sm md:text-base whitespace-pre-line">{step.desc}</div>
+                            </div>
+                          </div>
+                        )}
+                        {/* אייקון ממורכז על הקו */}
+                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 min-w-[56px] z-30" style={{top:0}}>
+                          <div className="mb-2">{step.icon}</div>
+                          {/* קו מחבר בין האייקונים */}
+                          {idx < arr.length - 1 && (
+                            <div className="flex-1 w-1 bg-gradient-to-b" style={{ minHeight: 40, marginTop: 4 }} />
+                          )}
+                        </div>
+                        {/* מלבן טקסט משמאל */}
+                        {!isRight && (
+                          <div className="flex-1 flex justify-start pl-0.5 xs:pl-1">
+                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2.5 xs:p-3.5 md:p-5 text-right max-w-[200px] xs:max-w-[240px] md:max-w-[340px] sm:max-w-[280px]"
+                              style={{ maxWidth: 'clamp(150px, 50vw, 200px)' }}>
+                              <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1 text-white">{step.title}</div>
+                              <div className="text-white text-xs xs:text-sm md:text-base whitespace-pre-line">{step.desc}</div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Values Section */}
 
