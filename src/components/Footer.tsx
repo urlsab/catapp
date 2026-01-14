@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                 to="/portfolio"
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                תיק עבודות
+                פרויקטים
               </Link>
               <Link 
                 to="/contact"

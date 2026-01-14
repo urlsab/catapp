@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp } from 'lucide-react';
+import { CheckCircle, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp } from 'lucide-react';
 // import SmoothScroll from '../components/SmoothScroll';
 // import LinkedInIcon from '@mui/icons-material/LinkedIn';
 // import { FaLinkedin } from "react-icons/fa";
@@ -158,27 +158,13 @@ const PricingPage: React.FC = () => {
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
-                    <Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" />
+                    <CheckCircle size={16} className="text-green-400 mr-2 ml-2 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              {plan.examples && (
-                <div className="border-t border-gray-200 dark:border-gray-700 pt-4 flex justify-center gap-2 flex-wrap">
-                  {plan.examples.map((example, exampleIndex) => (
-                    <a
-                      key={exampleIndex}
-                      href={`https://${example}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl shadow transition-all text-sm mb-2"
-                    >
-                      לאתר
-                    </a>
-                  ))}
-                </div>
-              )}
+              {/* Removed 'לאתר' buttons as requested */}
             </div>
           ))}
         </div>
@@ -222,7 +208,7 @@ const PricingPage: React.FC = () => {
               <ul className="space-y-2">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
-                    <Check size={14} className="text-green-500 mr-2 ml-2 flex-shrink-0" />
+                    <CheckCircle size={14} className="text-green-400 mr-2 ml-2 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
                   </li>
                 ))}
@@ -264,10 +250,10 @@ const PricingPage: React.FC = () => {
                 <div className="text-2xl font-bold text-[#1a79f6] mb-2">200 ₪</div>
               </div>
               <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קובץ PDF מקצועי ומעוצב</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה אישית מלאה לתחום ולמשרה</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">ניסוח ברור, חד וממוקד תוצאות</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מתאים להגשה למערכות גיוס (ATS)</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קובץ PDF מקצועי ומעוצב</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה אישית מלאה לתחום ולמשרה</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">ניסוח ברור, חד וממוקד תוצאות</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מתאים להגשה למערכות גיוס (ATS)</span></li>
               </ul>
             </div>
             {/* Card 2 */}
@@ -278,10 +264,10 @@ const PricingPage: React.FC = () => {
                 <div className="text-2xl font-bold text-[#1a79f6] mb-2">370 ₪</div>
               </div>
               <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצים מקצועיים בשתי שפות</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה ייעודית לכל שפה ותרבות גיוס</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שמירה על מסר אחיד וחד</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מוכן לשליחה לשוק המקומי והבינלאומי</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצים מקצועיים בשתי שפות</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה ייעודית לכל שפה ותרבות גיוס</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שמירה על מסר אחיד וחד</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מוכן לשליחה לשוק המקומי והבינלאומי</span></li>
               </ul>
             </div>
             {/* Card 3 */}
@@ -292,10 +278,10 @@ const PricingPage: React.FC = () => {
                 <div className="text-2xl font-bold text-[#1a79f6] mb-2">250 ₪</div>
               </div>
               <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מעשי (שעה)</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">לימוד שיטה לבניית קו״ח שמביא זימונים</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">דגשים, טעויות נפוצות וטיפים מוכחים</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">בונוס: עקרונות בסיסיים לחיזוק LinkedIn</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מעשי (שעה)</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">לימוד שיטה לבניית קו״ח שמביא זימונים</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">דגשים, טעויות נפוצות וטיפים מוכחים</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">בונוס: עקרונות בסיסיים לחיזוק LinkedIn</span></li>
               </ul>
             </div>
             {/* Card 4 */}
@@ -306,10 +292,10 @@ const PricingPage: React.FC = () => {
                 <div className="text-2xl font-bold text-[#1a79f6] mb-2">250 ₪</div>
               </div>
               <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום אישי (שעה)</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שדרוג כותרת, תקציר ונראות הפרופיל</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה לאלגוריתם ולמגייסים</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">הפיכת הפרופיל לכלי שמייצר פניות</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום אישי (שעה)</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שדרוג כותרת, תקציר ונראות הפרופיל</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה לאלגוריתם ולמגייסים</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">הפיכת הפרופיל לכלי שמייצר פניות</span></li>
               </ul>
             </div>
             {/* Card 5 */}
@@ -320,10 +306,10 @@ const PricingPage: React.FC = () => {
                 <div className="text-2xl font-bold text-[#1a79f6] mb-2">470 ₪</div>
               </div>
               <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מקיף</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת קובץ קו״ח מקצועי</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שדרוג פרופיל LinkedIn</span></li>
-                <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה מלאה למטרות הקריירה שלך</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מקיף</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת קובץ קו״ח מקצועי</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שדרוג פרופיל LinkedIn</span></li>
+                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה מלאה למטרות הקריירה שלך</span></li>
               </ul>
             </div>
                           {/* Card 8 - DOUBLE CV + זום עקרונות קו"ח */}
@@ -337,8 +323,8 @@ const PricingPage: React.FC = () => {
                   <div className="text-2xl font-bold text-[#1a79f6] mb-2">650 ₪</div>
                 </div>
                 <ul className="space-y-3 mb-2">
-                  <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת 2 גרסאות שונות של קורות חיים</span></li>
-                  <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצי PDF מקצועיים ומעוצבים</span></li>
+                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת 2 גרסאות שונות של קורות חיים</span></li>
+                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצי PDF מקצועיים ומעוצבים</span></li>
                   {/* מפגש זום מקיף על קו"ח */}
                   {/* שדרוג והעצמת פרופיל LinkedIn */}
                 </ul>
@@ -351,11 +337,11 @@ const PricingPage: React.FC = () => {
                   <div className="text-2xl font-bold text-[#1a79f6] mb-2">650 ₪</div>
                 </div>
                 <ul className="space-y-3 mb-2">
-                  <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת 2 גרסאות שונות של קורות חיים</span></li>
+                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת 2 גרסאות שונות של קורות חיים</span></li>
                   {/* התאמה מלאה לכל גרסה לפי דרישות שוק ומשרות יעד */}
-                  <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצי PDF מקצועיים ומעוצבים</span></li>
-                  <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מעשי (שעה) ללימוד עקרונות כתיבת קו״ח</span></li>
-                  <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">הבנה איך לבנות, להתאים ולשפר קו״ח גם בעתיד</span></li>
+                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצי PDF מקצועיים ומעוצבים</span></li>
+                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מעשי (שעה) ללימוד עקרונות כתיבת קו״ח</span></li>
+                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">הבנה איך לבנות, להתאים ולשפר קו״ח גם בעתיד</span></li>
                 </ul>
               </div>
 
@@ -367,10 +353,10 @@ const PricingPage: React.FC = () => {
                               <div className="text-2xl font-bold text-[#1a79f6] mb-2">800 ₪</div>
                             </div>
                             <ul className="space-y-3 mb-2">
-                              <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת קו״ח בעברית ובאנגלית</span></li>
-                              <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצים מקצועיים ומעוצבים</span></li>
-                              <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">זום על קו״ח (למידת עקרונות)</span></li>
-                              <li className="flex items-center text-gray-300"><Check size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">זום מלא להעצמת LinkedIn</span></li>
+                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת קו״ח בעברית ובאנגלית</span></li>
+                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצים מקצועיים ומעוצבים</span></li>
+                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">זום על קו״ח (למידת עקרונות)</span></li>
+                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">זום מלא להעצמת LinkedIn</span></li>
                               {/* ליווי ממוקד עד מוצר מוכן לשליחה */}
                             </ul>
                           </div>

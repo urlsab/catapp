@@ -102,7 +102,7 @@ const Header: React.FC = () => {
               to="/portfolio"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
-              תיק עבודות
+              פרויקטים
               <span
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/portfolio') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
@@ -192,7 +192,7 @@ const Header: React.FC = () => {
                 style={{ animationDelay: isClosing ? '0s' : '0.2s' }}
               >
                 <Briefcase size={18} />
-                תיק עבודות
+                פרויקטים
               </Link>
               <Link 
                 to="/pricing"

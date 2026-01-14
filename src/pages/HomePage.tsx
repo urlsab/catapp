@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 // import Values from '../components/Values';
 // import KnowledgeHub from '../components/KnowledgeHub';
-// import logo from '../../Assets/catapp logo no bg.png';
+// import logo from '../../Assets/Catapp logo no bg.png';
 import atlizWebsite from '../../Assets/atliz website.png';
 import cvPic1 from '../../Assets/cv pic 1.png';
 import cvPic2 from '../../Assets/cv pic 2.png';
 import cvPic3 from '../../Assets/cv pic 3.png';
 import cvPic4 from '../../Assets/cv pic 4.png';
+import cvPic5 from '../../Assets/cv pic 5.png';
 import benjiWebsite from '../../Assets/benji website.png';
 import refaelWebsite from '../../Assets/refael website.png';
 import resumesWebsite from '../../Assets/resumes builder website.png';
@@ -18,6 +19,9 @@ import { Link } from 'react-router-dom';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import GroupsIcon from '@mui/icons-material/Groups';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
+import codeServiceImage from '../../Assets/code service.jpg';
+import buildCvImage from '../../Assets/build cv.png';
+import buildLinkedinImage from '../../Assets/build linkedin.png';
 
 
 
@@ -27,7 +31,7 @@ const HomePage: React.FC = () => {
     'אתרי תדמית מקצועיים',
     'עיצוב מחדש של אתרים קיימים',
     'בנייה ושיפור קו"ח',
-    'אופטימזציה לפרופיל לינקדאין',
+    'אופטימיזציה לפרופיל לינקדאין',
     'הרצאות תוכן מקיפות',
     'הטמעת AI לאתרים'
   ];
@@ -303,15 +307,15 @@ const HomePage: React.FC = () => {
 
       {/* Recommendations Section - המלצות */}
             {/* Services Section - השירותים שלנו */}
-            <div className="w-full flex justify-center items-center py-16 bg-gradient-to-b from-white/60 to-white/0 relative">
+            <div className="w-full flex justify-center items-center py-16 bg-transparent relative">
               <div className="max-w-5xl w-full flex flex-col items-center px-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight">השירותים שלנו</h2>
-                <p className="text-gray-500 text-base md:text-lg mb-10 text-center max-w-2xl">הפתרונות שלנו לעסק ולקריירה שלך</p>
+                <p className="text-white text-base md:text-lg mb-10 text-center max-w-2xl">הפתרונות שלנו לעסק ולקריירה שלך</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                   {/* Card 1 */}
                   <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
                     <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
-                      <img src='https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80' alt="בניית אתרים" className="w-full h-full object-cover object-center" />
+                      <img src={codeServiceImage} alt="בניית אתרים" className="w-full h-full object-cover object-center" />
                     </div>
                     <div className="relative w-full flex flex-col items-center -mt-8">
                       <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
@@ -329,7 +333,7 @@ const HomePage: React.FC = () => {
                   {/* Card 2 */}
                   <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
                     <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
-                      <img src='https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80' alt="עריכת קו" className="w-full h-full object-cover object-center" />
+                      <img src={buildCvImage} alt="בניית קורות חיים" className="w-full h-full object-cover object-center" />
                     </div>
                     <div className="relative w-full flex flex-col items-center -mt-8">
                       <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
@@ -347,7 +351,7 @@ const HomePage: React.FC = () => {
                   {/* Card 3 */}
                   <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
                     <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
-                      <img src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80' alt="לינקדאין" className="w-full h-full object-cover object-center" />
+                      <img src={buildLinkedinImage} alt="העצמת פרופיל לינקדאין" className="w-full h-full object-cover object-center" />
                     </div>
                     <div className="relative w-full flex flex-col items-center -mt-8">
                       <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
@@ -385,12 +389,32 @@ const HomePage: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">המלצות</h2>
           <div className="w-full flex flex-col gap-8">
             {/* Recommendation Card */}
-            <div className="bg-white/80 rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+            <div className="bg-white rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
               <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
-                פנינו לחברת קאטאפ עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדוייקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
+                פנינו לחברת Catapp עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדויקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
               </p>
               <div className="flex items-center justify-end gap-3">
                 <span className="font-bold text-[#1a79f6] text-base md:text-lg">אור בנג'י פסיכותרפיה</span>
+                <Star className="w-5 h-5 text-yellow-400" />
+              </div>
+            </div>
+            {/* Recommendation Card - new */}
+            <div className="bg-white rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+              <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
+                ברצוני להודות לחברת Catapp על ליווי מקצועי ואישי ברמה גבוהה, עם תשומת לב אמיתית לפרטים והבנה עמוקה של הצרכים שלי. התהליך היה מסודר, ברור ויעיל, והתוצאה – קורות חיים איכותיים שמציגים אותי בצורה מדויקת ומרשימה. שירות ברמה הגבוהה ביותר – מומלץ בחום.
+              </p>
+              <div className="flex items-center justify-end gap-3">
+                <span className="font-bold text-[#1a79f6] text-base md:text-lg">יאיר אהרוני, סטודנט להנדסת חשמל ואלקטרוניקה</span>
+                <Star className="w-5 h-5 text-yellow-400" />
+              </div>
+            </div>
+            {/* Recommendation Card - רפאל סבג */}
+            <div className="bg-white rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+              <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
+                עבדתי עם Catapp על בניית האתר, ואין ספק שעשיתי בחירה מצוינת. קיבלתי יחס אישי, זמינות מלאה והקשבה אמיתית לצרכים שלי. העבודה בוצעה במהירות, במקצועיות ובדיוק כפי שסוכם – והתוצאה עלתה על הציפיות. ממליץ מכל הלב
+              </p>
+              <div className="flex items-center justify-end gap-3">
+                <span className="font-bold text-[#1a79f6] text-base md:text-lg">רפאל סבג, בעלים של משרד עו"ד</span>
                 <Star className="w-5 h-5 text-yellow-400" />
               </div>
             </div>
@@ -412,13 +436,13 @@ const HomePage: React.FC = () => {
             const windowH = window.innerHeight;
             const sectionHeight = rect.height;
             let percent = 0;
-            // Start animation only when the section top is within 60% of the viewport height (bottom 60%)
-            const triggerStart = windowH * 0.3;
+            // Start animation only when the section top is within 40% of the viewport height (bottom 40%)
+            const triggerStart = windowH * 0.6; // More scroll before blue line starts
             if (rect.top < windowH && rect.top > triggerStart && rect.bottom > 0) {
-              // Not yet in the bottom 60%: don't animate
+              // Not yet in the bottom 40%: don't animate
               percent = 0;
             } else if (rect.top <= triggerStart && rect.bottom > 0) {
-              const scrollY = windowH - rect.top;
+              const scrollY = windowH - rect.top - windowH * 0.2; // Delay blue line start
               percent = Math.min(1, Math.max(0, scrollY / (sectionHeight + windowH/2)));
             }
             setProgress(percent);
@@ -437,11 +461,11 @@ const HomePage: React.FC = () => {
             <div className="max-w-3xl w-full flex flex-col items-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">התהליך שלנו</h2>
               <div className="relative flex w-full">
-                {/* Vertical line - לבן מלא בלבד */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-2 bg-white rounded-full z-0" style={{ minHeight: '100%' }} />
+                {/* Vertical line - לבן מלא בלבד (נגמר בדיוק בקו התחתון של המלבן האחרון) */}
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-5 bg-white rounded-full z-0" style={{ height: 'calc(100% - 45px)', minHeight: 0 }} />
                 {/* קו כחול דק מעל הקו הלבן, מוצג רק לפי התקדמות הגלילה */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2 pointer-events-none z-10" style={{ height: '100%' }}>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-1.5 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-200" style={{ height: `${progress === 0 ? 0 : progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-5 pointer-events-none z-10" style={{ height: 'calc(100% - 45px)' }}>
+                  <div className="absolute left-1/2 -translate-x-1/2 w-4 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-200" style={{ height: `${progress === 0 ? 0 : progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
                 </div>
                 <div className="flex flex-col gap-12 w-full z-20">
                   {/* שלבים */}
@@ -479,31 +503,42 @@ const HomePage: React.FC = () => {
                   ].map((step, idx, arr) => {
                     // קובע האם המלבן מימין (זוגי) או משמאל (אי-זוגי)
                     const isRight = idx % 2 === 0;
+                    // Calculate the progress for each step (icon)
+                    const stepProgress = (idx + 0.5) / arr.length;
+                    const isActive = progress >= stepProgress;
                     return (
-                      <div key={idx} className="flex items-center w-full relative min-h-[80px]">
+                      <div key={idx} className="flex items-center w-full relative min-h-[100px]">
                         {/* מלבן טקסט מימין */}
                         {isRight && (
-                          <div className="flex-1 flex justify-end pr-0.5 xs:pr-1">
-                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2.5 xs:p-3.5 md:p-5 text-right max-w-[200px] xs:max-w-[240px] md:max-w-[340px] sm:max-w-[280px]"
-                              style={{ maxWidth: 'clamp(150px, 50vw, 200px)' }}>
+                          <div className="flex-1 flex justify-end pr-0 xs:pr-0.5">
+                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2 xs:p-3 md:p-4 text-right max-w-[260px] xs:max-w-[300px] md:max-w-[380px] sm:max-w-[320px]"
+                              style={{ maxWidth: 'clamp(150px, 40vw, 260px)' }}>
                               <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1 text-white">{step.title}</div>
                               <div className="text-white text-xs xs:text-sm md:text-base whitespace-pre-line">{step.desc}</div>
                             </div>
                           </div>
                         )}
-                        {/* אייקון ממורכז על הקו */}
-                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 min-w-[56px] z-30" style={{top:0}}>
-                          <div className="mb-2">{step.icon}</div>
+                        {/* אייקון ממורכז על הציר */}
+                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 min-w-[80px] z-30" style={{top:0}}>
+                          <div className={`mb-2 flex items-center justify-center rounded-full transition-all duration-300 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 70, height: 70 }}>
+                            {React.cloneElement(step.icon, {
+                              className: `w-10 h-10 md:w-14 md:h-14 ${isActive ? 'text-white' : 'text-[#1a79f6]'}`
+                            })}
+                          </div>
                           {/* קו מחבר בין האייקונים */}
-                          {idx < arr.length - 1 && (
-                            <div className="flex-1 w-1 bg-gradient-to-b" style={{ minHeight: 40, marginTop: 4 }} />
+                          {idx < arr.length - 2 && (
+                            <div className="flex-1 w-2 bg-gradient-to-b" style={{ minHeight: 50, marginTop: 4 }} />
+                          )}
+                          {/* הארכת הקו בין האייקון הלפני אחרון לאחרון */}
+                          {idx === arr.length - 2 && (
+                            <div className="flex-1 w-2 bg-gradient-to-b" style={{ minHeight: 80, marginTop: 4 }} />
                           )}
                         </div>
                         {/* מלבן טקסט משמאל */}
                         {!isRight && (
-                          <div className="flex-1 flex justify-start pl-0.5 xs:pl-1">
-                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2.5 xs:p-3.5 md:p-5 text-right max-w-[200px] xs:max-w-[240px] md:max-w-[340px] sm:max-w-[280px]"
-                              style={{ maxWidth: 'clamp(150px, 50vw, 200px)' }}>
+                          <div className="flex-1 flex justify-start pl-0 xs:pl-0.5">
+                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2 xs:p-3 md:p-4 text-right max-w-[260px] xs:max-w-[300px] md:max-w-[380px] sm:max-w-[320px]"
+                              style={{ maxWidth: 'clamp(150px, 40vw, 260px)' }}>
                               <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1 text-white">{step.title}</div>
                               <div className="text-white text-xs xs:text-sm md:text-base whitespace-pre-line">{step.desc}</div>
                             </div>
@@ -540,10 +575,11 @@ const HomePage: React.FC = () => {
           <div className="relative flex-1 flex justify-end items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-8 md:mt-0">
             <div className="relative w-[300px] h-[260px] md:w-[400px] md:h-[340px] flex items-end justify-center">
               {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
-              <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-30deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
-              <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-10deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
-              <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(10deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
-              <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(30deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
+              <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-40deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
+              <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
+              <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(0deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
+              <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(20deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
+              <img src={cvPic5} alt="cv5" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(40deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
             </div>
           </div>
         </div>
@@ -819,68 +855,6 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Services Preview Section */}
-      <div className="scroll-area w-full flex justify-center items-center relative min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-32">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-              שירותי תוכן מקצועיים
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-2"></div>
-            <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto px-4">
-              מעבר לפיתוח אתרים, אנו מציעים שירותים נוספים לעזור לכם להצליח בקריירה ובעסק
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-3 md:gap-4">
-            <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 hover:border-[#1a79f6]/60 transition-all duration-300">
-              <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                <div className="flex-shrink-0"><FileText className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-[#1a79f6]" /></div>
-                <div className="flex-grow">
-                  <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                    בניית קורות חיים
-                  </h3>
-                  <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 md:mb-4">
-                    קורות חיים מקצועיים המותאמים לתעשיית הטכנולוגיה עם דגש על הדגשת כישורים
-                    ויתרונות
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl md:rounded-2xl p-4 md:p-6 lg:p-8 hover:border-[#1a79f6]/60 transition-all duration-300">
-              <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                <div className="flex-shrink-0"><Briefcase className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-[#1a79f6]" /></div>
-                <div className="flex-grow">
-                  <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3">
-                    הרצאות על קו"ח
-                  </h3>
-                  <p className="text-gray-300 text-xs md:text-sm lg:text-base mb-3 md:mb-4">
-                    הרצאות פרונטליות ודיגיטליות על כתיבת קורות חיים מנצחים
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-4">
-            <div className="flex gap-3 justify-center flex-wrap">
-              <Link
-                to="/about-full"
-                className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-              >
-                פרטים נוספים
-              </Link>
-              <Link
-                to="/cv-services"
-                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-              >
-                קורות חיים
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
 
       
     </div>
