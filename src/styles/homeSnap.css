@@ -1,3 +1,11 @@
+@keyframes client-carousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-client-carousel {
+  animation: client-carousel 16s linear infinite;
+}
 /* Snap Scrolling for HomePage */
 .home-container {
   height: 100vh;

@@ -3,6 +3,11 @@ import React, { useRef, useEffect, useState } from 'react';
 // import KnowledgeHub from '../components/KnowledgeHub';
 // import logo from '../../Assets/Catapp logo no bg.png';
 import atlizWebsite from '../../Assets/atliz website.png';
+import benjiLogo from '../../Assets/benjilogo1-no bg.png';
+import maakafLogo from '../../Assets/icon maakaf.png';
+import mosheLogo from '../../Assets/moshelogo.png';
+import officeLogo from '../../Assets/office logo.webp';
+import codersClanLogo from '../../Assets/coders clan icon.jpg';
 import cvPic1 from '../../Assets/cv pic 1.png';
 import cvPic2 from '../../Assets/cv pic 2.png';
 import cvPic3 from '../../Assets/cv pic 3.png';
@@ -14,7 +19,6 @@ import resumesWebsite from '../../Assets/resumes builder website.png';
 import '../styles/scroll.css';
 // import SmoothScroll from '../components/SmoothScroll';
 import { Zap, TrendingUp, Shield, DollarSign, Rocket, Building2, Scale, FileText, Briefcase, Eye, Clock, Palette, Star } from 'lucide-react';
-
 import { Link } from 'react-router-dom';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -311,59 +315,76 @@ const HomePage: React.FC = () => {
               <div className="max-w-5xl w-full flex flex-col items-center px-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight">השירותים שלנו</h2>
                 <p className="text-white text-base md:text-lg mb-10 text-center max-w-2xl">הפתרונות שלנו לעסק ולקריירה שלך</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-                  {/* Card 1 */}
-                  <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
-                    <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
-                      <img src={codeServiceImage} alt="בניית אתרים" className="w-full h-full object-cover object-center" />
-                    </div>
-                    <div className="relative w-full flex flex-col items-center -mt-8">
-                      <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1a79f6] to-blue-300 flex items-center justify-center shadow-lg border-4 border-white">
-                          <Rocket className="w-8 h-8 text-white" />
-                        </div>
+                {/* שורה 1: בניית אתרים + עיגולים מסתובבים + 4 תמונות אתרים */}
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-12">
+                  <div className="flex-1 flex flex-col items-end text-right">
+                    <div className="relative w-full max-w-[340px] mb-4">
+                      <img src={codeServiceImage} alt="בניית אתרים" className="w-full rounded-2xl shadow-lg" />
+                      <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
+                        בניית אתרים
                       </div>
-                      <div className="bg-white rounded-2xl shadow-lg px-6 pt-12 pb-6 w-full flex flex-col items-center border border-gray-100">
-                        <h3 className="text-lg font-bold text-[#1a79f6] mb-1 text-center">בניית אתרים</h3>
-                        <p className="text-gray-700 text-sm text-center mb-4">אתרי תדמית, דפי נחיתה, חנויות אונליין, אתרים מותאמים אישית לעסק שלך</p>
-                        <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                    </div>
+                    <p className="text-gray-200 text-sm mb-2">אתרי תדמית, דפי נחיתה, חנויות אונליין, אתרים מותאמים אישית לעסק שלך</p>
+                    <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                  </div>
+                  <div className="flex-1 flex flex-col items-center justify-center">
+                    {/* 4 תמונות האתרים מההירו - עיצוב זהה */}
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4 auto-rows-min mt-4 w-full max-w-[340px]">
+                      {/* Screenshot 1 - Benji */}
+                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg h-fit">
+                        <img src={benjiWebsite} alt="אתר Orbenji" className="w-full h-auto block" />
+                      </div>
+                      {/* Screenshot 2 - Atliz */}
+                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8">
+                        <img src={atlizWebsite} alt="אטליז למהדרין" className="w-full h-full block" />
+                      </div>
+                      {/* Screenshot 3 - Lawyer */}
+                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-20 h-fit">
+                        <img src={refaelWebsite} alt="עורך דין רפאל סבג" className="w-full h-auto block" />
+                      </div>
+                      {/* Screenshot 4 - Resume Builder */}
+                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 h-fit">
+                        <img src={resumesWebsite} alt="בונה קורות חיים" className="w-full h-auto block" />
                       </div>
                     </div>
                   </div>
-                  {/* Card 2 */}
-                  <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
-                    <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
-                      <img src={buildCvImage} alt="בניית קורות חיים" className="w-full h-full object-cover object-center" />
-                    </div>
-                    <div className="relative w-full flex flex-col items-center -mt-8">
-                      <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1a79f6] to-blue-300 flex items-center justify-center shadow-lg border-4 border-white">
-                          <FileText className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                      <div className="bg-white rounded-2xl shadow-lg px-6 pt-12 pb-6 w-full flex flex-col items-center border border-gray-100">
-                        <h3 className="text-lg font-bold text-[#1a79f6] mb-1 text-center">עריכת קו"ח</h3>
-                        <p className="text-gray-700 text-sm text-center mb-4">שדרוג, עיצוב וכתיבה מקצועית של קורות חיים שמבליטים אותך</p>
-                        <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                </div>
+                {/* שורה 2: בניית קורות חיים + מניפת קורות חיים */}
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-12">
+                  <div className="flex-1 flex flex-col items-end text-right">
+                    <img src={buildCvImage} alt="בניית קורות חיים" className="w-full max-w-[340px] rounded-2xl shadow-lg mb-4" />
+                    <h3 className="text-xl font-bold text-[#1a79f6] mb-2">עריכת קו"ח</h3>
+                    <p className="text-gray-200 text-sm mb-2">שדרוג, עיצוב וכתיבה מקצועית של קורות חיים שמבליטים אותך</p>
+                    <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center">
+                    {/* מניפת קורות חיים */}
+                    <div className="relative flex-1 flex justify-end items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-8 md:mt-0">
+                      <div className="relative w-[300px] h-[260px] md:w-[400px] md:h-[340px] flex items-end justify-center">
+                        {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
+                        <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-40deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
+                        <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
+                        <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(0deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
+                        <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(20deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
+                        <img src={cvPic5} alt="cv5" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(40deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
                       </div>
                     </div>
                   </div>
-                  {/* Card 3 */}
-                  <div className="flex flex-col items-center bg-transparent rounded-2xl shadow-none">
-                    <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
-                      <img src={buildLinkedinImage} alt="העצמת פרופיל לינקדאין" className="w-full h-full object-cover object-center" />
-                    </div>
-                    <div className="relative w-full flex flex-col items-center -mt-8">
-                      <div className="absolute -top-8 right-1/2 translate-x-1/2 z-20">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1a79f6] to-blue-300 flex items-center justify-center shadow-lg border-4 border-white">
-                          <TrendingUp className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                      <div className="bg-white rounded-2xl shadow-lg px-6 pt-12 pb-6 w-full flex flex-col items-center border border-gray-100">
-                        <h3 className="text-lg font-bold text-[#1a79f6] mb-1 text-center">העצמת פרופיל לינקדאין</h3>
-                        <p className="text-gray-700 text-sm text-center mb-4">ייעוץ, אופטימיזציה והכוונה לפרופיל לינקדאין שמייצר הזדמנויות</p>
-                        <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
-                      </div>
+                </div>
+                {/* שורה 3: לינקדאין + טקסט מעוצב */}
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
+                  <div className="flex-1 flex flex-col items-end text-right">
+                    <img src={buildLinkedinImage} alt="העצמת פרופיל לינקדאין" className="w-full max-w-[340px] rounded-2xl shadow-lg mb-4" />
+                    <h3 className="text-xl font-bold text-[#1a79f6] mb-2">העצמת פרופיל לינקדאין</h3>
+                    <p className="text-gray-200 text-sm mb-2">ייעוץ, אופטימיזציה והכוונה לפרופיל לינקדאין שמייצר הזדמנויות</p>
+                    <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center">
+                    {/* טקסט מעוצב על שירות לינקדאין */}
+                    <div className="w-full h-64 flex flex-col items-center justify-center bg-transparent text-center">
+                      <span className="text-2xl md:text-3xl font-bold text-[#1a79f6] mb-3 drop-shadow">אנחנו הופכים את הפרופיל שלך ללינקדאין שמייצר פניות אמיתיות</span>
+                      <span className="text-lg md:text-xl text-white font-semibold bg-[#1a79f6]/20 rounded-xl px-6 py-3 shadow mt-2">ייעוץ, אופטימיזציה, מיתוג אישי וכתיבה שיווקית שמבליטים אותך מעל כולם</span>
                     </div>
                   </div>
                 </div>
@@ -384,13 +405,34 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
             </div>
-      <div className="w-full flex justify-center items-center py-16 bg-gradient-to-b from-[#1a79f6]/10 to-white/0">
+      <div className="w-full flex justify-center items-center py-16 ">
         <div className="max-w-3xl w-full flex flex-col items-center">
+                {/* Happy Clients Section */}
+                <div className="w-full flex flex-col items-center py-16 ">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-8 text-center">מבין לקוחותינו המרוצים</h2>
+                  <div className="flex flex-wrap justify-center items-center gap-8">
+                    <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
+                      <img src={benjiLogo} alt="בנג'י" className="max-h-32 max-w-32 object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
+                      <img src={maakafLogo} alt="מעקף" className="max-h-32 max-w-32 object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
+                      <img src={mosheLogo} alt="משה" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '15%'}} />
+                    </div>
+                    <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
+                      <img src={officeLogo} alt="משרד עורכי דין" className="max-h-48 max-w-48 object-contain" style={{borderRadius: '7%', border: '1px solid white'}} />
+                    </div>
+                    <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
+                      <img src={codersClanLogo} alt="Coders Clan" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '20%'}} />
+                    </div>
+                  </div>
+                </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">המלצות</h2>
           <div className="w-full flex flex-col gap-8">
             {/* Recommendation Card */}
-            <div className="bg-white rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
-              <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
+            <div className="bg-white/0 rounded-2xl shadow-lg border-2 border-[#1a79f6] p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+              <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
                 פנינו לחברת Catapp עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדויקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
               </p>
               <div className="flex items-center justify-end gap-3">
@@ -399,8 +441,8 @@ const HomePage: React.FC = () => {
               </div>
             </div>
             {/* Recommendation Card - new */}
-            <div className="bg-white rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
-              <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
+            <div className="bg-white/0 rounded-2xl shadow-lg border-2 border-[#1a79f6] p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+              <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
                 ברצוני להודות לחברת Catapp על ליווי מקצועי ואישי ברמה גבוהה, עם תשומת לב אמיתית לפרטים והבנה עמוקה של הצרכים שלי. התהליך היה מסודר, ברור ויעיל, והתוצאה – קורות חיים איכותיים שמציגים אותי בצורה מדויקת ומרשימה. שירות ברמה הגבוהה ביותר – מומלץ בחום.
               </p>
               <div className="flex items-center justify-end gap-3">
@@ -409,8 +451,8 @@ const HomePage: React.FC = () => {
               </div>
             </div>
             {/* Recommendation Card - רפאל סבג */}
-            <div className="bg-white rounded-2xl shadow-lg border border-[#1a79f6]/20 p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
-              <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-4 font-medium">
+            <div className="bg-white/0 rounded-2xl shadow-lg border-2 border-[#1a79f6] p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+              <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
                 עבדתי עם Catapp על בניית האתר, ואין ספק שעשיתי בחירה מצוינת. קיבלתי יחס אישי, זמינות מלאה והקשבה אמיתית לצרכים שלי. העבודה בוצעה במהירות, במקצועיות ובדיוק כפי שסוכם – והתוצאה עלתה על הציפיות. ממליץ מכל הלב
               </p>
               <div className="flex items-center justify-end gap-3">
@@ -418,7 +460,17 @@ const HomePage: React.FC = () => {
                 <Star className="w-5 h-5 text-yellow-400" />
               </div>
             </div>
-            {/* ניתן להוסיף המלצות נוספות כאן */}
+              {/* Recommendation Card - אוריאל מנהל הקהילה */}
+              <div className="bg-white/0 rounded-2xl shadow-lg border-2 border-[#1a79f6] p-8 text-right transition-all duration-300 hover:shadow-2xl hover:border-[#1a79f6]/40">
+                <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
+                  חברת Catapp העבירה לקהילה שלנו הרצאה יוצאת דופן ומקיפה ביותר על כתיבת קו"ח. ההרצאה הייתה מלאה בתוכן משמעותי ופרקטי עם דוגמאות מעשיות. ממליץ בחום רב!
+                </p>
+                <div className="flex items-center justify-end gap-3">
+                  <span className="font-bold text-[#1a79f6] text-base md:text-lg">אוריאל, מנהל קהילת מעקף</span>
+                  <Star className="w-5 h-5 text-yellow-400" />
+                </div>
+              </div>
+            {/* ניתן להוסיף המלצות נוסxxx כאן */}
           </div>
         </div>
       </div>
@@ -457,7 +509,7 @@ const HomePage: React.FC = () => {
         }, []);
 
         return (
-          <div ref={processRef} className="w-full flex justify-center items-center py-16 bg-white/5 relative">
+          <div ref={processRef} className="w-full flex justify-center items-center py-16 relative">
             <div className="max-w-3xl w-full flex flex-col items-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">התהליך שלנו</h2>
               <div className="relative flex w-full">
@@ -511,9 +563,9 @@ const HomePage: React.FC = () => {
                         {/* מלבן טקסט מימין */}
                         {isRight && (
                           <div className="flex-1 flex justify-end pr-0 xs:pr-0.5">
-                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2 xs:p-3 md:p-4 text-right max-w-[260px] xs:max-w-[300px] md:max-w-[380px] sm:max-w-[320px]"
+                            <div className=" border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2 xs:p-3 md:p-4 text-right max-w-[260px] xs:max-w-[300px] md:max-w-[380px] sm:max-w-[320px]"
                               style={{ maxWidth: 'clamp(150px, 40vw, 260px)' }}>
-                              <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1 text-white">{step.title}</div>
+                              <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1">{step.title}</div>
                               <div className="text-white text-xs xs:text-sm md:text-base whitespace-pre-line">{step.desc}</div>
                             </div>
                           </div>
@@ -537,9 +589,9 @@ const HomePage: React.FC = () => {
                         {/* מלבן טקסט משמאל */}
                         {!isRight && (
                           <div className="flex-1 flex justify-start pl-0 xs:pl-0.5">
-                            <div className="border border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2 xs:p-3 md:p-4 text-right max-w-[260px] xs:max-w-[300px] md:max-w-[380px] sm:max-w-[320px]"
+                            <div className="border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md p-2 xs:p-3 md:p-4 text-right max-w-[260px] xs:max-w-[300px] md:max-w-[380px] sm:max-w-[320px]"
                               style={{ maxWidth: 'clamp(150px, 40vw, 260px)' }}>
-                              <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1 text-white">{step.title}</div>
+                              <div className="font-bold text-sm xs:text-base text-[#1a79f6] mb-1">{step.title}</div>
                               <div className="text-white text-xs xs:text-sm md:text-base whitespace-pre-line">{step.desc}</div>
                             </div>
                           </div>
