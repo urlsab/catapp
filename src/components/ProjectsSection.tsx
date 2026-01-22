@@ -19,6 +19,8 @@ const ProjectsSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const touchStartY = useRef<number>(0);
+  const touchEndY = useRef<number>(0);
 
   const projects: Project[] = [
     {
@@ -79,14 +81,49 @@ const ProjectsSection: React.FC = () => {
       }
     };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchEndY.current = e.changedTouches[0].clientY;
+      
+      if (isScrolling) return;
+
+      const deltaY = touchStartY.current - touchEndY.current;
+      const minSwipeDistance = 50;
+
+      if (Math.abs(deltaY) > minSwipeDistance) {
+        if (deltaY > 0) {
+          // Swipe up - next project
+          setCurrentIndex((prev) => (prev + 1) % projects.length);
+        } else {
+          // Swipe down - previous project
+          setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+        }
+        setIsScrolling(true);
+        setTimeout(() => setIsScrolling(false), 800);
+      }
+    };
+
     const container = containerRef.current;
     if (container) {
       container.addEventListener('wheel', handleWheel, { passive: false });
+      container.addEventListener('touchstart', handleTouchStart, { passive: false });
+      container.addEventListener('touchmove', handleTouchMove, { passive: false });
+      container.addEventListener('touchend', handleTouchEnd, { passive: false });
     }
 
     return () => {
       if (container) {
         container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+        container.removeEventListener('touchend', handleTouchEnd);
       }
     };
   }, [currentIndex, isScrolling, projects.length]);
