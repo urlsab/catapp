@@ -46,9 +46,20 @@ const ContactPage: React.FC = () => {
 		<div ref={sectionRef} className="min-h-screen mt-12 pt-16 fade-in">
 			{/* New Contact Section - styled as in the reference image */}
 			<div className="max-w-5xl mx-auto px-4 w-full mb-12">
-				<div className="rounded-t-3xl shadow-xl bg-white/10 backdrop-blur-md p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start">
-					{/* Left: Info & Form */}
-					<div className="flex-1 flex flex-col gap-6">
+				<div className="rounded-t-3xl shadow-xl bg-white/10 backdrop-blur-md p-6 md:p-10 flex flex-col gap-8 items-center md:items-start">
+					{/* Image on top for all screen sizes */}
+					<div className="w-full flex justify-center">
+						<div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-lg bg-white flex items-center justify-center">
+							<img
+								src={contactUsImage}
+								alt="צור קשר"
+								className="w-full h-full object-cover object-center"
+							/>
+						</div>
+					</div>
+					
+					{/* Info & Form */}
+					<div className="w-full flex flex-col gap-6">
 						<h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
 							צור קשר
 						</h1>
@@ -114,7 +125,7 @@ const ContactPage: React.FC = () => {
 							</div>
 						</div>
 						{/* Form & Map Row */}
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
 							{/* Form */}
 							<div className="bg-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow">
 								<h3 className="text-lg font-bold text-white mb-2">
@@ -158,16 +169,6 @@ const ContactPage: React.FC = () => {
 									></iframe>
 								</div>
 							</div>
-						</div>
-					</div>
-					{/* Right: Image */}
-					<div className="w-full md:w-64 flex-shrink-0 flex justify-center items-center">
-						<div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-lg bg-white flex items-center justify-center">
-							<img
-								src={contactUsImage}
-								alt="צור קשר"
-								className="w-full h-full object-cover object-center"
-							/>
 						</div>
 					</div>
 				</div>

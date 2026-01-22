@@ -32,7 +32,7 @@ const AboutFullPage: React.FC = () => {
           </p>
         </div>
 
-        <section className="mb-12 space-y-8 text-lg leading-relaxed rtl:text-right">
+        <div className="mb-12 space-y-8 text-lg leading-relaxed rtl:text-right">
           {/* הצגת החברה */}
           <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-animated bg-white/5" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
             <h2 className="text-base sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-3 sm:mb-4 md:mb-6 text-center">למה Catapp שונה?</h2>
@@ -48,7 +48,7 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* לא WordPress - כן טכנולוגיות מתקדמות */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#ffffff"} as React.CSSProperties}>
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <h2 className="text-base sm:text-lg md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6 text-center flex flex-wrap items-center justify-center gap-2 md:gap-3">
               אנחנו לא בונים עם
               <span className="relative inline-flex items-center gap-2">
@@ -63,11 +63,10 @@ const AboutFullPage: React.FC = () => {
               <span className="text-white">אנחנו בונים עם</span>
               <span className="text-[#1a79f6]"> World's Best</span>
             </p>
-            <p className="mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg">
+            <p className="mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg text-gray-300">
               פלטפורמות כמו WordPress, Wix ו-Shopify מגבילות אתכם לתבניות קבועות, איטיות וחסרות גמישות.
             </p>
-            <div className="bg-black/40 rounded-lg md:rounded-xl p-4 sm:p-6 md:p-8 mb-4 md:mb-6">
-              <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center" dir="ltr">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center" dir="ltr">
                 {/* Visual on left */}
                 <div className="flex items-center justify-center">
                   <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] flex items-center justify-center">
@@ -268,9 +267,9 @@ const AboutFullPage: React.FC = () => {
               </div>
             </div>
           </div>
-
+          
           {/* הנגשה - הגנה משפטית */}
-          <div className="relative rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 md:mb-8 backdrop-blur-sm border-static bg-[#1a79f6]/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
+          <div className="mb-6 md:mb-8">
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
@@ -325,7 +324,7 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* בוט AI חכם */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#ffffff"} as React.CSSProperties}>
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
               <div className="text-center md:text-right">
@@ -375,7 +374,7 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* פיצ'רים מתקדמים */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-[#1a79f6]/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
@@ -451,7 +450,7 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* תחזוקה ושיפור קוד */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-blue-900/10" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
               <div className="text-center md:text-right">
@@ -518,7 +517,7 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* שירותי תוכן */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#ffffff"} as React.CSSProperties}>
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
@@ -571,7 +570,7 @@ const AboutFullPage: React.FC = () => {
           </div>
 
           {/* תיק עבודות מובחר */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-static bg-white/5" style={{"--color1": "#1a79f6"} as React.CSSProperties}>
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
               <div className="text-center md:text-right">
@@ -659,10 +658,12 @@ const AboutFullPage: React.FC = () => {
                  className="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg sm:rounded-xl transition-all text-sm sm:text-base">
                 קבל הצעת מחיר
               </a>
-            </div>
+            
           </div>
-        </section>
+          
+        </div>
       </div>
+      
     </div>
   );
 };

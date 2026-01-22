@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp } from 'lucide-react';
+import AnimatedBackground from '../components/AnimatedBackground';
 // import SmoothScroll from '../components/SmoothScroll';
 // import LinkedInIcon from '@mui/icons-material/LinkedIn';
 // import { FaLinkedin } from "react-icons/fa";
@@ -120,112 +121,188 @@ const PricingPage: React.FC = () => {
 
   return (
 
-    <div ref={sectionRef} className="min-h-screen pt-16 fade-in">
+    <div ref={sectionRef} className="min-h-screen pt-16 fade-in relative overflow-hidden">
+      {/* Animated Background */}
+      <AnimatedBackground />
+      
+      {/* Content */}
+      <div className="relative z-10">
       {/* <SmoothScroll /> */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Main Pricing */}
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-20">
+          <div className="inline-block mb-4">
+            <span className="text-5xl">💎</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
             מחירי בניית אתרים
           </h1>
-          {/* Removed description text as requested */}
-          <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto"></div>
+          <p className="text-xl text-gray-300 mb-6">בחרו את החבילה המושלמת עבורכם</p>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-[#1a79f6] via-purple-500 to-pink-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 mt-8">
           {pricingPlans.map((plan, index) => (
-            <div key={index} className={`relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 ${plan.popular ? 'ring-2 ring-[#1a79f6]' : ''}`}>
+            <div 
+              key={index} 
+              className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 ${
+                plan.popular 
+                  ? 'border-[#1a79f6] shadow-2xl shadow-blue-500/20 mt-6' 
+                  : 'border-gray-700/50 hover:border-gray-600'
+              } rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl`}
+            >
+              {/* Glow effect */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${
+                plan.popular 
+                  ? 'from-blue-500/10 to-purple-500/10' 
+                  : 'from-blue-500/5 to-purple-500/5'
+              } opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-[#1a79f6] to-blue-700 text-white px-4 py-1 rounded-full text-sm flex items-center">
-                    <Star size={14} className="mr-1 ml-1" />
-                    פופולרי
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white px-6 py-2 rounded-full text-sm font-extrabold flex items-center shadow-2xl border-2 border-white/30">
+                    <Star size={16} className="mr-2 ml-1 animate-pulse" fill="white" />
+                    המומלץ ביותר
                   </div>
                 </div>
               )}
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center">
-                  {React.createElement(iconMap[plan.icon], { className: 'w-12 h-12 text-[#1a79f6]' })}
+              
+              <div className="relative p-8">
+                <div className="text-center mb-6">
+                  <div className={`mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110 ${
+                    plan.popular ? 'animate-pulse' : ''
+                  }`}>
+                    {React.createElement(iconMap[plan.icon], { 
+                      className: `w-16 h-16 ${
+                        plan.popular 
+                          ? 'text-[#1a79f6]' 
+                          : 'text-blue-400 group-hover:text-[#1a79f6]'
+                      } transition-colors duration-300` 
+                    })}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    {plan.name}
+                  </h3>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1a79f6] to-purple-500">
+                    {plan.price}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {plan.name}
-                </h3>
-                <div className="text-2xl font-bold text-[#1a79f6]">
-                  {plan.price}
-                </div>
+
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+
+                <ul className="space-y-3 mb-6">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={18} className="text-green-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {plan.examples && plan.examples.length > 0 && (
+                  <div className="mt-6 pt-4 border-t border-gray-700/50">
+                    <p className="text-sm text-gray-400 mb-2 font-semibold">✨ פרויקטים לדוגמה:</p>
+                    <div className="space-y-2">
+                      {plan.examples.map((example, exampleIndex) => (
+                        <a 
+                          key={exampleIndex} 
+                          href={`https://${example}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="block text-sm text-blue-400 hover:text-blue-300 transition-colors hover:underline"
+                        >
+                          🔗 {example}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-
-              <ul className="space-y-3 mb-6">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
-                    <CheckCircle size={16} className="text-green-400 mr-2 ml-2 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Removed 'לאתר' buttons as requested */}
             </div>
           ))}
         </div>
 
         {/* Website Spec Form Button - after main pricing */}
-        <div className="flex justify-center mb-20">
+        <div className="flex justify-center mb-24">
           <a
             href="https://forms.gle/A94BRJsPUNZQ6YQy7"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-2xl shadow transition-all text-lg"
+            className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white transition-all duration-300 ease-in-out transform hover:scale-105"
           >
-            לטופס אפיון אתר
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#1a79f6] via-blue-600 to-purple-600 rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:shadow-blue-500/50"></span>
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-600 via-blue-600 to-[#1a79f6] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="relative flex items-center">
+              🚀 לטופס אפיון אתר
+            </span>
           </a>
         </div>
 
 
         {/* Maintenance Pricing */}
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className="text-5xl">🛠️</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">
             מחירי תחזוקה חודשית
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-700 mx-auto"></div>
+          <p className="text-lg text-gray-300 mb-6">שמירה על האתר שלכם במצב מושלם</p>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           {maintenancePlans.map((plan, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6">
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center">
-                  {React.createElement(iconMap[plan.icon], { className: 'w-10 h-10 text-[#1a79f6]' })}
+            <div 
+              key={index} 
+              className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-green-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/10"
+            >
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative p-8">
+                <div className="text-center mb-6">
+                  <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                    {React.createElement(iconMap[plan.icon], { 
+                      className: 'w-14 h-14 text-green-400 group-hover:text-green-300 transition-colors duration-300' 
+                    })}
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">
+                    {plan.name}
+                  </h4>
+                  <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-500">
+                    {plan.price}
+                  </div>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">
-                  {plan.name}
-                </h4>
-                <div className="text-xl font-bold text-green-400">
-                  {plan.price}
-                </div>
-              </div>
 
-              <ul className="space-y-2">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
-                    <CheckCircle size={14} className="text-green-400 mr-2 ml-2 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+
+                <ul className="space-y-3">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-green-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Maintenance Spec Form Button - after maintenance pricing */}
-        <div className="flex justify-center mb-20">
+        <div className="flex justify-center mb-24">
           <a
             href="https://forms.gle/vNGtve7iHdJHCqhA9"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-2xl shadow transition-all text-lg"
+            className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white transition-all duration-300 ease-in-out transform hover:scale-105"
           >
-            לטופס אפיון טיפול חודשי
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:shadow-green-500/50"></span>
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-teal-600 via-emerald-600 to-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="relative flex items-center">
+              🛡️ לטופס אפיון טיפול חודשי
+            </span>
           </a>
         </div>
 
@@ -234,148 +311,339 @@ const PricingPage: React.FC = () => {
         {/* CV & LinkedIn Pricing Section - styled as other cards, with LinkedIn icon and features */}
 
         <div className="mt-8">
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-2">
-              <span className="text-4xl">💼</span>
+          <div className="text-center mb-16">
+            <div className="inline-block mb-4">
+              <span className="text-5xl">💼</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">מחירון קורות חיים והעצמת LinkedIn</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              מחירון קורות חיים והעצמת LinkedIn
+            </h2>
+            <p className="text-lg text-gray-300 mb-6">הצטיידו בכלים המנצחים לקידום הקריירה</p>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-purple-400 via-pink-500 to-rose-500 mx-auto rounded-full"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {/* Card 1 */}
-            <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center"><span className="text-2xl">✍️</span></div>
-                <h3 className="text-xl font-bold text-white mb-2">כתיבת קורות חיים – שפה אחת</h3>
-                <div className="text-2xl font-bold text-[#1a79f6] mb-2">200 ₪</div>
+            <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 flex flex-col justify-between h-full">
+                <div className="text-center mb-6">
+                  <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                    <span className="text-4xl">✍️</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    כתיבת קורות חיים – שפה אחת
+                  </h3>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                    200 ₪
+                  </div>
+                </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                <ul className="space-y-3">
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">קובץ PDF מקצועי ומעוצב</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">התאמה אישית מלאה לתחום ולמשרה</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">ניסוח ברור, חד וממוקד תוצאות</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">מתאים להגשה למערכות גיוס (ATS)</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קובץ PDF מקצועי ומעוצב</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה אישית מלאה לתחום ולמשרה</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">ניסוח ברור, חד וממוקד תוצאות</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מתאים להגשה למערכות גיוס (ATS)</span></li>
-              </ul>
             </div>
             {/* Card 2 */}
-            <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center"><span className="text-2xl">🌍</span></div>
-                <h3 className="text-xl font-bold text-white mb-2">כתיבת קורות חיים – עברית + אנגלית</h3>
-                <div className="text-2xl font-bold text-[#1a79f6] mb-2">370 ₪</div>
+            <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 flex flex-col justify-between h-full">
+                <div className="text-center mb-6">
+                  <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                    <span className="text-4xl">🌍</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    כתיבת קורות חיים – עברית + אנגלית
+                  </h3>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                    370 ₪
+                  </div>
+                </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                <ul className="space-y-3">
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">קבצים מקצועיים בשתי שפות</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">התאמה ייעודית לכל שפה ותרבות גיוס</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">שמירה על מסר אחיד וחד</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">מוכן לשליחה לשוק המקומי והבינלאומי</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצים מקצועיים בשתי שפות</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה ייעודית לכל שפה ותרבות גיוס</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שמירה על מסר אחיד וחד</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מוכן לשליחה לשוק המקומי והבינלאומי</span></li>
-              </ul>
             </div>
             {/* Card 3 */}
-            <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center"><span className="text-2xl">🎓</span></div>
-                <h3 className="text-xl font-bold text-white mb-2">זום: לימוד עקרונות כתיבת קו״ח + בונוס LinkedIn</h3>
-                <div className="text-2xl font-bold text-[#1a79f6] mb-2">250 ₪</div>
+            <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 flex flex-col justify-between h-full">
+                <div className="text-center mb-6">
+                  <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                    <span className="text-4xl">🎓</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    זום: לימוד עקרונות כתיבת קו״ח + בונוס LinkedIn
+                  </h3>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                    250 ₪
+                  </div>
+                </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                <ul className="space-y-3">
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">מפגש זום מעשי (שעה)</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">לימוד שיטה לבניית קו״ח שמביא זימונים</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">דגשים, טעויות נפוצות וטיפים מוכחים</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">בונוס: עקרונות בסיסיים לחיזוק LinkedIn</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מעשי (שעה)</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">לימוד שיטה לבניית קו״ח שמביא זימונים</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">דגשים, טעויות נפוצות וטיפים מוכחים</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">בונוס: עקרונות בסיסיים לחיזוק LinkedIn</span></li>
-              </ul>
             </div>
             {/* Card 4 */}
-            <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center"><span className="text-2xl">🔗</span></div>
-                <h3 className="text-xl font-bold text-white mb-2">זום: העצמת פרופיל LinkedIn</h3>
-                <div className="text-2xl font-bold text-[#1a79f6] mb-2">250 ₪</div>
+            <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 flex flex-col justify-between h-full">
+                <div className="text-center mb-6">
+                  <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                    <span className="text-4xl">🔗</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    זום: העצמת פרופיל LinkedIn
+                  </h3>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                    250 ₪
+                  </div>
+                </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                <ul className="space-y-3">
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">מפגש זום אישי (שעה)</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">שדרוג כותרת, תקציר ונראות הפרופיל</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">התאמה לאלגוריתם ולמגייסים</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">הפיכת הפרופיל לכלי שמייצר פניות</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום אישי (שעה)</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שדרוג כותרת, תקציר ונראות הפרופיל</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה לאלגוריתם ולמגייסים</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">הפיכת הפרופיל לכלי שמייצר פניות</span></li>
-              </ul>
             </div>
             {/* Card 5 */}
-            <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-              <div className="text-center mb-6">
-                <div className="mb-3 flex justify-center"><span className="text-2xl">🚀</span></div>
-                <h3 className="text-xl font-bold text-white mb-2">חבילה משולבת – קו״ח + LinkedIn</h3>
-                <div className="text-2xl font-bold text-[#1a79f6] mb-2">470 ₪</div>
+            <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative p-8 flex flex-col justify-between h-full">
+                <div className="text-center mb-6">
+                  <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                    <span className="text-4xl">🚀</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    חבילה משולבת – קו״ח + LinkedIn
+                  </h3>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                    470 ₪
+                  </div>
+                </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                <ul className="space-y-3">
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">מפגש זום מקיף</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">כתיבת קובץ קו״ח מקצועי</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">שדרוג פרופיל LinkedIn</span>
+                  </li>
+                  <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                    <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm leading-relaxed">התאמה מלאה למטרות הקריירה שלך</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 mb-2">
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מקיף</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת קובץ קו״ח מקצועי</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">שדרוג פרופיל LinkedIn</span></li>
-                <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">התאמה מלאה למטרות הקריירה שלך</span></li>
-              </ul>
             </div>
                           {/* Card 8 - DOUBLE CV + זום עקרונות קו"ח */}
                          
                           
-              {/* Card 7 - PLUS Package */}
-              <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-                <div className="text-center mb-6">
-                  <div className="mb-3 flex justify-center"><span className="text-2xl">🚀</span></div>
-                  <h3 className="text-xl font-bold text-white mb-2">חבילה משולבת PLUS – 2 גרסאות קו״ח + LinkedIn</h3>
-                  <div className="text-2xl font-bold text-[#1a79f6] mb-2">650 ₪</div>
+              {/* Card 6 - PLUS Package */}
+              <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative p-8 flex flex-col justify-between h-full">
+                  <div className="text-center mb-6">
+                    <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                      <span className="text-4xl">🚀</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                      חבילה משולבת PLUS – 2 גרסאות קו״ח + LinkedIn
+                    </h3>
+                    <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                      650 ₪
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">כתיבת 2 גרסאות שונות של קורות חיים</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">קבצי PDF מקצועיים ומעוצבים</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">מפגש זום מקיף על קו"ח</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">שדרוג והעצמת פרופיל LinkedIn</span>
+                    </li>
+                  </ul>
                 </div>
-                <ul className="space-y-3 mb-2">
-                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת 2 גרסאות שונות של קורות חיים</span></li>
-                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצי PDF מקצועיים ומעוצבים</span></li>
-                  {/* מפגש זום מקיף על קו"ח */}
-                  {/* שדרוג והעצמת פרופיל LinkedIn */}
-                </ul>
               </div>
-              {/* Card 8 - DOUBLE CV + זום עקרונות קו"ח */}
-              <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-                <div className="text-center mb-6">
-                  <div className="mb-3 flex justify-center"><span className="text-2xl">🎯</span></div>
-                  <h3 className="text-xl font-bold text-white mb-2">חבילת DOUBLE CV + זום עקרונות קו״ח</h3>
-                  <div className="text-2xl font-bold text-[#1a79f6] mb-2">650 ₪</div>
+              {/* Card 7 - DOUBLE CV + זום עקרונות קו"ח */}
+              <div className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border-2 border-gray-700/50 hover:border-purple-500/50 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative p-8 flex flex-col justify-between h-full">
+                  <div className="text-center mb-6">
+                    <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                      <span className="text-4xl">🎯</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                      חבילת DOUBLE CV + זום עקרונות קו״ח
+                    </h3>
+                    <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                      650 ₪
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-6"></div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">כתיבת 2 גרסאות שונות של קורות חיים</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">קבצי PDF מקצועיים ומעוצבים</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">מפגש זום מעשי (שעה) ללימוד עקרונות כתיבת קו״ח</span>
+                    </li>
+                    <li className="flex items-start text-gray-300 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-purple-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed">הבנה איך לבנות, להתאים ולשפר קו״ח גם בעתיד</span>
+                    </li>
+                  </ul>
                 </div>
-                <ul className="space-y-3 mb-2">
-                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת 2 גרסאות שונות של קורות חיים</span></li>
-                  {/* התאמה מלאה לכל גרסה לפי דרישות שוק ומשרות יעד */}
-                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצי PDF מקצועיים ומעוצבים</span></li>
-                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">מפגש זום מעשי (שעה) ללימוד עקרונות כתיבת קו״ח</span></li>
-                  <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">הבנה איך לבנות, להתאים ולשפר קו״ח גם בעתיד</span></li>
-                </ul>
               </div>
 
-{/* Card 9 - ALL-INCLUSIVE (moved last) */}
-                          <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col justify-between">
-                            <div className="text-center mb-6">
-                              <div className="mb-3 flex justify-center"><span className="text-2xl">🏆</span></div>
-                              <h3 className="text-xl font-bold text-white mb-2">חבילת ALL-INCLUSIVE</h3>
-                              <div className="text-2xl font-bold text-[#1a79f6] mb-2">800 ₪</div>
-                            </div>
-                            <ul className="space-y-3 mb-2">
-                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">כתיבת קו״ח בעברית ובאנגלית</span></li>
-                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">קבצים מקצועיים ומעוצבים</span></li>
-                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">זום על קו״ח (למידת עקרונות)</span></li>
-                              <li className="flex items-center text-gray-300"><CheckCircle size={16} className="text-green-500 mr-2 ml-2 flex-shrink-0" /><span className="text-sm">זום מלא להעצמת LinkedIn</span></li>
-                              {/* ליווי ממוקד עד מוצר מוכן לשליחה */}
-                            </ul>
-                          </div>
+              {/* Card 8 - ALL-INCLUSIVE */}
+              <div className="group relative bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-lg border-2 border-purple-500 rounded-3xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 mt-8">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-gray-900 px-6 py-2 rounded-full text-sm font-extrabold flex items-center shadow-2xl border-2 border-white/40">
+                    <Star size={16} className="mr-2 ml-1 animate-pulse" fill="#1f2937" />
+                    החבילה המשתלמת ביותר
+                  </div>
+                </div>
+                <div className="relative p-8 flex flex-col justify-between h-full">
+                  <div className="text-center mb-6 mt-4">
+                    <div className="mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110 animate-pulse">
+                      <span className="text-5xl">🏆</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-300 transition-colors">
+                      חבילת ALL-INCLUSIVE
+                    </h3>
+                    <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-orange-400">
+                      800 ₪
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent mb-6"></div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start text-gray-200 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-yellow-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed font-semibold">כתיבת קו״ח בעברית ובאנגלית</span>
+                    </li>
+                    <li className="flex items-start text-gray-200 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-yellow-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed font-semibold">קבצים מקצועיים ומעוצבים</span>
+                    </li>
+                    <li className="flex items-start text-gray-200 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-yellow-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed font-semibold">זום על קו״ח (למידת עקרונות)</span>
+                    </li>
+                    <li className="flex items-start text-gray-200 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-yellow-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed font-semibold">זום מלא להעצמת LinkedIn</span>
+                    </li>
+                    <li className="flex items-start text-gray-200 group-hover:text-white transition-colors">
+                      <CheckCircle size={16} className="text-yellow-400 mr-3 ml-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm leading-relaxed font-semibold">ליווי ממוקד עד מוצר מוכן לשליחה</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
           </div>
         </div>
 
-        {/* Quote Section removed as requested */}
         {/* כפתור לטופס בניית קו"ח */}
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-12">
           <a
             href="https://forms.gle/p3yVy1S5ZzBaa2GR8"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-2xl shadow transition-all text-lg"
+            className="group relative inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-white transition-all duration-300 ease-in-out transform hover:scale-105"
           >
-            לטופס בניית קו"ח
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-500 via-pink-600 to-rose-600 rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:shadow-purple-500/50"></span>
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-rose-600 via-pink-600 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="relative flex items-center">
+              💼 לטופס בניית קו"ח
+            </span>
           </a>
         </div>
+      </div>
       </div>
     </div>
   );
