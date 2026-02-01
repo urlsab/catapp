@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                 to="/portfolio"
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                פרויקטים
+                פרוייקטים
               </Link>
               <Link 
                 to="/contact"
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">יצירת קשר</h4>
+            <h4 className="text-lg font-semibold mb-4">פרטי קשר</h4>
             <ul className="space-y-2 text-gray-400">
               <li className="flex items-center justify-start">
                 <Phone size={16} className="ml-2" />
@@ -100,6 +100,25 @@ const Footer: React.FC = () => {
                 <button onClick={handleEmail} className="hover:text-white transition-colors">
                   yairsabag213@gmail.com
                 </button>
+              </li>
+              <li className="flex items-center justify-start">
+                <a 
+                  href="https://waze.com/ul?q=רותם+15+לוד&navigate=yes" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:text-white transition-colors"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="ml-2"
+                  >
+                    <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  לוד, רותם 15
+                </a>
               </li>
             </ul>
           </div>

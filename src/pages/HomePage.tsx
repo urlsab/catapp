@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from 'react';
 // import logo from '../../Assets/Catapp logo no bg.png';
 import atlizWebsite from '../../Assets/atliz website.png';
 import benjiLogo from '../../Assets/benjilogo1-no bg.png';
-import maakafLogo from '../../Assets/icon maakaf.png';
+import maakafLogo from '../../Assets/hebrew_horizontal_dark.png';
 import mosheLogo from '../../Assets/moshelogo.png';
 import officeLogo from '../../Assets/office logo.webp';
 import codersClanLogo from '../../Assets/coders clan icon.jpg';
@@ -13,6 +13,7 @@ import cvPic2 from '../../Assets/cv pic 2.png';
 import cvPic3 from '../../Assets/cv pic 3.png';
 import cvPic4 from '../../Assets/cv pic 4.png';
 import cvPic5 from '../../Assets/cv pic 5.png';
+import cvPic6 from '../../Assets/cv pic 6.png';
 import benjiWebsite from '../../Assets/benji website.png';
 import refaelWebsite from '../../Assets/refael website.png';
 import resumesWebsite from '../../Assets/resumes builder website.png';
@@ -25,7 +26,6 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
 import codeServiceImage from '../../Assets/code service.jpg';
 import buildCvImage from '../../Assets/build cv.png';
-import buildLinkedinImage from '../../Assets/build linkedin.png';
 
 
 
@@ -316,78 +316,185 @@ const HomePage: React.FC = () => {
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight">השירותים שלנו</h2>
                 <p className="text-white text-base md:text-lg mb-10 text-center max-w-2xl">הפתרונות שלנו לעסק ולקריירה שלך</p>
                 {/* שורה 1: בניית אתרים + עיגולים מסתובבים + 4 תמונות אתרים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-12">
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
                   <div className="flex-1 flex flex-col items-end text-right">
-                    <div className="relative w-full max-w-[340px] mb-4">
-                      <img src={codeServiceImage} alt="בניית אתרים" className="w-full rounded-2xl shadow-lg" />
+                    <div className="relative w-full max-w-[340px] h-[240px] md:h-[280px] mb-4 border-2 border-[#1a79f6] rounded-2xl">
+                      <img src={codeServiceImage} alt="בניית אתרים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                       <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
                         בניית אתרים
                       </div>
                     </div>
-                    <p className="text-gray-200 text-sm mb-2">אתרי תדמית, דפי נחיתה, חנויות אונליין, אתרים מותאמים אישית לעסק שלך</p>
-                    <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                    {/* כפתורים */}
+                    <div className="flex gap-3 w-full max-w-[340px] justify-center">
+                      <Link
+                        to="/portfolio"
+                        className="flex-1 bg-[#1a79f6] hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-center text-sm md:text-base"
+                      >
+                        לפרוייקטים
+                      </Link>
+                      <Link
+                        to="/pricing"
+                        className="flex-1 bg-[#1a79f6] hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-center text-sm md:text-base"
+                      >
+                        למחירון
+                      </Link>
+                    </div>
                   </div>
-                  <div className="flex-1 flex flex-col items-center justify-center">
-                    {/* 4 תמונות האתרים מההירו - עיצוב זהה */}
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4 auto-rows-min mt-4 w-full max-w-[340px]">
-                      {/* Screenshot 1 - Benji */}
-                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg h-fit">
-                        <img src={benjiWebsite} alt="אתר Orbenji" className="w-full h-auto block" />
-                      </div>
-                      {/* Screenshot 2 - Atliz */}
-                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8">
-                        <img src={atlizWebsite} alt="אטליז למהדרין" className="w-full h-full block" />
-                      </div>
-                      {/* Screenshot 3 - Lawyer */}
-                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-20 h-fit">
-                        <img src={refaelWebsite} alt="עורך דין רפאל סבג" className="w-full h-auto block" />
-                      </div>
-                      {/* Screenshot 4 - Resume Builder */}
-                      <div className="rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 h-fit">
-                        <img src={resumesWebsite} alt="בונה קורות חיים" className="w-full h-auto block" />
+                  <div className="flex-1 flex items-center justify-center">
+                    {/* אנימציית אייקונים מסתובבים */}
+                    <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[450px] flex items-center justify-center">
+                      {/* Circular orbit container */}
+                      <div className="tech-orbit">
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 0 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#61DAFB]/20 hover:scale-125">
+                            <IntegrationInstructionsIcon className="text-xs xs:text-base sm:text-xl md:text-2xl text-[#61DAFB]" />
+                          </div>
+                          <p className="tech-label">React</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 1 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#3178C6]/20 hover:scale-125">
+                            <IntegrationInstructionsIcon className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#3178C6]" />
+                          </div>
+                          <p className="tech-label">TypeScript</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 2 } as React.CSSProperties}>
+                          <div className="tech-icon bg-yellow-500/20 hover:scale-125">
+                            <IntegrationInstructionsIcon className="text-[10px] xs:text-sm sm:text-base md:text-xl text-yellow-500" />
+                          </div>
+                          <p className="tech-label">JavaScript</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 3 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#646CFF]/20 hover:scale-125">
+                            <Zap className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#646CFF]" />
+                          </div>
+                          <p className="tech-label">Vite</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 4 } as React.CSSProperties}>
+                          <div className="tech-icon bg-green-500/20 hover:scale-125">
+                            <DollarSign className="text-[10px] xs:text-sm sm:text-base md:text-xl text-green-500" />
+                          </div>
+                          <p className="tech-label">MongoDB</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 5 } as React.CSSProperties}>
+                          <div className="tech-icon bg-blue-500/20 hover:scale-125">
+                            <Palette className="text-[10px] xs:text-sm sm:text-base md:text-xl text-blue-500" />
+                          </div>
+                          <p className="tech-label">MUI</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 6 } as React.CSSProperties}>
+                          <div className="tech-icon bg-black border border-white hover:scale-125">
+                            <TrendingUp className="text-[10px] xs:text-sm sm:text-base md:text-xl text-white" />
+                          </div>
+                          <p className="tech-label">Vercel</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 7 } as React.CSSProperties}>
+                          <div className="tech-icon bg-orange-600/20 hover:scale-125">
+                            <Rocket className="text-[10px] xs:text-sm sm:text-base md:text-xl text-orange-600" />
+                          </div>
+                          <p className="tech-label">Node.js</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 8 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#06B6D4]/20 hover:scale-125">
+                            <Briefcase className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#06B6D4]" />
+                          </div>
+                          <p className="tech-label">Tailwind CSS</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 9 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#FFCA28]/20 hover:scale-125">
+                            <Shield className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#FFCA28]" />
+                          </div>
+                          <p className="tech-label">Firebase</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 10 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#1BDBDB]/20 hover:scale-125">
+                            <Building2 className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#1BDBDB]" />
+                          </div>
+                          <p className="tech-label">GoDaddy</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 11 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#430098]/20 hover:scale-125">
+                            <Clock className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#430098]" />
+                          </div>
+                          <p className="tech-label">Heroku</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 12 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#181717]/20 border border-gray-700 hover:scale-125">
+                            <Eye className="text-[10px] xs:text-sm sm:text-base md:text-xl text-white" />
+                          </div>
+                          <p className="tech-label">GitHub</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 13 } as React.CSSProperties}>
+                          <div className="tech-icon bg-[#F05032]/20 hover:scale-125">
+                            <Star className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#F05032]" />
+                          </div>
+                          <p className="tech-label">Git</p>
+                        </div>
+                        <div className="tech-icon-wrapper" style={{ '--icon-index': 14 } as React.CSSProperties}>
+                          <div className="tech-icon bg-purple-500/20 hover:scale-125">
+                            <span className="text-[10px] xs:text-sm sm:text-base md:text-xl font-bold text-purple-500">✨</span>
+                          </div>
+                          <p className="tech-label">AI</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                {/* טקסט מעוצב מתחת לשני החלקים */}
+                <div className="w-full flex justify-center mb-12">
+                  <div className="rounded-xl p-5 md:p-7 shadow-lg w-full max-w-3xl">
+                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-snug break-words whitespace-pre-line">
+                      אנחנו לא בונים עם{" "}
+                      <span className="text-[#1a79f6]">WordPress</span>
+                      {"\n"}
+                      אנחנו בונים עם{" "}
+                      <span className="text-[#1a79f6]">World's Best</span>
+                      {"\n"}
+                      עם אינסוף אפשרויות עיצוב, ביצועים מהירים, ופיצ'רים ייחודיים
+                      {"\n"}
+                      <span className="text-[#1a79f6]">בטכנולוגיות ההייטק</span>
+                    </p>
+                  </div>
+                </div>
                 {/* שורה 2: בניית קורות חיים + מניפת קורות חיים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-12">
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
                   <div className="flex-1 flex flex-col items-end text-right">
-                    <img src={buildCvImage} alt="בניית קורות חיים" className="w-full max-w-[340px] rounded-2xl shadow-lg mb-4" />
-                    <h3 className="text-xl font-bold text-[#1a79f6] mb-2">עריכת קו"ח</h3>
-                    <p className="text-gray-200 text-sm mb-2">שדרוג, עיצוב וכתיבה מקצועית של קורות חיים שמבליטים אותך</p>
-                    <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
+                    <div className="relative w-full max-w-[340px] h-[240px] md:h-[280px] mb-4 border-2 border-[#1a79f6] rounded-2xl">
+                      <img src={buildCvImage} alt="בניית קורות חיים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
+                      <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
+                        בניית קו"ח
+                      </div>
+                    </div>
                   </div>
                   <div className="flex-1 flex items-center justify-center">
                     {/* מניפת קורות חיים */}
                     <div className="relative flex-1 flex justify-end items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-8 md:mt-0">
                       <div className="relative w-[300px] h-[260px] md:w-[400px] md:h-[340px] flex items-end justify-center">
                         {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
-                        <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-40deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
-                        <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
+                        <img src={cvPic6} alt="cv6" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-30deg)', transformOrigin: '50% 100%', zIndex: 6 }} />
+                        <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
+                        <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-10deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
                         <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(0deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
-                        <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(20deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
-                        <img src={cvPic5} alt="cv5" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(40deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
+                        <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(10deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
+                        <img src={cvPic5} alt="cv5" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(20deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* שורה 3: לינקדאין + טקסט מעוצב */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
-                  <div className="flex-1 flex flex-col items-end text-right">
-                    <img src={buildLinkedinImage} alt="העצמת פרופיל לינקדאין" className="w-full max-w-[340px] rounded-2xl shadow-lg mb-4" />
-                    <h3 className="text-xl font-bold text-[#1a79f6] mb-2">העצמת פרופיל לינקדאין</h3>
-                    <p className="text-gray-200 text-sm mb-2">ייעוץ, אופטימיזציה והכוונה לפרופיל לינקדאין שמייצר הזדמנויות</p>
-                    <button className="bg-[#1a79f6] text-white rounded-lg px-4 py-2 text-xs font-semibold shadow hover:bg-blue-700 transition">למידע נוסף</button>
-                  </div>
-                  <div className="flex-1 flex items-center justify-center">
-                    {/* טקסט מעוצב על שירות לינקדאין */}
-                    <div className="w-full h-64 flex flex-col items-center justify-center bg-transparent text-center">
-                      <span className="text-2xl md:text-3xl font-bold text-[#1a79f6] mb-3 drop-shadow">אנחנו הופכים את הפרופיל שלך ללינקדאין שמייצר פניות אמיתיות</span>
-                      <span className="text-lg md:text-xl text-white font-semibold bg-[#1a79f6]/20 rounded-xl px-6 py-3 shadow mt-2">ייעוץ, אופטימיזציה, מיתוג אישי וכתיבה שיווקית שמבליטים אותך מעל כולם</span>
-                    </div>
+                {/* טקסט מעוצב מתחת לשני החלקים */}
+                <div className="w-full flex justify-center mb-12">
+                  <div className="rounded-xl p-5 md:p-7 shadow-lg w-full max-w-3xl">
+                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-snug break-words whitespace-pre-line">
+                      אנחנו מייצרים קורות חיים
+                      <span className="text-[#1a79f6]"> שעוברים כל סינון </span>
+                      אוטומטי
+                      <span className="text-[#1a79f6]"> ושהכי בולטים </span>
+                      למגייסים
+                    </p>
                   </div>
                 </div>
+
               </div>
               {/* Decorative arrows - left/right */}
               <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2">
@@ -415,13 +522,13 @@ const HomePage: React.FC = () => {
                       <img src={benjiLogo} alt="בנג'י" className="max-h-32 max-w-32 object-contain" />
                     </div>
                     <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                      <img src={maakafLogo} alt="מעקף" className="max-h-32 max-w-32 object-contain" />
+                      <img src={maakafLogo} alt="מעקף" className="max-h-40 max-w-40 object-contain" />
                     </div>
                     <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                      <img src={mosheLogo} alt="משה" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '15%'}} />
+                      <img src={mosheLogo} alt="משה" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '20%'}} />
                     </div>
                     <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                      <img src={officeLogo} alt="משרד עורכי דין" className="max-h-48 max-w-48 object-contain" style={{borderRadius: '7%', border: '1px solid white'}} />
+                      <img src={officeLogo} alt="משרד עורכי דין" className="max-h-48 max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
                     </div>
                     <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
                       <img src={codersClanLogo} alt="Coders Clan" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '20%'}} />
@@ -608,35 +715,6 @@ const HomePage: React.FC = () => {
 
       {/* Values Section */}
 
-{/* CV Fan & Career Promo Section */}
-      <div className="scroll-area w-full flex justify-center items-center relative min-h-[400px] md:min-h-[500px] py-8 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center md:items-stretch justify-between gap-8">
-          {/* Marketing Text - left side */}
-          <div className="flex-1 flex flex-col justify-center items-start text-right gap-6 w-full md:w-auto md:max-w-[480px] md:items-end order-1 md:order-2">
-            <div className="rounded-xl p-5 md:p-7 shadow-lg w-full max-w-3xl lg:max-w-4xl ml-auto md:ml-0 md:mr-8 lg:mr-20">
-              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-right text-white leading-snug break-words whitespace-pre-line">
-                אנחנו מייצרים קורות חיים
-                <span className="text-[#1a79f6]"> שעוברים כל סינון </span>
-                 אוטומטי
-                <span className="text-[#1a79f6]"> ושהכי בולטים </span>
-                למגייסים
-              </p>
-            </div>
-          </div>
-          {/* Fan of CV Images - right side */}
-          <div className="relative flex-1 flex justify-end items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-8 md:mt-0">
-            <div className="relative w-[300px] h-[260px] md:w-[400px] md:h-[340px] flex items-end justify-center">
-              {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
-              <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-40deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
-              <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
-              <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(0deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
-              <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(20deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
-              <img src={cvPic5} alt="cv5" className="absolute rounded-xl shadow-lg w-32 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(40deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div
         ref={valuesRef}
         className="scroll-area w-full flex justify-center items-center relative min-h-screen"
@@ -809,103 +887,6 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Portfolio Preview Section */}
-      <div className="scroll-area w-full flex justify-center items-center relative min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-32">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-              תיק עבודות
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-2"></div>
-            <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto px-4">
-              עיינו בפרויקטים המרשימים שיצרנו עבור לקוחותינו במגוון תחומים
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-3 md:gap-4">
-            <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl md:rounded-2xl overflow-hidden hover:border-[#1a79f6]/60 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4 flex justify-center">
-                  <Rocket className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-[#1a79f6]" />
-                </div>
-                <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3 text-center">
-                  Orbenji
-                </h3>
-                <p className="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 text-center">
-                  דף נחיתה מרשים ומקצועי
-                </p>
-                <div className="text-center">
-                  <a
-                    href="https://orbenji.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm transition-all"
-                  >
-                    לאתר
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl md:rounded-2xl overflow-hidden hover:border-[#1a79f6]/60 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4 flex justify-center">
-                  <Building2 className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-[#1a79f6]" />
-                </div>
-                <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3 text-center">
-                  Atliz
-                </h3>
-                <p className="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 text-center">
-                  אתר תדמית עסקי מתקדם ומקצועי
-                </p>
-                <div className="text-center">
-                  <a
-                    href="https://atliz.co.il"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm transition-all"
-                  >
-                    לאתר
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl md:rounded-2xl overflow-hidden hover:border-[#1a79f6]/60 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4 flex justify-center">
-                  <Scale className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-[#1a79f6]" />
-                </div>
-                <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-2 md:mb-3 text-center">
-                  Refael Law
-                </h3>
-                <p className="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 text-center">
-                  אתר מקצועי למשרד עורכי דין
-                </p>
-                <div className="text-center">
-                  <a
-                    href="https://refael-law.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#1a79f6] hover:bg-blue-700 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm transition-all"
-                  >
-                    לאתר
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-4">
-            <Link
-              to="/portfolio"
-              className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
-            >
-            לצפייה בתיק העבודות המלא
-            </Link>
-          </div>
-        </div>
-      </div>
 
 
       

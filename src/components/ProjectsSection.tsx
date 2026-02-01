@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import resumeBuilderImage from '../../Assets/resumes builder website.png';
 import orBenjiImage from '../../Assets/benji website.png';
 import refaelLawImage from '../../Assets/refael website.png';
 import atlizImage from '../../Assets/atliz website.png';
 import campNetworkImage from '../../Assets/camps website.png';
 import colorGameImage from '../../Assets/color game website.png';
+import portfolioImage from '../../Assets/portfolio website.png';
 
 interface Project {
   id: number;
@@ -58,6 +59,12 @@ const ProjectsSection: React.FC = () => {
       title: 'משחק צבעים',
       image: colorGameImage,
       url: 'https://color-game-react.vercel.app'
+    },
+    {
+      id: 7,
+      title: 'אתר פורטפוליו',
+      image: portfolioImage,
+      url: 'https://portfolio-uriel-yair-sabag.vercel.app'
     }
   ];
 

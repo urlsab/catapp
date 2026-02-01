@@ -198,25 +198,6 @@ const PricingPage: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-
-                {plan.examples && plan.examples.length > 0 && (
-                  <div className="mt-6 pt-4 border-t border-gray-700/50">
-                    <p className="text-sm text-gray-400 mb-2 font-semibold">✨ פרויקטים לדוגמה:</p>
-                    <div className="space-y-2">
-                      {plan.examples.map((example, exampleIndex) => (
-                        <a 
-                          key={exampleIndex} 
-                          href={`https://${example}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="block text-sm text-blue-400 hover:text-blue-300 transition-colors hover:underline"
-                        >
-                          🔗 {example}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           ))}

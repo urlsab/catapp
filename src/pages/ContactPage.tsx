@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import Contact from '../components/Contact';
 import contactUsImage from '../../Assets/contact us 2.png';
 // import SmoothScroll from '../components/SmoothScroll';
 
 const faqList = [
 	{
-		question: 'מה היתרון של CatApp על פני חברות אחרות?',
-		answer: 'CatApp מתמחה בפיתוח אתרים חכמים, עיצוב מותאם אישית, קידום SEO, תחזוקה שוטפת ושירותי תוכן. אנו עובדים עם טכנולוגיות מתקדמות ומספקים שירות אישי וזמין.',
+		question: 'מה היתרון של Catapp על פני חברות אחרות?',
+		answer: 'Catapp מתמחה בפיתוח אתרים חכמים, עיצוב מותאם אישית, קידום SEO, תחזוקה שוטפת ושירותי תוכן. אנו עובדים עם טכנולוגיות מתקדמות ומספקים שירות אישי וזמין.',
 	},
 	{
 		question: 'האם האתר שלי יהיה מותאם לכל סוגי המכשירים?',
-		answer: 'בהחלט! כל אתר שנבנה ב-CatApp מותאם באופן מלא למובייל, טאבלט ודסקטופ.',
+		answer: 'בהחלט! כל אתר שנבנה ב-Catapp מותאם באופן מלא למובייל, טאבלט ודסקטופ.',
 	},
 	{
 		question: 'האם אתם מספקים שירותי תחזוקה ותמיכה לאחר ההשקה?',
@@ -37,112 +36,156 @@ const faqList = [
 const ContactPage: React.FC = () => {
 	const sectionRef = React.useRef<HTMLDivElement>(null);
 	const [openIdx, setOpenIdx] = useState<number | null>(null);
+	const [formData, setFormData] = useState({
+		name: '',
+		email: '',
+		message: ''
+	});
 
 	const handleToggle = (idx: number) => {
 		setOpenIdx(openIdx === idx ? null : idx);
+	};
+
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		const { name, value } = e.target;
+		setFormData(prev => ({
+			...prev,
+			[name]: value
+		}));
+	};
+
+	const handleWhatsAppSend = (e: React.FormEvent) => {
+		e.preventDefault();
+		const message = `שלום קוראים לי ${formData.name}\n${formData.message}\nלהלן כתובת המייל שלי ${formData.email}`;
+		const encodedMessage = encodeURIComponent(message);
+		const whatsappUrl = `https://wa.me/972556611594?text=${encodedMessage}`;
+		window.open(whatsappUrl, '_blank');
 	};
 
 	return (
 		<div ref={sectionRef} className="min-h-screen mt-12 pt-16 fade-in">
 			{/* New Contact Section - styled as in the reference image */}
 			<div className="max-w-5xl mx-auto px-4 w-full mb-12">
-				<div className="rounded-t-3xl shadow-xl bg-white/10 backdrop-blur-md p-6 md:p-10 flex flex-col gap-8 items-center md:items-start">
-					{/* Image on top for all screen sizes */}
-					<div className="w-full flex justify-center">
-						<div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-lg bg-white flex items-center justify-center">
-							<img
-								src={contactUsImage}
-								alt="צור קשר"
-								className="w-full h-full object-cover object-center"
-							/>
+				<div className="rounded-t-3xl shadow-xl bg-white/10 backdrop-blur-md p-6 md:p-10">
+					{/* Header Section - Title Right, Image Center, Text Left - All in One Row */}
+					<div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 lg:gap-8 mb-8">
+						{/* Title - Right */}
+						<div className="flex-shrink-0 order-1 md:order-1">
+							<h1 className="text-3xl md:text-4xl font-bold text-white text-center">
+								פרטי קשר
+							</h1>
+						</div>
+						
+						{/* Image - Center */}
+						<div className="flex-shrink-0 order-2 md:order-2">
+							<div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white shadow-lg bg-white flex items-center justify-center">
+								<img
+									src={contactUsImage}
+									alt="צור קשר"
+									className="w-full h-full object-cover object-center"
+								/>
+							</div>
+						</div>
+						
+						{/* Blue Text - Left */}
+						<div className="flex-shrink-0 order-3 md:order-3">
+							<p className="text-xl md:text-2xl font-semibold text-[#1a79f6] text-center">
+								אנו מתחייבים לענות מהר!
+							</p>
 						</div>
 					</div>
 					
-					{/* Info & Form */}
+					{/* Contact Info & Forms */}
 					<div className="w-full flex flex-col gap-6">
-						<h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-							צור קשר
-						</h1>
-						<p className="text-gray-200 mb-4">
-							נשמח לשוחח איתך, לייעץ ולסייע בכל שאלה או צורך. מלא את הטופס ונחזור
-							אליך בהקדם!
-						</p>
 						{/* Contact Info Row */}
 						<div className="flex flex-wrap gap-6 mb-4">
-							<div className="flex flex-col items-center text-center flex-1 min-w-[120px]">
+							<a href="tel:+972556611594" className="flex flex-col items-center text-center flex-1 min-w-[120px] group cursor-pointer transition-all">
 								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-2">
 									<svg
-										width="20"
-										height="20"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
 										fill="none"
 										stroke="#1a79f6"
 										strokeWidth="2"
-										viewBox="0 0 24 24"
+										strokeLinecap="round"
+										strokeLinejoin="round"
 									>
-										<path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.7 3.06a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.99.33 2.01.57 3.06.7A2 2 0 0 1 22 16.92z" />
+										<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
 									</svg>
 								</span>
-								<span className="text-white text-base">
+								<span className="text-white group-hover:text-[#1a79f6] text-base transition-colors">
 									055-6611594
 								</span>
 								
-							</div>
-							<div className="flex flex-col items-center text-center flex-1 min-w-[120px]">
+							</a>
+							<a href="mailto:yairsabag213@gmail.com" className="flex flex-col items-center text-center flex-1 min-w-[120px] group cursor-pointer transition-all">
 								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-2">
 									<svg
-										width="20"
-										height="20"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
 										fill="none"
 										stroke="#1a79f6"
 										strokeWidth="2"
-										viewBox="0 0 24 24"
+										strokeLinecap="round"
+										strokeLinejoin="round"
 									>
-										<path d="M4 4h16v16H4z" />
-										<polyline points="22,6 12,13 2,6" />
+										<rect x="2" y="4" width="20" height="16" rx="2" />
+										<path d="m2 7 10 6 10-6" />
 									</svg>
 								</span>
-								<span className="text-white text-base">
+								<span className="text-white group-hover:text-[#1a79f6] text-base transition-colors">
 									yairsabag213@gmail.com
 								</span>
 								
-							</div>
-							<div className="flex flex-col items-center text-center flex-1 min-w-[120px]">
+							</a>
+							<a href="https://waze.com/ul?q=רותם+15+לוד&navigate=yes" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-center flex-1 min-w-[120px] group cursor-pointer transition-all">
 								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-2">
 									<svg
-										width="20"
-										height="20"
-										fill="none"
-										stroke="#1a79f6"
-										strokeWidth="2"
+										width="24"
+										height="24"
 										viewBox="0 0 24 24"
+										fill="#1a79f6"
 									>
-										<circle cx="12" cy="12" r="10" />
-										<circle cx="12" cy="10" r="3" />
-										<path d="M12 13v5" />
+										<path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
 									</svg>
 								</span>
-								<span className="text-white text-base">לוד, רותם 15</span>
-							</div>
+								<span className="text-white group-hover:text-[#1a79f6] text-base transition-colors">לוד, רותם 15</span>
+							</a>
 						</div>
 						{/* Form & Map Row */}
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
 							{/* Form */}
 							<div className="bg-white/10 rounded-2xl p-6 flex flex-col gap-4 shadow">
 								<h3 className="text-lg font-bold text-white mb-2">
-									השאר פרטים ונחזור אליך
+									לשליחת הודעה ישירות לוואטספ שלנו
 								</h3>
-								<form className="flex flex-col gap-3">
+								<form className="flex flex-col gap-3" onSubmit={handleWhatsAppSend}>
 									<input
 										className="rounded-lg px-4 py-2 bg-white/20 text-white placeholder-gray-400 border border-[#1a79f6]/30 focus:border-[#1a79f6] outline-none"
 										placeholder="שם"
+										name="name"
+										value={formData.name}
+										onChange={handleInputChange}
+										required
 									/>
 									<input
 										className="rounded-lg px-4 py-2 bg-white/20 text-white placeholder-gray-400 border border-[#1a79f6]/30 focus:border-[#1a79f6] outline-none"
 										placeholder="אימייל"
+										type="email"
+										name="email"
+										value={formData.email}
+										onChange={handleInputChange}
+										required
 									/>
 									<textarea
 										className="rounded-lg px-4 py-2 bg-white/20 text-white placeholder-gray-400 border border-[#1a79f6]/30 focus:border-[#1a79f6] outline-none min-h-[80px]"
 										placeholder="הודעה"
+										name="message"
+										value={formData.message}
+										onChange={handleInputChange}
+										required
 									/>
 									<button
 										type="submit"
@@ -174,7 +217,7 @@ const ContactPage: React.FC = () => {
 				</div>
 			</div>
 			<div style={{ height: '32px' }} />
-			<Contact />
+			
 			{/* FAQ Section */}
 			<div className="max-w-3xl mx-auto px-4 py-12">
 				<div className="text-center mb-12">
