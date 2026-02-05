@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
               <img src={logo} alt="Catapp Logo" className="h-8 ml-auto block" />
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Catapp מתמחה בבניית דפי נחיתה ממוקדים, אתרי תדמית מקצועיים, עיצוב מחדש של אתרים קיימים, בנייה ושיפור קורות חיים, אופטימיזציה לפרופיל לינקדאין, הרצאות תוכן מקיפות והטמעת AI לאתרים.
+              בניית אתרים מקצועיים | דפי נחיתה ממירים | כתיבת קורות חיים להייטק | אופטימיזציית LinkedIn | הטמעת AI לאתרים
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
               
@@ -57,6 +57,12 @@ const Footer: React.FC = () => {
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 אודות
+              </Link>
+              <Link 
+                to="/testimonials"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                המלצות
               </Link>
               <Link 
                 to="/websites"

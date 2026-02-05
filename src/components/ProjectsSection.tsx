@@ -183,29 +183,55 @@ const ProjectsSection: React.FC = () => {
                     transformStyle: 'preserve-3d',
                   }}
                 >
-                  {/* Background Image */}
-                  <img 
-                    src={project.image}
-                    alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ 
-                      imageRendering: 'crisp-edges',
-                      WebkitFontSmoothing: 'antialiased',
-                      objectPosition: 'center',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
+                  {/* Device Mockup with Project Image */}
+                  <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-12 md:p-16 lg:p-20">
+                    <div className="relative w-full h-full max-w-5xl mx-auto flex items-center justify-center">
+                      {/* Desktop Screen SVG - Full Width */}
+                      <div className="relative w-full h-auto">
+                        <svg viewBox="0 0 1200 800" className="w-full h-auto drop-shadow-2xl">
+                          {/* Monitor Stand */}
+                          <rect x="500" y="720" width="200" height="20" fill="#2d3748" rx="4"/>
+                          <rect x="450" y="740" width="300" height="10" fill="#1a202c" rx="5"/>
+                          
+                          {/* Monitor Frame */}
+                          <rect x="50" y="50" width="1100" height="670" fill="#1a202c" rx="12"/>
+                          <rect x="70" y="70" width="1060" height="630" fill="#000000" rx="8"/>
+                          
+                          {/* Screen Content - Project Image */}
+                          <foreignObject x="70" y="70" width="1060" height="630">
+                            <div className="w-full h-full overflow-hidden rounded-lg">
+                              <img 
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-full object-contain"
+                                style={{ 
+                                  imageRendering: 'crisp-edges',
+                                  WebkitFontSmoothing: 'antialiased',
+                                }}
+                              />
+                            </div>
+                          </foreignObject>
+                          
+                          {/* Camera */}
+                          <circle cx="600" cy="60" r="4" fill="#4a5568"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
 
-                  {/* Project Title and Button - Left Side Centered Vertically */}
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none" />
+
+                  {/* Project Title and Button - Right Side Centered Vertically */}
                   <motion.div 
-                    className="absolute top-1/2 transform -translate-y-1/2 left-4 sm:left-6 md:left-8"
+                    className="absolute top-1/2 transform -translate-y-1/2 right-4 sm:right-6 md:right-8"
                     animate={{
                       opacity: index === currentIndex ? 1 : 0,
                       y: index === currentIndex ? 0 : 30
                     }}
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="flex flex-col items-end" dir="rtl">
+                    <div className="flex flex-col items-start" dir="rtl">
                       <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-2xl mb-4 sm:mb-6">
                         {project.title}
                       </h3>

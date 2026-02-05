@@ -3,6 +3,26 @@ body, html, #root {
   font-family: "Varela Round", "Manrope", sans-serif;
 }
 
+/* Smooth scrolling for entire site with smooth delay */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  html, body {
+    scroll-behavior: smooth !important;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
 .varela-round-regular {
   font-family: "Varela Round", sans-serif;
   font-weight: 400;

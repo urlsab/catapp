@@ -3,7 +3,8 @@ import logoBg from '../../Assets/catapp logo no bg.png';
 import logoCenter from '../../Assets/logoiCatapp.png';
 import { Target, Shield, Code, Bot, Accessibility, Sparkles, Wrench, X, CheckCircle2 } from 'lucide-react';
 import { FaReact, FaNodeJs, FaWordpress, FaGithub, FaGitAlt, FaSass, FaBolt } from 'react-icons/fa';
-import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini } from 'react-icons/si';
+import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiExpress, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini, SiGooglecloud } from 'react-icons/si';
+import { BsBootstrapFill } from "react-icons/bs";
 // import SmoothScroll from '../components/SmoothScroll';
 
 const AboutFullPage: React.FC = () => {
@@ -168,9 +169,9 @@ const AboutFullPage: React.FC = () => {
                     <div className="tech-orbit-inner">
                       <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 0 } as React.CSSProperties}>
                         <div className="tech-icon bg-[#2563eb]/20 hover:scale-125">
-                          <span className="text-[8px] xs:text-xs sm:text-sm md:text-base font-bold text-[#2563eb]">B44</span>
+                          <SiGooglecloud />
                         </div>
-                        <p className="tech-label">Base44</p>
+                        <p className="tech-label">GCP</p>
                       </div>
                       <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 1 } as React.CSSProperties}>
                         <div className="tech-icon bg-yellow-400/20 hover:scale-125">
@@ -180,13 +181,13 @@ const AboutFullPage: React.FC = () => {
                       </div>
                       <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 2 } as React.CSSProperties}>
                         <div className="tech-icon bg-white/10 border border-gray-500 hover:scale-125">
-                          <span className="text-[8px] xs:text-xs sm:text-sm md:text-base">🤖</span>
+                          <BsBootstrapFill />
                         </div>
                         <p className="tech-label">Copilot</p>
                       </div>
                       <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 3 } as React.CSSProperties}>
                         <div className="tech-icon bg-[#00CED1]/20 hover:scale-125">
-                          <span className="text-[8px] xs:text-xs sm:text-sm md:text-base font-bold text-[#00CED1]">▷</span>
+                          <SiExpress />
                         </div>
                         <p className="tech-label">Cursor</p>
                       </div>
@@ -197,14 +198,14 @@ const AboutFullPage: React.FC = () => {
                         <p className="tech-label">GenAI</p>
                       </div>
                       <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 5 } as React.CSSProperties}>
-                        <div className="tech-icon bg-[#DB7093]/20 hover:scale-125">
-                          <SiStyledcomponents className="text-[8px] xs:text-xs sm:text-sm md:text-base text-[#DB7093]" />
+                        <div className="tech-icon bg-pink-900 hover:scale-125">
+                          <SiStyledcomponents className="text-[32px] lg:text-lg sm:text-sm md:text-base text-yellow-200" />
                         </div>
                         <p className="tech-label">Styled</p>
                       </div>
                       <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 6 } as React.CSSProperties}>
-                        <div className="tech-icon bg-[#CC6699]/20 hover:scale-125">
-                          <FaSass className="text-[8px] xs:text-xs sm:text-sm md:text-base text-[#CC6699]" />
+                        <div className="tech-icon bg-pink-500/20 hover:scale-125">
+                          <FaSass className="text-[32px] lg:text-lg sm:text-sm md:text-base text-white" />
                         </div>
                         <p className="tech-label">SCSS</p>
                       </div>

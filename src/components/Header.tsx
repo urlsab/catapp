@@ -117,6 +117,15 @@ const Header: React.FC = () => {
               />
             </Link>
             <Link
+              to="/testimonials"
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/testimonials') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+            >
+              המלצות
+              <span
+                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/testimonials') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+              />
+            </Link>
+            <Link
               to="/cv-services"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
             >
@@ -202,6 +211,15 @@ const Header: React.FC = () => {
               >
                 <DollarSign size={18} />
                 מחירון
+              </Link>
+              <Link 
+                to="/testimonials"
+                onClick={handleMenuToggle}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/testimonials') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.275s' }}
+              >
+              
+                המלצות
               </Link>
               <Link 
                 to="/cv-services"

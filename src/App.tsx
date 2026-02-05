@@ -18,6 +18,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import AboutFullPage from './pages/AboutFullPage';
 import CVServicesPage from './pages/CVServicesPage';
 import WebsitesPage from './pages/WebsitesPage';
+import TestimonialsPage from './pages/TestimonialsPage';
 // import AnimatedBackground from './components/AnimatedBackground';
 
 function usePageLoading() {
@@ -37,8 +38,11 @@ function usePageLoading() {
       // Hide spinner after loading is complete
       setTimeout(() => {
         setSpinnerVisible(false);
-        // Enable scroll to top only after spinner is hidden
-        setTimeout(() => setCanScrollToTop(true), 100);
+        // Enable scroll to top only after spinner is hidden with smooth scroll
+        setTimeout(() => {
+          setCanScrollToTop(true);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 900); // 0.9s delay for smooth scroll
       }, 200);
     }, 800);
     
@@ -94,6 +98,7 @@ function AppContent() {
             <Route path="/cv-services" element={<CVServicesPage />} />
             <Route path="/websites" element={<WebsitesPage />} />
             <Route path="/about-full" element={<AboutFullPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
           </Routes>
           <Footer />
 

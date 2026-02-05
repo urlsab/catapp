@@ -1,6 +1,5 @@
 import React from 'react';
 import { CheckCircle, Star, Rocket, Building2, Palette, ShoppingCart, FileText, Image, Users, Laptop, Shield, TrendingUp } from 'lucide-react';
-import AnimatedBackground from '../components/AnimatedBackground';
 // import SmoothScroll from '../components/SmoothScroll';
 // import LinkedInIcon from '@mui/icons-material/LinkedIn';
 // import { FaLinkedin } from "react-icons/fa";
@@ -122,8 +121,6 @@ const PricingPage: React.FC = () => {
   return (
 
     <div ref={sectionRef} className="min-h-screen pt-16 fade-in relative overflow-hidden">
-      {/* Animated Background */}
-      <AnimatedBackground />
       
       {/* Content */}
       <div className="relative z-10">

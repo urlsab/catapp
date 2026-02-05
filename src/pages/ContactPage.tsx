@@ -89,8 +89,8 @@ const ContactPage: React.FC = () => {
 						
 						{/* Blue Text - Left */}
 						<div className="flex-shrink-0 order-3 md:order-3">
-							<p className="text-xl md:text-2xl font-semibold text-[#1a79f6] text-center">
-								אנו מתחייבים לענות מהר!
+							<p className="text-3xl md:text-4xl font-bold text-[#1a79f6] text-center">
+								עונים מהר!
 							</p>
 						</div>
 					</div>
