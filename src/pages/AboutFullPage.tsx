@@ -451,11 +451,7 @@ const AboutFullPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <a href="/contact" 
                  className="bg-white text-[#1a79f6] hover:bg-gray-100 font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg sm:rounded-xl transition-all text-sm sm:text-base">
-                צור קשר עוד היום
-              </a>
-              <a href="/quote" 
-                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg sm:rounded-xl transition-all text-sm sm:text-base">
-                קבל הצעת מחיר
+                ליצירת קשר
               </a>
             
           </div>

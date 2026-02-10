@@ -16,8 +16,7 @@ import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import AboutFullPage from './pages/AboutFullPage';
-import CVServicesPage from './pages/CVServicesPage';
-import WebsitesPage from './pages/WebsitesPage';
+
 import TestimonialsPage from './pages/TestimonialsPage';
 // import AnimatedBackground from './components/AnimatedBackground';
 
@@ -95,8 +94,7 @@ function AppContent() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/cv-services" element={<CVServicesPage />} />
-            <Route path="/websites" element={<WebsitesPage />} />
+
             <Route path="/about-full" element={<AboutFullPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
           </Routes>

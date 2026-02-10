@@ -64,18 +64,7 @@ const Footer: React.FC = () => {
               >
                 המלצות
               </Link>
-              <Link 
-                to="/websites"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                בניית אתרים
-              </Link>
-              <Link 
-                to="/cv-services"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                קו"ח להייטק
-              </Link>
+
               <Link 
                 to="/portfolio"
                 className="text-gray-400 hover:text-white transition-colors"

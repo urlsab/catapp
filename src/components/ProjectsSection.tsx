@@ -2,8 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import resumeBuilderImage from '../../Assets/resumes builder website.png';
 import orBenjiImage from '../../Assets/benji website.png';
-import refaelLawImage from '../../Assets/refael website.png';
-import atlizImage from '../../Assets/atliz website.png';
+import refaelLawImage from '../../Assets/refael law on mobile.jpg';
+import atlizImage from '../../Assets/atliz on mobile.jpg';
 import campNetworkImage from '../../Assets/camps website.png';
 import colorGameImage from '../../Assets/color game website.png';
 import portfolioImage from '../../Assets/portfolio website.png';
@@ -186,7 +186,17 @@ const ProjectsSection: React.FC = () => {
                   {/* Device Mockup with Project Image */}
                   <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-12 md:p-16 lg:p-20">
                     <div className="relative w-full h-full max-w-5xl mx-auto flex items-center justify-center">
-                      {/* Desktop Screen SVG - Full Width */}
+                      {project.id === 3 || project.id === 4 ? (
+                        /* Full-width image without monitor frame for Atliz & Refael Law */
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <img 
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-contain rounded-2xl drop-shadow-2xl"
+                          />
+                        </div>
+                      ) : (
+                      /* Desktop Screen SVG - Full Width */
                       <div className="relative w-full h-auto">
                         <svg viewBox="0 0 1200 800" className="w-full h-auto drop-shadow-2xl">
                           {/* Monitor Stand */}
@@ -216,6 +226,7 @@ const ProjectsSection: React.FC = () => {
                           <circle cx="600" cy="60" r="4" fill="#4a5568"/>
                         </svg>
                       </div>
+                      )}
                     </div>
                   </div>
 

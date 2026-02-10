@@ -3,7 +3,7 @@ import logo from '../../Assets/catapp logo no bg.png';
 import { Link, useLocation } from 'react-router-dom';
 // import { useLanguage } from '../contexts/LanguageContext';
 // import { useTheme } from '../contexts/ThemeContext';
-import { Menu, X, Home, DollarSign, Briefcase, Users, FileText, Globe, Phone } from 'lucide-react';
+import { Menu, X, Home, DollarSign, Briefcase, Users, Phone, Star } from 'lucide-react';
 
 const Header: React.FC = () => {
   // const { t } = useLanguage();
@@ -89,15 +89,7 @@ const Header: React.FC = () => {
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/about-full') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
-            <Link
-              to="/websites"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/websites') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
-            >
-              בניית אתרים
-              <span
-                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/websites') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
-              />
-            </Link>
+
             <Link
               to="/portfolio"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/portfolio') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
@@ -125,15 +117,7 @@ const Header: React.FC = () => {
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/testimonials') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
-            <Link
-              to="/cv-services"
-              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
-            >
-              קו"ח להייטק
-              <span
-                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/cv-services') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
-              />
-            </Link>
+
             <Link
               to="/contact"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/contact') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
@@ -185,15 +169,7 @@ const Header: React.FC = () => {
                 <Users size={18} />
                 אודות
               </Link>
-              <Link 
-                to="/websites"
-                onClick={handleMenuToggle}
-                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/websites') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.15s' }}
-              >
-                <Globe size={18} />
-                בניית אתרים
-              </Link>
+
               <Link 
                 to="/portfolio"
                 onClick={handleMenuToggle}
@@ -218,18 +194,10 @@ const Header: React.FC = () => {
                 className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/testimonials') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
                 style={{ animationDelay: isClosing ? '0s' : '0.275s' }}
               >
-              
+                <Star size={18} />
                 המלצות
               </Link>
-              <Link 
-                to="/cv-services"
-                onClick={handleMenuToggle}
-                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/cv-services') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
-                style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
-              >
-                <FileText size={18} />
-                קו"ח להייטק
-              </Link>
+
               <Link 
                 to="/contact"
                 onClick={handleMenuToggle}

@@ -70,6 +70,9 @@ const HomePage: React.FC = () => {
   const recommendationsRef = React.useRef<HTMLDivElement>(null);
   const valuesContainerRef = React.useRef<HTMLDivElement>(null);
   const happyClientsRef = React.useRef<HTMLDivElement>(null);
+  const servicesHeaderRef = React.useRef<HTMLDivElement>(null);
+  const valuesHeaderRef = React.useRef<HTMLDivElement>(null);
+  const recommendationsHeaderRef = React.useRef<HTMLDivElement>(null);
   
   const [serviceImage1Visible, setServiceImage1Visible] = React.useState(false);
   const [serviceImage2Visible, setServiceImage2Visible] = React.useState(false);
@@ -78,6 +81,9 @@ const HomePage: React.FC = () => {
   const [recommendationsVisible, setRecommendationsVisible] = React.useState(false);
   const [valuesContainerVisible, setValuesContainerVisible] = React.useState(false);
   const [happyClientsVisible, setHappyClientsVisible] = React.useState(false);
+  const [servicesHeaderVisible, setServicesHeaderVisible] = React.useState(false);
+  const [valuesHeaderVisible, setValuesHeaderVisible] = React.useState(false);
+  const [recommendationsHeaderVisible, setRecommendationsHeaderVisible] = React.useState(false);
 
   // Stats data
   // const targetStats = { years: 5, clients: 50, tools: 20, growth: 214 };
@@ -203,6 +209,15 @@ const HomePage: React.FC = () => {
           if (entry.target === happyClientsRef.current) {
             setHappyClientsVisible(entry.isIntersecting);
           }
+          if (entry.target === servicesHeaderRef.current) {
+            setServicesHeaderVisible(entry.isIntersecting);
+          }
+          if (entry.target === valuesHeaderRef.current) {
+            setValuesHeaderVisible(entry.isIntersecting);
+          }
+          if (entry.target === recommendationsHeaderRef.current) {
+            setRecommendationsHeaderVisible(entry.isIntersecting);
+          }
         });
       },
       {
@@ -220,6 +235,9 @@ const HomePage: React.FC = () => {
     if (recommendationsRef.current) observer.observe(recommendationsRef.current);
     if (valuesContainerRef.current) observer.observe(valuesContainerRef.current);
     if (happyClientsRef.current) observer.observe(happyClientsRef.current);
+    if (servicesHeaderRef.current) observer.observe(servicesHeaderRef.current);
+    if (valuesHeaderRef.current) observer.observe(valuesHeaderRef.current);
+    if (recommendationsHeaderRef.current) observer.observe(recommendationsHeaderRef.current);
 
     return () => {
       if (serviceDesc1Ref.current) observer.unobserve(serviceDesc1Ref.current);
@@ -231,6 +249,9 @@ const HomePage: React.FC = () => {
       if (recommendationsRef.current) observer.unobserve(recommendationsRef.current);
       if (valuesContainerRef.current) observer.unobserve(valuesContainerRef.current);
       if (happyClientsRef.current) observer.unobserve(happyClientsRef.current);
+      if (servicesHeaderRef.current) observer.unobserve(servicesHeaderRef.current);
+      if (valuesHeaderRef.current) observer.unobserve(valuesHeaderRef.current);
+      if (recommendationsHeaderRef.current) observer.unobserve(recommendationsHeaderRef.current);
     };
   }, []);
 
@@ -409,8 +430,11 @@ const HomePage: React.FC = () => {
             {/* Services Section - השירותים שלנו */}
             <div className="w-full flex justify-center items-center py-16 bg-transparent relative overflow-visible">
               <div className="max-w-5xl w-full flex flex-col items-center px-4 overflow-visible">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight">השירותים שלנו</h2>
-                <p className="text-white text-lg md:text-xl lg:text-2xl mb-10 text-center max-w-2xl leading-relaxed">הפתרונות שלנו לעסק ולקריירה שלך</p>
+                <div ref={servicesHeaderRef}>
+                  <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight transition-all duration-1000 ${
+                    servicesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}>השירותים שלנו</h2>
+                </div>
                 {/* שורה 1: בניית אתרים + עיגולים מסתובבים + 4 תמונות אתרים */}
                 <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
                   <div 
@@ -896,14 +920,15 @@ const HomePage: React.FC = () => {
         className="scroll-area w-full flex justify-center items-center relative min-h-screen"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-32">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
-              הערכים שמנחים אותנו
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-4"></div>
-            <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto px-4">
-              העקרונות שעומדים בבסיס כל פרויקט ושיתוף פעולה
-            </p>
+          <div className="text-center mb-14">
+            <div ref={valuesHeaderRef}>
+              <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-2 transition-all duration-1000 ${
+                valuesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
+                הערכים שמנחים אותנו
+              </h2>
+            </div>
+            
           </div>
 
           <div 
@@ -1071,7 +1096,11 @@ const HomePage: React.FC = () => {
       {/* Recommendations Section - המלצות */}
       <div className="w-full flex justify-center items-center py-8">
         <div className="max-w-3xl w-full flex flex-col items-center px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">המלצות</h2>
+          <div ref={recommendationsHeaderRef}>
+            <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center transition-all duration-1000 ${
+              recommendationsHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>המלצות</h2>
+          </div>
           <div 
             ref={recommendationsRef}
             className={`w-full relative overflow-hidden transition-all duration-1000 ${

@@ -98,60 +98,63 @@ const ContactPage: React.FC = () => {
 					{/* Contact Info & Forms */}
 					<div className="w-full flex flex-col gap-6">
 						{/* Contact Info Row */}
-						<div className="flex flex-wrap gap-6 mb-4">
-							<a href="tel:+972556611594" className="flex flex-col items-center text-center flex-1 min-w-[120px] group cursor-pointer transition-all">
-								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-2">
+						<div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-4">
+							<a href="tel:+972556611594" className="flex flex-col items-center text-center flex-1 min-w-[90px] max-w-[160px] group cursor-pointer transition-all">
+								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-1 sm:mb-2">
 									<svg
-										width="24"
-										height="24"
+										width="20"
+										height="20"
 										viewBox="0 0 24 24"
 										fill="none"
 										stroke="#1a79f6"
 										strokeWidth="2"
 										strokeLinecap="round"
 										strokeLinejoin="round"
+										className="w-5 h-5 sm:w-6 sm:h-6"
 									>
 										<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
 									</svg>
 								</span>
-								<span className="text-white group-hover:text-[#1a79f6] text-base transition-colors">
+								<span className="text-white group-hover:text-[#1a79f6] text-xs sm:text-sm md:text-base transition-colors">
 									055-6611594
 								</span>
 								
 							</a>
-							<a href="mailto:yairsabag213@gmail.com" className="flex flex-col items-center text-center flex-1 min-w-[120px] group cursor-pointer transition-all">
-								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-2">
+							<a href="mailto:yairsabag213@gmail.com" className="flex flex-col items-center text-center flex-1 min-w-[90px] max-w-[200px] group cursor-pointer transition-all">
+								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-1 sm:mb-2">
 									<svg
-										width="24"
-										height="24"
+										width="20"
+										height="20"
 										viewBox="0 0 24 24"
 										fill="none"
 										stroke="#1a79f6"
 										strokeWidth="2"
 										strokeLinecap="round"
 										strokeLinejoin="round"
+										className="w-5 h-5 sm:w-6 sm:h-6"
 									>
 										<rect x="2" y="4" width="20" height="16" rx="2" />
 										<path d="m2 7 10 6 10-6" />
 									</svg>
 								</span>
-								<span className="text-white group-hover:text-[#1a79f6] text-base transition-colors">
+								<span className="text-white group-hover:text-[#1a79f6] text-xs sm:text-sm md:text-base transition-colors break-all">
 									yairsabag213@gmail.com
 								</span>
 								
 							</a>
-							<a href="https://waze.com/ul?q=רותם+15+לוד&navigate=yes" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-center flex-1 min-w-[120px] group cursor-pointer transition-all">
-								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-2">
+							<a href="https://waze.com/ul?q=רותם+15+לוד&navigate=yes" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-center flex-1 min-w-[90px] max-w-[160px] group cursor-pointer transition-all">
+								<span className="bg-[#1a79f6]/10 p-2 rounded-full mb-1 sm:mb-2">
 									<svg
-										width="24"
-										height="24"
+										width="20"
+										height="20"
 										viewBox="0 0 24 24"
 										fill="#1a79f6"
+										className="w-5 h-5 sm:w-6 sm:h-6"
 									>
 										<path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
 									</svg>
 								</span>
-								<span className="text-white group-hover:text-[#1a79f6] text-base transition-colors">לוד, רותם 15</span>
+								<span className="text-white group-hover:text-[#1a79f6] text-xs sm:text-sm md:text-base transition-colors">לוד, רותם 15</span>
 							</a>
 						</div>
 						{/* Form & Map Row */}
