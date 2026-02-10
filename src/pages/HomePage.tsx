@@ -883,8 +883,8 @@ const HomePage: React.FC = () => {
       })()}
 
       {/* Happy Clients Section */}
-      <div className="w-full flex justify-center items-center py-8">
-        <div className="max-w-3xl w-full flex flex-col items-center">
+      <div className="w-full flex justify-center items-center py-8 overflow-hidden">
+        <div className="max-w-3xl w-full flex flex-col items-center px-4">
           <div 
             ref={happyClientsRef}
             className={`w-full flex flex-col items-center py-16 transition-all duration-1000 ${
@@ -892,21 +892,21 @@ const HomePage: React.FC = () => {
             }`}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-8 text-center">מבין לקוחותינו המרוצים</h2>
-            <div className="flex flex-wrap justify-center items-center gap-8">
-              <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                <img src={benjiLogo} alt="בנג'י" className="max-h-32 max-w-32 object-contain" />
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
+              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
+                <img src={benjiLogo} alt="בנג'י" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 object-contain" />
               </div>
-              <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                <img src={maakafLogo} alt="מעקף" className="max-h-40 max-w-40 object-contain" />
+              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
+                <img src={maakafLogo} alt="מעקף" className="max-h-28 max-w-28 sm:max-h-40 sm:max-w-40 object-contain" />
               </div>
-              <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                <img src={mosheLogo} alt="משה" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '20%'}} />
+              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
+                <img src={mosheLogo} alt="משה" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 object-contain" style={{borderRadius: '20%'}} />
               </div>
-              <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                <img src={officeLogo} alt="משרד עורכי דין" className="max-h-48 max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
+              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
+                <img src={officeLogo} alt="משרד עורכי דין" className="max-h-32 max-w-32 sm:max-h-48 sm:max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
               </div>
-              <div className="flex items-center justify-center h-40 w-40 mx-2 p-3">
-                <img src={codersClanLogo} alt="Coders Clan" className="max-h-32 max-w-32 object-contain" style={{borderRadius: '20%'}} />
+              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
+                <img src={codersClanLogo} alt="Coders Clan" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 object-contain" style={{borderRadius: '20%'}} />
               </div>
             </div>
           </div>
@@ -1115,8 +1115,8 @@ const HomePage: React.FC = () => {
                   currentRecommendation === 0 
                     ? 'opacity-100 translate-x-0' 
                     : currentRecommendation === 3 
-                      ? 'opacity-0 translate-x-full' 
-                      : 'opacity-0 -translate-x-full'
+                      ? 'opacity-0 -translate-x-full' 
+                      : 'opacity-0 translate-x-full'
                 }`}
               >
                 <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
@@ -1136,8 +1136,8 @@ const HomePage: React.FC = () => {
                   currentRecommendation === 1 
                     ? 'opacity-100 translate-x-0' 
                     : currentRecommendation === 0 
-                      ? 'opacity-0 translate-x-full' 
-                      : 'opacity-0 -translate-x-full'
+                      ? 'opacity-0 -translate-x-full' 
+                      : 'opacity-0 translate-x-full'
                 }`}
               >
                 <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
@@ -1157,8 +1157,8 @@ const HomePage: React.FC = () => {
                   currentRecommendation === 2 
                     ? 'opacity-100 translate-x-0' 
                     : currentRecommendation === 1 
-                      ? 'opacity-0 translate-x-full' 
-                      : 'opacity-0 -translate-x-full'
+                      ? 'opacity-0 -translate-x-full' 
+                      : 'opacity-0 translate-x-full'
                 }`}
               >
                 <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
@@ -1178,8 +1178,8 @@ const HomePage: React.FC = () => {
                   currentRecommendation === 3 
                     ? 'opacity-100 translate-x-0' 
                     : currentRecommendation === 2 
-                      ? 'opacity-0 translate-x-full' 
-                      : 'opacity-0 -translate-x-full'
+                      ? 'opacity-0 -translate-x-full' 
+                      : 'opacity-0 translate-x-full'
                 }`}
               >
                 <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
@@ -1194,21 +1194,6 @@ const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Carousel Indicators */}
-            <div className="flex justify-center gap-2 mt-6">
-              {[0, 1, 2, 3].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentRecommendation(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentRecommendation === index 
-                      ? 'w-8 bg-[#1a79f6]' 
-                      : 'w-2 bg-gray-500 hover:bg-gray-400'
-                  }`}
-                  aria-label={`המלצה ${index + 1}`}
-                />
-              ))}
-            </div>
           </div>
 
           {/* Button to all testimonials */}
