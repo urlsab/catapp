@@ -23,14 +23,38 @@ const Header: React.FC = () => {
   // Scroll progress tracking
   React.useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(Math.min(progress, 100));
+      // Try snap container first, then fall back to window scroll
+      const snapContainer = document.querySelector('.home-snap-container') as HTMLElement | null;
+      if (snapContainer) {
+        const totalHeight = snapContainer.scrollHeight - snapContainer.clientHeight;
+        const progress = totalHeight > 0 ? (snapContainer.scrollTop / totalHeight) * 100 : 0;
+        setScrollProgress(Math.min(progress, 100));
+      } else {
+        const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+        setScrollProgress(Math.min(progress, 100));
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    // Also listen to snap container scroll events
+    const snapContainer = document.querySelector('.home-snap-container');
+    if (snapContainer) {
+      snapContainer.addEventListener('scroll', handleScroll);
+    }
+
+    // Re-check for snap container after DOM updates
+    const timer = setTimeout(() => {
+      const sc = document.querySelector('.home-snap-container');
+      if (sc) sc.addEventListener('scroll', handleScroll);
+    }, 1000);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (snapContainer) snapContainer.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, [location.pathname]);
 
   const isActive = (path: string) => {
     return location.pathname === path;

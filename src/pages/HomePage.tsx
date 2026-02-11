@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 // import Values from '../components/Values';
 // import KnowledgeHub from '../components/KnowledgeHub';
 // import logo from '../../Assets/Catapp logo no bg.png';
-import atlizWebsite from '../../Assets/atliz website.png';
 import benjiLogo from '../../Assets/benjilogo1-no bg.png';
 import maakafLogo from '../../Assets/hebrew_horizontal_dark.png';
 import mosheLogo from '../../Assets/moshelogo.png';
@@ -14,13 +13,13 @@ import cvPic3 from '../../Assets/cv pic 3.png';
 import cvPic4 from '../../Assets/cv pic 4.png';
 import cvPic5 from '../../Assets/cv pic 5.png';
 import cvPic6 from '../../Assets/cv pic 6.png';
-import benjiWebsite from '../../Assets/benji website.png';
-import refaelWebsite from '../../Assets/refael website.png';
-import resumesWebsite from '../../Assets/resumes builder website.png';
+import resumesBuilderMobile from '../../Assets/resumes_builder_on_mobile-removebg-preview.png';
 import logoCenter from '../../Assets/logoiCatapp.png';
+import Footer from '../components/Footer';
 import '../styles/scroll.css';
+import '../styles/homeSnap.css';
 // import SmoothScroll from '../components/SmoothScroll';
-import { Zap, TrendingUp, Shield, DollarSign, Rocket, Scale, FileText, Briefcase, Eye, Clock, Palette, Star, Phone } from 'lucide-react';
+import { Zap, TrendingUp, Shield, DollarSign, Scale, FileText, Briefcase, Eye, Clock, Palette, Star, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -73,6 +72,8 @@ const HomePage: React.FC = () => {
   const servicesHeaderRef = React.useRef<HTMLDivElement>(null);
   const valuesHeaderRef = React.useRef<HTMLDivElement>(null);
   const recommendationsHeaderRef = React.useRef<HTMLDivElement>(null);
+  const aboutBtnRef = React.useRef<HTMLDivElement>(null);
+  const testimonialsBtnRef = React.useRef<HTMLDivElement>(null);
   
   const [serviceImage1Visible, setServiceImage1Visible] = React.useState(false);
   const [serviceImage2Visible, setServiceImage2Visible] = React.useState(false);
@@ -84,6 +85,21 @@ const HomePage: React.FC = () => {
   const [servicesHeaderVisible, setServicesHeaderVisible] = React.useState(false);
   const [valuesHeaderVisible, setValuesHeaderVisible] = React.useState(false);
   const [recommendationsHeaderVisible, setRecommendationsHeaderVisible] = React.useState(false);
+  const [aboutBtnVisible, setAboutBtnVisible] = React.useState(false);
+  const [testimonialsBtnVisible, setTestimonialsBtnVisible] = React.useState(false);
+  const snapContainerRef = React.useRef<HTMLDivElement>(null);
+
+  // Hide body scroll and global footer when snap container is active
+  React.useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    // Hide the global footer in App.tsx so it doesn't bleed through
+    const globalFooter = document.querySelector('.min-h-screen > footer') as HTMLElement;
+    if (globalFooter) globalFooter.style.display = 'none';
+    return () => {
+      document.body.style.overflow = '';
+      if (globalFooter) globalFooter.style.display = '';
+    };
+  }, []);
 
   // Stats data
   // const targetStats = { years: 5, clients: 50, tools: 20, growth: 214 };
@@ -179,6 +195,9 @@ const HomePage: React.FC = () => {
 
   // Intersection Observer for service descriptions
   React.useEffect(() => {
+    const container = snapContainerRef.current;
+    if (!container) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -218,9 +237,16 @@ const HomePage: React.FC = () => {
           if (entry.target === recommendationsHeaderRef.current) {
             setRecommendationsHeaderVisible(entry.isIntersecting);
           }
+          if (entry.target === aboutBtnRef.current) {
+            setAboutBtnVisible(entry.isIntersecting);
+          }
+          if (entry.target === testimonialsBtnRef.current) {
+            setTestimonialsBtnVisible(entry.isIntersecting);
+          }
         });
       },
       {
+        root: container,
         threshold: 0.2,
         rootMargin: '0px'
       }
@@ -238,6 +264,8 @@ const HomePage: React.FC = () => {
     if (servicesHeaderRef.current) observer.observe(servicesHeaderRef.current);
     if (valuesHeaderRef.current) observer.observe(valuesHeaderRef.current);
     if (recommendationsHeaderRef.current) observer.observe(recommendationsHeaderRef.current);
+    if (aboutBtnRef.current) observer.observe(aboutBtnRef.current);
+    if (testimonialsBtnRef.current) observer.observe(testimonialsBtnRef.current);
 
     return () => {
       if (serviceDesc1Ref.current) observer.unobserve(serviceDesc1Ref.current);
@@ -252,6 +280,8 @@ const HomePage: React.FC = () => {
       if (servicesHeaderRef.current) observer.unobserve(servicesHeaderRef.current);
       if (valuesHeaderRef.current) observer.unobserve(valuesHeaderRef.current);
       if (recommendationsHeaderRef.current) observer.unobserve(recommendationsHeaderRef.current);
+      if (aboutBtnRef.current) observer.unobserve(aboutBtnRef.current);
+      if (testimonialsBtnRef.current) observer.unobserve(testimonialsBtnRef.current);
     };
   }, []);
 
@@ -282,20 +312,20 @@ const HomePage: React.FC = () => {
   // }, [valuesAnimated]);
 
   return (
-    <div>
-      {/* <SmoothScroll /> */}
+    <div className="home-snap-container" ref={snapContainerRef}>
 
-      {/* Hero Section - New Layout inspired by GNO */}
-      <div className="scroll-area w-full flex justify-center items-center relative min-h-screen pt-16 md:pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      {/* ===== SECTION 1: Hero ===== */}
+      <section className="home-snap-section snap-hero">
+      <div className="w-full flex justify-center items-center relative flex-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
             
             {/* Left Side - Text Content (shows first on desktop) */}
             <div className="text-right order-1 lg:order-1">
 
               {/* Main Headline - fade-in from top */}
               <h1
-                className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                 style={{ transitionDelay: headlineVisible ? '0ms' : '0ms' }}
               >
                 תוכן וטכנולוגיה
@@ -304,7 +334,7 @@ const HomePage: React.FC = () => {
               </h1>
 
               {/* Typing Animation - RTL aligned with fixed height, appears after headline */}
-              <div className="mb-8 w-full min-h-[2rem] xs:min-h-[2.25rem] sm:min-h-[2.5rem] md:min-h-[3rem]" dir="rtl">
+              <div className="mb-4 sm:mb-8 w-full min-h-[1.5rem] xs:min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem]" dir="rtl">
                 <h2
                   className={`text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
                     typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
@@ -326,36 +356,36 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Stats Row - animated fade-in from top */}
-              <div className="flex gap-8 sm:gap-12 justify-end">
+              <div className="flex gap-4 sm:gap-8 md:gap-12 justify-end">
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[0] ? '0ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1">
-                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: '2rem' }} />
+                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.25rem, 4vw, 2rem)' }} />
                   </div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">+5</div>
-                  <p className="text-gray-400 text-xs sm:text-sm">שנות ניסיון</p>
+                  <div className="text-xl sm:text-2xl md:text-4xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">שנות ניסיון</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1">
-                    <GroupsIcon style={{ color: '#1a79f6', fontSize: '2rem' }} />
+                    <GroupsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.25rem, 4vw, 2rem)' }} />
                   </div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">+50</div>
-                  <p className="text-gray-400 text-xs sm:text-sm">לקוחות מרוצים</p>
+                  <div className="text-xl sm:text-2xl md:text-4xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">לקוחות מרוצים</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1">
-                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: '2rem' }} />
+                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.25rem, 4vw, 2rem)' }} />
                   </div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white"><span dir="ltr">20+</span></div>
-                  <p className="text-gray-400 text-xs sm:text-sm">טכנולוגיות בשימוש</p>
+                  <div className="text-xl sm:text-2xl md:text-4xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">טכנולוגיות בשימוש</p>
                 </div>
               </div>
             </div>
@@ -363,59 +393,39 @@ const HomePage: React.FC = () => {
             {/* Right Side - Screenshots Grid (shows second on desktop) */}
             <div className="relative order-2 lg:order-2" ref={heroImagesRef}>
               <div className="grid grid-cols-2 gap-3 sm:gap-4 auto-rows-min">
-                {/* Screenshot 1 - Benji */}
+                {/* CV Screenshot 1 - Mobile Resume Builder */}
                 <div 
-                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg h-fit ${
-                    heroImagesVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                  className={`relative rounded-3xl overflow-visible transition-all duration-700 ease-out hover:scale-105 h-fit max-w-md mx-auto ${
+                    heroImagesVisible[0] ? 'opacity-100 -translate-y-20' : 'opacity-0 translate-y-8'
                   }`}
-                  style={{ transitionDelay: heroImagesVisible[0] ? '0ms' : '0ms' }}
+                  style={{ 
+                    transitionDelay: heroImagesVisible[0] ? '0ms' : '0ms',
+                    filter: 'drop-shadow(0 20px 40px rgba(26, 121, 246, 0.4))'
+                  }}
                 >
                   <img 
-                    src={benjiWebsite} 
-                    alt="אתר Orbenji" 
+                    src={resumesBuilderMobile} 
+                    alt="בניית קורות חיים במובייל" 
                     className="w-full h-auto block"
                   />
                 </div>
                 
-                {/* Screenshot 2 - Atliz */}
+                {/* CV Screenshot 2 - Desktop Resume */}
                 <div 
-                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 ${
+                  className={`relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 transition-all duration-700 ease-out hover:scale-105 mt-12 h-fit max-w-md mx-auto ${
                     heroImagesVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
                   }`}
-                  style={{ transitionDelay: heroImagesVisible[1] ? '0ms' : '0ms' }}
+                  style={{ 
+                    transitionDelay: heroImagesVisible[1] ? '0ms' : '0ms',
+                    boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
+                    transform: 'rotate(-3deg) scale(0.85)'
+                  }}
                 >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
                   <img 
-                    src={atlizWebsite} 
-                    alt="אטליז למהדרין" 
-                    className="w-full h-full block"
-                  />
-                </div>
-                
-                {/* Screenshot 3 - Lawyer */}
-                <div 
-                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-20 h-fit ${
-                    heroImagesVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-                  }`}
-                  style={{ transitionDelay: heroImagesVisible[2] ? '0ms' : '0ms' }}
-                >
-                  <img 
-                    src={refaelWebsite} 
-                    alt="עורך דין רפאל סבג" 
-                    className="w-full h-auto block"
-                  />
-                </div>
-                
-                {/* Screenshot 4 - Resume Builder */}
-                <div 
-                  className={`rounded-xl overflow-hidden border-2 border-[#1a79f6]/40 hover:border-[#1a79f6] transition-all duration-700 ease-out hover:scale-105 shadow-lg mt-8 h-fit ${
-                    heroImagesVisible[3] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-                  }`}
-                  style={{ transitionDelay: heroImagesVisible[3] ? '0ms' : '0ms' }}
-                >
-                  <img 
-                    src={resumesWebsite} 
-                    alt="בונה קורות חיים" 
-                    className="w-full h-auto block"
+                    src={cvPic6} 
+                    alt="דוגמת קורות חיים מקצועי" 
+                    className="w-full h-auto block relative z-10"
                   />
                 </div>
               </div>
@@ -423,30 +433,29 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+      </section>
 
-
-
-      {/* Recommendations Section - המלצות */}
-            {/* Services Section - השירותים שלנו */}
-            <div className="w-full flex justify-center items-center py-16 bg-transparent relative overflow-visible">
-              <div className="max-w-5xl w-full flex flex-col items-center px-4 overflow-visible">
+      {/* ===== SECTION 2: Services - Websites + Tech Orbit ===== */}
+      <section className="home-snap-section snap-compact">
+        <div className="w-full flex justify-center items-center bg-transparent relative overflow-visible flex-1">
+          <div className="max-w-5xl w-full flex flex-col items-center px-4 overflow-visible justify-center">
                 <div ref={servicesHeaderRef}>
-                  <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a79f6] mb-4 text-center tracking-tight transition-all duration-1000 ${
+                  <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-3 text-center tracking-tight transition-all duration-1000 ${
                     servicesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}>השירותים שלנו</h2>
                 </div>
-                {/* שורה 1: בניית אתרים + עיגולים מסתובבים + 4 תמונות אתרים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
+                {/* שורה 1: בניית אתרים + עיגולים מסתובבים */}
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-4 mb-2">
                   <div 
                     ref={serviceImage1Ref}
                     className={`flex-1 flex flex-col items-end text-right transition-all duration-1000 ${
                       serviceImage1Visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
                     }`}
                   >
-                    <div className="relative w-full max-w-[340px] h-[240px] md:h-[280px] mb-4 border-2 border-[#1a79f6] rounded-2xl">
+                    <div className="relative w-full max-w-[340px] h-[160px] sm:h-[200px] md:h-[280px] mb-2 sm:mb-4 border-2 border-[#1a79f6] rounded-2xl">
                       <img src={codeServiceImage} alt="בניית אתרים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                       <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
                         בניית אתרים
                       </div>
                     </div>
@@ -473,7 +482,7 @@ const HomePage: React.FC = () => {
                     }`}
                   >
                     {/* אנימציית אייקונים מסתובבים */}
-                    <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-visible">
+                    <div className="relative w-full min-h-[200px] sm:min-h-[320px] md:min-h-[400px] flex items-center justify-center overflow-visible">
                       {/* Circular orbit container */}
                       <div className="tech-orbit">
                         <div className="tech-icon-wrapper" style={{ '--icon-index': 0 } as React.CSSProperties}>
@@ -619,16 +628,21 @@ const HomePage: React.FC = () => {
                         <img 
                           src={logoCenter} 
                           alt="Catapp Logo" 
-                          className="w-16 h-16 min-w-[64px] min-h-[64px] sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain opacity-90"
+                          className="w-10 h-10 min-w-[40px] min-h-[40px] sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain opacity-90"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* טקסט מעוצב מתחת לשני החלקים */}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 3: WordPress Text ===== */}
+      <section className="home-snap-section snap-text-center">
                 <div 
                   ref={serviceDesc1Ref}
-                  className={`w-full flex justify-center mb-12 transition-all duration-1000 ${
+                  className={`w-full flex justify-center transition-all duration-1000 ${
                     serviceDesc1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                 >
@@ -646,18 +660,24 @@ const HomePage: React.FC = () => {
                     </p>
                   </div>
                 </div>
+      </section>
+
+      {/* ===== SECTION 4: CV Service + CV Fan ===== */}
+      <section className="home-snap-section snap-compact">
+        <div className="w-full flex justify-center items-center bg-transparent relative overflow-visible flex-1">
+          <div className="max-w-5xl w-full flex flex-col items-center px-4 overflow-visible justify-center">
                 {/* שורה 2: בניית קורות חיים + מניפת קורות חיים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-8 mb-4">
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-1 sm:gap-4 mb-2">
                   <div 
                     ref={serviceImage2Ref}
                     className={`flex-1 flex flex-col items-end text-right transition-all duration-1000 ${
                       serviceImage2Visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
                     }`}
                   >
-                    <div className="relative w-full max-w-[340px] h-[240px] md:h-[280px] mb-4 border-2 border-[#1a79f6] rounded-2xl">
+                    <div className="relative w-full max-w-[340px] h-[160px] sm:h-[200px] md:h-[280px] mb-2 sm:mb-4 border-2 border-[#1a79f6] rounded-2xl">
                       <img src={buildCvImage} alt="בניית קורות חיים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                       <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
                         בניית קו"ח
                       </div>
                     </div>
@@ -681,11 +701,11 @@ const HomePage: React.FC = () => {
                     {/* מניפת קורות חיים */}
                     <div 
                       ref={cvFanRef}
-                      className={`relative flex-1 flex justify-center items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-8 md:-mt-8 transition-all duration-1000 ${
+                      className={`relative flex-1 flex justify-center items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-0 sm:mt-4 md:-mt-8 transition-all duration-1000 ${
                         cvFanVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                       }`}
                     >
-                      <div className="relative w-[340px] h-[300px] sm:w-[360px] sm:h-[320px] md:w-[400px] md:h-[340px] flex items-end justify-center">
+                      <div className="relative w-[280px] h-[240px] sm:w-[360px] sm:h-[320px] md:w-[400px] md:h-[340px] flex items-end justify-center">
                         {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
                         <img src={cvPic6} alt="cv6" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-30deg)', transformOrigin: '50% 100%', zIndex: 6 }} />
                         <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
@@ -697,10 +717,16 @@ const HomePage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                {/* טקסט מעוצב מתחת לשני החלקים */}
+
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 5: CV Text ===== */}
+      <section className="home-snap-section snap-text-center">
                 <div 
                   ref={serviceDesc2Ref}
-                  className={`w-full flex justify-center mb-12 mt-12 transition-all duration-1000 ${
+                  className={`w-full flex justify-center transition-all duration-1000 ${
                     serviceDesc2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                 >
@@ -714,161 +740,144 @@ const HomePage: React.FC = () => {
                     </p>
                   </div>
                 </div>
+      </section>
 
-              </div>
-              {/* Decorative arrows - left/right */}
-              <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2">
-                <div className="flex flex-col gap-2 ml-4">
-                  <div className="w-6 h-6 border-l-4 border-b-4 border-[#1a79f6] rotate-[-45deg] opacity-30"></div>
-                  <div className="w-6 h-6 border-l-4 border-b-4 border-[#1a79f6] rotate-[-45deg] opacity-20"></div>
-                  <div className="w-6 h-6 border-l-4 border-b-4 border-[#1a79f6] rotate-[-45deg] opacity-10"></div>
-                </div>
-              </div>
-              <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2">
-                <div className="flex flex-col gap-2 mr-4">
-                  <div className="w-6 h-6 border-r-4 border-t-4 border-[#1a79f6] rotate-[45deg] opacity-30"></div>
-                  <div className="w-6 h-6 border-r-4 border-t-4 border-[#1a79f6] rotate-[45deg] opacity-20"></div>
-                  <div className="w-6 h-6 border-r-4 border-t-4 border-[#1a79f6] rotate-[45deg] opacity-10"></div>
-                </div>
-              </div>
-            </div>
-
-      {/* Process Steps Section */}
+      {/* ===== SECTION 6: Process Steps ===== */}
+      <section className="home-snap-section snap-compact">
       {(() => {
-        // קו מתקדם בצבע כחול לפי גלילה
+        // קו מתקדם בצבע כחול - אנימציה כשהסקשן נכנס לתצוגה
         const processRef = useRef<HTMLDivElement>(null);
-        const [progress, setProgress] = useState(0); // 0-1
+        const [activeStep, setActiveStep] = useState(-1); // -1 = none, 0-5 = step index
+        const isVisibleRef = useRef(false);
+        const animTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
         useEffect(() => {
+          const container = snapContainerRef.current;
+          if (!container) return;
+          
           const handleScroll = () => {
             if (!processRef.current) return;
             const rect = processRef.current.getBoundingClientRect();
             const windowH = window.innerHeight;
-            const sectionHeight = rect.height;
-            let percent = 0;
             
-            // Improved responsive animation based on scroll and screen size
-            const triggerStart = windowH * 0.7; // Adjusted for better responsiveness
-            
-            if (rect.top < windowH && rect.top > triggerStart && rect.bottom > 0) {
-              // Not yet triggered
-              percent = 0;
-            } else if (rect.top <= triggerStart && rect.bottom > 0) {
-              // Calculate progress based on viewport position
-              const scrolledIntoView = triggerStart - rect.top;
-              const totalScrollDistance = sectionHeight + windowH * 0.3;
-              percent = Math.min(1, Math.max(0, scrolledIntoView / totalScrollDistance));
-            } else if (rect.bottom <= 0) {
-              // Fully scrolled past
-              percent = 1;
+            // When section is visible (snapped into view), start step-by-step animation
+            if (rect.top >= -50 && rect.top <= windowH * 0.3) {
+              if (!isVisibleRef.current) {
+                isVisibleRef.current = true;
+                // Animate step by step over ~3.5s (580ms per step)
+                const totalSteps = 6;
+                const delayPerStep = 580;
+                animTimers.current.forEach(t => clearTimeout(t));
+                animTimers.current = [];
+                for (let i = 0; i < totalSteps; i++) {
+                  const timer = setTimeout(() => setActiveStep(i), (i + 1) * delayPerStep);
+                  animTimers.current.push(timer);
+                }
+              }
+            } else if (rect.top > windowH) {
+              isVisibleRef.current = false;
+              setActiveStep(-1);
+              animTimers.current.forEach(t => clearTimeout(t));
+              animTimers.current = [];
             }
-            
-            setProgress(percent);
           };
           
-          window.addEventListener('scroll', handleScroll);
-          window.addEventListener('resize', handleScroll);
+          container.addEventListener('scroll', handleScroll);
           handleScroll();
           return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleScroll);
+            container.removeEventListener('scroll', handleScroll);
+            animTimers.current.forEach(t => clearTimeout(t));
           };
         }, []);
+
+        // Calculate progress as fraction (0 to 1) based on activeStep
+        const progress = activeStep < 0 ? 0 : (activeStep + 1) / 6;
 
         return (
           <div 
             ref={processRef}
-            className="w-full flex justify-center items-center py-8 relative px-4 sm:px-6"
+            className="w-full flex justify-center items-center relative px-4 sm:px-6 flex-1"
           >
             <div className="max-w-3xl w-full flex flex-col items-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center">התהליך שלנו</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1a79f6] mb-4 text-center">התהליך שלנו</h2>
               <div className="relative flex w-full">
                 {/* Vertical line - לבן מלא בלבד (נגמר בדיוק בקו התחתון של המלבן האחרון) */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-5 bg-white rounded-full z-0" style={{ height: 'calc(100% - 45px)', minHeight: 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-4 bg-white rounded-full z-0" style={{ height: 'calc(100% - 30px)', minHeight: 0 }} />
                 {/* קו כחול דק מעל הקו הלבן, מוצג רק לפי התקדמות הגלילה */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-5 pointer-events-none z-10" style={{ height: 'calc(100% - 45px)' }}>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-4 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-200" style={{ height: `${progress === 0 ? 0 : progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-4 pointer-events-none z-10" style={{ height: 'calc(100% - 30px)' }}>
+                  <div className="absolute left-1/2 -translate-x-1/2 w-2 sm:w-2.5 md:w-3 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-[600ms] ease-out" style={{ height: `${progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
                 </div>
-                <div className="flex flex-col gap-12 w-full z-20">
+                <div className="flex flex-col gap-4 w-full z-20">
                   {/* שלבים */}
                   {[
                     {
-                      icon: <Phone className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // פנייה
+                      icon: <Phone className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'פנייה ראשונית',
-                      desc: 'שיחה קצרה להיכרות והבנת הצורך. הצעת מחיר מותאמת.'
+                      desc: 'שיחה קצרה להיכרות והבנת הצורך.'
                     },
                     {
-                      icon: <FileText className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // אפיון
+                      icon: <FileText className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'אפיון האתר',
-                      desc: 'מגדירים יחד מה האתר יכלול ומה חשוב שיהיה בו.'
+                      desc: 'מגדירים יחד מה האתר יכלול.'
                     },
                     {
-                      icon: <Palette className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // חומרים/עיצוב
+                      icon: <Palette className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'איסוף חומרים',
-                      desc: 'מקבלים ממך חומרים ומעצבים דף בית ראשוני.'
+                      desc: 'מקבלים חומרים ומעצבים דף בית.'
                     },
                     {
-                      icon: <Briefcase className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // פיתוח
+                      icon: <Briefcase className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'פיתוח האתר',
-                      desc: 'הופכים את ההדמיה לאתר חי ודינמי.'
+                      desc: 'הופכים את ההדמיה לאתר חי.'
                     },
                     {
-                      icon: <Scale className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // QA
+                      icon: <Scale className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'בדיקות ותיקונים',
-                      desc: 'בודקים, מתקנים ומוודאים שהאתר מושלם.'
+                      desc: 'בודקים ומוודאים שהאתר מושלם.'
                     },
                     {
-                      icon: <Star className="w-10 h-10 text-[#1a79f6] bg-white rounded-full shadow-lg p-2" />, // עלייה לאוויר
+                      icon: <Star className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'עלייה לאוויר',
-                      desc: 'הדרכה קצרה, האתר באוויר – מזל טוב !!!'
+                      desc: 'האתר באוויר – מזל טוב !!!'
                     },
-                  ].map((step, idx, arr) => {
+                  ].map((step, idx) => {
                     // קובע האם המלבן מימין (זוגי) או משמאל (אי-זוגי)
                     const isRight = idx % 2 === 0;
                     // Calculate the progress for each step (icon)
-                    const stepProgress = (idx + 0.5) / arr.length;
-                    const isActive = progress >= stepProgress;
+                    const isActive = idx <= activeStep;
                     return (
-                      <div key={idx} className="flex items-center w-full relative min-h-[100px]">
+                      <div key={idx} className="flex items-center w-full relative" style={{ minHeight: 'clamp(45px, 10vh, 70px)' }}>
                         {/* מלבן טקסט מימין */}
                         {isRight && (
-                          <div className="flex-1 flex justify-end pr-2 xs:pr-3 sm:pr-4 xl:pr-0 xs:xl:pr-0.5 mr-4 sm:mr-5 md:mr-6">
-                            <div className=" border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md text-right"
+                          <div className="flex-1 flex justify-end pr-1 sm:pr-3 mr-2 sm:mr-4 md:mr-6">
+                            <div className="border-[#1a79f6] border-[1.5px] rounded-xl sm:rounded-2xl shadow-md text-right"
                               style={{ 
-                                maxWidth: 'clamp(100px, 35vw, 260px)',
-                                padding: 'clamp(0.35rem, 2vw, 1rem)'
+                                maxWidth: 'clamp(90px, 35vw, 260px)',
+                                padding: 'clamp(0.2rem, 1.5vw, 0.75rem)'
                               }}>
-                              <div className="font-bold text-[#1a79f6] mb-1" style={{ fontSize: 'clamp(0.65rem, 2.5vw, 1rem)' }}>{step.title}</div>
-                              <div className="text-white whitespace-pre-line" style={{ fontSize: 'clamp(0.6rem, 2.2vw, 0.875rem)' }}>{step.desc}</div>
+                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.55rem, 2vw, 0.9rem)', marginBottom: 'clamp(0px, 0.5vw, 4px)' }}>{step.title}</div>
+                              <div className="text-white" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', lineHeight: 1.3 }}>{step.desc}</div>
                             </div>
                           </div>
                         )}
                         {/* אייקון ממורכז על הציר */}
-                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 min-w-[140px] sm:min-w-[150px] md:min-w-[160px] z-30" style={{top:0}}>
-                          <div className={`mb-2 flex items-center justify-center rounded-full transition-all duration-300 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 70, height: 70 }}>
+                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 z-30" style={{top: 0, minWidth: 'clamp(60px, 16vw, 130px)'}}>
+                          <div className={`flex items-center justify-center rounded-full transition-all duration-500 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 'clamp(30px, 7vw, 55px)', height: 'clamp(30px, 7vw, 55px)' }}>
                             {React.cloneElement(step.icon, {
-                              className: `w-10 h-10 md:w-14 md:h-14 ${isActive ? 'text-white' : 'text-[#1a79f6]'}`
+                              className: `w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 ${isActive ? 'text-white' : 'text-[#1a79f6]'}`
                             })}
                           </div>
-                          {/* קו מחבר בין האייקונים */}
-                          {idx < arr.length - 2 && (
-                            <div className="flex-1 w-2 bg-gradient-to-b" style={{ minHeight: 50, marginTop: 4 }} />
-                          )}
-                          {/* הארכת הקו בין האייקון הלפני אחרון לאחרון */}
-                          {idx === arr.length - 2 && (
-                            <div className="flex-1 w-2 bg-gradient-to-b" style={{ minHeight: 80, marginTop: 4 }} />
-                          )}
                         </div>
                         {/* מלבן טקסט משמאל */}
                         {!isRight && (
-                          <div className="flex-1 flex justify-start pl-2 xs:pl-3 sm:pl-4 xl:pl-0 xs:xl:pl-0.5 ml-4 sm:ml-5 md:ml-6">
-                            <div className="border-[#1a79f6] border-[1.5px] rounded-2xl shadow-md text-right"
+                          <div className="flex-1 flex justify-start pl-1 sm:pl-3 ml-2 sm:ml-4 md:ml-6">
+                            <div className="border-[#1a79f6] border-[1.5px] rounded-xl sm:rounded-2xl shadow-md text-right"
                               style={{ 
-                                maxWidth: 'clamp(100px, 35vw, 260px)',
-                                padding: 'clamp(0.35rem, 2vw, 1rem)'
+                                maxWidth: 'clamp(90px, 35vw, 260px)',
+                                padding: 'clamp(0.2rem, 1.5vw, 0.75rem)'
                               }}>
-                              <div className="font-bold text-[#1a79f6] mb-1" style={{ fontSize: 'clamp(0.65rem, 2.5vw, 1rem)' }}>{step.title}</div>
-                              <div className="text-white whitespace-pre-line" style={{ fontSize: 'clamp(0.6rem, 2.2vw, 0.875rem)' }}>{step.desc}</div>
+                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.55rem, 2vw, 0.9rem)', marginBottom: 'clamp(0px, 0.5vw, 4px)' }}>{step.title}</div>
+                              <div className="text-white" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', lineHeight: 1.3 }}>{step.desc}</div>
                             </div>
                           </div>
                         )}
@@ -881,48 +890,51 @@ const HomePage: React.FC = () => {
           </div>
         );
       })()}
+      </section>
 
-      {/* Happy Clients Section */}
-      <div className="w-full flex justify-center items-center py-8 overflow-hidden">
+      {/* ===== SECTION 7: Happy Clients ===== */}
+      <section className="home-snap-section">
+      <div className="w-full flex justify-center items-center overflow-hidden">
         <div className="max-w-3xl w-full flex flex-col items-center px-4">
           <div 
             ref={happyClientsRef}
-            className={`w-full flex flex-col items-center py-16 transition-all duration-1000 ${
+            className={`w-full flex flex-col items-center py-4 transition-all duration-1000 ${
               happyClientsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-8 text-center">מבין לקוחותינו המרוצים</h2>
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
-                <img src={benjiLogo} alt="בנג'י" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 object-contain" />
+            <h2 className="text-lg sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-4 sm:mb-8 text-center">מבין לקוחותינו המרוצים</h2>
+            <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 md:gap-8">
+              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={benjiLogo} alt="בנג'י" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" />
               </div>
-              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
-                <img src={maakafLogo} alt="מעקף" className="max-h-28 max-w-28 sm:max-h-40 sm:max-w-40 object-contain" />
+              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={maakafLogo} alt="מעקף" className="max-h-20 max-w-20 sm:max-h-28 sm:max-w-28 md:max-h-40 md:max-w-40 object-contain" />
               </div>
-              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
-                <img src={mosheLogo} alt="משה" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 object-contain" style={{borderRadius: '20%'}} />
+              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={mosheLogo} alt="משה" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" style={{borderRadius: '20%'}} />
               </div>
-              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
-                <img src={officeLogo} alt="משרד עורכי דין" className="max-h-32 max-w-32 sm:max-h-48 sm:max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
+              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={officeLogo} alt="משרד עורכי דין" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 md:max-h-48 md:max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
               </div>
-              <div className="flex items-center justify-center h-28 w-28 sm:h-40 sm:w-40 mx-1 sm:mx-2 p-2 sm:p-3">
-                <img src={codersClanLogo} alt="Coders Clan" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 object-contain" style={{borderRadius: '20%'}} />
+              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={codersClanLogo} alt="Coders Clan" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" style={{borderRadius: '20%'}} />
               </div>
             </div>
           </div>
         </div>
       </div>
+      </section>
 
-      {/* Values Section */}
-
+      {/* ===== SECTION 8: Values ===== */}
+      <section className="home-snap-section">
       <div
         ref={valuesRef}
-        className="scroll-area w-full flex justify-center items-center relative min-h-screen"
+        className="w-full flex justify-center items-center relative flex-1"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-32">
-          <div className="text-center mb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-4 sm:py-6 md:py-10">
+          <div className="text-center mb-3 sm:mb-6">
             <div ref={valuesHeaderRef}>
-              <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-2 transition-all duration-1000 ${
+              <h2 className={`text-lg sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-1 sm:mb-2 transition-all duration-1000 ${
                 valuesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
                 הערכים שמנחים אותנו
@@ -933,13 +945,13 @@ const HomePage: React.FC = () => {
 
           <div 
             ref={valuesContainerRef}
-            className={`grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto transition-all duration-1000 ${
+            className={`grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-6 max-w-6xl mx-auto transition-all duration-1000 ${
               valuesContainerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
             {/* שקיפות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -948,16 +960,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><Eye className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><Eye className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 שקיפות
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">תקשורת פתוחה וברורה לאורך כל הדרך</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">תקשורת פתוחה וברורה לאורך כל הדרך</p>
             </div>
 
             {/* זמינות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -966,16 +978,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><Clock className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><Clock className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 זמינות
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">תמיד כאן לענות, לעזור ולתמוך</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">תמיד כאן לענות, לעזור ולתמוך</p>
             </div>
 
             {/* קידמה */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -984,16 +996,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><TrendingUp className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 קידמה
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">טכנולוגיות חדשניות ועדכניות</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">טכנולוגיות חדשניות ועדכניות</p>
             </div>
 
             {/* מהירות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -1002,16 +1014,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><Zap className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><Zap className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 מהירות
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">עבודה יעילה ומסירה בזמן</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">עבודה יעילה ומסירה בזמן</p>
             </div>
 
             {/* התאמה אישית */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -1020,16 +1032,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><Palette className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><Palette className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 התאמה אישית
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">עיצוב ובנייה לפי הבקשות והצרכים שלכם</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">עיצוב ובנייה לפי הבקשות והצרכים שלכם</p>
             </div>
 
             {/* מחירים הוגנים */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -1038,16 +1050,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><DollarSign className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><DollarSign className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 מחירים הוגנים
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">שקיפות מלאה ללא עלויות נסתרות</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">שקילאה ללא עלויות נסתרות</p>
             </div>
 
             {/* אחריות */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -1056,16 +1068,16 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><Shield className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><Shield className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 אחריות
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">עומדים מאחורי העבודה שלנו</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">עומדים מאחורי העבודה שלנו</p>
             </div>
 
             {/* הגדלת ראש */}
             <div
-              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-2xl p-5 md:p-6 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
+              className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
                 valuesAnimated ? 'animate-fadeFromTop' : 'opacity-0'
               }`}
               style={
@@ -1074,15 +1086,20 @@ const HomePage: React.FC = () => {
                   : {}
               }
             >
-              <div className="mb-3 flex justify-center"><Star className="w-10 h-10 md:w-12 md:h-12 text-[#1a79f6]" /></div>
-              <h3 className="text-sm md:text-base lg:text-lg font-bold text-white mb-1">
+              <div className="mb-1 sm:mb-2 flex justify-center"><Star className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#1a79f6]" /></div>
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 הגדלת ראש
               </h3>
-              <p className="text-gray-400 text-xs md:text-sm">ההצלחה שלכם זו ההצלחה שלנו</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">ההצלחה שלכם זו ההצלחה שלנו</p>
             </div>
           </div>
 
-          <div className="text-center mt-8">
+          <div 
+            ref={aboutBtnRef}
+            className={`text-center mt-4 transition-all duration-1000 ${
+              aboutBtnVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <Link
               to="/about-full"
               className="bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-xs md:text-sm"
@@ -1092,12 +1109,14 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+      </section>
 
-      {/* Recommendations Section - המלצות */}
-      <div className="w-full flex justify-center items-center py-8">
+      {/* ===== SECTION 9: Recommendations ===== */}
+      <section className="home-snap-section">
+      <div className="w-full flex justify-center items-center">
         <div className="max-w-3xl w-full flex flex-col items-center px-4">
           <div ref={recommendationsHeaderRef}>
-            <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-10 text-center transition-all duration-1000 ${
+            <h2 className={`text-lg sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-4 sm:mb-8 md:mb-10 text-center transition-all duration-1000 ${
               recommendationsHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>המלצות</h2>
           </div>
@@ -1108,7 +1127,7 @@ const HomePage: React.FC = () => {
             }`}
           >
             {/* Recommendations Carousel Container */}
-            <div className="relative min-h-[280px]">
+            <div className="relative min-h-[180px] sm:min-h-[240px] md:min-h-[280px]">
               {/* Recommendation 1 - אור בנג'י */}
               <div 
                 className={`absolute w-full transition-all duration-700 ease-in-out ${
@@ -1119,12 +1138,12 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     פנינו לחברת Catapp עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדויקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
                   </p>
-                  <div className="flex items-center justify-end gap-3">
-                    <span className="font-bold text-[#1a79f6] text-base md:text-lg">אור בנג'י פסיכותרפיה</span>
+                  <div className="flex items-center justify-end gap-2 sm:gap-3">
+                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">אור בנג'י פסיכותרפיה</span>
                     <Star className="w-5 h-5 text-yellow-400" />
                   </div>
                 </div>
@@ -1140,12 +1159,12 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     ברצוני להודות לחברת Catapp על ליווי מקצועי ואישי ברמה גבוהה, עם תשומת לב אמיתית לפרטים והבנה עמוקה של הצרכים שלי. התהליך היה מסודר, ברור ויעיל, והתוצאה – קורות חיים איכותיים שמציגים אותי בצורה מדויקת ומרשימה. שירות ברמה הגבוהה ביותר – מומלץ בחום.
                   </p>
-                  <div className="flex items-center justify-end gap-3">
-                    <span className="font-bold text-[#1a79f6] text-base md:text-lg">יאיר אהרוני, סטודנט להנדסת חשמל ואלקטרוניקה</span>
+                  <div className="flex items-center justify-end gap-2 sm:gap-3">
+                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">יאיר אהרוני, סטודנט להנדסת חשמל ואלקטרוניקה</span>
                     <Star className="w-5 h-5 text-yellow-400" />
                   </div>
                 </div>
@@ -1161,12 +1180,12 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     עבדתי עם Catapp על בניית האתר, ואין ספק שעשיתי בחירה מצוינת. קיבלתי יחס אישי, זמינות מלאה והקשבה אמיתית לצרכים שלי. העבודה בוצעה במהירות, במקצועיות ובדיוק כפי שסוכם – והתוצאה עלתה על הציפיות. ממליץ מכל הלב
                   </p>
-                  <div className="flex items-center justify-end gap-3">
-                    <span className="font-bold text-[#1a79f6] text-base md:text-lg">רפאל סבג, בעלים של משרד עו"ד</span>
+                  <div className="flex items-center justify-end gap-2 sm:gap-3">
+                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">רפאל סבג, בעלים של משרד עו"ד</span>
                     <Star className="w-5 h-5 text-yellow-400" />
                   </div>
                 </div>
@@ -1182,12 +1201,12 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-lg md:text-xl text-white leading-relaxed mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     חברת Catapp העבירה לקהילה שלנו הרצאה יוצאת דופן ומקיפה ביותר על כתיבת קו"ח. ההרצאה הייתה מלאה בתוכן משמעותי ופרקטי עם דוגמאות מעשיות. ממליץ בחום רב!
                   </p>
-                  <div className="flex items-center justify-end gap-3">
-                    <span className="font-bold text-[#1a79f6] text-base md:text-lg">אוריאל, מנהל קהילת מעקף</span>
+                  <div className="flex items-center justify-end gap-2 sm:gap-3">
+                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">אוריאל, מנהל קהילת מעקף</span>
                     <Star className="w-5 h-5 text-yellow-400" />
                   </div>
                 </div>
@@ -1197,7 +1216,12 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Button to all testimonials */}
-          <div className="text-center mt-10">
+          <div 
+            ref={testimonialsBtnRef}
+            className={`text-center mt-4 sm:mt-6 md:mt-10 transition-all duration-1000 ${
+              testimonialsBtnVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <Link
               to="/testimonials"
               className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 md:px-8 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
@@ -1207,9 +1231,13 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+      </section>
 
+      {/* ===== SECTION 10: Footer ===== */}
+      <section className="home-snap-section snap-footer">
+        <Footer />
+      </section>
 
-      
     </div>
   );
 };

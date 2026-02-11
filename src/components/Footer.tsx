@@ -21,14 +21,14 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12">
+        <div className="grid md:grid-cols-4 gap-4 sm:gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="mb-4">
               <img src={logo} alt="Catapp Logo" className="h-8 ml-auto block" />
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-400 mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm md:text-base">
               בניית אתרים מקצועיים | דפי נחיתה ממירים | כתיבת קורות חיים להייטק | אופטימיזציית LinkedIn | הטמעת AI לאתרים
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
@@ -38,42 +38,42 @@ const Footer: React.FC = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">ניווט</h4>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+            <h4 className="text-sm sm:text-lg font-semibold mb-2 sm:mb-4">ניווט</h4>
+            <div className="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1 sm:gap-y-2">
               <Link 
                 to="/"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
               >
                 בית
               </Link>
               <Link 
                 to="/pricing"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
               >
                 מחירון
               </Link>
               <Link 
                 to="/about-full"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
               >
                 אודות
               </Link>
               <Link 
                 to="/testimonials"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
               >
                 המלצות
               </Link>
 
               <Link 
                 to="/portfolio"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
               >
                 פרוייקטים
               </Link>
               <Link 
                 to="/contact"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
               >
                 צור קשר
               </Link>
@@ -82,8 +82,8 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">פרטי קשר</h4>
-            <ul className="space-y-2 text-gray-400">
+            <h4 className="text-sm sm:text-lg font-semibold mb-2 sm:mb-4">פרטי קשר</h4>
+            <ul className="space-y-1 sm:space-y-2 text-gray-400 text-xs sm:text-sm md:text-base">
               <li className="flex items-center justify-start">
                 <Phone size={16} className="ml-2" />
                 <button onClick={handlePhone} className="hover:text-white transition-colors">
@@ -119,8 +119,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-wrap justify-center items-center gap-3 text-sm text-gray-400">
+        <div className="border-t border-gray-800 mt-4 sm:mt-8 pt-4 sm:pt-8">
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-[10px] sm:text-sm text-gray-400">
             <Link to="/terms" className="hover:text-white transition-colors">
               תנאי שימוש
             </Link>

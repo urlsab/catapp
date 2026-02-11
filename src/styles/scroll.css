@@ -87,7 +87,6 @@ body {
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -95,5 +94,4 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  scroll-snap-type: y mandatory;
 }
