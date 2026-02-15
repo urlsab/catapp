@@ -3,7 +3,7 @@ import logo from '../../Assets/catapp logo no bg.png';
 import { Link, useLocation } from 'react-router-dom';
 // import { useLanguage } from '../contexts/LanguageContext';
 // import { useTheme } from '../contexts/ThemeContext';
-import { Menu, X, Home, DollarSign, Briefcase, Users, Phone, Star } from 'lucide-react';
+import { Menu, X, Home, DollarSign, Briefcase, Users, Phone, Star, Sparkles } from 'lucide-react';
 
 const Header: React.FC = () => {
   // const { t } = useLanguage();
@@ -22,9 +22,11 @@ const Header: React.FC = () => {
 
   // Scroll progress tracking
   React.useEffect(() => {
+    const snapSelector = '.home-snap-container, .pricing-snap-container, .testimonials-snap-container, .contact-snap-container';
+
     const handleScroll = () => {
-      // Try snap container first, then fall back to window scroll
-      const snapContainer = document.querySelector('.home-snap-container') as HTMLElement | null;
+      // Try any snap container first, then fall back to window scroll
+      const snapContainer = document.querySelector(snapSelector) as HTMLElement | null;
       if (snapContainer) {
         const totalHeight = snapContainer.scrollHeight - snapContainer.clientHeight;
         const progress = totalHeight > 0 ? (snapContainer.scrollTop / totalHeight) * 100 : 0;
@@ -38,20 +40,25 @@ const Header: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     // Also listen to snap container scroll events
-    const snapContainer = document.querySelector('.home-snap-container');
+    const snapContainer = document.querySelector(snapSelector);
     if (snapContainer) {
       snapContainer.addEventListener('scroll', handleScroll);
     }
 
     // Re-check for snap container after DOM updates
     const timer = setTimeout(() => {
-      const sc = document.querySelector('.home-snap-container');
-      if (sc) sc.addEventListener('scroll', handleScroll);
-    }, 1000);
+      const sc = document.querySelector(snapSelector);
+      if (sc) {
+        sc.addEventListener('scroll', handleScroll);
+        // Trigger initial calculation
+        handleScroll();
+      }
+    }, 500);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (snapContainer) snapContainer.removeEventListener('scroll', handleScroll);
+      const sc = document.querySelector(snapSelector);
+      if (sc) sc.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
     };
   }, [location.pathname]);
@@ -151,6 +158,15 @@ const Header: React.FC = () => {
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/contact') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
+            <Link
+              to="/ask-ai"
+              className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/ask-ai') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+            >
+              שאל AI
+              <span
+                className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/ask-ai') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+              />
+            </Link>
           </nav>
 
           {/* Controls */}
@@ -230,6 +246,15 @@ const Header: React.FC = () => {
               >
                 <Phone size={18} />
                 פרטי קשר
+              </Link>
+              <Link 
+                to="/ask-ai"
+                onClick={handleMenuToggle}
+                className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/ask-ai') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                style={{ animationDelay: isClosing ? '0s' : '0.4s' }}
+              >
+                <Sparkles size={18} />
+                שאל AI
               </Link>
             </div>
           </div>

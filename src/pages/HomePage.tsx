@@ -6,7 +6,7 @@ import benjiLogo from '../../Assets/benjilogo1-no bg.png';
 import maakafLogo from '../../Assets/hebrew_horizontal_dark.png';
 import mosheLogo from '../../Assets/moshelogo.png';
 import officeLogo from '../../Assets/office logo.webp';
-import codersClanLogo from '../../Assets/coders clan icon.jpg';
+import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.png';
 import cvPic1 from '../../Assets/cv pic 1.png';
 import cvPic2 from '../../Assets/cv pic 2.png';
 import cvPic3 from '../../Assets/cv pic 3.png';
@@ -74,6 +74,9 @@ const HomePage: React.FC = () => {
   const recommendationsHeaderRef = React.useRef<HTMLDivElement>(null);
   const aboutBtnRef = React.useRef<HTMLDivElement>(null);
   const testimonialsBtnRef = React.useRef<HTMLDivElement>(null);
+  const heroTextMobileRef = React.useRef<HTMLDivElement>(null);
+  const heroImagesMobileRef = React.useRef<HTMLDivElement>(null);
+  const heroStatsDesktopRef = React.useRef<HTMLDivElement>(null);
   
   const [serviceImage1Visible, setServiceImage1Visible] = React.useState(false);
   const [serviceImage2Visible, setServiceImage2Visible] = React.useState(false);
@@ -87,6 +90,9 @@ const HomePage: React.FC = () => {
   const [recommendationsHeaderVisible, setRecommendationsHeaderVisible] = React.useState(false);
   const [aboutBtnVisible, setAboutBtnVisible] = React.useState(false);
   const [testimonialsBtnVisible, setTestimonialsBtnVisible] = React.useState(false);
+  const [heroTextMobileVisible, setHeroTextMobileVisible] = React.useState(false);
+  const [heroImagesMobileVisible, setHeroImagesMobileVisible] = React.useState(false);
+  const [heroStatsDesktopVisible, setHeroStatsDesktopVisible] = React.useState(false);
   const snapContainerRef = React.useRef<HTMLDivElement>(null);
 
   // Hide body scroll and global footer when snap container is active
@@ -243,6 +249,15 @@ const HomePage: React.FC = () => {
           if (entry.target === testimonialsBtnRef.current) {
             setTestimonialsBtnVisible(entry.isIntersecting);
           }
+          if (entry.target === heroTextMobileRef.current) {
+            setHeroTextMobileVisible(entry.isIntersecting);
+          }
+          if (entry.target === heroImagesMobileRef.current) {
+            setHeroImagesMobileVisible(entry.isIntersecting);
+          }
+          if (entry.target === heroStatsDesktopRef.current) {
+            setHeroStatsDesktopVisible(entry.isIntersecting);
+          }
         });
       },
       {
@@ -266,6 +281,9 @@ const HomePage: React.FC = () => {
     if (recommendationsHeaderRef.current) observer.observe(recommendationsHeaderRef.current);
     if (aboutBtnRef.current) observer.observe(aboutBtnRef.current);
     if (testimonialsBtnRef.current) observer.observe(testimonialsBtnRef.current);
+    if (heroTextMobileRef.current) observer.observe(heroTextMobileRef.current);
+    if (heroImagesMobileRef.current) observer.observe(heroImagesMobileRef.current);
+    if (heroStatsDesktopRef.current) observer.observe(heroStatsDesktopRef.current);
 
     return () => {
       if (serviceDesc1Ref.current) observer.unobserve(serviceDesc1Ref.current);
@@ -282,6 +300,9 @@ const HomePage: React.FC = () => {
       if (recommendationsHeaderRef.current) observer.unobserve(recommendationsHeaderRef.current);
       if (aboutBtnRef.current) observer.unobserve(aboutBtnRef.current);
       if (testimonialsBtnRef.current) observer.unobserve(testimonialsBtnRef.current);
+      if (heroTextMobileRef.current) observer.unobserve(heroTextMobileRef.current);
+      if (heroImagesMobileRef.current) observer.unobserve(heroImagesMobileRef.current);
+      if (heroStatsDesktopRef.current) observer.unobserve(heroStatsDesktopRef.current);
     };
   }, []);
 
@@ -314,29 +335,195 @@ const HomePage: React.FC = () => {
   return (
     <div className="home-snap-container" ref={snapContainerRef}>
 
-      {/* ===== SECTION 1: Hero ===== */}
-      <section className="home-snap-section snap-hero">
-      <div className="w-full flex justify-center items-center relative flex-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+      {/* ===== SECTION 1: Hero - Desktop (headline + images) ===== */}
+      <section className="home-snap-section snap-hero snap-hero-desktop-only">
+      <div className="w-full flex justify-center items-center relative flex-1 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-4 md:py-6 w-full h-full">
+          <div className="grid grid-cols-2 gap-10 items-center h-full">
             
-            {/* Left Side - Text Content (shows first on desktop) */}
-            <div className="text-right order-1 lg:order-1">
-
-              {/* Main Headline - fade-in from top */}
+            {/* Left Side - Headline only */}
+            <div className="text-right flex flex-col justify-center">
               <h1
-                className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
-                style={{ transitionDelay: headlineVisible ? '0ms' : '0ms' }}
+                className={`text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+              >
+                תוכן וטכנולוגיה
+                <br />
+                <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
+              </h1>
+            </div>
+
+            {/* Right Side - Screenshots Grid */}
+            <div className="relative" ref={heroImagesRef}>
+              <div className="grid grid-cols-2 gap-4 auto-rows-min">
+                <div 
+                  className={`relative rounded-3xl overflow-visible transition-all duration-700 ease-out hover:scale-105 h-fit max-w-md mx-auto ${
+                    heroImagesVisible[0] ? 'opacity-100 -translate-y-16' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ 
+                    filter: 'drop-shadow(0 20px 40px rgba(26, 121, 246, 0.4))'
+                  }}
+                >
+                  <img 
+                    src={resumesBuilderMobile} 
+                    alt="בניית קורות חיים במובייל" 
+                    className="w-full h-auto block max-h-[55vh] object-contain"
+                  />
+                </div>
+                
+                <div 
+                  className={`relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 transition-all duration-700 ease-out hover:scale-105 mt-12 h-fit max-w-md mx-auto ${
+                    heroImagesVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+                  }`}
+                  style={{ 
+                    boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
+                    transform: 'rotate(-3deg) scale(0.85)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
+                  <img 
+                    src={cvPic6} 
+                    alt="דוגמת קורות חיים מקצועי" 
+                    className="w-full h-auto block relative z-10 max-h-[50vh] object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      {/* ===== SECTION 1.5: Typing + Stats - Desktop only ===== */}
+      <section className="home-snap-section snap-hero snap-hero-desktop-only">
+        <div className="w-full flex justify-center items-center relative flex-1">
+          <div ref={heroStatsDesktopRef} className="max-w-4xl mx-auto px-6 lg:px-8 w-full flex flex-col justify-center items-center">
+            <div className={`w-full transition-all duration-1000 ${
+              heroStatsDesktopVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+
+              {/* Typing Animation - large */}
+              <div className="mb-12 w-full min-h-[4rem] flex justify-center" dir="rtl">
+                <h2
+                  className={`text-3xl lg:text-4xl xl:text-5xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
+                    typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
+                >
+                  <span className="leading-tight whitespace-nowrap">{currentText || '\u00A0'}</span>
+                  {typingStarted && (
+                    <span
+                      className="inline-block bg-[#1a79f6] align-middle animate-blink"
+                      style={{
+                        width: '4px',
+                        height: '1.4em',
+                        borderRadius: '2px',
+                        marginRight: '4px',
+                      }}
+                    />
+                  )}
+                </h2>
+              </div>
+
+              {/* Stats Row - larger */}
+              <div className="flex gap-16 lg:gap-20 justify-center">
+                <div
+                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                >
+                  <div className="flex justify-center mb-2">
+                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: '2.75rem' }} />
+                  </div>
+                  <div className="text-5xl lg:text-6xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-base lg:text-lg mt-1">שנות ניסיון</p>
+                </div>
+                <div
+                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
+                >
+                  <div className="flex justify-center mb-2">
+                    <GroupsIcon style={{ color: '#1a79f6', fontSize: '2.75rem' }} />
+                  </div>
+                  <div className="text-5xl lg:text-6xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-base lg:text-lg mt-1">לקוחות מרוצים</p>
+                </div>
+                <div
+                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
+                >
+                  <div className="flex justify-center mb-2">
+                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: '2.75rem' }} />
+                  </div>
+                  <div className="text-5xl lg:text-6xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-base lg:text-lg mt-1">טכנולוגיות בשימוש</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 1a: Hero Headline + Images - Mobile/Portrait only ===== */}
+      <section className="home-snap-section snap-hero snap-hero-mobile-only">
+        <div className="w-full flex justify-center items-center relative flex-1">
+          <div ref={heroTextMobileRef} className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-center items-center">
+            <div className={`w-full transition-all duration-1000 ${
+              heroTextMobileVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+
+              {/* Main Headline */}
+              <h1
+                className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight text-center"
               >
                 תוכן וטכנולוגיה
                 <br />
                 <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
               </h1>
 
-              {/* Typing Animation - RTL aligned with fixed height, appears after headline */}
-              <div className="mb-4 sm:mb-8 w-full min-h-[1.5rem] xs:min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem]" dir="rtl">
+              {/* Images Grid */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-5 auto-rows-min w-full max-w-lg mx-auto">
+                <div 
+                  className="relative rounded-3xl overflow-visible h-fit max-w-xs mx-auto"
+                  style={{ 
+                    filter: 'drop-shadow(0 20px 40px rgba(26, 121, 246, 0.4))'
+                  }}
+                >
+                  <img 
+                    src={resumesBuilderMobile} 
+                    alt="בניית קורות חיים במובייל" 
+                    className="w-full h-auto block max-h-[45vh] object-contain"
+                  />
+                </div>
+                
+                <div 
+                  className="relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 mt-8 sm:mt-12 h-fit max-w-xs mx-auto"
+                  style={{ 
+                    boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
+                    transform: 'rotate(-3deg) scale(0.9)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
+                  <img 
+                    src={cvPic6} 
+                    alt="דוגמת קורות חיים מקצועי" 
+                    className="w-full h-auto block relative z-10 max-h-[40vh] object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION 1b: Typing + Stats - Mobile/Portrait only ===== */}
+      <section className="home-snap-section snap-hero snap-hero-mobile-only">
+        <div className="w-full flex justify-center items-center relative flex-1">
+          <div ref={heroImagesMobileRef} className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-center items-center">
+            <div className={`w-full transition-all duration-1000 ${
+              heroImagesMobileVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+
+              {/* Typing Animation - larger for mobile */}
+              <div className="mb-10 sm:mb-14 w-full min-h-[2.5rem] sm:min-h-[3rem] flex justify-center" dir="rtl">
                 <h2
-                  className={`text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
+                  className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
                     typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}
                 >
@@ -355,97 +542,52 @@ const HomePage: React.FC = () => {
                 </h2>
               </div>
 
-              {/* Stats Row - animated fade-in from top */}
-              <div className="flex gap-4 sm:gap-8 md:gap-12 justify-end">
-                <div
-                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
-                  style={{ transitionDelay: heroStatsVisible[0] ? '0ms' : '0ms' }}
-                >
-                  <div className="flex justify-center mb-1">
-                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.25rem, 4vw, 2rem)' }} />
+              {/* Stats Row - larger */}
+              <div className="flex gap-8 xs:gap-10 sm:gap-14 justify-center">
+                <div className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+                  <div className="flex justify-center mb-1.5">
+                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }} />
                   </div>
-                  <div className="text-xl sm:text-2xl md:text-4xl font-bold text-white">+5</div>
-                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">שנות ניסיון</p>
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-sm sm:text-base mt-0.5">שנות ניסיון</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
                 >
-                  <div className="flex justify-center mb-1">
-                    <GroupsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.25rem, 4vw, 2rem)' }} />
+                  <div className="flex justify-center mb-1.5">
+                    <GroupsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }} />
                   </div>
-                  <div className="text-xl sm:text-2xl md:text-4xl font-bold text-white">+50</div>
-                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">לקוחות מרוצים</p>
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-sm sm:text-base mt-0.5">לקוחות מרוצים</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
                 >
-                  <div className="flex justify-center mb-1">
-                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.25rem, 4vw, 2rem)' }} />
+                  <div className="flex justify-center mb-1.5">
+                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }} />
                   </div>
-                  <div className="text-xl sm:text-2xl md:text-4xl font-bold text-white"><span dir="ltr">20+</span></div>
-                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">טכנולוגיות בשימוש</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side - Screenshots Grid (shows second on desktop) */}
-            <div className="relative order-2 lg:order-2" ref={heroImagesRef}>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 auto-rows-min">
-                {/* CV Screenshot 1 - Mobile Resume Builder */}
-                <div 
-                  className={`relative rounded-3xl overflow-visible transition-all duration-700 ease-out hover:scale-105 h-fit max-w-md mx-auto ${
-                    heroImagesVisible[0] ? 'opacity-100 -translate-y-20' : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ 
-                    transitionDelay: heroImagesVisible[0] ? '0ms' : '0ms',
-                    filter: 'drop-shadow(0 20px 40px rgba(26, 121, 246, 0.4))'
-                  }}
-                >
-                  <img 
-                    src={resumesBuilderMobile} 
-                    alt="בניית קורות חיים במובייל" 
-                    className="w-full h-auto block"
-                  />
-                </div>
-                
-                {/* CV Screenshot 2 - Desktop Resume */}
-                <div 
-                  className={`relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 transition-all duration-700 ease-out hover:scale-105 mt-12 h-fit max-w-md mx-auto ${
-                    heroImagesVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-                  }`}
-                  style={{ 
-                    transitionDelay: heroImagesVisible[1] ? '0ms' : '0ms',
-                    boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
-                    transform: 'rotate(-3deg) scale(0.85)'
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
-                  <img 
-                    src={cvPic6} 
-                    alt="דוגמת קורות חיים מקצועי" 
-                    className="w-full h-auto block relative z-10"
-                  />
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-sm sm:text-base mt-0.5">טכנולוגיות בשימוש</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </section>
 
       {/* ===== SECTION 2: Services - Websites + Tech Orbit ===== */}
       <section className="home-snap-section snap-compact">
-        <div className="w-full flex justify-center items-center bg-transparent relative overflow-visible flex-1">
-          <div className="max-w-5xl w-full flex flex-col items-center px-4 overflow-visible justify-center">
+        <div className="w-full flex justify-center items-center bg-transparent relative flex-1">
+          <div className="max-w-5xl w-full flex flex-col items-center px-4 justify-center">
                 <div ref={servicesHeaderRef}>
                   <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-3 text-center tracking-tight transition-all duration-1000 ${
                     servicesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}>השירותים שלנו</h2>
                 </div>
                 {/* שורה 1: בניית אתרים + עיגולים מסתובבים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-4 mb-2">
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6 md:gap-8 mb-2">
                   <div 
                     ref={serviceImage1Ref}
                     className={`flex-1 flex flex-col items-end text-right transition-all duration-1000 ${
@@ -482,7 +624,7 @@ const HomePage: React.FC = () => {
                     }`}
                   >
                     {/* אנימציית אייקונים מסתובבים */}
-                    <div className="relative w-full min-h-[200px] sm:min-h-[320px] md:min-h-[400px] flex items-center justify-center overflow-visible">
+                    <div className="relative w-full min-h-[200px] sm:min-h-[320px] md:min-h-[400px] flex items-center justify-center">
                       {/* Circular orbit container */}
                       <div className="tech-orbit">
                         <div className="tech-icon-wrapper" style={{ '--icon-index': 0 } as React.CSSProperties}>
@@ -664,8 +806,8 @@ const HomePage: React.FC = () => {
 
       {/* ===== SECTION 4: CV Service + CV Fan ===== */}
       <section className="home-snap-section snap-compact">
-        <div className="w-full flex justify-center items-center bg-transparent relative overflow-visible flex-1">
-          <div className="max-w-5xl w-full flex flex-col items-center px-4 overflow-visible justify-center">
+        <div className="w-full flex justify-center items-center bg-transparent relative flex-1">
+          <div className="max-w-5xl w-full flex flex-col items-center px-4 justify-center">
                 {/* שורה 2: בניית קורות חיים + מניפת קורות חיים */}
                 <div className="flex flex-col md:flex-row w-full items-center justify-between gap-1 sm:gap-4 mb-2">
                   <div 
@@ -799,15 +941,15 @@ const HomePage: React.FC = () => {
             className="w-full flex justify-center items-center relative px-4 sm:px-6 flex-1"
           >
             <div className="max-w-3xl w-full flex flex-col items-center">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1a79f6] mb-4 text-center">התהליך שלנו</h2>
+              <h2 className="text-xl sm:text-2xl md:text-[1.6rem] font-bold text-[#1a79f6] mb-2 md:mb-3 text-center">התהליך שלנו</h2>
               <div className="relative flex w-full">
                 {/* Vertical line - לבן מלא בלבד (נגמר בדיוק בקו התחתון של המלבן האחרון) */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-4 bg-white rounded-full z-0" style={{ height: 'calc(100% - 30px)', minHeight: 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-3 bg-white rounded-full z-0" style={{ height: 'calc(100% - 30px)', minHeight: 0 }} />
                 {/* קו כחול דק מעל הקו הלבן, מוצג רק לפי התקדמות הגלילה */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-4 pointer-events-none z-10" style={{ height: 'calc(100% - 30px)' }}>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-2 sm:w-2.5 md:w-3 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-[600ms] ease-out" style={{ height: `${progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-3 pointer-events-none z-10" style={{ height: 'calc(100% - 30px)' }}>
+                  <div className="absolute left-1/2 -translate-x-1/2 w-2 sm:w-2.5 md:w-2.5 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-[600ms] ease-out" style={{ height: `${progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
                 </div>
-                <div className="flex flex-col gap-4 w-full z-20">
+                <div className="flex flex-col gap-2 md:gap-3 w-full z-20">
                   {/* שלבים */}
                   {[
                     {
@@ -846,23 +988,23 @@ const HomePage: React.FC = () => {
                     // Calculate the progress for each step (icon)
                     const isActive = idx <= activeStep;
                     return (
-                      <div key={idx} className="flex items-center w-full relative" style={{ minHeight: 'clamp(45px, 10vh, 70px)' }}>
+                      <div key={idx} className="flex items-center w-full relative" style={{ minHeight: 'clamp(40px, 8vh, 58px)' }}>
                         {/* מלבן טקסט מימין */}
                         {isRight && (
                           <div className="flex-1 flex justify-end pr-1 sm:pr-3 mr-2 sm:mr-4 md:mr-6">
                             <div className="border-[#1a79f6] border-[1.5px] rounded-xl sm:rounded-2xl shadow-md text-right"
                               style={{ 
-                                maxWidth: 'clamp(90px, 35vw, 260px)',
-                                padding: 'clamp(0.2rem, 1.5vw, 0.75rem)'
+                                maxWidth: 'clamp(85px, 33vw, 230px)',
+                                padding: 'clamp(0.15rem, 1.2vw, 0.6rem)'
                               }}>
-                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.55rem, 2vw, 0.9rem)', marginBottom: 'clamp(0px, 0.5vw, 4px)' }}>{step.title}</div>
-                              <div className="text-white" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', lineHeight: 1.3 }}>{step.desc}</div>
+                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', marginBottom: 'clamp(0px, 0.4vw, 3px)' }}>{step.title}</div>
+                              <div className="text-white" style={{ fontSize: 'clamp(0.45rem, 1.6vw, 0.7rem)', lineHeight: 1.3 }}>{step.desc}</div>
                             </div>
                           </div>
                         )}
                         {/* אייקון ממורכז על הציר */}
-                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 z-30" style={{top: 0, minWidth: 'clamp(60px, 16vw, 130px)'}}>
-                          <div className={`flex items-center justify-center rounded-full transition-all duration-500 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 'clamp(30px, 7vw, 55px)', height: 'clamp(30px, 7vw, 55px)' }}>
+                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 z-30" style={{top: 0, minWidth: 'clamp(55px, 14vw, 110px)'}}>
+                          <div className={`flex items-center justify-center rounded-full transition-all duration-500 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 'clamp(28px, 6vw, 45px)', height: 'clamp(28px, 6vw, 45px)' }}>
                             {React.cloneElement(step.icon, {
                               className: `w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 ${isActive ? 'text-white' : 'text-[#1a79f6]'}`
                             })}
@@ -873,11 +1015,11 @@ const HomePage: React.FC = () => {
                           <div className="flex-1 flex justify-start pl-1 sm:pl-3 ml-2 sm:ml-4 md:ml-6">
                             <div className="border-[#1a79f6] border-[1.5px] rounded-xl sm:rounded-2xl shadow-md text-right"
                               style={{ 
-                                maxWidth: 'clamp(90px, 35vw, 260px)',
-                                padding: 'clamp(0.2rem, 1.5vw, 0.75rem)'
+                                maxWidth: 'clamp(85px, 33vw, 230px)',
+                                padding: 'clamp(0.15rem, 1.2vw, 0.6rem)'
                               }}>
-                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.55rem, 2vw, 0.9rem)', marginBottom: 'clamp(0px, 0.5vw, 4px)' }}>{step.title}</div>
-                              <div className="text-white" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', lineHeight: 1.3 }}>{step.desc}</div>
+                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', marginBottom: 'clamp(0px, 0.4vw, 3px)' }}>{step.title}</div>
+                              <div className="text-white" style={{ fontSize: 'clamp(0.45rem, 1.6vw, 0.7rem)', lineHeight: 1.3 }}>{step.desc}</div>
                             </div>
                           </div>
                         )}
@@ -916,8 +1058,8 @@ const HomePage: React.FC = () => {
               <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
                 <img src={officeLogo} alt="משרד עורכי דין" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 md:max-h-48 md:max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
               </div>
-              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={codersClanLogo} alt="Coders Clan" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" style={{borderRadius: '20%'}} />
+              <div className="flex items-center justify-center h-20 w-60 sm:h-30 sm:w-30 md:h-34 md:w-34 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={codersClanLogo} alt="Coders Clan" className="max-h-24 max-w-64 sm:max-h-34 sm:max-w-66 md:max-h-48 md:max-w-72 object-contain" style={{borderRadius: '20%'}} />
               </div>
             </div>
           </div>

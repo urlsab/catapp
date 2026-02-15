@@ -18,6 +18,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import AboutFullPage from './pages/AboutFullPage';
 
 import TestimonialsPage from './pages/TestimonialsPage';
+import AskAIPage from './pages/AskAIPage';
 // import AnimatedBackground from './components/AnimatedBackground';
 
 function usePageLoading() {
@@ -71,6 +72,8 @@ function App() {
 }
 function AppContent() {
   const {  spinnerVisible, canScrollToTop } = usePageLoading();
+  const location = useLocation();
+  const isAskAI = location.pathname === '/ask-ai';
 
   return (
     <div className="relative min-h-screen">
@@ -97,8 +100,9 @@ function AppContent() {
 
             <Route path="/about-full" element={<AboutFullPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/ask-ai" element={<AskAIPage />} />
           </Routes>
-          <Footer />
+          {!isAskAI && <Footer />}
 
           {/* כפתור וואטסאפ קבוע בפינה שמאלית תחתונה */}
           <div className="fixed left-2 bottom-2 flex flex-col gap-2 z-50">

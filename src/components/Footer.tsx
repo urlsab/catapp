@@ -77,6 +77,12 @@ const Footer: React.FC = () => {
               >
                 צור קשר
               </Link>
+              <Link 
+                to="/ask-ai"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
+              >
+                שאל AI
+              </Link>
             </div>
           </div>
 

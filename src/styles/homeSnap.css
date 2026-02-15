@@ -51,8 +51,31 @@
 }
 
 .home-snap-section.snap-hero {
-  padding-top: 3.5rem;
+  padding-top: 4.5rem;
   padding-bottom: 0;
+}
+
+/* Mobile-only hero sections: hide on desktop via snap override */
+@media (min-width: 1024px) {
+  .home-snap-section.snap-hero-mobile-only {
+    display: none;
+    min-height: 0;
+    height: 0;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    scroll-snap-align: none;
+  }
+}
+
+/* Desktop-only hero section: hide on mobile */
+.home-snap-section.snap-hero-desktop-only {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .home-snap-section.snap-hero-desktop-only {
+    display: flex;
+  }
 }
 
 .home-snap-section.snap-text-center {
@@ -82,7 +105,7 @@
     padding-bottom: 0.25rem;
   }
   .home-snap-section.snap-hero {
-    padding-top: 3.5rem;
+    padding-top: 4rem;
   }
   .home-snap-section.snap-compact {
     padding-top: 3.5rem;
@@ -94,6 +117,9 @@
   .home-snap-section {
     padding-top: 3.5rem;
     padding-bottom: 0.125rem;
+  }
+  .home-snap-section.snap-hero {
+    padding-top: 3.75rem;
   }
   .home-snap-section.snap-compact {
     padding-top: 3rem;
