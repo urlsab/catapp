@@ -16,7 +16,7 @@ import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import AboutFullPage from './pages/AboutFullPage';
-
+// import ArticlesPage from './pages/ArticlesPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import AskAIPage from './pages/AskAIPage';
 // import AnimatedBackground from './components/AnimatedBackground';
@@ -97,10 +97,10 @@ function AppContent() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
-
             <Route path="/about-full" element={<AboutFullPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/ask-ai" element={<AskAIPage />} />
+            {/* <Route path="/articles" element={<ArticlesPage />} /> */}
           </Routes>
           {!isAskAI && <Footer />}
 

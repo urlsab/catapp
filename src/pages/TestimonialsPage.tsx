@@ -40,6 +40,11 @@ const testimonials = [
     id: 7,
     name: 'אברהם שור, מפתח Full Stack',
     text: 'אני ממש מודה לך מכל הלב על השירות הנפלא והמיוחד. לא להאמין כמה זמן וכח השקעת בזה, רק מי שעובר את זה מבין עד כמה.. אני אומר לך את זה בשיא הרצינות, המחיר שאתה לוקח זה אפסי לעומת התוצר והתועלת שאתה מפיק. ממליץ עליך מכל הלב לכולם!!! ❤️'
+  },
+  {
+    id: 8,
+    name: 'אסף לכט , AI Software Engineer',
+    text: 'פניתי לאוריאל אחרי המלצה של חבר משותף, המחיר היה מעניין והתחלתי לשגע אותו, למען האמת חשבתי שהוא יתייאש די מהר, אך מסתבר שהייתה לו סבלנות. מה ששיכנע אותי לקחת את השירות מלבד המחיר, זה העובדה שהייתה לו סבלנות, ובאמת הרגשתי שהרווחתי בסוף לא רק ייעוץ אלא, אלא גם חבר. וכשאתה בתהליך של חיפוש עבודה או רוצה לחפש עבודה, זה בדיוק החלש שחסר, שהוא תהליך הרבה פעמים רגשי ולא רק מסמך לבן שכתוב עליו קורות חיים'
   }
 ];
 
@@ -194,6 +199,7 @@ const TestimonialsPage: React.FC = () => {
         <div className="w-full max-w-4xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-8 xl:gap-10">
             {renderCard(6, 'd', 0)}
+            {renderCard(7, 'd', 1)}
             <div />
           </div>
         </div>
@@ -209,14 +215,20 @@ const TestimonialsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* M2-M7: Cards 1-6 */}
-      {[1, 2, 3, 4, 5, 6].map((i) => (
-        <section key={`m-sec-${i}`} className="testimonials-snap-section testimonials-mobile-only">
-          <div className="w-full max-w-md mx-auto px-4">
-            {renderCard(i, 'm', 0)}
-          </div>
-        </section>
-      ))}
+
+      {/* M2-M7: Cards 1-7, 2 בכל סקשן במסכים קטנים */}
+      {Array.from({ length: Math.ceil((testimonials.length - 1) / 2) }, (_, idx) => {
+        const first = 1 + idx * 2;
+        const second = first + 1;
+        return (
+          <section key={`m-sec-pair-${idx}`} className="testimonials-snap-section testimonials-mobile-only">
+            <div className="w-full max-w-md mx-auto px-4">
+              {renderCard(first, 'm', 0)}
+              {second < testimonials.length && renderCard(second, 'm', 1)}
+            </div>
+          </section>
+        );
+      })}
 
       {/* ================== FOOTER ================== */}
       <section className="testimonials-snap-section testimonials-snap-footer">

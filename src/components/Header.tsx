@@ -148,6 +148,15 @@ const Header: React.FC = () => {
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/testimonials') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
+              {/* <Link
+                to="/articles"
+                className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/articles') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
+              >
+                מאמרים
+                <span
+                  className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/articles') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
+                />
+              </Link> */}
 
             <Link
               to="/contact"
@@ -237,6 +246,15 @@ const Header: React.FC = () => {
                 <Star size={18} />
                 המלצות
               </Link>
+                {/* <Link 
+                  to="/articles"
+                  onClick={handleMenuToggle}
+                  className={`flex items-center gap-3 px-3 py-2 transition-colors ${isClosing ? '' : 'animate-menuItemIn'} ${isActive('/articles') ? 'text-[#1a79f6]' : 'text-gray-700 dark:text-gray-300 hover:text-[#1a79f6]'}`}
+                  style={{ animationDelay: isClosing ? '0s' : '0.3s' }}
+                >
+                  <Book size={18} />
+                  מאמרים
+                </Link> */}
 
               <Link 
                 to="/contact"

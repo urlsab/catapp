@@ -58,6 +58,12 @@ const Footer: React.FC = () => {
               >
                 אודות
               </Link>
+                {/* <Link 
+                  to="/articles"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"
+                >
+                  מאמרים
+                </Link> */}
               <Link 
                 to="/testimonials"
                 className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm md:text-base"

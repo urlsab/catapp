@@ -101,3 +101,17 @@
     padding-bottom: 0.125rem;
   }
 }
+
+/* 2 המלצות אחת על השנייה במסכים קטנים מ-400 פיקסל ואנכיים */
+@media (max-width: 400px) and (orientation: portrait) {
+  .testimonials-mobile-only > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .testimonials-mobile-only > div > div {
+    margin-bottom: 0 !important;
+  }
+  /* שנה את מפת הרינדור כך שכל סקשן יציג 2 קלפים */
+}
