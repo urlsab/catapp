@@ -76,15 +76,10 @@
   }
 }
 
-/* Footer section - auto height, snaps to start */
+/* Footer section - full height snap section */
 .pricing-snap-section.pricing-snap-footer {
-  min-height: auto;
-  height: auto;
-  max-height: none;
   padding-top: 0;
   padding-bottom: 0;
-  overflow: visible;
-  justify-content: flex-end;
 }
 
 /* Responsive padding adjustments */

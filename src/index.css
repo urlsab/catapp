@@ -3,6 +3,50 @@ body, html, #root {
   font-family: "Varela Round", "Manrope", sans-serif;
 }
 
+/* ===== Footer responsive styles for phone screens ≤400px ===== */
+@media (max-width: 400px) {
+  /* Vertical stacked layout */
+  .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  /* Nav links in single column */
+  .footer-nav-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Increase text sizes for small phone screens */
+  .footer-text,
+  .footer-link {
+    font-size: 1.125rem !important; /* 18px */
+  }
+
+  .footer-heading {
+    font-size: 1.5rem !important; /* 24px */
+  }
+
+  .footer-icon {
+    width: 1.375rem !important;
+    height: 1.375rem !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 0.625rem !important;
+  }
+
+  .footer-bottom-link {
+    font-size: 1rem !important; /* 16px */
+  }
+
+  .footer-bottom-divider {
+    display: none !important;
+  }
+}
+
 /* Smooth scrolling for entire site with smooth delay */
 html {
   scroll-behavior: smooth;
