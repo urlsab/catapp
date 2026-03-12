@@ -140,18 +140,17 @@ const HomePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [typingStarted]);
 
-  // 4. Animate hero images sequentially after stats animation is done
+  // 4. Animate hero images sequentially after headline appears
   React.useEffect(() => {
-    if (!heroStatsVisible[2]) return;
-    // Wait longer after last stat appears before starting images
+    if (!headlineVisible) return;
     const timers: number[] = [];
-    const initialDelay = 900; // ms after last stat appears
+    const initialDelay = 500; // ms after headline appears
     timers.push(window.setTimeout(() => setHeroImagesVisible([true, false, false, false]), initialDelay));
-    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, false, false]), initialDelay + 300));
-    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, true, false]), initialDelay + 600));
-    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, true, true]), initialDelay + 900));
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, false, false]), initialDelay + 500));
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, true, false]), initialDelay + 800));
+    timers.push(window.setTimeout(() => setHeroImagesVisible([true, true, true, true]), initialDelay + 1100));
     return () => timers.forEach(t => clearTimeout(t));
-  }, [heroStatsVisible]);
+  }, [headlineVisible]);
 
 
   // Animate stats numbers (if you want to trigger this, use heroStatsVisible or another trigger)
@@ -338,15 +337,15 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 1: Hero - Desktop (headline + images) ===== */}
       <section className="home-snap-section snap-hero snap-hero-desktop-only">
       <div className="w-full flex justify-center items-center relative flex-1 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-4 md:py-6 w-full h-full">
-          <div className="grid grid-cols-2 gap-10 items-center h-full">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-1 sm:py-2 md:py-3 w-full h-full">
+          <div className="grid grid-cols-2 gap-6 items-center h-full">
             
             {/* Left Side - Headline only */}
             <div className="text-right flex flex-col justify-center">
               <h1
                 className={`text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
               >
-                תוכן וטכנולוגיה
+                אתרים וקורות חיים
                 <br />
                 <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
               </h1>
@@ -366,7 +365,7 @@ const HomePage: React.FC = () => {
                   <img 
                     src={resumesBuilderMobile} 
                     alt="בניית קורות חיים במובייל" 
-                    className="w-full h-auto block max-h-[55vh] object-contain"
+                    className="w-full h-auto block max-h-[70vh] object-contain"
                   />
                 </div>
                 
@@ -376,14 +375,14 @@ const HomePage: React.FC = () => {
                   }`}
                   style={{ 
                     boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
-                    transform: 'rotate(-3deg) scale(0.85)'
+                    transform: 'rotate(-3deg) scale(0.95)'
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
                   <img 
                     src={cvPic6} 
                     alt="דוגמת קורות חיים מקצועי" 
-                    className="w-full h-auto block relative z-10 max-h-[50vh] object-contain"
+                    className="w-full h-auto block relative z-10 max-h-[65vh] object-contain"
                   />
                 </div>
               </div>
@@ -396,13 +395,13 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 1.5: Typing + Stats - Desktop only ===== */}
       <section className="home-snap-section snap-hero snap-hero-desktop-only">
         <div className="w-full flex justify-center items-center relative flex-1">
-          <div ref={heroStatsDesktopRef} className="max-w-4xl mx-auto px-6 lg:px-8 w-full flex flex-col justify-center items-center">
+          <div ref={heroStatsDesktopRef} className="max-w-4xl mx-auto px-3 lg:px-6 w-full flex flex-col justify-center items-center">
             <div className={`w-full transition-all duration-1000 ${
               heroStatsDesktopVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
 
               {/* Typing Animation - large */}
-              <div className="mb-12 w-full min-h-[4rem] flex justify-center" dir="rtl">
+              <div className="mb-8 w-full min-h-[4rem] flex justify-center" dir="rtl">
                 <h2
                   className={`text-3xl lg:text-4xl xl:text-5xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
                     typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
@@ -424,7 +423,7 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Stats Row - larger */}
-              <div className="flex gap-16 lg:gap-20 justify-center">
+              <div className="flex gap-10 lg:gap-14 justify-center">
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                 >
@@ -472,13 +471,13 @@ const HomePage: React.FC = () => {
               <h1
                 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight text-center"
               >
-                תוכן וטכנולוגיה
+                אתרים וקורות חיים
                 <br />
                 <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
               </h1>
 
               {/* Images Grid */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-5 auto-rows-min w-full max-w-lg mx-auto">
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 auto-rows-min w-full max-w-lg mx-auto">
                 <div 
                   className="relative rounded-3xl overflow-visible h-fit max-w-xs mx-auto"
                   style={{ 
@@ -488,22 +487,22 @@ const HomePage: React.FC = () => {
                   <img 
                     src={resumesBuilderMobile} 
                     alt="בניית קורות חיים במובייל" 
-                    className="w-full h-auto block max-h-[45vh] object-contain"
+                    className="w-full h-auto block max-h-[55vh] object-contain"
                   />
                 </div>
                 
                 <div 
-                  className="relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 mt-8 sm:mt-12 h-fit max-w-xs mx-auto"
+                  className="relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 mt-6 sm:mt-10 h-fit max-w-xs mx-auto"
                   style={{ 
                     boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
-                    transform: 'rotate(-3deg) scale(0.9)'
+                    transform: 'rotate(-3deg) scale(1.0)'
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
                   <img 
                     src={cvPic6} 
                     alt="דוגמת קורות חיים מקצועי" 
-                    className="w-full h-auto block relative z-10 max-h-[40vh] object-contain"
+                    className="w-full h-auto block relative z-10 max-h-[50vh] object-contain"
                   />
                 </div>
               </div>
@@ -521,9 +520,9 @@ const HomePage: React.FC = () => {
             }`}>
 
               {/* Typing Animation - larger for mobile */}
-              <div className="mb-10 sm:mb-14 w-full min-h-[2.5rem] sm:min-h-[3rem] flex justify-center" dir="rtl">
+              <div className="mb-6 sm:mb-10 w-full min-h-[2.5rem] sm:min-h-[3rem] flex justify-center" dir="rtl">
                 <h2
-                  className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
+                  className={`text-2xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white inline-flex items-center transition-all duration-800 transform ${
                     typingStarted ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}
                 >
@@ -543,33 +542,33 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Stats Row - larger */}
-              <div className="flex gap-8 xs:gap-10 sm:gap-14 justify-center">
+              <div className="flex gap-6 xs:gap-8 sm:gap-12 justify-center">
                 <div className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                   <div className="flex justify-center mb-1.5">
-                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }} />
+                    <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.75rem, 7vw, 2.75rem)' }} />
                   </div>
-                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white">+5</div>
-                  <p className="text-gray-400 text-sm sm:text-base mt-0.5">שנות ניסיון</p>
+                  <div className="text-4xl xs:text-4xl sm:text-5xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-base sm:text-base mt-0.5">שנות ניסיון</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1.5">
-                    <GroupsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }} />
+                    <GroupsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.75rem, 7vw, 2.75rem)' }} />
                   </div>
-                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white">+50</div>
-                  <p className="text-gray-400 text-sm sm:text-base mt-0.5">לקוחות מרוצים</p>
+                  <div className="text-4xl xs:text-4xl sm:text-5xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-base sm:text-base mt-0.5">לקוחות מרוצים</p>
                 </div>
                 <div
                   className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1.5">
-                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.5rem, 6vw, 2.5rem)' }} />
+                    <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.75rem, 7vw, 2.75rem)' }} />
                   </div>
-                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white"><span dir="ltr">20+</span></div>
-                  <p className="text-gray-400 text-sm sm:text-base mt-0.5">טכנולוגיות בשימוש</p>
+                  <div className="text-4xl xs:text-4xl sm:text-5xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-base sm:text-base mt-0.5">טכנולוגיות בשימוש</p>
                 </div>
               </div>
             </div>
@@ -580,14 +579,14 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 2: Services - Websites + Tech Orbit ===== */}
       <section className="home-snap-section snap-compact">
         <div className="w-full flex justify-center items-center bg-transparent relative flex-1">
-          <div className="max-w-5xl w-full flex flex-col items-center px-4 justify-center">
+          <div className="max-w-5xl w-full flex flex-col items-center px-2 justify-center">
                 <div ref={servicesHeaderRef}>
-                  <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-3 text-center tracking-tight transition-all duration-1000 ${
+                  <h2 className={`text-3xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-2 text-center tracking-tight transition-all duration-1000 ${
                     servicesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}>השירותים שלנו</h2>
                 </div>
                 {/* שורה 1: בניית אתרים + עיגולים מסתובבים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6 md:gap-8 mb-2">
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-3 md:gap-6 mb-2">
                   <div 
                     ref={serviceImage1Ref}
                     className={`flex-1 flex flex-col items-end text-right transition-all duration-1000 ${
@@ -788,8 +787,8 @@ const HomePage: React.FC = () => {
                     serviceDesc1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                 >
-                  <div className="rounded-xl p-5 md:p-7 shadow-lg w-full max-w-3xl">
-                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line">
+                  <div className="rounded-xl p-3 md:p-5 shadow-lg w-full max-w-3xl">
+                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line">
                       אנחנו לא בונים עם{" "}
                       <span className="text-[#1a79f6]">WordPress</span>
                       {"\n"}
@@ -807,9 +806,9 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 4: CV Service + CV Fan ===== */}
       <section className="home-snap-section snap-compact">
         <div className="w-full flex justify-center items-center bg-transparent relative flex-1">
-          <div className="max-w-5xl w-full flex flex-col items-center px-4 justify-center">
+          <div className="max-w-5xl w-full flex flex-col items-center px-2 justify-center">
                 {/* שורה 2: בניית קורות חיים + מניפת קורות חיים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-1 sm:gap-4 mb-2">
+                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-1 sm:gap-3 mb-2">
                   <div 
                     ref={serviceImage2Ref}
                     className={`flex-1 flex flex-col items-end text-right transition-all duration-1000 ${
@@ -872,8 +871,8 @@ const HomePage: React.FC = () => {
                     serviceDesc2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                 >
-                  <div className="rounded-xl p-5 md:p-7 shadow-lg w-full max-w-3xl">
-                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line">
+                  <div className="rounded-xl p-3 md:p-5 shadow-lg w-full max-w-3xl">
+                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line">
                       אנחנו מייצרים קורות חיים
                       <span className="text-[#1a79f6]"> שעוברים כל סינון </span>
                       אוטומטי
@@ -938,7 +937,7 @@ const HomePage: React.FC = () => {
         return (
           <div 
             ref={processRef}
-            className="w-full flex justify-center items-center relative px-4 sm:px-6 flex-1"
+            className="w-full flex justify-center items-center relative px-2 sm:px-4 flex-1"
           >
             <div className="max-w-3xl w-full flex flex-col items-center">
               <h2 className="text-xl sm:text-2xl md:text-[1.6rem] font-bold text-[#1a79f6] mb-2 md:mb-3 text-center">התהליך שלנו</h2>
@@ -1037,14 +1036,14 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 7: Happy Clients ===== */}
       <section className="home-snap-section">
       <div className="w-full flex justify-center items-center overflow-hidden">
-        <div className="max-w-3xl w-full flex flex-col items-center px-4">
+        <div className="max-w-3xl w-full flex flex-col items-center px-2">
           <div 
             ref={happyClientsRef}
-            className={`w-full flex flex-col items-center py-4 transition-all duration-1000 ${
+            className={`w-full flex flex-col items-center py-3 transition-all duration-1000 ${
               happyClientsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <h2 className="text-lg sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-4 sm:mb-8 text-center">מבין לקוחותינו המרוצים</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-3 sm:mb-6 text-center">מבין לקוחותינו המרוצים</h2>
             <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 md:gap-8">
               <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
                 <img src={benjiLogo} alt="בנג'י" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" />
@@ -1073,10 +1072,10 @@ const HomePage: React.FC = () => {
         ref={valuesRef}
         className="w-full flex justify-center items-center relative flex-1"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-4 sm:py-6 md:py-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 w-full py-2 sm:py-4 md:py-6">
           <div className="text-center mb-3 sm:mb-6">
             <div ref={valuesHeaderRef}>
-              <h2 className={`text-lg sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-1 sm:mb-2 transition-all duration-1000 ${
+              <h2 className={`text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-1 sm:mb-2 transition-all duration-1000 ${
                 valuesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
                 הערכים שמנחים אותנו
@@ -1256,9 +1255,9 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 9: Recommendations ===== */}
       <section className="home-snap-section">
       <div className="w-full flex justify-center items-center">
-        <div className="max-w-3xl w-full flex flex-col items-center px-4">
+        <div className="max-w-3xl w-full flex flex-col items-center px-2">
           <div ref={recommendationsHeaderRef}>
-            <h2 className={`text-lg sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-4 sm:mb-8 md:mb-10 text-center transition-all duration-1000 ${
+            <h2 className={`text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-3 sm:mb-6 md:mb-8 text-center transition-all duration-1000 ${
               recommendationsHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>המלצות</h2>
           </div>
@@ -1280,8 +1279,8 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     פנינו לחברת Catapp עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדויקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
                   </p>
                   <div className="flex items-center justify-end gap-2 sm:gap-3">
@@ -1301,8 +1300,8 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     ברצוני להודות לחברת Catapp על ליווי מקצועי ואישי ברמה גבוהה, עם תשומת לב אמיתית לפרטים והבנה עמוקה של הצרכים שלי. התהליך היה מסודר, ברור ויעיל, והתוצאה – קורות חיים איכותיים שמציגים אותי בצורה מדויקת ומרשימה. שירות ברמה הגבוהה ביותר – מומלץ בחום.
                   </p>
                   <div className="flex items-center justify-end gap-2 sm:gap-3">
@@ -1322,8 +1321,8 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     עבדתי עם Catapp על בניית האתר, ואין ספק שעשיתי בחירה מצוינת. קיבלתי יחס אישי, זמינות מלאה והקשבה אמיתית לצרכים שלי. העבודה בוצעה במהירות, במקצועיות ובדיוק כפי שסוכם – והתוצאה עלתה על הציפיות. ממליץ מכל הלב
                   </p>
                   <div className="flex items-center justify-end gap-2 sm:gap-3">
@@ -1343,8 +1342,8 @@ const HomePage: React.FC = () => {
                       : 'opacity-0 translate-x-full'
                 }`}
               >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-sm sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
+                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
+                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
                     חברת Catapp העבירה לקהילה שלנו הרצאה יוצאת דופן ומקיפה ביותר על כתיבת קו"ח. ההרצאה הייתה מלאה בתוכן משמעותי ופרקטי עם דוגמאות מעשיות. ממליץ בחום רב!
                   </p>
                   <div className="flex items-center justify-end gap-2 sm:gap-3">

@@ -121,3 +121,34 @@
     padding-bottom: 0.125rem;
   }
 }
+
+/* Scale up elements for very small mobile screens (≤400px) */
+@media (max-width: 400px) {
+  .home-snap-container .home-snap-section h1 {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+  .home-snap-container .home-snap-section h2 {
+    font-size: 1.35rem;
+  }
+  .home-snap-container .home-snap-section p {
+    font-size: 0.95rem;
+  }
+  .home-snap-container .home-snap-section img {
+    max-width: 100%;
+  }
+
+  /* Footer adjustments for very small screens */
+  .footer-wrapper .footer-heading {
+    font-size: 1rem;
+  }
+  .footer-wrapper .footer-link {
+    font-size: 0.8rem;
+  }
+  .footer-wrapper .footer-text {
+    font-size: 0.8rem;
+  }
+  .footer-wrapper .footer-bottom-link {
+    font-size: 0.7rem;
+  }
+}

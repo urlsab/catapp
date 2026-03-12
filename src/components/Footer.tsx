@@ -44,41 +44,41 @@ const Footer: React.FC = () => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-        <div className="footer-grid grid md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+        <div className="footer-grid grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {/* Company Info */}
-          <div className="md:col-span-2">
-            <div className="mb-4 lg:mb-6">
-              <img src={logo} alt="Catapp Logo" className="h-10 lg:h-14 ml-auto block" />
+          <div className="col-span-2">
+            <div className="mb-3 lg:mb-5">
+              <img src={logo} alt="Catapp Logo" className="h-8 lg:h-12 ml-auto block" />
             </div>
-            <p className="footer-text text-gray-400 mb-4 sm:mb-6 leading-relaxed text-base sm:text-lg lg:text-xl">
+            <p className="footer-text text-gray-400 mb-3 sm:mb-5 leading-relaxed text-sm sm:text-base lg:text-lg">
               בניית אתרים מקצועיים | דפי נחיתה ממירים | כתיבת קורות חיים להייטק | אופטימיזציית LinkedIn | הטמעת AI לאתרים
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="footer-heading text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 lg:mb-5">ניווט</h4>
-            <div className="footer-nav-grid grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2 sm:gap-y-3">
-              <Link to="/" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+            <h4 className="footer-heading text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 lg:mb-4">ניווט</h4>
+            <div className="footer-nav-grid grid grid-cols-2 gap-x-3 sm:gap-x-5 gap-y-1.5 sm:gap-y-2">
+              <Link to="/" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 בית
               </Link>
-              <Link to="/pricing" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+              <Link to="/pricing" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 מחירון
               </Link>
-              <Link to="/about-full" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+              <Link to="/about-full" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 אודות
               </Link>
-              <Link to="/testimonials" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+              <Link to="/testimonials" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 המלצות
               </Link>
-              <Link to="/portfolio" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+              <Link to="/portfolio" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 פרוייקטים
               </Link>
-              <Link to="/contact" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+              <Link to="/contact" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 צור קשר
               </Link>
-              <Link to="/ask-ai" className="footer-link text-gray-400 hover:text-white transition-colors text-base sm:text-lg lg:text-xl">
+              <Link to="/ask-ai" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 שאל AI
               </Link>
             </div>
@@ -86,16 +86,16 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="footer-heading text-xl sm:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-4 lg:mb-5">פרטי קשר</h4>
-            <ul className="space-y-2 sm:space-y-3 text-gray-400 text-base sm:text-lg lg:text-xl">
+            <h4 className="footer-heading text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 lg:mb-4">פרטי קשר</h4>
+            <ul className="space-y-1.5 sm:space-y-2 text-gray-400 text-sm sm:text-base lg:text-lg">
               <li className="flex items-center justify-start">
-                <Phone className="footer-icon ml-2 w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 flex-shrink-0" />
+                <Phone className="footer-icon ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 flex-shrink-0" />
                 <button onClick={handlePhone} className="footer-link hover:text-white transition-colors">
                   055-6611594
                 </button>
               </li>
               <li className="flex items-center justify-start">
-                <Mail className="footer-icon ml-2 w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 flex-shrink-0" />
+                <Mail className="footer-icon ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 flex-shrink-0" />
                 <button onClick={handleEmail} className="footer-link hover:text-white transition-colors">
                   yairsabag213@gmail.com
                 </button>
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
                   className="flex items-center hover:text-white transition-colors footer-link"
                 >
                   <svg
-                    className="footer-icon ml-2 w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 flex-shrink-0"
+                    className="footer-icon ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 flex-shrink-0"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -121,8 +121,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-6 sm:mt-8 lg:mt-10 pt-6 sm:pt-8">
-          <div className="footer-bottom flex flex-wrap justify-center items-center gap-3 sm:gap-4 text-gray-400 text-sm sm:text-base lg:text-lg">
+        <div className="border-t border-gray-800 mt-4 sm:mt-6 lg:mt-8 pt-4 sm:pt-6">
+          <div className="footer-bottom flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-gray-400 text-xs sm:text-sm lg:text-base">
             <Link to="/terms" className="footer-bottom-link hover:text-white transition-colors">
               תנאי שימוש
             </Link>
