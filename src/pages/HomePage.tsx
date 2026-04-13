@@ -1198,6 +1198,8 @@ const HomePage: React.FC = () => {
               <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">שקילאה ללא עלויות נסתרות</p>
             </div>
 
+            {/* היי */}
+
             {/* אחריות */}
             <div
               className={`bg-white/5 backdrop-blur-sm border border-[#1a79f6]/30 rounded-xl sm:rounded-2xl p-2 sm:p-3 md:p-5 text-center hover:border-[#1a79f6]/60 hover:transform hover:scale-105 transition-all duration-300 ${
