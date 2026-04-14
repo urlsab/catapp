@@ -3,6 +3,34 @@ body, html, #root {
   font-family: "Varela Round", "Manrope", sans-serif;
 }
 
+/* ===== Footer responsive styles for phone screens ≤768px ===== */
+@media (max-width: 768px) {
+  /* Footer centered layout for mobile */
+  .footer-wrapper {
+    text-align: center;
+  }
+
+  .footer-grid {
+    gap: 1.5rem !important;
+  }
+
+  .footer-heading {
+    text-align: center;
+  }
+
+  .footer-nav-grid {
+    justify-items: center;
+  }
+
+  .footer-wrapper ul li {
+    justify-content: center !important;
+  }
+
+  .footer-wrapper ul li a {
+    justify-content: center !important;
+  }
+}
+
 /* ===== Footer responsive styles for phone screens ≤400px ===== */
 @media (max-width: 400px) {
   /* Vertical stacked layout */

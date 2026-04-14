@@ -1,18 +1,70 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import logoBg from '../../Assets/catapp logo no bg.png';
 import logoCenter from '../../Assets/logoiCatapp.png';
 import { Target, Shield, Code, Bot, Accessibility, Sparkles, Wrench, X, CheckCircle2 } from 'lucide-react';
 import { FaReact, FaNodeJs, FaWordpress, FaGithub, FaGitAlt, FaSass, FaBolt } from 'react-icons/fa';
 import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiExpress, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini, SiGooglecloud } from 'react-icons/si';
 import { BsBootstrapFill } from "react-icons/bs";
-// import SmoothScroll from '../components/SmoothScroll';
+import Footer from '../components/Footer';
+import '../styles/aboutSnap.css';
 
 const AboutFullPage: React.FC = () => {
+  const snapContainerRef = useRef<HTMLDivElement>(null);
+  const elementRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const elementToKey = useRef<WeakMap<Element, string>>(new WeakMap());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+
+  const getRef = (key: string) => (el: HTMLDivElement | null) => {
+    if (el) {
+      elementRefs.current.set(key, el);
+      elementToKey.current.set(el, key);
+    }
+  };
+
+  const isVis = (key: string) => visibleElements.has(key);
+
+  // Hide body scroll and global footer when snap container is active
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    const globalFooter = document.querySelector('.min-h-screen > footer') as HTMLElement;
+    if (globalFooter) globalFooter.style.display = 'none';
+    return () => {
+      document.body.style.overflow = '';
+      if (globalFooter) globalFooter.style.display = '';
+    };
+  }, []);
+
+  // IntersectionObserver for fade in/out
+  useEffect(() => {
+    const container = snapContainerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisibleElements((prev) => {
+          const next = new Set(prev);
+          let changed = false;
+          for (const entry of entries) {
+            const key = elementToKey.current.get(entry.target);
+            if (key !== undefined) {
+              if (entry.isIntersecting && !prev.has(key)) { next.add(key); changed = true; }
+              else if (!entry.isIntersecting && prev.has(key)) { next.delete(key); changed = true; }
+            }
+          }
+          return changed ? next : prev;
+        });
+      },
+      { root: container, threshold: 0.15 }
+    );
+    const t = setTimeout(() => {
+      elementRefs.current.forEach((el) => observer.observe(el));
+    }, 50);
+    return () => { clearTimeout(t); observer.disconnect(); };
+  }, []);
+
   return (
-  <div className="relative min-h-screen text-white pt-16 fade-in overflow-hidden mt-16">
-      {/* <SmoothScroll /> */}
-      {/* רקע לוגו מטושטש */}
-      <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none">
+  <div ref={snapContainerRef} className="about-snap-container">
+      {/* רקע לוגו מטושטש - fixed behind all sections */}
+      <div className="fixed inset-0 z-0 flex justify-center items-center pointer-events-none">
         <img
           src={logoBg}
           alt="Catapp Logo Background"
@@ -21,8 +73,9 @@ const AboutFullPage: React.FC = () => {
         />
       </div>
 
-      {/* תוכן ראשי */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      {/* ===== SECTION 1: Title + Company Intro ===== */}
+      <section className="about-snap-section">
+        <div ref={getRef('s1')} className={`relative z-10 max-w-6xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s1') ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="text-center mb-6 sm:mb-8 md:mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 pb-2 tracking-tight bg-gradient-to-r from-[#1a79f6] to-blue-400 bg-clip-text text-transparent leading-tight px-2 sm:px-4">
             אודות Catapp
@@ -33,13 +86,12 @@ const AboutFullPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="mb-12 space-y-8 text-lg leading-relaxed rtl:text-right">
           {/* הצגת החברה */}
-          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 mb-4 sm:mb-6 md:mb-8 backdrop-blur-sm border-animated bg-white/5" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
+          <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 backdrop-blur-sm border-animated bg-white/5" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
             <h2 className="text-base sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-3 sm:mb-4 md:mb-6 text-center">למה Catapp שונה?</h2>
             <p className="mb-4 md:mb-6 text-center text-sm sm:text-base">
               <span className="font-bold text-[#1a79f6]">Catapp</span> נוסדה מתוך צורך אמיתי - 
-              <span className="font-semibold"> לפתור את בעיית המהירות והגמישות</span> בבניית אתרים מקצועיים. 
+              <span className="font-semibold"> לפתור את בעיית המהירות והגמישות</span> בפיתוח אתרים מקצועיים. 
               בניגוד לפלטפורמות תבניתיות כמו WordPress, Wix או Shopify, אנו בונים כל אתר מאפס 
               <span className="font-bold text-[#1a79f6]"> בטכנולוגיות ההייטק המתקדמות ביותר</span>.
             </p>
@@ -47,9 +99,13 @@ const AboutFullPage: React.FC = () => {
               אצלנו - עיצוב בלתי מוגבל, ביצועים מהירים פי 10, ופיצ'רים שלא תראו בשום מקום אחר!
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* לא WordPress - כן טכנולוגיות מתקדמות */}
-          <div className="mb-4 sm:mb-6 md:mb-8">
+      {/* ===== SECTION 2: Not WordPress + Tech Orbit ===== */}
+      <section className="about-snap-section">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
+          <div ref={getRef('s2-title')} className={`mb-4 sm:mb-6 transition-all duration-700 ${isVis('s2-title') ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
             <h2 className="text-base sm:text-lg md:text-2xl font-bold text-white mb-3 sm:mb-4 md:mb-6 text-center flex flex-wrap items-center justify-center gap-2 md:gap-3">
               אנחנו לא בונים עם
               <span className="relative inline-flex items-center gap-2">
@@ -67,10 +123,9 @@ const AboutFullPage: React.FC = () => {
             <p className="mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg text-gray-300">
               פלטפורמות כמו WordPress, Wix ו-Shopify מגבילות אתכם לתבניות קבועות, איטיות וחסרות גמישות.
             </p>
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center" dir="ltr">
-                {/* Visual on left */}
-                <div className="flex items-center justify-center">
-                  <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] flex items-center justify-center">
+          </div>
+          <div ref={getRef('s2-orbit')} className={`flex items-center justify-center transition-all duration-1000 ${isVis('s2-orbit') ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+                <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] max-h-[60vh] flex items-center justify-center" dir="ltr">
                     {/* Circular orbit container */}
                     <div className="tech-orbit">
                       <div className="tech-icon-wrapper" style={{ '--icon-index': 0 } as React.CSSProperties}>
@@ -221,14 +276,17 @@ const AboutFullPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Text on right */}
-                <div dir="rtl">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+          </div>
+      </section>
+
+      {/* ===== SECTION 3: Tech Details Text ===== */}
+      <section className="about-snap-section">
+        <div ref={getRef('s3')} className={`relative z-10 max-w-3xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s3') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} dir="rtl">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-4 md:mb-6 flex items-center gap-2 md:gap-3 justify-center">
                     <Code className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                     הטכנולוגיות שלנו - רמת הייטק אמיתית
                   </h3>
-                  <p className="text-gray-300 mb-3 md:mb-4 text-sm sm:text-base md:text-lg">
+                  <p className="text-gray-300 mb-3 md:mb-4 text-sm sm:text-base md:text-lg text-center">
                     אנחנו משתמשים בטכנולוגיות המתקדמות ביותר בתעשייה:
                   </p>
                   <div className="bg-black/40 rounded-lg md:rounded-xl p-4 sm:p-5 md:p-6 space-y-2 sm:space-y-3">
@@ -261,16 +319,15 @@ const AboutFullPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="text-[#1a79f6] font-semibold mt-6">
+                  <p className="text-[#1a79f6] font-semibold mt-6 text-center">
                     הטכנולוגיות האלה מאפשרות לנו לבנות אתרים פי 10 יותר מהירים, יציבים ומאובטחים!
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* הנגשה - הגנה משפטית */}
-          <div className="mb-6 md:mb-8">
+        </div>
+      </section>
+
+      {/* ===== SECTION 4: Accessibility ===== */}
+      <section className="about-snap-section">
+        <div ref={getRef('s4')} className={`relative z-10 max-w-6xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s4') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
               {/* Visual on left */}
               <div className="flex items-center justify-center">
@@ -322,10 +379,12 @@ const AboutFullPage: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+      </section>
 
-          {/* בוט AI חכם */}
-          <div className="mb-4 sm:mb-6 md:mb-8">
+      {/* ===== SECTION 5: AI Bot ===== */}
+      <section className="about-snap-section">
+        <div ref={getRef('s5')} className={`relative z-10 max-w-6xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s5') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
               <div className="text-center md:text-right">
@@ -372,11 +431,12 @@ const AboutFullPage: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+      </section>
 
-
-          {/* תחזוקה ושיפור קוד */}
-          <div className="mb-4 sm:mb-6 md:mb-8">
+      {/* ===== SECTION 6: Maintenance ===== */}
+      <section className="about-snap-section">
+        <div ref={getRef('s6')} className={`relative z-10 max-w-6xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s6') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-center">
               {/* Text on left */}
               <div className="text-center md:text-right">
@@ -440,9 +500,12 @@ const AboutFullPage: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+      </section>
 
-          {/* קריאה לפעולה */}
+      {/* ===== SECTION 7: CTA ===== */}
+      <section className="about-snap-section">
+        <div ref={getRef('s7')} className={`relative z-10 max-w-3xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s7') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="relative text-center rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 border-animated bg-white/10 backdrop-blur-sm" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 md:mb-4">מוכנים להתחיל?</h2>
             <p className="text-blue-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base px-4">
@@ -453,11 +516,15 @@ const AboutFullPage: React.FC = () => {
                  className="bg-white text-[#1a79f6] hover:bg-gray-100 font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg sm:rounded-xl transition-all text-sm sm:text-base">
                 ליצירת קשר
               </a>
-            
           </div>
-          
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* ===== SECTION 8: Footer ===== */}
+      <section className="about-snap-section about-snap-footer">
+        <Footer />
+      </section>
       
     </div>
   );

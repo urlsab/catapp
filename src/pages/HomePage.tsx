@@ -164,7 +164,7 @@ const HomePage: React.FC = () => {
   // Typing animation effect (cursor always blinks)
   React.useEffect(() => {
     if (!typingStarted) return;
-    let typingTimeout: NodeJS.Timeout;
+    let typingTimeout: ReturnType<typeof setTimeout>;
     const fullText = typingTexts[textIdx];
     if (!isDeleting && charIdx < fullText.length) {
       typingTimeout = setTimeout(() => {
@@ -585,7 +585,7 @@ const HomePage: React.FC = () => {
                     servicesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}>השירותים שלנו</h2>
                 </div>
-                {/* שורה 1: בניית אתרים + עיגולים מסתובבים */}
+                {/* שורה 1: פיתוח אתרים + עיגולים מסתובבים */}
                 <div className="flex flex-col md:flex-row w-full items-center justify-between gap-3 md:gap-6 mb-2">
                   <div 
                     ref={serviceImage1Ref}
@@ -594,10 +594,10 @@ const HomePage: React.FC = () => {
                     }`}
                   >
                     <div className="relative w-full max-w-[340px] h-[160px] sm:h-[200px] md:h-[280px] mb-2 sm:mb-4 border-2 border-[#1a79f6] rounded-2xl">
-                      <img src={codeServiceImage} alt="בניית אתרים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
+                      <img src={codeServiceImage} alt="פיתוח אתרים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                       <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
-                        בניית אתרים
+                        פיתוח אתרים
                       </div>
                     </div>
                     {/* כפתורים */}
@@ -940,7 +940,7 @@ const HomePage: React.FC = () => {
             className="w-full flex justify-center items-center relative px-2 sm:px-4 flex-1"
           >
             <div className="max-w-3xl w-full flex flex-col items-center">
-              <h2 className="text-xl sm:text-2xl md:text-[1.6rem] font-bold text-[#1a79f6] mb-2 md:mb-3 text-center">התהליך שלנו</h2>
+              <h2 className="text-xl sm:text-2xl md:text-[1.6rem] font-bold text-[#1a79f6] mb-2 md:mb-3 text-center">תהליך פיתוח אתר</h2>
               <div className="relative flex w-full">
                 {/* Vertical line - לבן מלא בלבד (נגמר בדיוק בקו התחתון של המלבן האחרון) */}
                 <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-3 bg-white rounded-full z-0" style={{ height: 'calc(100% - 30px)', minHeight: 0 }} />
@@ -1078,7 +1078,7 @@ const HomePage: React.FC = () => {
               <h2 className={`text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-1 sm:mb-2 transition-all duration-1000 ${
                 valuesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
-                הערכים שמנחים אותנו
+                למה לבחור בנו?
               </h2>
             </div>
             

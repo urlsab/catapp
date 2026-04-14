@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
               Catapp
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium fade-in">
-              בניית אתרים מקצועיים
+              פיתוח אתרים מקצועיים
             </h2>
           </div>
 

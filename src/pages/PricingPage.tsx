@@ -126,7 +126,7 @@ const PricingPage: React.FC = () => {
       >
         <div className={`absolute inset-0 rounded-2xl lg:rounded-3xl bg-gradient-to-b ${plan.popular ? 'from-blue-500/10 to-purple-500/10' : 'from-blue-500/5 to-purple-500/5'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
         {plan.popular && (
-          <div className="absolute top-3 left-3 lg:top-4 lg:left-4 z-10 rotate-6 origin-center">
+          <div className="absolute top-3 left-3 lg:top-4 lg:left-4 z-10 -rotate-6 origin-center">
             <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white px-3 lg:px-4 py-0.5 lg:py-1 rounded-lg text-[9px] lg:text-[11px] font-extrabold flex items-center shadow-lg border border-white/30 whitespace-nowrap">
               <Star size={10} className="mr-1 ml-0.5 animate-pulse flex-shrink-0" fill="white" />
               המומלץ ביותר
@@ -205,10 +205,10 @@ const PricingPage: React.FC = () => {
       >
         <div className={`absolute inset-0 rounded-2xl lg:rounded-3xl bg-gradient-to-b ${isPremium ? 'from-purple-500/10 to-pink-500/10' : 'from-purple-500/5 to-pink-500/5'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
         {isPremium && (
-          <div className="absolute top-3 left-3 lg:top-4 lg:left-4 z-10 rotate-6 origin-center">
+          <div className="absolute top-3 left-3 lg:top-4 lg:left-4 z-10 -rotate-6 origin-center">
             <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-gray-900 px-3 lg:px-4 py-0.5 lg:py-1 rounded-lg text-[9px] lg:text-[11px] font-extrabold flex items-center shadow-lg border border-white/40 whitespace-nowrap">
               <Star size={10} className="mr-1 ml-0.5 animate-pulse flex-shrink-0" fill="#1f2937" />
-              החבילה המשתלמת ביותר
+              המומלץ ביותר
             </div>
           </div>
         )}
@@ -253,7 +253,7 @@ const PricingPage: React.FC = () => {
       {/* D1: Website Title + Cards 0-1 */}
       <section className="pricing-snap-section pricing-desktop-only">
         <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          {renderHeader('d-wh', '💎', 'מחירי בניית אתרים', 'בחרו את החבילה המושלמת עבורכם', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
+          {renderHeader('d-wh', '', 'מחירי פיתוח אתרים', 'בחרו את החבילה המושלמת עבורכם', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
           <div className="grid grid-cols-2 gap-8 xl:gap-10">
             {renderWebCard(0, 'd', 1)}
             {renderWebCard(1, 'd', 2)}
@@ -295,7 +295,7 @@ const PricingPage: React.FC = () => {
       {/* D5: Maintenance Title + Cards 0-1 */}
       <section className="pricing-snap-section pricing-desktop-only">
         <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          {renderHeader('d-mh', '🛠️', 'מחירי תחזוקה חודשית', 'שמירה על האתר שלכם במצב מושלם', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
+          {renderHeader('d-mh', '', 'מחירי תחזוקה חודשית', 'שמירה על האתר שלכם במצב מושלם', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
           <div className="grid grid-cols-2 gap-8 xl:gap-10">
             {renderMaintCard(0, 'd', 1)}
             {renderMaintCard(1, 'd', 2)}
@@ -317,7 +317,7 @@ const PricingPage: React.FC = () => {
       {/* D7: CV Title + Cards 0-1 */}
       <section className="pricing-snap-section pricing-desktop-only">
         <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          {renderHeader('d-ch', '💼', 'מחירון קורות חיים והעצמת LinkedIn', 'הצטיידו בכלים המנצחים לקידום הקריירה', 'from-purple-400 to-pink-600', 'from-purple-400 via-pink-500 to-rose-500')}
+          {renderHeader('d-ch', '', 'מחירי כתיבת קורות חיים', 'הצטיידו בכלים המנצחים לקידום הקריירה', 'from-purple-400 to-pink-600', 'from-purple-400 via-pink-500 to-rose-500')}
           <div className="grid grid-cols-2 gap-8 xl:gap-10">
             {renderCvCard(0, 'd', 1)}
             {renderCvCard(1, 'd', 2)}
@@ -366,7 +366,7 @@ const PricingPage: React.FC = () => {
       {/* M1: Website Title + Card 0 */}
       <section className="pricing-snap-section pricing-mobile-only">
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-wh', '💎', 'מחירי בניית אתרים', 'בחרו את החבילה המושלמת עבורכם', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
+          {renderHeader('m-wh', '', 'מחירי בניית אתרים', 'בחרו את החבילה המושלמת עבורכם', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
           {renderWebCard(0, 'm', 1)}
         </div>
       </section>
@@ -424,7 +424,7 @@ const PricingPage: React.FC = () => {
       {/* M9: Maintenance Title + Card 0 */}
       <section className="pricing-snap-section pricing-mobile-only">
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-mh', '🛠️', 'מחירי תחזוקה חודשית', 'שמירה על האתר שלכם במצב מושלם', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
+          {renderHeader('m-mh', '', 'מחירי תחזוקה חודשית', 'שמירה על האתר שלכם במצב מושלם', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
           {renderMaintCard(0, 'm', 1)}
         </div>
       </section>
@@ -447,7 +447,7 @@ const PricingPage: React.FC = () => {
       {/* M12: CV Title + Card 0 */}
       <section className="pricing-snap-section pricing-mobile-only">
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-ch', '💼', 'מחירון קורות חיים והעצמת LinkedIn', 'הצטיידו בכלים המנצחים לקידום הקריירה', 'from-purple-400 to-pink-600', 'from-purple-400 via-pink-500 to-rose-500')}
+          {renderHeader('m-ch', '', 'מחירון קורות חיים והעצמת LinkedIn', 'הצטיידו בכלים המנצחים לקידום הקריירה', 'from-purple-400 to-pink-600', 'from-purple-400 via-pink-500 to-rose-500')}
           {renderCvCard(0, 'm', 1)}
         </div>
       </section>

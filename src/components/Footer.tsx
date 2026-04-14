@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
 
     // Find snap container parent if exists, otherwise use viewport
     const snapContainer = el.closest(
-      '.pricing-snap-container, .home-snap-container, .contact-snap-container, .testimonials-snap-container'
+      '.pricing-snap-container, .home-snap-container, .contact-snap-container, .testimonials-snap-container, .about-snap-container'
     );
 
     const observer = new IntersectionObserver(
@@ -40,19 +40,19 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={footerRef}
-      className={`footer-wrapper text-white w-full transition-all duration-700 ${
+      className={`footer-wrapper text-white w-full h-full flex items-center justify-center transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
-        <div className="footer-grid grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 w-full">
+        <div className="footer-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {/* Company Info */}
-          <div className="col-span-2">
+          <div className="sm:col-span-2">
             <div className="mb-3 lg:mb-5">
-              <img src={logo} alt="Catapp Logo" className="h-8 lg:h-12 ml-auto block" />
+              <img src={logo} alt="Catapp Logo" className="h-8 lg:h-12 mx-auto sm:ml-auto sm:mr-0 block" />
             </div>
-            <p className="footer-text text-gray-400 mb-3 sm:mb-5 leading-relaxed text-sm sm:text-base lg:text-lg">
-              בניית אתרים מקצועיים | דפי נחיתה ממירים | כתיבת קורות חיים להייטק | אופטימיזציית LinkedIn | הטמעת AI לאתרים
+            <p className="footer-text text-gray-400 mb-3 sm:mb-5 leading-relaxed text-sm sm:text-base lg:text-lg text-center sm:text-right">
+              פיתוח אתרים מקצועיים | דפי נחיתה ממירים | כתיבת קורות חיים להייטק | אופטימיזציית LinkedIn | הטמעת AI לאתרים
             </p>
           </div>
 
