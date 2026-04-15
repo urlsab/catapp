@@ -34,12 +34,14 @@ import buildCvImage from '../../Assets/build cv.png';
 
 const HomePage: React.FC = () => {
   const typingTexts = [
+    'בניית אתרים לעסקים',
+    'פיתוח אפליקציות',
+    'אתרים לעורכי דין',
+    'אתרים לבעלי עסקים',
+    'פיתוח תוכנה מותאם אישית',
     'דפי נחיתה ממוקדים',
     'אתרי תדמית מקצועיים',
-    'עיצוב מחדש של אתרים קיימים',
-    'בנייה ושיפור קו"ח',
-    'אופטימיזציה לפרופיל לינקדאין',
-    'הרצאות תוכן מקיפות',
+    'בניית אפליקציות',
     'הטמעת AI לאתרים'
   ];
   const [currentText, setCurrentText] = React.useState('');
@@ -77,6 +79,7 @@ const HomePage: React.FC = () => {
   const heroTextMobileRef = React.useRef<HTMLDivElement>(null);
   const heroImagesMobileRef = React.useRef<HTMLDivElement>(null);
   const heroStatsDesktopRef = React.useRef<HTMLDivElement>(null);
+  const seoContentRef = React.useRef<HTMLDivElement>(null);
   
   const [serviceImage1Visible, setServiceImage1Visible] = React.useState(false);
   const [serviceImage2Visible, setServiceImage2Visible] = React.useState(false);
@@ -93,6 +96,7 @@ const HomePage: React.FC = () => {
   const [heroTextMobileVisible, setHeroTextMobileVisible] = React.useState(false);
   const [heroImagesMobileVisible, setHeroImagesMobileVisible] = React.useState(false);
   const [heroStatsDesktopVisible, setHeroStatsDesktopVisible] = React.useState(false);
+  const [seoContentVisible, setSeoContentVisible] = React.useState(false);
   const snapContainerRef = React.useRef<HTMLDivElement>(null);
 
   // Hide body scroll and global footer when snap container is active
@@ -257,6 +261,9 @@ const HomePage: React.FC = () => {
           if (entry.target === heroStatsDesktopRef.current) {
             setHeroStatsDesktopVisible(entry.isIntersecting);
           }
+          if (entry.target === seoContentRef.current) {
+            setSeoContentVisible(entry.isIntersecting);
+          }
         });
       },
       {
@@ -283,6 +290,7 @@ const HomePage: React.FC = () => {
     if (heroTextMobileRef.current) observer.observe(heroTextMobileRef.current);
     if (heroImagesMobileRef.current) observer.observe(heroImagesMobileRef.current);
     if (heroStatsDesktopRef.current) observer.observe(heroStatsDesktopRef.current);
+    if (seoContentRef.current) observer.observe(seoContentRef.current);
 
     return () => {
       if (serviceDesc1Ref.current) observer.unobserve(serviceDesc1Ref.current);
@@ -302,6 +310,7 @@ const HomePage: React.FC = () => {
       if (heroTextMobileRef.current) observer.unobserve(heroTextMobileRef.current);
       if (heroImagesMobileRef.current) observer.unobserve(heroImagesMobileRef.current);
       if (heroStatsDesktopRef.current) observer.unobserve(heroStatsDesktopRef.current);
+      if (seoContentRef.current) observer.unobserve(seoContentRef.current);
     };
   }, []);
 
@@ -345,9 +354,9 @@ const HomePage: React.FC = () => {
               <h1
                 className={`text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
               >
-                אתרים וקורות חיים
+                בניית אתרים ופיתוח תוכנה
                 <br />
-                <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
+                <span className="text-[#1a79f6]">לעסקים ובעלי מקצוע</span>
               </h1>
             </div>
 
@@ -471,9 +480,9 @@ const HomePage: React.FC = () => {
               <h1
                 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight text-center"
               >
-                אתרים וקורות חיים
+                בניית אתרים ופיתוח תוכנה
                 <br />
-                <span className="text-[#1a79f6]">זו המומחיות שלנו</span>
+                <span className="text-[#1a79f6]">לעסקים ובעלי מקצוע</span>
               </h1>
 
               {/* Images Grid */}
@@ -583,7 +592,7 @@ const HomePage: React.FC = () => {
                 <div ref={servicesHeaderRef}>
                   <h2 className={`text-3xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-2 text-center tracking-tight transition-all duration-1000 ${
                     servicesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}>השירותים שלנו</h2>
+                  }`}>שירותי בניית אתרים ופיתוח תוכנה</h2>
                 </div>
                 {/* שורה 1: פיתוח אתרים + עיגולים מסתובבים */}
                 <div className="flex flex-col md:flex-row w-full items-center justify-between gap-3 md:gap-6 mb-2">
@@ -596,8 +605,10 @@ const HomePage: React.FC = () => {
                     <div className="relative w-full max-w-[340px] h-[160px] sm:h-[200px] md:h-[280px] mb-2 sm:mb-4 border-2 border-[#1a79f6] rounded-2xl">
                       <img src={codeServiceImage} alt="פיתוח אתרים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                       <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
-                        פיתוח אתרים
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 w-full px-4 leading-tight">
+                        בניית אתרים
+                        <br />
+                        ופיתוח אתרים
                       </div>
                     </div>
                     {/* כפתורים */}
@@ -1078,7 +1089,7 @@ const HomePage: React.FC = () => {
               <h2 className={`text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-1 sm:mb-2 transition-all duration-1000 ${
                 valuesHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
-                למה לבחור בנו?
+                למה לבחור בנו לבניית האתר שלכם?
               </h2>
             </div>
             
@@ -1195,7 +1206,7 @@ const HomePage: React.FC = () => {
               <h3 className="text-xs sm:text-sm md:text-base font-bold text-white mb-0.5">
                 מחירים הוגנים
               </h3>
-              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">שקילאה ללא עלויות נסתרות</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm">עלויות נוחות לכל כיס</p>
             </div>
 
             {/* היי */}
@@ -1374,6 +1385,54 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+      </section>
+
+      {/* ===== SECTION: SEO Content ===== */}
+      <section className="home-snap-section snap-compact">
+        <div className="w-full flex justify-center items-center relative flex-1">
+          <div
+            ref={seoContentRef}
+            className={`max-w-5xl mx-auto px-4 py-6 w-full transition-all duration-1000 ${
+              seoContentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center">
+              בניית אתרים ופיתוח תוכנה לעסקים בישראל
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-gray-300 text-sm sm:text-base leading-relaxed">
+              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
+                <h3 className="text-lg font-bold text-white mb-2">בניית אתרים ופיתוח אתרים</h3>
+                <p>
+                  Catapp מתמחה ב<strong>בניית אתרים</strong> ו<strong>פיתוח אתרים</strong> מקצועיים בטכנולוגיות מתקדמות. 
+                  בתור <strong>בונה אתרים</strong> מוביל, אנו מציעים פתרונות מותאמים לכל עסק - 
+                  אתרי תדמית, חנויות אינטרנטיות, דפי נחיתה ומערכות מורכבות.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
+                <h3 className="text-lg font-bold text-white mb-2">פיתוח אפליקציות ופיתוח תוכנה</h3>
+                <p>
+                  שירותי <strong>פיתוח אפליקציות</strong>, <strong>בניית אפליקציות</strong> ו<strong>פיתוח תוכנה</strong> מותאם אישית. 
+                  <strong> בונה אפליקציות</strong> מקצועי עם ניסיון בפיתוח מערכות SaaS, אפליקציות ווב ומערכות ניהול לעסקים.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
+                <h3 className="text-lg font-bold text-white mb-2">אתרים לעורכי דין</h3>
+                <p>
+                  מתמחים בבניית <strong>אתרים לעורכי דין</strong> ו<strong>אתר לעורך דין</strong> מקצועי. 
+                  עיצוב יוקרתי, הצגת תחומי עיסוק, טפסי ייעוץ ראשוני, 
+                  וקידום בגוגל מותאם למשרדי עורכי דין.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
+                <h3 className="text-lg font-bold text-white mb-2">אתרים לבעלי עסקים</h3>
+                <p>
+                  בניית <strong>אתרים לבעלי עסקים</strong>, <strong>אתר לבעל עסק</strong> ו<strong>אתרים לעסקים</strong> מכל הסוגים. 
+                  אתר שמייצר לקוחות חדשים, מחזק את המיתוג ומגדיל את ההכנסות של העסק שלכם.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ===== SECTION 10: Footer ===== */}

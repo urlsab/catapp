@@ -44,7 +44,7 @@ const TermsPage: React.FC = () => {
             <TypingContent>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">1. הסכמה לתנאי השימוש</h3>
             <p className="mb-4 text-gray-700 dark:text-gray-300">
-              השימוש באתר CatApp ובשירותים המוצעים בו מהווה הסכמה לתנאי השימוש. אנא קרא/י בעיון את התנאים לפני השימוש באתר.
+              השימוש באתר Catapp ובשירותים המוצעים בו מהווה הסכמה לתנאי השימוש. אנא קרא/י בעיון את התנאים לפני השימוש באתר.
             </p>
 
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">2. השירותים המוצעים</h3>
@@ -74,7 +74,7 @@ const TermsPage: React.FC = () => {
 
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">7. אחריות מוגבלת</h3>
             <p className="mb-4 text-gray-700 dark:text-gray-300">
-              CatApp עושה כל מאמץ לספק שירות מקצועי ואיכותי, אך איננו אחראים לנזקים עקיפים או תוצאתיים שעלולים להיגרם משימוש באתר או בשירותים. מומלץ לגבות תכנים ומידע באופן עצמאי.
+              Catapp עושה כל מאמץ לספק שירות מקצועי ואיכותי, אך איננו אחראים לנזקים עקיפים או תוצאתיים שעלולים להיגרם משימוש באתר או בשירותים. מומלץ לגבות תכנים ומידע באופן עצמאי.
             </p>
 
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">8. יצירת קשר</h3>

@@ -26,43 +26,43 @@ const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'בונה קו"ח',
+      title: 'בונה קו"ח - פיתוח תוכנה SaaS',
       image: resumeBuilderImage,
       url: 'https://resumes-builder.web.app'
     },
     {
       id: 2,
-      title: 'אור בנג\'י פסיכותרפיה',
+      title: 'אור בנג\'י - בניית דף נחיתה לעסק',
       image: orBenjiImage,
       url: 'https://orbenji.com'
     },
     {
       id: 3,
-      title: 'משרד עו"ד רפאל סבג',
+      title: 'משרד עו"ד רפאל סבג - אתר לעורך דין',
       image: refaelLawImage,
       url: 'https://refael-law.com'
     },
     {
       id: 4,
-      title: 'אטליז למהדרין',
+      title: 'אטליז למהדרין - אתר לבעל עסק',
       image: atlizImage,
       url: 'https://atliz.co.il'
     },
     {
       id: 5,
-      title: 'אתרי קמפינג',
+      title: 'רשת חברתית - פיתוח אפליקציה',
       image: campNetworkImage,
       url: 'https://yelp--camp--project.herokuapp.com'
     },
     {
       id: 6,
-      title: 'משחק צבעים',
+      title: 'משחק צבעים - פיתוח תוכנה',
       image: colorGameImage,
       url: 'https://color-game-react.vercel.app'
     },
     {
       id: 7,
-      title: 'אתר פורטפוליו',
+      title: 'אתר פורטפוליו - בניית אתר תדמית',
       image: portfolioImage,
       url: 'https://portfolio-uriel-yair-sabag.vercel.app'
     }
@@ -193,6 +193,7 @@ const ProjectsSection: React.FC = () => {
                             src={project.image}
                             alt={project.title}
                             className="w-full h-full object-contain rounded-2xl drop-shadow-2xl"
+                            loading="lazy"
                           />
                         </div>
                       ) : (
@@ -214,6 +215,7 @@ const ProjectsSection: React.FC = () => {
                                 src={project.image}
                                 alt={project.title}
                                 className="w-full h-full object-contain"
+                                loading="lazy"
                                 style={{ 
                                   imageRendering: 'crisp-edges',
                                   WebkitFontSmoothing: 'antialiased',

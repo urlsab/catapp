@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
               <img src={logo} alt="Catapp Logo" className="h-8 lg:h-12 mx-auto sm:ml-auto sm:mr-0 block" />
             </div>
             <p className="footer-text text-gray-400 mb-3 sm:mb-5 leading-relaxed text-sm sm:text-base lg:text-lg text-center sm:text-right">
-              פיתוח אתרים מקצועיים | דפי נחיתה ממירים | כתיבת קורות חיים להייטק | אופטימיזציית LinkedIn | הטמעת AI לאתרים
+              בניית אתרים ופיתוח אתרים מקצועי | אתרים לעסקים ולעורכי דין | פיתוח אפליקציות | פיתוח תוכנה | דפי נחיתה | קידום בגוגל
             </p>
           </div>
 

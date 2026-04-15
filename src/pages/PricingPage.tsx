@@ -10,14 +10,14 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 /* ==================== DATA ==================== */
 
 const pricingPlans = [
-  { name: 'דף נחיתה', price: 'החל מ-2,000 ₪', icon: 'Rocket', features: ['עיצוב מותאם אישית', 'רספונסיבי לכל המכשירים', 'אופטימיזציה לגוגל', 'טופס יצירת קשר'], examples: ['orbenji.com'] },
-  { name: 'אתר תדמית', price: 'החל מ-5,000 ₪', icon: 'Building2', features: ['עד 10 עמודים', 'מערכת ניהול תוכן', 'גלריית תמונות', 'אינטגרציה עם רשתות חברתיות', 'אופטימיזציה מתקדמת'], examples: ['atliz.co.il'], popular: true },
-  { name: 'אתר תיק עבודות', price: 'החל מ-8,000 ₪', icon: 'Palette', features: ['עיצוב יוניק ומותאם', 'גלרית עבודות מתקדמת', 'אנימציות מרהיבות', 'בלוג מובנה', 'כלים לקידום עצמי'], examples: ['portfolio-uriel-yair-sabag.vercel.app'] },
-  { name: 'אתר מכירות עם סליקה', price: 'החל מ-10,000 ₪', icon: 'ShoppingCart', features: ['קטלוג מוצרים', 'עגלת קניות', 'מערכת תשלומים', 'ניהול הזמנות', 'דוחות מכירות', 'אינטגרציה עם מלאי'] },
-  { name: 'אתר בלוג', price: 'החל מ-7,000 ₪', icon: 'FileText', features: ['מערכת פרסום פוסטים', 'קטגוריות ותגים', 'חיפוש מתקדם', 'תגובות וליייקים', 'שיתוף ברשתות חברתיות'] },
-  { name: 'אתר גלריה', price: 'החל מ-8,000 ₪', icon: 'Image', features: ['גלריית תמונות מתקדמת', 'עיצוב ייחודי', 'התאמה אישית', 'שיתוף ברשתות חברתיות'] },
-  { name: 'רשת חברתית', price: 'החל מ-10,000 ₪', icon: 'Users', features: ['מערכת משתמשים', 'פרופילים אישיים', 'פיד חברתי', 'מסרים פרטיים', 'קבוצות ואירועים'], examples: ['yelp--camp--project.herokuapp.com'] },
-  { name: 'בניית מוצר SaaS לפי הזמנה', price: 'החל מ-10,000 ₪', icon: 'Laptop', features: ['פיתוח בהתאמה אישית', 'מערכת ניהול', 'אינטגרציות מתקדמות', 'תמיכה טכנית'], examples: ['resumes-builder.web.app'] },
+  { name: 'בניית דף נחיתה לעסק', price: 'החל מ-2,000 ₪', icon: 'Rocket', features: ['עיצוב מותאם אישית', 'רספונסיבי לכל המכשירים', 'אופטימיזציה לגוגל (SEO)', 'טופס יצירת קשר', 'מותאם לבעלי עסקים ועורכי דין'], examples: ['orbenji.com'] },
+  { name: 'בניית אתר תדמית לעסק', price: 'החל מ-5,000 ₪', icon: 'Building2', features: ['עד 10 עמודים', 'מערכת ניהול תוכן', 'גלריית תמונות', 'אינטגרציה עם רשתות חברתיות', 'אופטימיזציה מתקדמת לגוגל', 'מושלם לעורכי דין ובעלי עסקים'], examples: ['atliz.co.il'], popular: true },
+  { name: 'בניית אתר תיק עבודות', price: 'החל מ-8,000 ₪', icon: 'Palette', features: ['עיצוב יוניק ומותאם', 'גלריית עבודות מתקדמת', 'אנימציות מרהיבות', 'בלוג מובנה', 'כלים לקידום עצמי בגוגל'], examples: ['portfolio-uriel-yair-sabag.vercel.app'] },
+  { name: 'בניית אתר מכירות עם סליקה', price: 'החל מ-10,000 ₪', icon: 'ShoppingCart', features: ['קטלוג מוצרים', 'עגלת קניות', 'מערכת תשלומים מאובטחת', 'ניהול הזמנות', 'דוחות מכירות', 'אינטגרציה עם מלאי'] },
+  { name: 'בניית אתר בלוג מקצועי', price: 'החל מ-7,000 ₪', icon: 'FileText', features: ['מערכת פרסום פוסטים', 'קטגוריות ותגים', 'חיפוש מתקדם', 'תגובות וליייקים', 'שיתוף ברשתות חברתיות'] },
+  { name: 'בניית אתר גלריה', price: 'החל מ-8,000 ₪', icon: 'Image', features: ['גלריית תמונות מתקדמת', 'עיצוב ייחודי', 'התאמה אישית', 'שיתוף ברשתות חברתיות'] },
+  { name: 'פיתוח רשת חברתית / אפליקציה', price: 'החל מ-10,000 ₪', icon: 'Users', features: ['מערכת משתמשים', 'פרופילים אישיים', 'פיד חברתי', 'מסרים פרטיים', 'קבוצות ואירועים'], examples: ['yelp--camp--project.herokuapp.com'] },
+  { name: 'פיתוח תוכנה SaaS מותאם אישית', price: 'החל מ-10,000 ₪', icon: 'Laptop', features: ['פיתוח תוכנה בהתאמה אישית', 'מערכת ניהול', 'אינטגרציות מתקדמות', 'תמיכה טכנית שוטפת'], examples: ['resumes-builder.web.app'] },
 ];
 
 const maintenancePlans = [
@@ -253,7 +253,7 @@ const PricingPage: React.FC = () => {
       {/* D1: Website Title + Cards 0-1 */}
       <section className="pricing-snap-section pricing-desktop-only">
         <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          {renderHeader('d-wh', '', 'מחירי פיתוח אתרים', 'בחרו את החבילה המושלמת עבורכם', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
+          {renderHeader('d-wh', '', 'מחירון בניית אתרים ופיתוח אתרים', 'מחירי בניית אתר לעסק - דפי נחיתה, אתרי תדמית, חנויות אינטרנטיות ופיתוח אפליקציות', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
           <div className="grid grid-cols-2 gap-8 xl:gap-10">
             {renderWebCard(0, 'd', 1)}
             {renderWebCard(1, 'd', 2)}
@@ -295,7 +295,7 @@ const PricingPage: React.FC = () => {
       {/* D5: Maintenance Title + Cards 0-1 */}
       <section className="pricing-snap-section pricing-desktop-only">
         <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          {renderHeader('d-mh', '', 'מחירי תחזוקה חודשית', 'שמירה על האתר שלכם במצב מושלם', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
+          {renderHeader('d-mh', '', 'תחזוקת אתרים וקידום בגוגל', 'שירותי תחזוקה, קידום SEO ועדכון תכנים לאתרים לעסקים', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
           <div className="grid grid-cols-2 gap-8 xl:gap-10">
             {renderMaintCard(0, 'd', 1)}
             {renderMaintCard(1, 'd', 2)}
@@ -356,6 +356,33 @@ const PricingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* D-SEO: Content section for search engines */}
+      <section className="pricing-snap-section pricing-desktop-only">
+        <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
+          <div ref={getRef('d-seo')} className={`transition-all duration-700 ${isVis('d-seo') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#1a79f6] mb-4 text-center">מדריך: כמה עולה בניית אתר לעסק?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300 text-sm leading-relaxed">
+              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
+                <h3 className="text-base font-bold text-white mb-2">בניית אתרים לעורכי דין</h3>
+                <p>אתר לעורך דין צריך להקרין מקצועיות ואמינות. אנו מתמחים בבניית אתרים לעורכי דין הכוללים: עיצוב יוקרתי, הצגת תחומי עיסוק, טפסי ייעוץ ראשוני, קידום בגוגל לביטויים כמו "עורך דין + תחום", ותאימות מלאה לנייד.</p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
+                <h3 className="text-base font-bold text-white mb-2">אתרים לבעלי עסקים</h3>
+                <p>בניית אתר לבעל עסק זה ההשקעה הטובה ביותר לצמיחה. אתר מקצועי מושך לקוחות חדשים, מחזק מיתוג ומגדיל הכנסות. אנו בונים אתרים לעסקים מכל הסוגים - מסעדות, חנויות, נותני שירות ועוד.</p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
+                <h3 className="text-base font-bold text-white mb-2">פיתוח אפליקציות ופיתוח תוכנה</h3>
+                <p>מעבר לבניית אתרים, Catapp מציעה שירותי פיתוח אפליקציות ופיתוח תוכנה מותאם אישית. בניית אפליקציות ווב, מערכות SaaS, מערכות ניהול ואינטגרציות מתקדמות - הכל בטכנולוגיות React ו-Node.js.</p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
+                <h3 className="text-base font-bold text-white mb-2">בונה אתרים מומלץ</h3>
+                <p>Catapp הוא בונה אתרים מומלץ עם 5+ שנות ניסיון ו-50+ לקוחות מרוצים. בניגוד לבוני אתרים שעובדים עם WordPress או Wix, אנו מפתחים כל אתר מאפס עם טכנולוגיות הייטק שמבטיחות מהירות, אבטחה וקידום בגוגל.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* D-Footer */}
       <section className="pricing-snap-section pricing-snap-footer pricing-desktop-only">
         <Footer />
@@ -366,7 +393,7 @@ const PricingPage: React.FC = () => {
       {/* M1: Website Title + Card 0 */}
       <section className="pricing-snap-section pricing-mobile-only">
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-wh', '', 'מחירי בניית אתרים', 'בחרו את החבילה המושלמת עבורכם', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
+          {renderHeader('m-wh', '', 'מחירון בניית אתרים ופיתוח אתרים', 'מחירי בניית אתר לעסק - דפי נחיתה, אתרי תדמית וחנויות אינטרנטיות', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
           {renderWebCard(0, 'm', 1)}
         </div>
       </section>
@@ -424,7 +451,7 @@ const PricingPage: React.FC = () => {
       {/* M9: Maintenance Title + Card 0 */}
       <section className="pricing-snap-section pricing-mobile-only">
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-mh', '', 'מחירי תחזוקה חודשית', 'שמירה על האתר שלכם במצב מושלם', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
+          {renderHeader('m-mh', '', 'תחזוקת אתרים וקידום בגוגל', 'שירותי תחזוקה, קידום SEO ועדכון תכנים לאתרים לעסקים', 'from-green-400 to-emerald-600', 'from-green-400 via-emerald-500 to-teal-500')}
           {renderMaintCard(0, 'm', 1)}
         </div>
       </section>
@@ -499,6 +526,25 @@ const PricingPage: React.FC = () => {
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
           {renderCvCard(7, 'm', 0)}
           {renderCta('m-ccta', 'https://forms.gle/p3yVy1S5ZzBaa2GR8', '💼', 'לטופס בניית קו"ח', 'from-purple-500 via-pink-600 to-rose-600', 'from-rose-600 via-pink-600 to-purple-500', 'group-hover:shadow-purple-500/50', 1)}
+        </div>
+      </section>
+
+      {/* M-SEO: Content section for search engines */}
+      <section className="pricing-snap-section pricing-mobile-only">
+        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
+          <div ref={getRef('m-seo')} className={`transition-all duration-700 ${isVis('m-seo') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-xl font-bold text-[#1a79f6] mb-3 text-center">מדריך: כמה עולה בניית אתר?</h2>
+            <div className="space-y-3 text-gray-300 text-sm leading-relaxed">
+              <div className="bg-white/5 rounded-xl p-3 border border-gray-700/50">
+                <h3 className="text-sm font-bold text-white mb-1">בניית אתרים לעורכי דין ולבעלי עסקים</h3>
+                <p>Catapp מתמחה בבניית אתרים מקצועיים לעורכי דין ולבעלי עסקים. אתר לעורך דין כולל עיצוב יוקרתי וקידום בגוגל. אתר לבעל עסק מושך לקוחות חדשים ומגדיל הכנסות.</p>
+              </div>
+              <div className="bg-white/5 rounded-xl p-3 border border-gray-700/50">
+                <h3 className="text-sm font-bold text-white mb-1">פיתוח אפליקציות ותוכנה</h3>
+                <p>שירותי פיתוח אפליקציות, בניית אפליקציות ופיתוח תוכנה מותאם אישית. בונה אפליקציות בטכנולוגיות React ו-Node.js עם ניסיון ב-50+ פרויקטים.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

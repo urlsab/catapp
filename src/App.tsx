@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useScrollToTop } from './utils/scrollUtils';
+import { usePageSeo } from './utils/usePageSeo';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { useState } from 'react';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -74,6 +75,7 @@ function AppContent() {
   const {  spinnerVisible, canScrollToTop } = usePageLoading();
   const location = useLocation();
   const isAskAI = location.pathname === '/ask-ai';
+  usePageSeo();
 
   return (
     <div className="relative min-h-screen">

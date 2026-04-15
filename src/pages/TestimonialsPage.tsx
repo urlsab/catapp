@@ -112,8 +112,11 @@ const TestimonialsPage: React.FC = () => {
   const renderHeader = (key: string, stagger = 0) => (
     <div ref={getRef(key)} className={`text-center mb-6 lg:mb-12 transition-all duration-700 ${isVis(key) ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`} style={staggerDelay(key, stagger)}>
       <h1 className="text-lg sm:text-xl lg:text-3xl xl:text-4xl font-bold mb-1.5 lg:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500">
-        המלצות
+        המלצות לקוחות - בניית אתרים ופיתוח תוכנה
       </h1>
+      <p className="text-xs sm:text-sm lg:text-base text-gray-400 mb-2">
+        לקוחות שבחרו ב-Catapp לבניית אתרים, פיתוח אפליקציות ופיתוח תוכנה
+      </p>
       <div className="w-16 lg:w-32 h-0.5 lg:h-1.5 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 mx-auto rounded-full" />
     </div>
   );

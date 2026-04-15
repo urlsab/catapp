@@ -45,13 +45,13 @@ const Hero: React.FC = () => {
               Catapp
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium fade-in">
-              פיתוח אתרים מקצועיים
+              בניית אתרים | פיתוח אתרים | פיתוח אפליקציות
             </h2>
           </div>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed fade-in">
-            פיתוח, עיצוב ותחזוק אתרים ברמה הגבוהה ביותר
+            בונה אתרים מקצועי - בניית אתרים לעסקים, פיתוח תוכנה, בניית אפליקציות ופיתוח אפליקציות לבעלי עסקים ועורכי דין
           </p>
 
           {/* Feature Icons */}

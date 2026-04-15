@@ -78,20 +78,20 @@ const AboutFullPage: React.FC = () => {
         <div ref={getRef('s1')} className={`relative z-10 max-w-6xl mx-auto px-4 w-full transition-all duration-700 ${isVis('s1') ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <div className="text-center mb-6 sm:mb-8 md:mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 pb-2 tracking-tight bg-gradient-to-r from-[#1a79f6] to-blue-400 bg-clip-text text-transparent leading-tight px-2 sm:px-4">
-            אודות Catapp
+            אודות Catapp - בונה אתרים ומפתח תוכנה
           </h1>
           <div className="w-20 sm:w-24 md:w-32 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full"></div>
           <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-3xl mx-auto px-3 sm:px-4">
-            החברה המובילה בישראל לפתרונות דיגיטליים מתקדמים ושירותי תוכן מקצועיים
+            החברה המובילה בישראל לבניית אתרים, פיתוח אתרים, פיתוח אפליקציות ופיתוח תוכנה מתקדם
           </p>
         </div>
 
           {/* הצגת החברה */}
           <div className="relative rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-8 backdrop-blur-sm border-animated bg-white/5" style={{"--color1": "#1a79f6", "--color2": "#ffffff", "--angle": "0deg"} as React.CSSProperties}>
             <h2 className="text-base sm:text-xl md:text-2xl font-bold text-[#1a79f6] mb-3 sm:mb-4 md:mb-6 text-center">למה Catapp שונה?</h2>
-            <p className="mb-4 md:mb-6 text-center text-sm sm:text-base">
+            <p className="mb-4 md:mb-6 text-center text-sm sm:text-base text-white">
               <span className="font-bold text-[#1a79f6]">Catapp</span> נוסדה מתוך צורך אמיתי - 
-              <span className="font-semibold"> לפתור את בעיית המהירות והגמישות</span> בפיתוח אתרים מקצועיים. 
+              <span className="font-semibold"> לפתור את בעיית המהירות והגמישות</span> בבניית אתרים ופיתוח אתרים מקצועיים. 
               בניגוד לפלטפורמות תבניתיות כמו WordPress, Wix או Shopify, אנו בונים כל אתר מאפס 
               <span className="font-bold text-[#1a79f6]"> בטכנולוגיות ההייטק המתקדמות ביותר</span>.
             </p>

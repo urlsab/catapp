@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /ask-ai
+
+Sitemap: https://catapp.it.com/sitemap.xml

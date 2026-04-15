@@ -55,7 +55,7 @@ const About: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">אודות החברה</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#1a79f6] to-blue-700 mx-auto mb-8"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            CatApp עוסקת בשירותי תוכן וטכנולוגיה, עם התמחות בפיתוח אתרים, תחזוקה ועיצוב. בניית קורות חיים מותאמים להייטק, הקמה ליווי וייעוץ לעסקים קטנים.
+            Catapp עוסקת בשירותי תוכן וטכנולוגיה, עם התמחות בפיתוח אתרים, תחזוקה ועיצוב. בניית קורות חיים מותאמים להייטק, הקמה ליווי וייעוץ לעסקים קטנים.
           </p>
         </div>
       </div>
