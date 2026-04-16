@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useScrollToTop } from './utils/scrollUtils';
 import { usePageSeo } from './utils/usePageSeo';
@@ -10,17 +10,20 @@ import CustomCursor from './components/CustomCursor';
 // import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import PricingPage from './pages/PricingPage';
-import PortfolioPage from './pages/PortfolioPage';
-import ContactPage from './pages/ContactPage';
-import TermsPage from './pages/TermsPage';
-import PrivacyPage from './pages/PrivacyPage';
-import AboutFullPage from './pages/AboutFullPage';
-// import ArticlesPage from './pages/ArticlesPage';
-import TestimonialsPage from './pages/TestimonialsPage';
-import AskAIPage from './pages/AskAIPage';
-// import AnimatedBackground from './components/AnimatedBackground';
+
+// Lazy load pages for better performance (Core Web Vitals)
+const HomePage = lazy(() => import('./pages/HomePage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const AboutFullPage = lazy(() => import('./pages/AboutFullPage'));
+const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
+const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
+const AskAIPage = lazy(() => import('./pages/AskAIPage'));
+const FaqPage = lazy(() => import('./pages/FaqPage'));
+const QuotePage = lazy(() => import('./pages/QuotePage'));
 
 function usePageLoading() {
   const { pathname } = useLocation();
@@ -92,18 +95,22 @@ function AppContent() {
 
         <div className="min-h-screen transition-colors duration-300 relative z-10">
           <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/about-full" element={<AboutFullPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/ask-ai" element={<AskAIPage />} />
-            {/* <Route path="/articles" element={<ArticlesPage />} /> */}
-          </Routes>
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/about-full" element={<AboutFullPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/ask-ai" element={<AskAIPage />} />
+              <Route path="/faq" element={<FaqPage />} />
+              <Route path="/articles" element={<ArticlesPage />} />
+              <Route path="/quote" element={<QuotePage />} />
+            </Routes>
+          </Suspense>
           {!isAskAI && <Footer />}
 
           {/* כפתור וואטסאפ קבוע בפינה שמאלית תחתונה */}
