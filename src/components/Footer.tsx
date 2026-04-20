@@ -56,6 +56,8 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
+          {/* Navigation + Contact: 2 columns on mobile */}
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 grid grid-cols-2 gap-4 sm:gap-6">
           {/* Navigation */}
           <div>
             <h4 className="footer-heading text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 lg:mb-4">ניווט</h4>
@@ -118,6 +120,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
             </ul>
+          </div>
           </div>
         </div>
 

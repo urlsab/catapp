@@ -1,10 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import logoBg from '../../Assets/catapp logo no bg.png';
-import logoCenter from '../../Assets/logoiCatapp.png';
 import { Target, Shield, Code, Bot, Accessibility, Sparkles, Wrench, X, CheckCircle2 } from 'lucide-react';
-import { FaReact, FaNodeJs, FaWordpress, FaGithub, FaGitAlt, FaSass, FaBolt } from 'react-icons/fa';
-import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiExpress, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini, SiGooglecloud } from 'react-icons/si';
-import { BsBootstrapFill } from "react-icons/bs";
+import { FaWordpress } from 'react-icons/fa';
 import Footer from '../components/Footer';
 import '../styles/aboutSnap.css';
 
@@ -102,7 +99,7 @@ const AboutFullPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ===== SECTION 2: Not WordPress + Tech Orbit ===== */}
+      {/* ===== SECTION 2: Not WordPress ===== */}
       <section className="about-snap-section">
         <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
           <div ref={getRef('s2-title')} className={`mb-4 sm:mb-6 transition-all duration-700 ${isVis('s2-title') ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
@@ -124,159 +121,7 @@ const AboutFullPage: React.FC = () => {
               פלטפורמות כמו WordPress, Wix ו-Shopify מגבילות אתכם לתבניות קבועות, איטיות וחסרות גמישות.
             </p>
           </div>
-          <div ref={getRef('s2-orbit')} className={`flex items-center justify-center transition-all duration-1000 ${isVis('s2-orbit') ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-                <div className="relative w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] max-h-[60vh] flex items-center justify-center" dir="ltr">
-                    {/* Circular orbit container */}
-                    <div className="tech-orbit">
-                      <div className="tech-icon-wrapper" style={{ '--icon-index': 0 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#61DAFB]/20 hover:scale-125">
-                      <FaReact className="text-xs xs:text-base sm:text-xl md:text-2xl text-[#61DAFB]" />
-                    </div>
-                    <p className="tech-label">React</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 1 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#3178C6]/20 hover:scale-125">
-                      <SiTypescript className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#3178C6]" />
-                    </div>
-                    <p className="tech-label">TypeScript</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 2 } as React.CSSProperties}>
-                    <div className="tech-icon bg-yellow-500/20 hover:scale-125">
-                      <SiJavascript className="text-[10px] xs:text-sm sm:text-base md:text-xl text-yellow-500" />
-                    </div>
-                    <p className="tech-label">JavaScript</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 3 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#646CFF]/20 hover:scale-125">
-                      <SiVite className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#646CFF]" />
-                    </div>
-                    <p className="tech-label">Vite</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 4 } as React.CSSProperties}>
-                    <div className="tech-icon bg-green-500/20 hover:scale-125">
-                      <SiMongodb className="text-[10px] xs:text-sm sm:text-base md:text-xl text-green-500" />
-                    </div>
-                    <p className="tech-label">MongoDB</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 5 } as React.CSSProperties}>
-                    <div className="tech-icon bg-blue-500/20 hover:scale-125">
-                      <SiMui className="text-[10px] xs:text-sm sm:text-base md:text-xl text-blue-500" />
-                    </div>
-                    <p className="tech-label">MUI</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 6 } as React.CSSProperties}>
-                    <div className="tech-icon bg-black border border-white hover:scale-125">
-                      <SiVercel className="text-[10px] xs:text-sm sm:text-base md:text-xl text-white" />
-                    </div>
-                    <p className="tech-label">Vercel</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 7 } as React.CSSProperties}>
-                    <div className="tech-icon bg-orange-600/20 hover:scale-125">
-                      <FaNodeJs className="text-[10px] xs:text-sm sm:text-base md:text-xl text-orange-600" />
-                    </div>
-                    <p className="tech-label">Node.js</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 8 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#06B6D4]/20 hover:scale-125">
-                      <SiTailwindcss className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#06B6D4]" />
-                    </div>
-                    <p className="tech-label">Tailwind CSS</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 9 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#FFCA28]/20 hover:scale-125">
-                      <SiFirebase className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#FFCA28]" />
-                    </div>
-                    <p className="tech-label">Firebase</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 10 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#1BDBDB]/20 hover:scale-125">
-                      <SiGodaddy className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#1BDBDB]" />
-                    </div>
-                    <p className="tech-label">GoDaddy</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 11 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#430098]/20 hover:scale-125">
-                      <SiHeroku className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#430098]" />
-                    </div>
-                    <p className="tech-label">Heroku</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 12 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#181717]/20 border border-gray-700 hover:scale-125">
-                      <FaGithub className="text-[10px] xs:text-sm sm:text-base md:text-xl text-white" />
-                    </div>
-                    <p className="tech-label">GitHub</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 13 } as React.CSSProperties}>
-                    <div className="tech-icon bg-[#F05032]/20 hover:scale-125">
-                      <FaGitAlt className="text-[10px] xs:text-sm sm:text-base md:text-xl text-[#F05032]" />
-                    </div>
-                    <p className="tech-label">Git</p>
-                  </div>
-                  <div className="tech-icon-wrapper" style={{ '--icon-index': 14 } as React.CSSProperties}>
-                    <div className="tech-icon bg-purple-500/20 hover:scale-125">
-                      <span className="text-[10px] xs:text-sm sm:text-base md:text-xl font-bold text-purple-500">✨</span>
-                    </div>
-                    <p className="tech-label">AI</p>
-                  </div>
-                    </div>
-                    
-                    {/* Inner orbit for AI tools */}
-                    <div className="tech-orbit-inner">
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 0 } as React.CSSProperties}>
-                        <div className="tech-icon bg-[#2563eb]/20 hover:scale-125">
-                          <SiGooglecloud />
-                        </div>
-                        <p className="tech-label">GCP</p>
-                      </div>
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 1 } as React.CSSProperties}>
-                        <div className="tech-icon bg-yellow-400/20 hover:scale-125">
-                          <FaBolt className="text-[8px] xs:text-xs sm:text-sm md:text-base text-yellow-400" />
-                        </div>
-                        <p className="tech-label">Bolt</p>
-                      </div>
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 2 } as React.CSSProperties}>
-                        <div className="tech-icon bg-white/10 border border-gray-500 hover:scale-125">
-                          <BsBootstrapFill />
-                        </div>
-                        <p className="tech-label">Copilot</p>
-                      </div>
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 3 } as React.CSSProperties}>
-                        <div className="tech-icon bg-[#00CED1]/20 hover:scale-125">
-                          <SiExpress />
-                        </div>
-                        <p className="tech-label">Cursor</p>
-                      </div>
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 4 } as React.CSSProperties}>
-                        <div className="tech-icon bg-blue-500/20 hover:scale-125">
-                          <SiGooglegemini className="text-[8px] xs:text-xs sm:text-sm md:text-base text-blue-400" />
-                        </div>
-                        <p className="tech-label">GenAI</p>
-                      </div>
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 5 } as React.CSSProperties}>
-                        <div className="tech-icon bg-pink-900 hover:scale-125">
-                          <SiStyledcomponents className="text-[32px] lg:text-lg sm:text-sm md:text-base text-yellow-200" />
-                        </div>
-                        <p className="tech-label">Styled</p>
-                      </div>
-                      <div className="tech-icon-wrapper-inner" style={{ '--icon-index': 6 } as React.CSSProperties}>
-                        <div className="tech-icon bg-pink-500/20 hover:scale-125">
-                          <FaSass className="text-[32px] lg:text-lg sm:text-sm md:text-base text-white" />
-                        </div>
-                        <p className="tech-label">SCSS</p>
-                      </div>
-                    </div>
-                    
-                    {/* Center Logo - Static */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                      <img 
-                        src={logoCenter} 
-                        alt="Catapp Logo" 
-                        className="w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain opacity-90"
-                      />
-                    </div>
-                  </div>
-                </div>
-          </div>
+        </div>
       </section>
 
       {/* ===== SECTION 3: Tech Details Text ===== */}

@@ -26,43 +26,43 @@ const ProjectsSection: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'בונה קו"ח - פיתוח תוכנה SaaS',
+      title: 'בונה קו"ח',
       image: resumeBuilderImage,
       url: 'https://resumes-builder.web.app'
     },
     {
       id: 2,
-      title: 'אור בנג\'י - בניית דף נחיתה לעסק',
+      title: 'אור בנג\'י',
       image: orBenjiImage,
       url: 'https://orbenji.com'
     },
     {
       id: 3,
-      title: 'משרד עו"ד רפאל סבג - אתר לעורך דין',
+      title: 'רפאל סבג - עו"ד',
       image: refaelLawImage,
       url: 'https://refael-law.com'
     },
     {
       id: 4,
-      title: 'אטליז למהדרין - אתר לבעל עסק',
+      title: 'אטליז למהדרין',
       image: atlizImage,
       url: 'https://atliz.co.il'
     },
     {
       id: 5,
-      title: 'רשת חברתית - פיתוח אפליקציה',
+      title: 'רשת חברתית',
       image: campNetworkImage,
       url: 'https://yelp--camp--project.herokuapp.com'
     },
     {
       id: 6,
-      title: 'משחק צבעים - פיתוח תוכנה',
+      title: 'משחק צבעים',
       image: colorGameImage,
       url: 'https://color-game-react.vercel.app'
     },
     {
       id: 7,
-      title: 'אתר פורטפוליו - בניית אתר תדמית',
+      title: 'אתר פורטפוליו',
       image: portfolioImage,
       url: 'https://portfolio-uriel-yair-sabag.vercel.app'
     }
@@ -245,7 +245,7 @@ const ProjectsSection: React.FC = () => {
                     transition={{ duration: 0.4 }}
                   >
                     <div className="flex flex-col items-start" dir="rtl">
-                      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-2xl mb-4 sm:mb-6">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#1a79f6] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mb-4 sm:mb-6">
                         {project.title}
                       </h3>
                       <a

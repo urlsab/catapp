@@ -799,7 +799,7 @@ const HomePage: React.FC = () => {
                   }`}
                 >
                   <div className="rounded-xl p-3 md:p-5 shadow-lg w-full max-w-3xl">
-                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line">
+                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line" style={{ fontSize: 'clamp(1.5rem, 7vw, 1.875rem)' }}>
                       אנחנו לא בונים עם{" "}
                       <span className="text-[#1a79f6]">WordPress</span>
                       {"\n"}
@@ -883,7 +883,7 @@ const HomePage: React.FC = () => {
                   }`}
                 >
                   <div className="rounded-xl p-3 md:p-5 shadow-lg w-full max-w-3xl">
-                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line">
+                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line" style={{ fontSize: 'clamp(1.5rem, 7vw, 1.875rem)' }}>
                       אנחנו מייצרים קורות חיים
                       <span className="text-[#1a79f6]"> שעוברים כל סינון </span>
                       אוטומטי
@@ -951,44 +951,44 @@ const HomePage: React.FC = () => {
             className="w-full flex justify-center items-center relative px-2 sm:px-4 flex-1"
           >
             <div className="max-w-3xl w-full flex flex-col items-center">
-              <h2 className="text-xl sm:text-2xl md:text-[1.6rem] font-bold text-[#1a79f6] mb-2 md:mb-3 text-center">תהליך פיתוח אתר</h2>
+              <h2 className="text-2xl sm:text-2xl md:text-[1.6rem] font-bold text-[#1a79f6] mb-2 md:mb-3 text-center">תהליך פיתוח אתר</h2>
               <div className="relative flex w-full">
                 {/* Vertical line - לבן מלא בלבד (נגמר בדיוק בקו התחתון של המלבן האחרון) */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-3 bg-white rounded-full z-0" style={{ height: 'calc(100% - 30px)', minHeight: 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-3 sm:w-3 md:w-3 bg-white rounded-full z-0" style={{ height: 'calc(100% - 30px)', minHeight: 0 }} />
                 {/* קו כחול דק מעל הקו הלבן, מוצג רק לפי התקדמות הגלילה */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-2.5 sm:w-3 md:w-3 pointer-events-none z-10" style={{ height: 'calc(100% - 30px)' }}>
-                  <div className="absolute left-1/2 -translate-x-1/2 w-2 sm:w-2.5 md:w-2.5 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-[600ms] ease-out" style={{ height: `${progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-3 sm:w-3 md:w-3 pointer-events-none z-10" style={{ height: 'calc(100% - 30px)' }}>
+                  <div className="absolute left-1/2 -translate-x-1/2 w-2.5 sm:w-2.5 md:w-2.5 bg-gradient-to-b from-[#1a79f6] to-blue-400 rounded-full transition-all duration-[600ms] ease-out" style={{ height: `${progress * 100}%`, minHeight: 0, top: 0, opacity: progress > 0 ? 1 : 0 }} />
                 </div>
                 <div className="flex flex-col gap-2 md:gap-3 w-full z-20">
                   {/* שלבים */}
                   {[
                     {
-                      icon: <Phone className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
+                      icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'פנייה ראשונית',
                       desc: 'שיחה קצרה להיכרות והבנת הצורך.'
                     },
                     {
-                      icon: <FileText className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
+                      icon: <FileText className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'אפיון האתר',
                       desc: 'מגדירים יחד מה האתר יכלול.'
                     },
                     {
-                      icon: <Palette className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
+                      icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'איסוף חומרים',
                       desc: 'מקבלים חומרים ומעצבים דף בית.'
                     },
                     {
-                      icon: <Briefcase className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
+                      icon: <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'פיתוח האתר',
                       desc: 'הופכים את ההדמיה לאתר חי.'
                     },
                     {
-                      icon: <Scale className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
+                      icon: <Scale className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'בדיקות ותיקונים',
                       desc: 'בודקים ומוודאים שהאתר מושלם.'
                     },
                     {
-                      icon: <Star className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
+                      icon: <Star className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#1a79f6] bg-white rounded-full shadow-lg p-0.5 sm:p-1 md:p-1.5" />,
                       title: 'עלייה לאוויר',
                       desc: 'האתר באוויר – מזל טוב !!!'
                     },
@@ -998,38 +998,38 @@ const HomePage: React.FC = () => {
                     // Calculate the progress for each step (icon)
                     const isActive = idx <= activeStep;
                     return (
-                      <div key={idx} className="flex items-center w-full relative" style={{ minHeight: 'clamp(40px, 8vh, 58px)' }}>
+                      <div key={idx} className="flex items-center w-full relative" style={{ minHeight: 'clamp(50px, 9vh, 58px)' }}>
                         {/* מלבן טקסט מימין */}
                         {isRight && (
-                          <div className="flex-1 flex justify-end pr-1 sm:pr-3 mr-2 sm:mr-4 md:mr-6">
+                          <div className="flex-1 flex justify-end pr-2 sm:pr-3 mr-3 sm:mr-4 md:mr-6">
                             <div className="border-[#1a79f6] border-[1.5px] rounded-xl sm:rounded-2xl shadow-md text-right"
                               style={{ 
-                                maxWidth: 'clamp(85px, 33vw, 230px)',
-                                padding: 'clamp(0.15rem, 1.2vw, 0.6rem)'
+                                maxWidth: 'clamp(105px, 36vw, 230px)',
+                                padding: 'clamp(0.25rem, 1.5vw, 0.6rem)'
                               }}>
-                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', marginBottom: 'clamp(0px, 0.4vw, 3px)' }}>{step.title}</div>
-                              <div className="text-white" style={{ fontSize: 'clamp(0.45rem, 1.6vw, 0.7rem)', lineHeight: 1.3 }}>{step.desc}</div>
+                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.65rem, 2.2vw, 0.8rem)', marginBottom: 'clamp(1px, 0.5vw, 3px)' }}>{step.title}</div>
+                              <div className="text-white" style={{ fontSize: 'clamp(0.55rem, 2vw, 0.7rem)', lineHeight: 1.3 }}>{step.desc}</div>
                             </div>
                           </div>
                         )}
                         {/* אייקון ממורכז על הציר */}
-                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 z-30" style={{top: 0, minWidth: 'clamp(55px, 14vw, 110px)'}}>
-                          <div className={`flex items-center justify-center rounded-full transition-all duration-500 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 'clamp(28px, 6vw, 45px)', height: 'clamp(28px, 6vw, 45px)' }}>
+                        <div className="flex flex-col items-center justify-center absolute left-1/2 -translate-x-1/2 z-30" style={{top: 0, minWidth: 'clamp(60px, 15vw, 110px)'}}>
+                          <div className={`flex items-center justify-center rounded-full transition-all duration-500 ${isActive ? 'bg-[#1a79f6]' : 'bg-white'} shadow-lg`} style={{ width: 'clamp(34px, 7vw, 45px)', height: 'clamp(34px, 7vw, 45px)' }}>
                             {React.cloneElement(step.icon, {
-                              className: `w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 ${isActive ? 'text-white' : 'text-[#1a79f6]'}`
+                              className: `w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 ${isActive ? 'text-white' : 'text-[#1a79f6]'}`
                             })}
                           </div>
                         </div>
                         {/* מלבן טקסט משמאל */}
                         {!isRight && (
-                          <div className="flex-1 flex justify-start pl-1 sm:pl-3 ml-2 sm:ml-4 md:ml-6">
+                          <div className="flex-1 flex justify-start pl-2 sm:pl-3 ml-3 sm:ml-4 md:ml-6">
                             <div className="border-[#1a79f6] border-[1.5px] rounded-xl sm:rounded-2xl shadow-md text-right"
                               style={{ 
-                                maxWidth: 'clamp(85px, 33vw, 230px)',
-                                padding: 'clamp(0.15rem, 1.2vw, 0.6rem)'
+                                maxWidth: 'clamp(105px, 36vw, 230px)',
+                                padding: 'clamp(0.25rem, 1.5vw, 0.6rem)'
                               }}>
-                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.8rem)', marginBottom: 'clamp(0px, 0.4vw, 3px)' }}>{step.title}</div>
-                              <div className="text-white" style={{ fontSize: 'clamp(0.45rem, 1.6vw, 0.7rem)', lineHeight: 1.3 }}>{step.desc}</div>
+                              <div className="font-bold text-[#1a79f6]" style={{ fontSize: 'clamp(0.65rem, 2.2vw, 0.8rem)', marginBottom: 'clamp(1px, 0.5vw, 3px)' }}>{step.title}</div>
+                              <div className="text-white" style={{ fontSize: 'clamp(0.55rem, 2vw, 0.7rem)', lineHeight: 1.3 }}>{step.desc}</div>
                             </div>
                           </div>
                         )}
@@ -1396,35 +1396,35 @@ const HomePage: React.FC = () => {
               seoContentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center">
               בניית אתרים ופיתוח תוכנה לעסקים בישראל
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-gray-300 text-sm sm:text-base leading-relaxed">
-              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
-                <h3 className="text-lg font-bold text-white mb-2">בניית אתרים ופיתוח אתרים</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-gray-300 text-xs sm:text-base leading-relaxed">
+              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">בניית אתרים ופיתוח אתרים</h3>
                 <p>
                   Catapp מתמחה ב<strong>בניית אתרים</strong> ו<strong>פיתוח אתרים</strong> מקצועיים בטכנולוגיות מתקדמות. 
                   בתור <strong>בונה אתרים</strong> מוביל, אנו מציעים פתרונות מותאמים לכל עסק - 
                   אתרי תדמית, חנויות אינטרנטיות, דפי נחיתה ומערכות מורכבות.
                 </p>
               </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
-                <h3 className="text-lg font-bold text-white mb-2">פיתוח אפליקציות ופיתוח תוכנה</h3>
+              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">פיתוח אפליקציות ופיתוח תוכנה</h3>
                 <p>
                   שירותי <strong>פיתוח אפליקציות</strong>, <strong>בניית אפליקציות</strong> ו<strong>פיתוח תוכנה</strong> מותאם אישית. 
                   <strong> בונה אפליקציות</strong> מקצועי עם ניסיון בפיתוח מערכות SaaS, אפליקציות ווב ומערכות ניהול לעסקים.
                 </p>
               </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
-                <h3 className="text-lg font-bold text-white mb-2">אתרים לעורכי דין</h3>
+              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">אתרים לעורכי דין</h3>
                 <p>
                   מתמחים בבניית <strong>אתרים לעורכי דין</strong> ו<strong>אתר לעורך דין</strong> מקצועי. 
                   עיצוב יוקרתי, הצגת תחומי עיסוק, טפסי ייעוץ ראשוני, 
                   וקידום בגוגל מותאם למשרדי עורכי דין.
                 </p>
               </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-[#1a79f6]/20">
-                <h3 className="text-lg font-bold text-white mb-2">אתרים לבעלי עסקים</h3>
+              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">אתרים לבעלי עסקים</h3>
                 <p>
                   בניית <strong>אתרים לבעלי עסקים</strong>, <strong>אתר לבעל עסק</strong> ו<strong>אתרים לעסקים</strong> מכל הסוגים. 
                   אתר שמייצר לקוחות חדשים, מחזק את המיתוג ומגדיל את ההכנסות של העסק שלכם.
