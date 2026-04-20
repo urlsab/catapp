@@ -13,7 +13,6 @@ import cvPic3 from '../../Assets/cv pic 3.png';
 import cvPic4 from '../../Assets/cv pic 4.png';
 import cvPic5 from '../../Assets/cv pic 5.png';
 import cvPic6 from '../../Assets/cv pic 6.png';
-import resumesBuilderMobile from '../../Assets/resumes_builder_on_mobile-removebg-preview.png';
 import logoCenter from '../../Assets/logoiCatapp.png';
 import Footer from '../components/Footer';
 import '../styles/scroll.css';
@@ -29,6 +28,7 @@ import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiExpress, SiVerc
 import { BsBootstrapFill } from "react-icons/bs";
 import codeServiceImage from '../../Assets/code service.jpg';
 import buildCvImage from '../../Assets/build cv.png';
+import refaelResponsiveImage from '../../Assets/refael website responsive no bg.png';
 
 
 
@@ -361,40 +361,21 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Right Side - Screenshots Grid */}
-            <div className="relative" ref={heroImagesRef}>
-              <div className="grid grid-cols-2 gap-4 auto-rows-min">
+            <div className="relative flex justify-center" ref={heroImagesRef}>
                 <div 
-                  className={`relative rounded-3xl overflow-visible transition-all duration-700 ease-out hover:scale-105 h-fit max-w-md mx-auto ${
-                    heroImagesVisible[0] ? 'opacity-100 -translate-y-16' : 'opacity-0 translate-y-8'
+                  className={`relative rounded-3xl overflow-visible transition-all duration-700 ease-out hover:scale-105 h-fit max-w-2xl mx-auto ${
+                    heroImagesVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
                   style={{ 
                     filter: 'drop-shadow(0 20px 40px rgba(26, 121, 246, 0.4))'
                   }}
                 >
                   <img 
-                    src={resumesBuilderMobile} 
-                    alt="בניית קורות חיים במובייל" 
-                    className="w-full h-auto block max-h-[70vh] object-contain"
+                    src={refaelResponsiveImage} 
+                    alt="אתר רספונסיבי" 
+                    className="w-full h-auto block max-h-[75vh] object-contain"
                   />
                 </div>
-                
-                <div 
-                  className={`relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 transition-all duration-700 ease-out hover:scale-105 mt-12 h-fit max-w-md mx-auto ${
-                    heroImagesVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-                  }`}
-                  style={{ 
-                    boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
-                    transform: 'rotate(-3deg) scale(0.95)'
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
-                  <img 
-                    src={cvPic6} 
-                    alt="דוגמת קורות חיים מקצועי" 
-                    className="w-full h-auto block relative z-10 max-h-[65vh] object-contain"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -432,35 +413,35 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Stats Row - larger */}
-              <div className="flex gap-10 lg:gap-14 justify-center">
+              <div className="flex flex-nowrap gap-6 md:gap-10 lg:gap-14 justify-center items-start">
                 <div
-                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  className={`text-center flex-shrink-0 transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                 >
                   <div className="flex justify-center mb-2">
                     <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: '2.75rem' }} />
                   </div>
-                  <div className="text-5xl lg:text-6xl font-bold text-white">+5</div>
-                  <p className="text-gray-400 text-base lg:text-lg mt-1">שנות ניסיון</p>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-sm md:text-base lg:text-lg mt-1 whitespace-nowrap">שנות ניסיון</p>
                 </div>
                 <div
-                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  className={`text-center flex-shrink-0 transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-2">
                     <GroupsIcon style={{ color: '#1a79f6', fontSize: '2.75rem' }} />
                   </div>
-                  <div className="text-5xl lg:text-6xl font-bold text-white">+50</div>
-                  <p className="text-gray-400 text-base lg:text-lg mt-1">לקוחות מרוצים</p>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-sm md:text-base lg:text-lg mt-1 whitespace-nowrap">לקוחות מרוצים</p>
                 </div>
                 <div
-                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  className={`text-center flex-shrink-0 transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-2">
                     <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: '2.75rem' }} />
                   </div>
-                  <div className="text-5xl lg:text-6xl font-bold text-white"><span dir="ltr">20+</span></div>
-                  <p className="text-gray-400 text-base lg:text-lg mt-1">טכנולוגיות בשימוש</p>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-sm md:text-base lg:text-lg mt-1 whitespace-nowrap">טכנולוגיות בשימוש</p>
                 </div>
               </div>
             </div>
@@ -485,33 +466,18 @@ const HomePage: React.FC = () => {
                 <span className="text-[#1a79f6]">לעסקים ובעלי מקצוע</span>
               </h1>
 
-              {/* Images Grid */}
-              <div className="grid grid-cols-2 gap-2 sm:gap-4 auto-rows-min w-full max-w-lg mx-auto">
+              {/* Hero Image */}
+              <div className="flex justify-center w-full max-w-xl mx-auto">
                 <div 
-                  className="relative rounded-3xl overflow-visible h-fit max-w-xs mx-auto"
+                  className="relative rounded-3xl overflow-visible h-fit mx-auto"
                   style={{ 
                     filter: 'drop-shadow(0 20px 40px rgba(26, 121, 246, 0.4))'
                   }}
                 >
                   <img 
-                    src={resumesBuilderMobile} 
-                    alt="בניית קורות חיים במובייל" 
-                    className="w-full h-auto block max-h-[55vh] object-contain"
-                  />
-                </div>
-                
-                <div 
-                  className="relative rounded-3xl overflow-hidden border-4 border-[#1a79f6]/60 bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 mt-6 sm:mt-10 h-fit max-w-xs mx-auto"
-                  style={{ 
-                    boxShadow: '0 25px 50px -12px rgba(26, 121, 246, 0.5), inset 0 2px 4px 0 rgba(255, 255, 255, 0.6)',
-                    transform: 'rotate(-3deg) scale(1.0)'
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none"></div>
-                  <img 
-                    src={cvPic6} 
-                    alt="דוגמת קורות חיים מקצועי" 
-                    className="w-full h-auto block relative z-10 max-h-[50vh] object-contain"
+                    src={refaelResponsiveImage} 
+                    alt="אתר רספונסיבי" 
+                    className="w-full h-auto block max-h-[65vh] object-contain"
                   />
                 </div>
               </div>
@@ -551,33 +517,33 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Stats Row - larger */}
-              <div className="flex gap-6 xs:gap-8 sm:gap-12 justify-center">
-                <div className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
+              <div className="flex flex-nowrap gap-4 xs:gap-6 sm:gap-12 justify-center items-start">
+                <div className={`text-center flex-shrink-0 transition-all duration-700 ease-out ${heroStatsVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
                   <div className="flex justify-center mb-1.5">
                     <WorkHistoryIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.75rem, 7vw, 2.75rem)' }} />
                   </div>
-                  <div className="text-4xl xs:text-4xl sm:text-5xl font-bold text-white">+5</div>
-                  <p className="text-gray-400 text-base sm:text-base mt-0.5">שנות ניסיון</p>
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white">+5</div>
+                  <p className="text-gray-400 text-xs xs:text-sm sm:text-base mt-0.5 whitespace-nowrap">שנות ניסיון</p>
                 </div>
                 <div
-                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  className={`text-center flex-shrink-0 transition-all duration-700 ease-out ${heroStatsVisible[1] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[1] ? '200ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1.5">
                     <GroupsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.75rem, 7vw, 2.75rem)' }} />
                   </div>
-                  <div className="text-4xl xs:text-4xl sm:text-5xl font-bold text-white">+50</div>
-                  <p className="text-gray-400 text-base sm:text-base mt-0.5">לקוחות מרוצים</p>
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white">+50</div>
+                  <p className="text-gray-400 text-xs xs:text-sm sm:text-base mt-0.5 whitespace-nowrap">לקוחות מרוצים</p>
                 </div>
                 <div
-                  className={`text-center transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
+                  className={`text-center flex-shrink-0 transition-all duration-700 ease-out ${heroStatsVisible[2] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
                   style={{ transitionDelay: heroStatsVisible[2] ? '400ms' : '0ms' }}
                 >
                   <div className="flex justify-center mb-1.5">
                     <IntegrationInstructionsIcon style={{ color: '#1a79f6', fontSize: 'clamp(1.75rem, 7vw, 2.75rem)' }} />
                   </div>
-                  <div className="text-4xl xs:text-4xl sm:text-5xl font-bold text-white"><span dir="ltr">20+</span></div>
-                  <p className="text-gray-400 text-base sm:text-base mt-0.5">טכנולוגיות בשימוש</p>
+                  <div className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white"><span dir="ltr">20+</span></div>
+                  <p className="text-gray-400 text-xs xs:text-sm sm:text-base mt-0.5 whitespace-nowrap">טכנולוגיות בשימוש</p>
                 </div>
               </div>
             </div>
@@ -1399,32 +1365,32 @@ const HomePage: React.FC = () => {
             <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center">
               בניית אתרים ופיתוח תוכנה לעסקים בישראל
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-gray-300 text-xs sm:text-base leading-relaxed">
-              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">בניית אתרים ופיתוח אתרים</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 text-gray-300 text-xs sm:text-sm leading-relaxed">
+              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-base font-bold text-white mb-1">בניית אתרים ופיתוח אתרים</h3>
                 <p>
                   Catapp מתמחה ב<strong>בניית אתרים</strong> ו<strong>פיתוח אתרים</strong> מקצועיים בטכנולוגיות מתקדמות. 
                   בתור <strong>בונה אתרים</strong> מוביל, אנו מציעים פתרונות מותאמים לכל עסק - 
                   אתרי תדמית, חנויות אינטרנטיות, דפי נחיתה ומערכות מורכבות.
                 </p>
               </div>
-              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">פיתוח אפליקציות ופיתוח תוכנה</h3>
+              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-base font-bold text-white mb-1">פיתוח אפליקציות ופיתוח תוכנה</h3>
                 <p>
                   שירותי <strong>פיתוח אפליקציות</strong>, <strong>בניית אפליקציות</strong> ו<strong>פיתוח תוכנה</strong> מותאם אישית. 
                   <strong> בונה אפליקציות</strong> מקצועי עם ניסיון בפיתוח מערכות SaaS, אפליקציות ווב ומערכות ניהול לעסקים.
                 </p>
               </div>
-              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">אתרים לעורכי דין</h3>
+              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-base font-bold text-white mb-1">אתרים לעורכי דין</h3>
                 <p>
                   מתמחים בבניית <strong>אתרים לעורכי דין</strong> ו<strong>אתר לעורך דין</strong> מקצועי. 
                   עיצוב יוקרתי, הצגת תחומי עיסוק, טפסי ייעוץ ראשוני, 
                   וקידום בגוגל מותאם למשרדי עורכי דין.
                 </p>
               </div>
-              <div className="bg-white/5 rounded-xl p-3 sm:p-4 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2">אתרים לבעלי עסקים</h3>
+              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
+                <h3 className="text-sm sm:text-base font-bold text-white mb-1">אתרים לבעלי עסקים</h3>
                 <p>
                   בניית <strong>אתרים לבעלי עסקים</strong>, <strong>אתר לבעל עסק</strong> ו<strong>אתרים לעסקים</strong> מכל הסוגים. 
                   אתר שמייצר לקוחות חדשים, מחזק את המיתוג ומגדיל את ההכנסות של העסק שלכם.
