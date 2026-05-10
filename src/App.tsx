@@ -20,6 +20,7 @@ const TermsPage = lazy(() => import('./pages/TermsPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const AboutFullPage = lazy(() => import('./pages/AboutFullPage'));
 const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
+const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
 const AskAIPage = lazy(() => import('./pages/AskAIPage'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
@@ -108,6 +109,7 @@ function AppContent() {
               <Route path="/ask-ai" element={<AskAIPage />} />
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/articles" element={<ArticlesPage />} />
+              <Route path="/articles/:slug" element={<ArticlePage />} />
               <Route path="/quote" element={<QuotePage />} />
             </Routes>
           </Suspense>

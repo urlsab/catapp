@@ -1353,54 +1353,6 @@ const HomePage: React.FC = () => {
       </div>
       </section>
 
-      {/* ===== SECTION: SEO Content ===== */}
-      <section className="home-snap-section snap-compact">
-        <div className="w-full flex justify-center items-center relative flex-1">
-          <div
-            ref={seoContentRef}
-            className={`max-w-5xl mx-auto px-4 py-6 w-full transition-all duration-1000 ${
-              seoContentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1a79f6] mb-4 text-center">
-              בניית אתרים ופיתוח תוכנה לעסקים בישראל
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 text-gray-300 text-xs sm:text-sm leading-relaxed">
-              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-base font-bold text-white mb-1">בניית אתרים ופיתוח אתרים</h3>
-                <p>
-                  Catapp מתמחה ב<strong>בניית אתרים</strong> ו<strong>פיתוח אתרים</strong> מקצועיים בטכנולוגיות מתקדמות. 
-                  בתור <strong>בונה אתרים</strong> מוביל, אנו מציעים פתרונות מותאמים לכל עסק - 
-                  אתרי תדמית, חנויות אינטרנטיות, דפי נחיתה ומערכות מורכבות.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-base font-bold text-white mb-1">פיתוח אפליקציות ופיתוח תוכנה</h3>
-                <p>
-                  שירותי <strong>פיתוח אפליקציות</strong>, <strong>בניית אפליקציות</strong> ו<strong>פיתוח תוכנה</strong> מותאם אישית. 
-                  <strong> בונה אפליקציות</strong> מקצועי עם ניסיון בפיתוח מערכות SaaS, אפליקציות ווב ומערכות ניהול לעסקים.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-base font-bold text-white mb-1">אתרים לעורכי דין</h3>
-                <p>
-                  מתמחים בבניית <strong>אתרים לעורכי דין</strong> ו<strong>אתר לעורך דין</strong> מקצועי. 
-                  עיצוב יוקרתי, הצגת תחומי עיסוק, טפסי ייעוץ ראשוני, 
-                  וקידום בגוגל מותאם למשרדי עורכי דין.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-2.5 sm:p-3 border border-[#1a79f6]/20">
-                <h3 className="text-sm sm:text-base font-bold text-white mb-1">אתרים לבעלי עסקים</h3>
-                <p>
-                  בניית <strong>אתרים לבעלי עסקים</strong>, <strong>אתר לבעל עסק</strong> ו<strong>אתרים לעסקים</strong> מכל הסוגים. 
-                  אתר שמייצר לקוחות חדשים, מחזק את המיתוג ומגדיל את ההכנסות של העסק שלכם.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===== SECTION 10: Footer ===== */}
       <section className="home-snap-section snap-footer">
         <Footer />
