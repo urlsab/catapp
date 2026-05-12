@@ -1,59 +1,65 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import AnimatedBackground from '../components/AnimatedBackground';
+import Footer from '../components/Footer';
 import { articles } from '../data/articles';
+import '../styles/articleSnap.css';
 
 const ArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const article = articles.find((a) => a.slug === slug);
+  const snapContainerRef = useRef<HTMLDivElement>(null);
 
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const contentRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-  const [contentVisible, setContentVisible] = useState<boolean[]>([]);
+  // Visibility state: one boolean per section (header + each content section + cta/nav)
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [sectionVisible, setSectionVisible] = useState<boolean[]>([]);
 
   useEffect(() => {
     if (!article) {
       navigate('/articles', { replace: true });
       return;
     }
-    setContentVisible(new Array(article.content.length).fill(false));
+    // header + sections + cta section
+    setSectionVisible(new Array(article.sections.length + 2).fill(false));
   }, [article, navigate]);
 
+  // Hide body scroll and global footer when snap container is active
   useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setHeaderVisible(true); },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [article]);
+    document.body.style.overflow = 'hidden';
+    const globalFooter = document.querySelector('.min-h-screen > footer') as HTMLElement;
+    if (globalFooter) globalFooter.style.display = 'none';
+    return () => {
+      document.body.style.overflow = '';
+      if (globalFooter) globalFooter.style.display = '';
+    };
+  }, []);
 
+  // IntersectionObserver rooted in the snap container
   useEffect(() => {
-    if (!article) return;
-    const observers: IntersectionObserver[] = [];
-    contentRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setContentVisible((prev) => {
+    const container = snapContainerRef.current;
+    if (!container || !article) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = sectionRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (idx !== -1 && entry.isIntersecting) {
+            setSectionVisible((prev) => {
+              if (prev[idx]) return prev;
               const next = [...prev];
-              next[i] = true;
+              next[idx] = true;
               return next;
             });
           }
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, [article, contentVisible.length]);
+        });
+      },
+      { root: container, threshold: 0.15 }
+    );
+
+    sectionRefs.current.forEach((el) => { if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, [article, sectionVisible.length]);
 
   if (!article) return null;
 
@@ -61,108 +67,168 @@ const ArticlePage: React.FC = () => {
   const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
   const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
 
+  const setRef = (i: number) => (el: HTMLDivElement | null) => {
+    sectionRefs.current[i] = el;
+  };
+
   return (
-    <div dir="rtl" className="relative min-h-screen bg-[#0a0a0a]">
+    <div className="article-snap-container" ref={snapContainerRef} dir="rtl">
       <AnimatedBackground />
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-4 py-24">
 
-        {/* Back button */}
-        <Link
-          to="/articles"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-[#1a79f6] transition-colors mb-10 text-base font-medium group"
-        >
-          <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
-          חזרה למאמרים
-        </Link>
-
-        {/* Article Header */}
+      {/* ===== SECTION 0: Article Header ===== */}
+      <section className="article-snap-section">
         <div
-          ref={headerRef}
-          className={`transition-all duration-1000 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          ref={setRef(0)}
+          className={`relative z-10 w-full max-w-3xl mx-auto px-4 flex flex-col justify-center transition-all duration-1000 ${
+            sectionVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
         >
-          {/* Hero image area */}
-          <div className={`relative h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${article.gradient} flex items-center justify-center mb-10`}>
+          {/* Back button */}
+          <Link
+            to="/articles"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#1a79f6] transition-colors mb-6 text-base font-medium group w-fit"
+          >
+            <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+            חזרה למאמרים
+          </Link>
+
+          {/* Hero banner */}
+          <div className={`relative h-44 sm:h-56 md:h-64 rounded-2xl overflow-hidden bg-gradient-to-br ${article.gradient} flex items-center justify-center mb-6`}>
             <div className="absolute -top-10 -left-10 w-56 h-56 rounded-full bg-white/5" />
             <div className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full bg-white/5" />
-            <div className="absolute top-6 right-8 w-20 h-20 rounded-full bg-white/5" />
-            <span className="relative text-9xl select-none drop-shadow-xl">{article.icon}</span>
-            <span className={`absolute top-5 left-5 text-sm font-bold px-4 py-1.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 ${article.tagColor}`}>
+            <span className="relative text-7xl md:text-9xl select-none drop-shadow-xl">{article.icon}</span>
+            <span className={`absolute top-4 left-4 text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 ${article.tagColor}`}>
               {article.tag}
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 text-right">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 text-right">
             {article.title}
           </h1>
-          <p className={`text-xl md:text-2xl font-medium leading-relaxed mb-10 text-right ${article.tagColor}`}>
+          <p className={`text-base sm:text-lg md:text-xl font-medium leading-relaxed text-right ${article.tagColor}`}>
             {article.summary}
           </p>
-          <div className="w-full h-px bg-white/10 mb-10" />
-        </div>
 
-        {/* Article Content */}
-        <div className="space-y-8">
-          {article.content.map((paragraph, i) => (
-            <p
-              key={i}
-              ref={(el) => { contentRefs.current[i] = el; }}
-              className={`text-gray-200 text-xl md:text-2xl leading-[1.9] text-right transition-all duration-700 ${contentVisible[i] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              {paragraph}
-            </p>
-          ))}
+          {/* Scroll hint */}
+          <div className="flex justify-center mt-6">
+            <div className="flex flex-col items-center gap-1 text-gray-500 text-xs animate-bounce">
+              <span>גלול לקרוא</span>
+              <span>↓</span>
+            </div>
+          </div>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div className="mt-16 p-8 rounded-2xl bg-[#1a79f6]/10 border border-[#1a79f6]/30 text-right">
-          <p className="text-white text-xl font-bold mb-2">רוצים לדעת עוד?</p>
-          <p className="text-gray-300 text-lg mb-5">צרו קשר עם Catapp לשאלות, ייעוץ חינמי או הצעת מחיר מותאמת אישית.</p>
-          <Link
-            to="/contact"
-            className="inline-block bg-[#1a79f6] hover:bg-[#1565c0] text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 text-base"
+      {/* ===== CONTENT SECTIONS (one snap section per article section) ===== */}
+      {article.sections.map((section, sIdx) => (
+        <section key={sIdx} className="article-snap-section article-snap-content">
+          <div
+            ref={setRef(sIdx + 1)}
+            className={`relative z-10 w-full max-w-3xl mx-auto px-4 py-4 transition-all duration-1000 ${
+              sectionVisible[sIdx + 1] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
           >
-            צור קשר
-          </Link>
-        </div>
+            {/* Section number + title */}
+            <div className="flex items-center gap-3 mb-5 sm:mb-7">
+              <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-full bg-black/30 border border-white/15 ${article.tagColor}`}>
+                {sIdx + 1} / {article.sections.length}
+              </span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight text-right">
+                {section.title}
+              </h2>
+            </div>
 
-        {/* Prev / Next navigation */}
-        <div className="mt-12 flex justify-between gap-4">
-          {nextArticle ? (
+            <div className="w-full h-px bg-[#1a79f6]/30 mb-5 sm:mb-7" />
+
+            {/* Paragraphs */}
+            <div className="space-y-4 sm:space-y-6">
+              {section.paragraphs.map((para, pIdx) => (
+                <p
+                  key={pIdx}
+                  className="text-gray-200 text-base sm:text-lg md:text-xl leading-[1.85] text-right"
+                  style={{
+                    transitionDelay: sectionVisible[sIdx + 1] ? `${pIdx * 120}ms` : '0ms',
+                    transition: 'opacity 0.7s ease, transform 0.7s ease',
+                    opacity: sectionVisible[sIdx + 1] ? 1 : 0,
+                    transform: sectionVisible[sIdx + 1] ? 'translateY(0)' : 'translateY(16px)',
+                  }}
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            {/* Next section hint (not on last content section) */}
+            {sIdx < article.sections.length - 1 && (
+              <div className="flex justify-center mt-6">
+                <div className="flex flex-col items-center gap-1 text-gray-600 text-xs animate-bounce">
+                  <span>↓</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      ))}
+
+      {/* ===== CTA + NAVIGATION SECTION ===== */}
+      <section className="article-snap-section article-snap-content">
+        <div
+          ref={setRef(article.sections.length + 1)}
+          className={`relative z-10 w-full max-w-3xl mx-auto px-4 py-4 transition-all duration-1000 ${
+            sectionVisible[article.sections.length + 1] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {/* CTA */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#1a79f6]/10 border border-[#1a79f6]/30 text-right mb-8">
+            <p className="text-white text-lg sm:text-xl font-bold mb-2">רוצים לדעת עוד?</p>
+            <p className="text-gray-300 text-base sm:text-lg mb-5">צרו קשר עם Catapp לשאלות, ייעוץ חינמי או הצעת מחיר מותאמת אישית.</p>
             <Link
-              to={`/articles/${nextArticle.slug}`}
-              className="flex-1 group p-5 rounded-xl border border-white/10 hover:border-[#1a79f6]/40 bg-white/5 transition-all duration-200 text-right"
+              to="/contact"
+              className="inline-block bg-[#1a79f6] hover:bg-[#1565c0] text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 text-base"
             >
-              <p className="text-xs text-gray-500 mb-1">מאמר הבא</p>
-              <p className="text-white font-semibold text-base group-hover:text-[#1a79f6] transition-colors leading-snug">
-                {nextArticle.title}
-              </p>
+              צור קשר
             </Link>
-          ) : <div className="flex-1" />}
+          </div>
 
-          {prevArticle ? (
+          {/* Prev / Next navigation */}
+          <div className="flex justify-between gap-4 mb-6">
+            {nextArticle ? (
+              <Link
+                to={`/articles/${nextArticle.slug}`}
+                className="flex-1 group p-4 sm:p-5 rounded-xl border border-white/10 hover:border-[#1a79f6]/40 bg-white/5 transition-all duration-200 text-right"
+              >
+                <p className="text-xs text-gray-500 mb-1">מאמר הבא</p>
+                <p className="text-white font-semibold text-sm sm:text-base group-hover:text-[#1a79f6] transition-colors leading-snug">
+                  {nextArticle.title}
+                </p>
+              </Link>
+            ) : <div className="flex-1" />}
+
+            {prevArticle ? (
+              <Link
+                to={`/articles/${prevArticle.slug}`}
+                className="flex-1 group p-4 sm:p-5 rounded-xl border border-white/10 hover:border-[#1a79f6]/40 bg-white/5 transition-all duration-200 text-left"
+              >
+                <p className="text-xs text-gray-500 mb-1">מאמר קודם</p>
+                <p className="text-white font-semibold text-sm sm:text-base group-hover:text-[#1a79f6] transition-colors leading-snug">
+                  {prevArticle.title}
+                </p>
+              </Link>
+            ) : <div className="flex-1" />}
+          </div>
+
+          {/* Back to all articles */}
+          <div className="text-center">
             <Link
-              to={`/articles/${prevArticle.slug}`}
-              className="flex-1 group p-5 rounded-xl border border-white/10 hover:border-[#1a79f6]/40 bg-white/5 transition-all duration-200 text-left"
+              to="/articles"
+              className="text-gray-400 hover:text-[#1a79f6] transition-colors text-base font-medium"
             >
-              <p className="text-xs text-gray-500 mb-1">מאמר קודם</p>
-              <p className="text-white font-semibold text-base group-hover:text-[#1a79f6] transition-colors leading-snug">
-                {prevArticle.title}
-              </p>
+              ← כל המאמרים
             </Link>
-          ) : <div className="flex-1" />}
+          </div>
         </div>
+      </section>
 
-        {/* Back to all articles */}
-        <div className="mt-10 text-center">
-          <Link
-            to="/articles"
-            className="text-gray-400 hover:text-[#1a79f6] transition-colors text-base font-medium"
-          >
-            ← כל המאמרים
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };

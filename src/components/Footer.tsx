@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
 
     // Find snap container parent if exists, otherwise use viewport
     const snapContainer = el.closest(
-      '.pricing-snap-container, .home-snap-container, .contact-snap-container, .testimonials-snap-container, .about-snap-container'
+      '.pricing-snap-container, .home-snap-container, .contact-snap-container, .testimonials-snap-container, .about-snap-container, .article-snap-container'
     );
 
     const observer = new IntersectionObserver(
