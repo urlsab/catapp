@@ -57,3 +57,39 @@
 .article-snap-section.article-snap-content::-webkit-scrollbar {
   display: none;
 }
+
+/* Desktop-only sections: hidden by default (mobile-first) */
+.article-snap-section.article-desktop-only {
+  display: none;
+  min-height: 0;
+  height: 0;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  scroll-snap-align: none;
+}
+
+@media (min-width: 1024px) {
+  .article-snap-section.article-desktop-only {
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    padding-top: 4.5rem;
+    padding-bottom: 1rem;
+    scroll-snap-align: start;
+  }
+}
+
+/* Mobile-only sections: visible by default, hidden on desktop */
+@media (min-width: 1024px) {
+  .article-snap-section.article-mobile-only {
+    display: none;
+    min-height: 0;
+    height: 0;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    scroll-snap-align: none;
+  }
+}

@@ -7,12 +7,7 @@ import maakafLogo from '../../Assets/hebrew_horizontal_dark.png';
 import mosheLogo from '../../Assets/moshelogo.png';
 import officeLogo from '../../Assets/office logo.webp';
 import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.png';
-import cvPic1 from '../../Assets/cv pic 1.png';
-import cvPic2 from '../../Assets/cv pic 2.png';
-import cvPic3 from '../../Assets/cv pic 3.png';
-import cvPic4 from '../../Assets/cv pic 4.png';
-import cvPic5 from '../../Assets/cv pic 5.png';
-import cvPic6 from '../../Assets/cv pic 6.png';
+
 import logoCenter from '../../Assets/logoiCatapp.png';
 import Footer from '../components/Footer';
 import '../styles/scroll.css';
@@ -27,7 +22,6 @@ import { FaReact, FaNodeJs, FaGithub, FaGitAlt, FaSass, FaBolt } from 'react-ico
 import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiExpress, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini, SiGooglecloud } from 'react-icons/si';
 import { BsBootstrapFill } from "react-icons/bs";
 import codeServiceImage from '../../Assets/code service.jpg';
-import buildCvImage from '../../Assets/build cv.png';
 import refaelResponsiveImage from '../../Assets/refael website responsive no bg.png';
 
 
@@ -59,14 +53,10 @@ const HomePage: React.FC = () => {
   const valuesRef = React.useRef<HTMLDivElement>(null);
   const heroImagesRef = React.useRef<HTMLDivElement>(null);
   const serviceDesc1Ref = React.useRef<HTMLDivElement>(null);
-  const serviceDesc2Ref = React.useRef<HTMLDivElement>(null);
   const [serviceDesc1Visible, setServiceDesc1Visible] = React.useState(false);
-  const [serviceDesc2Visible, setServiceDesc2Visible] = React.useState(false);
   
   // New refs for fade animations
   const serviceImage1Ref = React.useRef<HTMLDivElement>(null);
-  const serviceImage2Ref = React.useRef<HTMLDivElement>(null);
-  const cvFanRef = React.useRef<HTMLDivElement>(null);
   const techOrbitRef = React.useRef<HTMLDivElement>(null);
   const recommendationsRef = React.useRef<HTMLDivElement>(null);
   const valuesContainerRef = React.useRef<HTMLDivElement>(null);
@@ -82,8 +72,6 @@ const HomePage: React.FC = () => {
   const seoContentRef = React.useRef<HTMLDivElement>(null);
   
   const [serviceImage1Visible, setServiceImage1Visible] = React.useState(false);
-  const [serviceImage2Visible, setServiceImage2Visible] = React.useState(false);
-  const [cvFanVisible, setCvFanVisible] = React.useState(false);
   const [techOrbitVisible, setTechOrbitVisible] = React.useState(false);
   const [recommendationsVisible, setRecommendationsVisible] = React.useState(false);
   const [valuesContainerVisible, setValuesContainerVisible] = React.useState(false);
@@ -213,17 +201,8 @@ const HomePage: React.FC = () => {
           if (entry.target === serviceDesc1Ref.current) {
             setServiceDesc1Visible(entry.isIntersecting);
           }
-          if (entry.target === serviceDesc2Ref.current) {
-            setServiceDesc2Visible(entry.isIntersecting);
-          }
           if (entry.target === serviceImage1Ref.current) {
             setServiceImage1Visible(entry.isIntersecting);
-          }
-          if (entry.target === serviceImage2Ref.current) {
-            setServiceImage2Visible(entry.isIntersecting);
-          }
-          if (entry.target === cvFanRef.current) {
-            setCvFanVisible(entry.isIntersecting);
           }
           if (entry.target === techOrbitRef.current) {
             setTechOrbitVisible(entry.isIntersecting);
@@ -274,10 +253,7 @@ const HomePage: React.FC = () => {
     );
 
     if (serviceDesc1Ref.current) observer.observe(serviceDesc1Ref.current);
-    if (serviceDesc2Ref.current) observer.observe(serviceDesc2Ref.current);
     if (serviceImage1Ref.current) observer.observe(serviceImage1Ref.current);
-    if (serviceImage2Ref.current) observer.observe(serviceImage2Ref.current);
-    if (cvFanRef.current) observer.observe(cvFanRef.current);
     if (techOrbitRef.current) observer.observe(techOrbitRef.current);
     if (recommendationsRef.current) observer.observe(recommendationsRef.current);
     if (valuesContainerRef.current) observer.observe(valuesContainerRef.current);
@@ -294,10 +270,7 @@ const HomePage: React.FC = () => {
 
     return () => {
       if (serviceDesc1Ref.current) observer.unobserve(serviceDesc1Ref.current);
-      if (serviceDesc2Ref.current) observer.unobserve(serviceDesc2Ref.current);
-      if (cvFanRef.current) observer.unobserve(cvFanRef.current);
       if (serviceImage1Ref.current) observer.unobserve(serviceImage1Ref.current);
-      if (serviceImage2Ref.current) observer.unobserve(serviceImage2Ref.current);
       if (techOrbitRef.current) observer.unobserve(techOrbitRef.current);
       if (recommendationsRef.current) observer.unobserve(recommendationsRef.current);
       if (valuesContainerRef.current) observer.unobserve(valuesContainerRef.current);
@@ -775,86 +748,6 @@ const HomePage: React.FC = () => {
                       עם אינסוף אפשרויות עיצוב, ביצועים מהירים, ופיצ'רים ייחודיים
                       {"\n"}
                       <span className="text-[#1a79f6]">בטכנולוגיות ההייטק</span>
-                    </p>
-                  </div>
-                </div>
-      </section>
-
-      {/* ===== SECTION 4: CV Service + CV Fan ===== */}
-      <section className="home-snap-section snap-compact">
-        <div className="w-full flex justify-center items-center bg-transparent relative flex-1">
-          <div className="max-w-5xl w-full flex flex-col items-center px-2 justify-center">
-                {/* שורה 2: בניית קורות חיים + מניפת קורות חיים */}
-                <div className="flex flex-col md:flex-row w-full items-center justify-between gap-1 sm:gap-3 mb-2">
-                  <div 
-                    ref={serviceImage2Ref}
-                    className={`flex-1 flex flex-col items-end text-right transition-all duration-1000 ${
-                      serviceImage2Visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-                    }`}
-                  >
-                    <div className="relative w-full max-w-[340px] h-[160px] sm:h-[200px] md:h-[280px] mb-2 sm:mb-4 border-2 border-[#1a79f6] rounded-2xl">
-                      <img src={buildCvImage} alt="בניית קורות חיים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
-                      <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 whitespace-nowrap overflow-hidden">
-                        בניית קו"ח
-                      </div>
-                    </div>
-                    {/* כפתורים */}
-                    <div className="flex gap-3 w-full max-w-[340px] justify-center">
-                      <Link
-                        to="/portfolio"
-                        className="flex-1 bg-[#1a79f6] hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-center text-sm md:text-base"
-                      >
-                        לפרוייקטים
-                      </Link>
-                      <Link
-                        to="/pricing"
-                        className="flex-1 bg-white hover:bg-gray-100 text-[#1a79f6] px-4 py-2 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-center text-sm md:text-base"
-                      >
-                        למחירון
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex-1 flex items-center justify-center">
-                    {/* מניפת קורות חיים */}
-                    <div 
-                      ref={cvFanRef}
-                      className={`relative flex-1 flex justify-center items-center min-w-[220px] max-w-[500px] w-full md:w-auto order-2 md:order-1 mt-0 sm:mt-4 md:-mt-8 transition-all duration-1000 ${
-                        cvFanVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                      }`}
-                    >
-                      <div className="relative w-[280px] h-[240px] sm:w-[360px] sm:h-[320px] md:w-[400px] md:h-[340px] flex items-end justify-center">
-                        {/* Fan illusion: all images rotate from bottom center, spaced like a clock */}
-                        <img src={cvPic6} alt="cv6" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-30deg)', transformOrigin: '50% 100%', zIndex: 6 }} />
-                        <img src={cvPic1} alt="cv1" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-20deg)', transformOrigin: '50% 100%', zIndex: 5 }} />
-                        <img src={cvPic2} alt="cv2" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(-10deg)', transformOrigin: '50% 100%', zIndex: 4 }} />
-                        <img src={cvPic3} alt="cv3" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(0deg)', transformOrigin: '50% 100%', zIndex: 3 }} />
-                        <img src={cvPic4} alt="cv4" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(10deg)', transformOrigin: '50% 100%', zIndex: 2 }} />
-                        <img src={cvPic5} alt="cv5" className="absolute rounded-xl shadow-lg w-40 sm:w-44 md:w-56 h-auto" style={{ left: '50%', bottom: '0', transform: 'translateX(-50%) rotate(20deg)', transformOrigin: '50% 100%', zIndex: 1 }} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 5: CV Text ===== */}
-      <section className="home-snap-section snap-text-center">
-                <div 
-                  ref={serviceDesc2Ref}
-                  className={`w-full flex justify-center transition-all duration-1000 ${
-                    serviceDesc2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
-                >
-                  <div className="rounded-xl p-3 md:p-5 shadow-lg w-full max-w-3xl">
-                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line" style={{ fontSize: 'clamp(1.5rem, 7vw, 1.875rem)' }}>
-                      אנחנו מייצרים קורות חיים
-                      <span className="text-[#1a79f6]"> שעוברים כל סינון </span>
-                      אוטומטי
-                      <span className="text-[#1a79f6]"> ושהכי בולטים </span>
-                      למגייסים
                     </p>
                   </div>
                 </div>

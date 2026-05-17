@@ -8,8 +8,14 @@ const ArticlesPage: React.FC = () => {
   const snapContainerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const mobileCards1Ref = useRef<HTMLDivElement>(null);
+  const mobileCards2Ref = useRef<HTMLDivElement>(null);
+  const mobileCards3Ref = useRef<HTMLDivElement>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [cardsVisible, setCardsVisible] = useState(false);
+  const [mobileCards1Visible, setMobileCards1Visible] = useState(false);
+  const [mobileCards2Visible, setMobileCards2Visible] = useState(false);
+  const [mobileCards3Visible, setMobileCards3Visible] = useState(false);
 
   // Hide body scroll and global footer
   useEffect(() => {
@@ -30,9 +36,11 @@ const ArticlesPage: React.FC = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          if (entry.target === headerRef.current) setHeaderVisible(true);
-          if (entry.target === cardsRef.current) setCardsVisible(true);
+          if (entry.target === headerRef.current) setHeaderVisible(entry.isIntersecting);
+          if (entry.target === cardsRef.current) setCardsVisible(entry.isIntersecting);
+          if (entry.target === mobileCards1Ref.current) setMobileCards1Visible(entry.isIntersecting);
+          if (entry.target === mobileCards2Ref.current) setMobileCards2Visible(entry.isIntersecting);
+          if (entry.target === mobileCards3Ref.current) setMobileCards3Visible(entry.isIntersecting);
         });
       },
       { root: container, threshold: 0.1 }
@@ -40,6 +48,9 @@ const ArticlesPage: React.FC = () => {
 
     if (headerRef.current) observer.observe(headerRef.current);
     if (cardsRef.current) observer.observe(cardsRef.current);
+    if (mobileCards1Ref.current) observer.observe(mobileCards1Ref.current);
+    if (mobileCards2Ref.current) observer.observe(mobileCards2Ref.current);
+    if (mobileCards3Ref.current) observer.observe(mobileCards3Ref.current);
     return () => observer.disconnect();
   }, []);
 
@@ -64,15 +75,11 @@ const ArticlesPage: React.FC = () => {
             מדריכים מקצועיים על נגישות, עיצוב אתרים, טכנולוגיות פיתוח, קידום אתרים ובינה מלאכותית בעולם האינטרנט
           </p>
           <div className="mt-6 sm:mt-8 w-20 sm:w-24 h-1 bg-[#1a79f6] rounded-full" />
-          <div className="flex flex-col items-center gap-1 text-gray-500 text-xs mt-8 sm:mt-10 animate-bounce">
-            <span>גלול לכל המאמרים</span>
-            <span>↓</span>
-          </div>
         </div>
       </section>
 
-      {/* ===== SECTION 2: Article Cards - all fit in one viewport ===== */}
-      <section className="article-snap-section">
+      {/* ===== SECTION 2 (DESKTOP): Article Cards grid ===== */}
+      <section className="article-snap-section article-desktop-only article-snap-content">
         <div
           ref={cardsRef}
           className={`relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 flex flex-col h-full justify-center transition-all duration-1000 ${
@@ -83,7 +90,6 @@ const ArticlesPage: React.FC = () => {
             כל המאמרים
           </h2>
 
-          {/* Responsive grid: 2 cols on mobile, 3 on lg */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 w-full">
             {articles.map((article, index) => (
               <div
@@ -134,6 +140,106 @@ const ArticlesPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== MOBILE SECTIONS: 2 cards per snap section ===== */}
+
+      {/* Mobile 2a: Articles 0-1 */}
+      <section className="article-snap-section article-mobile-only">
+        <div
+          ref={mobileCards1Ref}
+          className={`relative z-10 w-full max-w-lg mx-auto px-3 flex flex-col justify-center transition-all duration-1000 ${
+            mobileCards1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-sm font-semibold text-[#1a79f6] text-center tracking-wide uppercase mb-3">
+            כל המאמרים
+          </h2>
+          <div className="grid grid-cols-2 gap-3">
+            {[0, 1].map((idx, i) => {
+              const article = articles[idx];
+              return (
+                <div key={article.id} style={{ transitionDelay: mobileCards1Visible ? `${i * 80}ms` : '0ms', transition: 'opacity 0.7s ease, transform 0.7s ease', opacity: mobileCards1Visible ? 1 : 0, transform: mobileCards1Visible ? 'translateY(0)' : 'translateY(20px)' }}>
+                  <Link to={`/articles/${article.slug}`} className="flex flex-col group rounded-xl overflow-hidden border border-white/10 hover:border-[#1a79f6]/50 transition-all duration-300 h-full" aria-label={article.title}>
+                    <div className={`relative bg-gradient-to-br ${article.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`} style={{ height: 'clamp(80px, 14vh, 130px)' }}>
+                      <div className="absolute -top-6 -left-6 w-28 h-28 rounded-full bg-white/5" />
+                      <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/5" />
+                      <span className="relative select-none drop-shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ fontSize: 'clamp(1.8rem, 5vh, 3rem)' }}>{article.icon}</span>
+                      <span className={`absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 ${article.tagColor}`}>{article.tag}</span>
+                    </div>
+                    <div className="bg-white/5 px-2.5 py-2 text-right flex flex-col flex-1">
+                      <h2 className="text-xs font-bold text-white mb-1 leading-snug group-hover:text-[#1a79f6] transition-colors duration-200 line-clamp-2">{article.title}</h2>
+                      <p className="text-gray-400 text-[10px] leading-relaxed line-clamp-3 flex-1">{article.summary}</p>
+                      <div className="mt-1.5 flex items-center justify-end gap-1 text-[#1a79f6] text-[10px] font-semibold"><span>קרא עוד</span><span className="group-hover:-translate-x-0.5 transition-transform duration-200">←</span></div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 2b: Articles 2-3 */}
+      <section className="article-snap-section article-mobile-only">
+        <div
+          ref={mobileCards2Ref}
+          className={`relative z-10 w-full max-w-lg mx-auto px-3 flex flex-col justify-center transition-all duration-1000 ${
+            mobileCards2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="grid grid-cols-2 gap-3">
+            {[2, 3].map((idx, i) => {
+              const article = articles[idx];
+              return (
+                <div key={article.id} style={{ transitionDelay: mobileCards2Visible ? `${i * 80}ms` : '0ms', transition: 'opacity 0.7s ease, transform 0.7s ease', opacity: mobileCards2Visible ? 1 : 0, transform: mobileCards2Visible ? 'translateY(0)' : 'translateY(20px)' }}>
+                  <Link to={`/articles/${article.slug}`} className="flex flex-col group rounded-xl overflow-hidden border border-white/10 hover:border-[#1a79f6]/50 transition-all duration-300 h-full" aria-label={article.title}>
+                    <div className={`relative bg-gradient-to-br ${article.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`} style={{ height: 'clamp(80px, 14vh, 130px)' }}>
+                      <div className="absolute -top-6 -left-6 w-28 h-28 rounded-full bg-white/5" />
+                      <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/5" />
+                      <span className="relative select-none drop-shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ fontSize: 'clamp(1.8rem, 5vh, 3rem)' }}>{article.icon}</span>
+                      <span className={`absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 ${article.tagColor}`}>{article.tag}</span>
+                    </div>
+                    <div className="bg-white/5 px-2.5 py-2 text-right flex flex-col flex-1">
+                      <h2 className="text-xs font-bold text-white mb-1 leading-snug group-hover:text-[#1a79f6] transition-colors duration-200 line-clamp-2">{article.title}</h2>
+                      <p className="text-gray-400 text-[10px] leading-relaxed line-clamp-3 flex-1">{article.summary}</p>
+                      <div className="mt-1.5 flex items-center justify-end gap-1 text-[#1a79f6] text-[10px] font-semibold"><span>קרא עוד</span><span className="group-hover:-translate-x-0.5 transition-transform duration-200">←</span></div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile 2c: Article 4 (centered) */}
+      <section className="article-snap-section article-mobile-only">
+        <div
+          ref={mobileCards3Ref}
+          className={`relative z-10 w-full max-w-xs mx-auto px-3 flex flex-col justify-center transition-all duration-1000 ${
+            mobileCards3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {(() => {
+            const article = articles[4];
+            return (
+              <Link to={`/articles/${article.slug}`} className="flex flex-col group rounded-xl overflow-hidden border border-white/10 hover:border-[#1a79f6]/50 transition-all duration-300" aria-label={article.title}>
+                <div className={`relative bg-gradient-to-br ${article.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`} style={{ height: 'clamp(80px, 14vh, 130px)' }}>
+                  <div className="absolute -top-6 -left-6 w-28 h-28 rounded-full bg-white/5" />
+                  <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-white/5" />
+                  <span className="relative select-none drop-shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ fontSize: 'clamp(1.8rem, 5vh, 3rem)' }}>{article.icon}</span>
+                  <span className={`absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 ${article.tagColor}`}>{article.tag}</span>
+                </div>
+                <div className="bg-white/5 px-2.5 py-2 text-right flex flex-col flex-1">
+                  <h2 className="text-xs font-bold text-white mb-1 leading-snug group-hover:text-[#1a79f6] transition-colors duration-200 line-clamp-2">{article.title}</h2>
+                  <p className="text-gray-400 text-[10px] leading-relaxed line-clamp-3 flex-1">{article.summary}</p>
+                  <div className="mt-1.5 flex items-center justify-end gap-1 text-[#1a79f6] text-[10px] font-semibold"><span>קרא עוד</span><span className="group-hover:-translate-x-0.5 transition-transform duration-200">←</span></div>
+                </div>
+              </Link>
+            );
+          })()}
         </div>
       </section>
 

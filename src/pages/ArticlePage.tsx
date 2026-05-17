@@ -24,6 +24,17 @@ const ArticlePage: React.FC = () => {
     setSectionVisible(new Array(article.sections.length + 2).fill(false));
   }, [article, navigate]);
 
+  // Scroll to top when navigating between articles
+  useEffect(() => {
+    if (snapContainerRef.current) {
+      snapContainerRef.current.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    // Reset section visibility so animations re-trigger on the new article
+    if (article) {
+      setSectionVisible(new Array(article.sections.length + 2).fill(false));
+    }
+  }, [slug]);
+
   // Hide body scroll and global footer when snap container is active
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -76,7 +87,7 @@ const ArticlePage: React.FC = () => {
       <AnimatedBackground />
 
       {/* ===== SECTION 0: Article Header ===== */}
-      <section className="article-snap-section">
+      <section className="article-snap-section article-snap-content">
         <div
           ref={setRef(0)}
           className={`relative z-10 w-full max-w-3xl mx-auto px-4 flex flex-col justify-center transition-all duration-1000 ${
@@ -93,7 +104,7 @@ const ArticlePage: React.FC = () => {
           </Link>
 
           {/* Hero banner */}
-          <div className={`relative h-44 sm:h-56 md:h-64 rounded-2xl overflow-hidden bg-gradient-to-br ${article.gradient} flex items-center justify-center mb-6`}>
+          <div className={`relative h-28 sm:h-44 md:h-56 rounded-2xl overflow-hidden bg-gradient-to-br ${article.gradient} flex items-center justify-center mb-4 sm:mb-6`}>
             <div className="absolute -top-10 -left-10 w-56 h-56 rounded-full bg-white/5" />
             <div className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full bg-white/5" />
             <span className="relative text-7xl md:text-9xl select-none drop-shadow-xl">{article.icon}</span>
@@ -140,9 +151,9 @@ const ArticlePage: React.FC = () => {
 
             <div className="w-full h-px bg-[#1a79f6]/30 mb-5 sm:mb-7" />
 
-            {/* Paragraphs */}
+            {/* Paragraphs - max 2 per section */}
             <div className="space-y-4 sm:space-y-6">
-              {section.paragraphs.map((para, pIdx) => (
+              {section.paragraphs.slice(0, 2).map((para, pIdx) => (
                 <p
                   key={pIdx}
                   className="text-gray-200 text-base sm:text-lg md:text-xl leading-[1.85] text-right"
