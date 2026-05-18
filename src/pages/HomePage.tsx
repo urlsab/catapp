@@ -7,6 +7,7 @@ import maakafLogo from '../../Assets/hebrew_horizontal_dark.png';
 import mosheLogo from '../../Assets/moshelogo.png';
 import officeLogo from '../../Assets/office logo.webp';
 import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.png';
+import amiBirdLogo from '../../Assets/logo_ami-removebg-preview.png';
 
 import logoCenter from '../../Assets/logoiCatapp.png';
 import Footer from '../components/Footer';
@@ -52,8 +53,6 @@ const HomePage: React.FC = () => {
   const valuesAnimated = true; // Set to true since observer is disabled
   const valuesRef = React.useRef<HTMLDivElement>(null);
   const heroImagesRef = React.useRef<HTMLDivElement>(null);
-  const serviceDesc1Ref = React.useRef<HTMLDivElement>(null);
-  const [serviceDesc1Visible, setServiceDesc1Visible] = React.useState(false);
   
   // New refs for fade animations
   const serviceImage1Ref = React.useRef<HTMLDivElement>(null);
@@ -198,9 +197,6 @@ const HomePage: React.FC = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target === serviceDesc1Ref.current) {
-            setServiceDesc1Visible(entry.isIntersecting);
-          }
           if (entry.target === serviceImage1Ref.current) {
             setServiceImage1Visible(entry.isIntersecting);
           }
@@ -252,7 +248,6 @@ const HomePage: React.FC = () => {
       }
     );
 
-    if (serviceDesc1Ref.current) observer.observe(serviceDesc1Ref.current);
     if (serviceImage1Ref.current) observer.observe(serviceImage1Ref.current);
     if (techOrbitRef.current) observer.observe(techOrbitRef.current);
     if (recommendationsRef.current) observer.observe(recommendationsRef.current);
@@ -269,7 +264,6 @@ const HomePage: React.FC = () => {
     if (seoContentRef.current) observer.observe(seoContentRef.current);
 
     return () => {
-      if (serviceDesc1Ref.current) observer.unobserve(serviceDesc1Ref.current);
       if (serviceImage1Ref.current) observer.unobserve(serviceImage1Ref.current);
       if (techOrbitRef.current) observer.unobserve(techOrbitRef.current);
       if (recommendationsRef.current) observer.unobserve(recommendationsRef.current);
@@ -729,29 +723,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ===== SECTION 3: WordPress Text ===== */}
-      <section className="home-snap-section snap-text-center">
-                <div 
-                  ref={serviceDesc1Ref}
-                  className={`w-full flex justify-center transition-all duration-1000 ${
-                    serviceDesc1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
-                >
-                  <div className="rounded-xl p-3 md:p-5 shadow-lg w-full max-w-3xl">
-                    <p className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white leading-relaxed break-words whitespace-pre-line" style={{ fontSize: 'clamp(1.5rem, 7vw, 1.875rem)' }}>
-                      אנחנו לא בונים עם{" "}
-                      <span className="text-[#1a79f6]">WordPress</span>
-                      {"\n"}
-                      אנחנו בונים עם{" "}
-                      <span className="text-[#1a79f6]">World's Best</span>
-                      {"\n"}
-                      עם אינסוף אפשרויות עיצוב, ביצועים מהירים, ופיצ'רים ייחודיים
-                      {"\n"}
-                      <span className="text-[#1a79f6]">בטכנולוגיות ההייטק</span>
-                    </p>
-                  </div>
-                </div>
-      </section>
 
       {/* ===== SECTION 6: Process Steps ===== */}
       <section className="home-snap-section snap-compact">
@@ -929,6 +900,9 @@ const HomePage: React.FC = () => {
               </div>
               <div className="flex items-center justify-center h-20 w-60 sm:h-30 sm:w-30 md:h-34 md:w-34 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
                 <img src={codersClanLogo} alt="Coders Clan" className="max-h-24 max-w-64 sm:max-h-34 sm:max-w-66 md:max-h-48 md:max-w-72 object-contain" style={{borderRadius: '20%'}} />
+              </div>
+              <div className="flex items-center justify-center h-48 w-48 sm:h-36 sm:w-36 md:h-48 md:w-48 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={amiBirdLogo} alt="עמי-חי" className="max-h-40 max-w-40 sm:max-h-32 sm:max-w-32 md:max-h-40 md:max-w-40 object-contain" style={{filter: 'invert(1)'}} />
               </div>
             </div>
           </div>
@@ -1127,117 +1101,132 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 9: Recommendations ===== */}
       <section className="home-snap-section">
       <div className="w-full flex justify-center items-center">
-        <div className="max-w-3xl w-full flex flex-col items-center px-2">
+        <div className="max-w-xl w-full flex flex-col items-center px-3 sm:px-4">
           <div ref={recommendationsHeaderRef}>
-            <h2 className={`text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-3 sm:mb-6 md:mb-8 text-center transition-all duration-1000 ${
+            <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold text-[#1a79f6] mb-1 text-center transition-all duration-1000 ${
               recommendationsHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>המלצות</h2>
+            <p className={`text-gray-400 text-xs sm:text-sm text-center mb-4 sm:mb-5 transition-all duration-1000 ${
+              recommendationsHeaderVisible ? 'opacity-100' : 'opacity-0'
+            }`}>מה הלקוחות שלנו אומרים עלינו בגוגל</p>
           </div>
-          <div 
+          <div
             ref={recommendationsRef}
-            className={`w-full relative overflow-hidden transition-all duration-1000 ${
+            className={`w-full transition-all duration-1000 ${
               recommendationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            {/* Recommendations Carousel Container */}
-            <div className="relative min-h-[180px] sm:min-h-[240px] md:min-h-[280px]">
-              {/* Recommendation 1 - אור בנג'י */}
-              <div 
-                className={`absolute w-full transition-all duration-700 ease-in-out ${
-                  currentRecommendation === 0 
-                    ? 'opacity-100 translate-x-0' 
-                    : currentRecommendation === 3 
-                      ? 'opacity-0 -translate-x-full' 
+            {/* Carousel */}
+            <div className="relative overflow-hidden" style={{ minHeight: 'clamp(220px, 38vh, 295px)' }}>
+              {[
+                {
+                  name: "אור בנג'י",
+                  role: 'פסיכותרפיה',
+                  text: "פנינו לחברת Catapp לבניית דף נחיתה לעסק. הכל נעשה בצורה מקצועית, יעילה ומדויקת עם הקשבה מלאה לצרכים שלנו. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח.",
+                  initials: 'א',
+                  color: 'from-blue-500 to-blue-700',
+                },
+                {
+                  name: 'יאיר אהרוני',
+                  role: 'סטודנט להנדסת חשמל',
+                  text: 'קיבלתי ליווי מקצועי ואישי ברמה גבוהה, עם תשומת לב לפרטים והבנה עמוקה של הצרכים שלי. התהליך היה מסודר וברור, והתוצאה – קורות חיים מרשימים. שירות ברמה הגבוהה ביותר.',
+                  initials: 'י',
+                  color: 'from-purple-500 to-purple-700',
+                },
+                {
+                  name: 'רפאל סבג',
+                  role: 'בעלים של משרד עו"ד',
+                  text: 'קיבלתי יחס אישי, זמינות מלאה והקשבה לצרכים שלי. העבודה בוצעה במהירות ובמקצועיות כפי שסוכם – התוצאה עלתה על הציפיות. ממליץ מכל הלב!',
+                  initials: 'ר',
+                  color: 'from-emerald-500 to-emerald-700',
+                },
+                {
+                  name: 'אוריאל',
+                  role: 'מנהל קהילת מעקף',
+                  text: 'חברת Catapp העבירה לקהילה שלנו הרצאה יוצאת דופן על כתיבת קורות חיים. ההרצאה הייתה מלאה בתוכן משמעותי ופרקטי עם דוגמאות מעשיות. ממליץ בחום רב!',
+                  initials: 'א',
+                  color: 'from-orange-500 to-orange-700',
+                },
+              ].map((review, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute w-full transition-all duration-700 ease-in-out ${
+                    currentRecommendation === idx
+                      ? 'opacity-100 translate-x-0'
+                      : currentRecommendation === (idx - 1 + 4) % 4
+                      ? 'opacity-0 -translate-x-full'
                       : 'opacity-0 translate-x-full'
-                }`}
-              >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
-                    פנינו לחברת Catapp עבור הקמת דף נחיתה לעסק, וכבר מהרגע הראשון היה ברור שעשינו את ההחלטה הנכונה. הכל נעשה בצורה הכי מקצועית, יעילה ומדויקת תוך הקשבה לצרכים שלנו ומתן מענה מהיר לכל שאלה. שילוב נפלא של עבודה ברמה גבוהה ויחס נהדר ללקוח. בהחלט אמליץ לכל מי שמחפש- הגעתם למקום הנכון.
-                  </p>
-                  <div className="flex items-center justify-end gap-2 sm:gap-3">
-                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">אור בנג'י פסיכותרפיה</span>
-                    <Star className="w-5 h-5 text-yellow-400" />
+                  }`}
+                >
+                  <div className="bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 text-right shadow-2xl hover:border-[#1a79f6]/30 transition-colors duration-300">
+                    {/* Top: stars + Google badge */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                          <span className="text-[10px] font-black" style={{ color: '#4285F4' }}>G</span>
+                        </div>
+                        <span className="text-gray-500 text-[11px]">מתוך ביקורות Google</span>
+                      </div>
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />
+                        ))}
+                      </div>
+                    </div>
+                    {/* Review text */}
+                    <p className="text-gray-200 text-sm sm:text-base leading-relaxed mb-4" dir="rtl">
+                      "{review.text}"
+                    </p>
+                    {/* Footer: reviewer + CTA */}
+                    <div className="flex items-center justify-between gap-2">
+                      <a
+                        href="https://www.google.com/search?q=Catapp+%D7%91%D7%A0%D7%99%D7%99%D7%AA+%D7%90%D7%AA%D7%A8%D7%99%D7%9D+%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%95%D7%AA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-[11px] sm:text-xs text-gray-400 hover:text-[#1a79f6] transition-colors duration-200 border border-white/10 hover:border-[#1a79f6]/40 rounded-lg px-2.5 py-1.5 whitespace-nowrap"
+                      >
+                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                        <span>צפה בביקורת בגוגל</span>
+                      </a>
+                      <div className="flex items-center gap-2">
+                        <div className="text-right">
+                          <div className="font-semibold text-white text-sm leading-tight">{review.name}</div>
+                          <div className="text-gray-500 text-[11px]">{review.role}</div>
+                        </div>
+                        <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                          {review.initials}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Recommendation 2 - יאיר אהרוני */}
-              <div 
-                className={`absolute w-full transition-all duration-700 ease-in-out ${
-                  currentRecommendation === 1 
-                    ? 'opacity-100 translate-x-0' 
-                    : currentRecommendation === 0 
-                      ? 'opacity-0 -translate-x-full' 
-                      : 'opacity-0 translate-x-full'
-                }`}
-              >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
-                    ברצוני להודות לחברת Catapp על ליווי מקצועי ואישי ברמה גבוהה, עם תשומת לב אמיתית לפרטים והבנה עמוקה של הצרכים שלי. התהליך היה מסודר, ברור ויעיל, והתוצאה – קורות חיים איכותיים שמציגים אותי בצורה מדויקת ומרשימה. שירות ברמה הגבוהה ביותר – מומלץ בחום.
-                  </p>
-                  <div className="flex items-center justify-end gap-2 sm:gap-3">
-                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">יאיר אהרוני, סטודנט להנדסת חשמל ואלקטרוניקה</span>
-                    <Star className="w-5 h-5 text-yellow-400" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Recommendation 3 - רפאל סבג */}
-              <div 
-                className={`absolute w-full transition-all duration-700 ease-in-out ${
-                  currentRecommendation === 2 
-                    ? 'opacity-100 translate-x-0' 
-                    : currentRecommendation === 1 
-                      ? 'opacity-0 -translate-x-full' 
-                      : 'opacity-0 translate-x-full'
-                }`}
-              >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
-                    עבדתי עם Catapp על בניית האתר, ואין ספק שעשיתי בחירה מצוינת. קיבלתי יחס אישי, זמינות מלאה והקשבה אמיתית לצרכים שלי. העבודה בוצעה במהירות, במקצועיות ובדיוק כפי שסוכם – והתוצאה עלתה על הציפיות. ממליץ מכל הלב
-                  </p>
-                  <div className="flex items-center justify-end gap-2 sm:gap-3">
-                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">רפאל סבג, בעלים של משרד עו"ד</span>
-                    <Star className="w-5 h-5 text-yellow-400" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Recommendation 4 - אוריאל */}
-              <div 
-                className={`absolute w-full transition-all duration-700 ease-in-out ${
-                  currentRecommendation === 3 
-                    ? 'opacity-100 translate-x-0' 
-                    : currentRecommendation === 2 
-                      ? 'opacity-0 -translate-x-full' 
-                      : 'opacity-0 translate-x-full'
-                }`}
-              >
-                <div className="bg-white/0 rounded-2xl shadow-lg p-3 sm:p-5 md:p-7 text-right transition-all duration-300 hover:shadow-2xl">
-                  <p className="text-base sm:text-base md:text-xl text-white leading-relaxed mb-2 sm:mb-4 font-medium">
-                    חברת Catapp העבירה לקהילה שלנו הרצאה יוצאת דופן ומקיפה ביותר על כתיבת קו"ח. ההרצאה הייתה מלאה בתוכן משמעותי ופרקטי עם דוגמאות מעשיות. ממליץ בחום רב!
-                  </p>
-                  <div className="flex items-center justify-end gap-2 sm:gap-3">
-                    <span className="font-bold text-[#1a79f6] text-xs sm:text-sm md:text-lg">אוריאל, מנהל קהילת מעקף</span>
-                    <Star className="w-5 h-5 text-yellow-400" />
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
+            {/* Dot navigation */}
+            <div className="flex justify-center gap-2 mt-3 sm:mt-4">
+              {[0, 1, 2, 3].map(i => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentRecommendation(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    currentRecommendation === i ? 'bg-[#1a79f6] w-6' : 'bg-white/30 w-1.5 hover:bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Button to all testimonials */}
-          <div 
+          <div
             ref={testimonialsBtnRef}
-            className={`text-center mt-4 sm:mt-6 md:mt-10 transition-all duration-1000 ${
+            className={`text-center mt-4 sm:mt-5 transition-all duration-1000 ${
               testimonialsBtnVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
             <Link
               to="/testimonials"
-              className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 md:px-8 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
+              className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 md:px-8 py-2.5 sm:py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-sm"
             >
               לכל ההמלצות
             </Link>

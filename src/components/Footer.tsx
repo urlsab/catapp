@@ -83,6 +83,9 @@ const Footer: React.FC = () => {
               <Link to="/ask-ai" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
                 שאל AI
               </Link>
+              <Link to="/articles" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
+                מאמרים
+              </Link>
             </div>
           </div>
 

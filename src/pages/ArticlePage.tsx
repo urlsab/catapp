@@ -55,11 +55,11 @@ const ArticlePage: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           const idx = sectionRefs.current.indexOf(entry.target as HTMLDivElement);
-          if (idx !== -1 && entry.isIntersecting) {
+          if (idx !== -1) {
             setSectionVisible((prev) => {
-              if (prev[idx]) return prev;
+              if (prev[idx] === entry.isIntersecting) return prev;
               const next = [...prev];
-              next[idx] = true;
+              next[idx] = entry.isIntersecting;
               return next;
             });
           }
@@ -120,13 +120,7 @@ const ArticlePage: React.FC = () => {
             {article.summary}
           </p>
 
-          {/* Scroll hint */}
-          <div className="flex justify-center mt-6">
-            <div className="flex flex-col items-center gap-1 text-gray-500 text-xs animate-bounce">
-              <span>גלול לקרוא</span>
-              <span>↓</span>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -169,14 +163,7 @@ const ArticlePage: React.FC = () => {
               ))}
             </div>
 
-            {/* Next section hint (not on last content section) */}
-            {sIdx < article.sections.length - 1 && (
-              <div className="flex justify-center mt-6">
-                <div className="flex flex-col items-center gap-1 text-gray-600 text-xs animate-bounce">
-                  <span>↓</span>
-                </div>
-              </div>
-            )}
+
           </div>
         </section>
       ))}

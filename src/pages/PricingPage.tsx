@@ -26,17 +26,6 @@ const maintenancePlans = [
   { name: 'עדכון תכנים שוטפים', price: 'החל מ-300 ₪ לחודש', icon: 'FileText', features: ['עדכון תוכן שוטף', 'הוספת עמודים חדשים', 'עדכון תמונות', 'שיפור UX'] },
 ];
 
-const cvPlans = [
-  { name: 'כתיבת קורות חיים – שפה אחת', price: '200 ₪', emoji: '✍️', features: ['קובץ PDF מקצועי ומעוצב', 'התאמה אישית מלאה לתחום ולמשרה', 'ניסוח ברור, חד וממוקד תוצאות', 'מתאים להגשה למערכות גיוס (ATS)'] },
-  { name: 'כתיבת קורות חיים – עברית + אנגלית', price: '370 ₪', emoji: '🌍', features: ['קבצים מקצועיים בשתי שפות', 'התאמה ייעודית לכל שפה ותרבות גיוס', 'שמירה על מסר אחיד וחד', 'מוכן לשליחה לשוק המקומי והבינלאומי'] },
-  { name: 'זום: לימוד עקרונות כתיבת קו״ח + בונוס LinkedIn', price: '250 ₪', emoji: '🎓', features: ['מפגש זום מעשי (שעה)', 'לימוד שיטה לבניית קו״ח שמביא זימונים', 'דגשים, טעויות נפוצות וטיפים מוכחים', 'בונוס: עקרונות בסיסיים לחיזוק LinkedIn'] },
-  { name: 'זום: העצמת פרופיל LinkedIn', price: '250 ₪', emoji: '🔗', features: ['מפגש זום אישי (שעה)', 'שדרוג כותרת, תקציר ונראות הפרופיל', 'התאמה לאלגוריתם ולמגייסים', 'הפיכת הפרופיל לכלי שמייצר פניות'] },
-  { name: 'חבילה משולבת – קו״ח + LinkedIn', price: '470 ₪', emoji: '🚀', features: ['מפגש זום מקיף', 'כתיבת קובץ קו״ח מקצועי', 'שדרוג פרופיל LinkedIn', 'התאמה מלאה למטרות הקריירה שלך'] },
-  { name: 'חבילה משולבת PLUS – 2 גרסאות קו״ח + LinkedIn', price: '650 ₪', emoji: '🚀', features: ['כתיבת 2 גרסאות שונות של קורות חיים', 'קבצי PDF מקצועיים ומעוצבים', 'מפגש זום מקיף על קו"ח', 'שדרוג והעצמת פרופיל LinkedIn'] },
-  { name: 'חבילת DOUBLE CV + זום עקרונות קו״ח', price: '650 ₪', emoji: '🎯', features: ['כתיבת 2 גרסאות שונות של קורות חיים', 'קבצי PDF מקצועיים ומעוצבים', 'מפגש זום מעשי (שעה) ללימוד עקרונות כתיבת קו״ח', 'הבנה איך לבנות, להתאים ולשפר קו״ח גם בעתיד'] },
-  { name: 'חבילת ALL-INCLUSIVE', price: '800 ₪', emoji: '🏆', premium: true as const, features: ['כתיבת קו״ח בעברית ובאנגלית', 'קבצים מקצועיים ומעוצבים', 'זום על קו״ח (למידת עקרונות)', 'זום מלא להעצמת LinkedIn', 'ליווי ממוקד עד מוצר מוכן לשליחה'] },
-];
-
 /* ==================== COMPONENT ==================== */
 
 const PricingPage: React.FC = () => {
@@ -190,50 +179,6 @@ const PricingPage: React.FC = () => {
     );
   };
 
-  // CV Card
-  const renderCvCard = (idx: number, prefix: string, stagger = 0) => {
-    const plan = cvPlans[idx];
-    const k = `${prefix}-c-${idx}`;
-    const vis = isVis(k);
-    const isPremium = 'premium' in plan && plan.premium;
-    return (
-      <div key={k} ref={getRef(k)}
-        className={`${cardBase} bg-gradient-to-br ${isPremium ? 'from-purple-800/80 to-pink-800/80 border-purple-500 hover:shadow-purple-500/30' : 'from-gray-800/80 to-gray-900/80 border-gray-700/50 hover:border-purple-500/50 hover:shadow-purple-500/10'} ${
-          isPremium ? 'mt-3 lg:mt-6' : ''
-        } ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        style={staggerDelay(k, stagger)}
-      >
-        <div className={`absolute inset-0 rounded-2xl lg:rounded-3xl bg-gradient-to-b ${isPremium ? 'from-purple-500/10 to-pink-500/10' : 'from-purple-500/5 to-pink-500/5'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-        {isPremium && (
-          <div className="absolute top-3 left-3 lg:top-4 lg:left-4 z-10 -rotate-6 origin-center">
-            <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-gray-900 px-3 lg:px-4 py-0.5 lg:py-1 rounded-lg text-[9px] lg:text-[11px] font-extrabold flex items-center shadow-lg border border-white/40 whitespace-nowrap">
-              <Star size={10} className="mr-1 ml-0.5 animate-pulse flex-shrink-0" fill="#1f2937" />
-              המומלץ ביותר
-            </div>
-          </div>
-        )}
-        <div className="relative px-3 py-3 lg:px-5 lg:py-5 flex flex-col justify-between h-full">
-          <div className={`text-center mb-2 lg:mb-4 ${isPremium ? 'mt-1 lg:mt-2' : ''}`}>
-            <div className={`mb-1.5 lg:mb-3 flex justify-center transition-transform duration-300 group-hover:scale-110 ${isPremium ? 'animate-pulse' : ''}`}>
-              <span className={`text-xl lg:text-3xl ${isPremium ? 'lg:text-4xl' : ''}`}>{plan.emoji}</span>
-            </div>
-            <h3 className={`text-sm lg:text-lg font-bold text-white mb-1 lg:mb-2 leading-tight ${isPremium ? 'group-hover:text-yellow-300' : 'group-hover:text-purple-400'} transition-colors`}>{plan.name}</h3>
-            <div className={`text-base lg:text-2xl ${isPremium ? 'lg:text-3xl' : ''} font-bold bg-clip-text text-transparent bg-gradient-to-r ${isPremium ? 'from-yellow-300 to-orange-400' : 'from-purple-400 to-pink-500'}`}>{plan.price}</div>
-          </div>
-          <div className={`h-px bg-gradient-to-r from-transparent ${isPremium ? 'via-yellow-500' : 'via-gray-600'} to-transparent mb-2 lg:mb-4`} />
-          <ul className="space-y-1 lg:space-y-2">
-            {plan.features.map((f, fi) => (
-              <li key={fi} className={`flex items-start ${isPremium ? 'text-gray-200' : 'text-gray-300'} group-hover:text-white transition-colors`}>
-                <CheckCircle size={14} className={`${isPremium ? 'text-yellow-400' : 'text-purple-400'} mr-1.5 ml-1 lg:mr-2 lg:ml-1.5 flex-shrink-0 mt-0.5`} />
-                <span className={`text-[11px] lg:text-xs leading-relaxed ${isPremium ? 'font-semibold' : ''}`}>{f}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    );
-  };
-
   // CTA Button
   const renderCta = (key: string, href: string, emoji: string, text: string, grad: string, revGrad: string, shadow: string, stagger = 0) => (
     <div ref={getRef(key)} className={`flex justify-center mt-6 lg:mt-10 transition-all duration-700 ${isVis(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={staggerDelay(key, stagger)}>
@@ -311,75 +256,6 @@ const PricingPage: React.FC = () => {
             <div />
           </div>
           {renderCta('d-mcta', 'https://forms.gle/vNGtve7iHdJHCqhA9', '🛡️', 'לטופס אפיון טיפול חודשי', 'from-green-500 via-emerald-600 to-teal-600', 'from-teal-600 via-emerald-600 to-green-500', 'group-hover:shadow-green-500/50', 1)}
-        </div>
-      </section>
-
-      {/* D7: CV Title + Cards 0-1 */}
-      <section className="pricing-snap-section pricing-desktop-only">
-        <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          {renderHeader('d-ch', '', 'מחירי כתיבת קורות חיים', 'הצטיידו בכלים המנצחים לקידום הקריירה', 'from-purple-400 to-pink-600', 'from-purple-400 via-pink-500 to-rose-500')}
-          <div className="grid grid-cols-2 gap-8 xl:gap-10">
-            {renderCvCard(0, 'd', 1)}
-            {renderCvCard(1, 'd', 2)}
-          </div>
-        </div>
-      </section>
-
-      {/* D8: CV Cards 2-3 */}
-      <section className="pricing-snap-section pricing-desktop-only">
-        <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 xl:gap-10">
-            {renderCvCard(2, 'd', 0)}
-            {renderCvCard(3, 'd', 1)}
-          </div>
-        </div>
-      </section>
-
-      {/* D9: CV Cards 4-5 */}
-      <section className="pricing-snap-section pricing-desktop-only">
-        <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 xl:gap-10">
-            {renderCvCard(4, 'd', 0)}
-            {renderCvCard(5, 'd', 1)}
-          </div>
-        </div>
-      </section>
-
-      {/* D10: CV Cards 6-7 + CTA */}
-      <section className="pricing-snap-section pricing-desktop-only">
-        <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 xl:gap-10">
-            {renderCvCard(6, 'd', 0)}
-            {renderCvCard(7, 'd', 1)}
-          </div>
-          {renderCta('d-ccta', 'https://forms.gle/p3yVy1S5ZzBaa2GR8', '💼', 'לטופס בניית קו"ח', 'from-purple-500 via-pink-600 to-rose-600', 'from-rose-600 via-pink-600 to-purple-500', 'group-hover:shadow-purple-500/50', 2)}
-        </div>
-      </section>
-
-      {/* D-SEO: Content section for search engines */}
-      <section className="pricing-snap-section pricing-desktop-only">
-        <div className="w-full max-w-3xl mx-auto px-6 lg:px-8">
-          <div ref={getRef('d-seo')} className={`transition-all duration-700 ${isVis('d-seo') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-2xl lg:text-3xl font-bold text-[#1a79f6] mb-4 text-center">מדריך: כמה עולה בניית אתר לעסק?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300 text-sm leading-relaxed">
-              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
-                <h3 className="text-base font-bold text-white mb-2">בניית אתרים לעורכי דין</h3>
-                <p>אתר לעורך דין צריך להקרין מקצועיות ואמינות. אנו מתמחים בבניית אתרים לעורכי דין הכוללים: עיצוב יוקרתי, הצגת תחומי עיסוק, טפסי ייעוץ ראשוני, קידום בגוגל לביטויים כמו "עורך דין + תחום", ותאימות מלאה לנייד.</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
-                <h3 className="text-base font-bold text-white mb-2">אתרים לבעלי עסקים</h3>
-                <p>בניית אתר לבעל עסק זה ההשקעה הטובה ביותר לצמיחה. אתר מקצועי מושך לקוחות חדשים, מחזק מיתוג ומגדיל הכנסות. אנו בונים אתרים לעסקים מכל הסוגים - מסעדות, חנויות, נותני שירות ועוד.</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
-                <h3 className="text-base font-bold text-white mb-2">פיתוח אפליקציות ופיתוח תוכנה</h3>
-                <p>מעבר לבניית אתרים, Catapp מציעה שירותי פיתוח אפליקציות ופיתוח תוכנה מותאם אישית. בניית אפליקציות ווב, מערכות SaaS, מערכות ניהול ואינטגרציות מתקדמות - הכל בטכנולוגיות React ו-Node.js.</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-gray-700/50">
-                <h3 className="text-base font-bold text-white mb-2">בונה אתרים מומלץ</h3>
-                <p>Catapp הוא בונה אתרים מומלץ עם 5+ שנות ניסיון ו-50+ לקוחות מרוצים. בניגוד לבוני אתרים שעובדים עם WordPress או Wix, אנו מפתחים כל אתר מאפס עם טכנולוגיות הייטק שמבטיחות מהירות, אבטחה וקידום בגוגל.</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -468,83 +344,6 @@ const PricingPage: React.FC = () => {
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
           {renderMaintCard(2, 'm', 0)}
           {renderCta('m-mcta', 'https://forms.gle/vNGtve7iHdJHCqhA9', '🛡️', 'לטופס אפיון טיפול חודשי', 'from-green-500 via-emerald-600 to-teal-600', 'from-teal-600 via-emerald-600 to-green-500', 'group-hover:shadow-green-500/50', 1)}
-        </div>
-      </section>
-
-      {/* M12: CV Title + Card 0 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-ch', '', 'מחירון קורות חיים והעצמת LinkedIn', 'הצטיידו בכלים המנצחים לקידום הקריירה', 'from-purple-400 to-pink-600', 'from-purple-400 via-pink-500 to-rose-500')}
-          {renderCvCard(0, 'm', 1)}
-        </div>
-      </section>
-
-      {/* M13: CV Card 1 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(1, 'm', 0)}
-        </div>
-      </section>
-
-      {/* M14: CV Card 2 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(2, 'm', 0)}
-        </div>
-      </section>
-
-      {/* M15: CV Card 3 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(3, 'm', 0)}
-        </div>
-      </section>
-
-      {/* M16: CV Card 4 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(4, 'm', 0)}
-        </div>
-      </section>
-
-      {/* M17: CV Card 5 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(5, 'm', 0)}
-        </div>
-      </section>
-
-      {/* M18: CV Card 6 */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(6, 'm', 0)}
-        </div>
-      </section>
-
-      {/* M19: CV Card 7 (ALL-INCLUSIVE) + CTA */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderCvCard(7, 'm', 0)}
-          {renderCta('m-ccta', 'https://forms.gle/p3yVy1S5ZzBaa2GR8', '💼', 'לטופס בניית קו"ח', 'from-purple-500 via-pink-600 to-rose-600', 'from-rose-600 via-pink-600 to-purple-500', 'group-hover:shadow-purple-500/50', 1)}
-        </div>
-      </section>
-
-      {/* M-SEO: Content section for search engines */}
-      <section className="pricing-snap-section pricing-mobile-only">
-        <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          <div ref={getRef('m-seo')} className={`transition-all duration-700 ${isVis('m-seo') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-xl font-bold text-[#1a79f6] mb-3 text-center">מדריך: כמה עולה בניית אתר?</h2>
-            <div className="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <div className="bg-white/5 rounded-xl p-3 border border-gray-700/50">
-                <h3 className="text-sm font-bold text-white mb-1">בניית אתרים לעורכי דין ולבעלי עסקים</h3>
-                <p>Catapp מתמחה בבניית אתרים מקצועיים לעורכי דין ולבעלי עסקים. אתר לעורך דין כולל עיצוב יוקרתי וקידום בגוגל. אתר לבעל עסק מושך לקוחות חדשים ומגדיל הכנסות.</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-3 border border-gray-700/50">
-                <h3 className="text-sm font-bold text-white mb-1">פיתוח אפליקציות ותוכנה</h3>
-                <p>שירותי פיתוח אפליקציות, בניית אפליקציות ופיתוח תוכנה מותאם אישית. בונה אפליקציות בטכנולוגיות React ו-Node.js עם ניסיון ב-50+ פרויקטים.</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
