@@ -8,6 +8,7 @@ import mosheLogo from '../../Assets/moshelogo.png';
 import officeLogo from '../../Assets/office logo.webp';
 import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.png';
 import amiBirdLogo from '../../Assets/logo_ami-removebg-preview.png';
+import meiravLogo from '../../Assets/logo-meirav.png';
 
 import logoCenter from '../../Assets/logoiCatapp.png';
 import Footer from '../components/Footer';
@@ -877,7 +878,7 @@ const HomePage: React.FC = () => {
       {/* ===== SECTION 7: Happy Clients ===== */}
       <section className="home-snap-section">
       <div className="w-full flex justify-center items-center overflow-hidden">
-        <div className="max-w-3xl w-full flex flex-col items-center px-2">
+        <div className="max-w-5xl w-full flex flex-col items-center px-2">
           <div 
             ref={happyClientsRef}
             className={`w-full flex flex-col items-center py-3 transition-all duration-1000 ${
@@ -885,7 +886,8 @@ const HomePage: React.FC = () => {
             }`}
           >
             <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-3 sm:mb-6 text-center">מבין לקוחותינו המרוצים</h2>
-            <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 md:gap-8">
+            {/* Row 1 — 4 logos */}
+            <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-8 mb-3 sm:mb-6 md:mb-8">
               <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
                 <img src={benjiLogo} alt="בנג'י" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" />
               </div>
@@ -898,11 +900,20 @@ const HomePage: React.FC = () => {
               <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
                 <img src={officeLogo} alt="משרד עורכי דין" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 md:max-h-48 md:max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
               </div>
-              <div className="flex items-center justify-center h-20 w-60 sm:h-30 sm:w-30 md:h-34 md:w-34 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={codersClanLogo} alt="Coders Clan" className="max-h-24 max-w-64 sm:max-h-34 sm:max-w-66 md:max-h-48 md:max-w-72 object-contain" style={{borderRadius: '20%'}} />
+            </div>
+            {/* Row 2 — 3 logos */}
+            <div className="flex justify-center items-center gap-1 sm:gap-6 md:gap-8">
+              <div className="flex items-center justify-center h-16 w-24 sm:h-30 sm:w-44 md:h-34 md:w-52 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={codersClanLogo} alt="Coders Clan" className="max-h-14 max-w-[5.5rem] sm:max-h-34 sm:max-w-44 md:max-h-48 md:max-w-56 object-contain" style={{borderRadius: '20%'}} />
               </div>
-              <div className="flex items-center justify-center h-48 w-48 sm:h-36 sm:w-36 md:h-48 md:w-48 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={amiBirdLogo} alt="עמי-חי" className="max-h-40 max-w-40 sm:max-h-32 sm:max-w-32 md:max-h-40 md:max-w-40 object-contain" style={{filter: 'invert(1)'}} />
+              <div className="flex items-center justify-center h-16 w-16 sm:h-36 sm:w-36 md:h-48 md:w-48 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <img src={amiBirdLogo} alt="עמי-חי" className="max-h-14 max-w-14 sm:max-h-32 sm:max-w-32 md:max-h-40 md:max-w-40 object-contain" style={{filter: 'invert(1)'}} />
+              </div>
+              <div className="flex items-center justify-center h-16 w-16 sm:h-28 sm:w-28 md:h-40 md:w-40 sm:mx-2 p-1 sm:p-2 md:p-3">
+                <div className="relative max-h-14 max-w-14 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32">
+                  <img src={meiravLogo} alt="מירב דולה" className="max-h-14 max-w-14 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain block" />
+                  <img src={meiravLogo} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-contain" style={{ filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' }} />
+                </div>
               </div>
             </div>
           </div>

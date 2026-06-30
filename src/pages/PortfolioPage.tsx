@@ -8,6 +8,7 @@ import campNetworkImage from '../../Assets/camps website.png';
 import colorGameImage from '../../Assets/color game website.png';
 import portfolioImage from '../../Assets/portfolio website.png';
 import amiChaiImage from '../../Assets/ami-story.png';
+import meiravImage from '../../Assets/meirav website.png';
 import '../styles/portfolioSnap.css';
 
 /* ==================== DATA ==================== */
@@ -28,6 +29,7 @@ const projects: Project[] = [
   { id: 6, title: 'משחק צבעים', image: colorGameImage, url: 'https://color-game-react.vercel.app' },
   { id: 7, title: 'אתר פורטפוליו', image: portfolioImage, url: 'https://portfolio-uriel-yair-sabag.vercel.app' },
   { id: 8, title: 'עמי-חי', image: amiChaiImage, url: 'https://ami-chai.com' },
+  { id: 9, title: 'מירב דולה', image: meiravImage, url: 'https://merav-dula.com/' },
 ];
 
 /* ==================== COMPONENT ==================== */
