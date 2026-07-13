@@ -877,47 +877,54 @@ const HomePage: React.FC = () => {
 
       {/* ===== SECTION 7: Happy Clients ===== */}
       <section className="home-snap-section">
-      <div className="w-full flex justify-center items-center overflow-hidden">
-        <div className="max-w-5xl w-full flex flex-col items-center px-2">
-          <div 
+      <div className="w-full flex flex-col justify-center items-center gap-8 sm:gap-12">
+          <div
             ref={happyClientsRef}
-            className={`w-full flex flex-col items-center py-3 transition-all duration-1000 ${
+            className={`transition-all duration-1000 ${
               happyClientsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] mb-3 sm:mb-6 text-center">מבין לקוחותינו המרוצים</h2>
-            {/* Row 1 — 4 logos */}
-            <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-8 mb-3 sm:mb-6 md:mb-8">
-              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={benjiLogo} alt="בנג'י" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" />
-              </div>
-              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={maakafLogo} alt="מעקף" className="max-h-20 max-w-20 sm:max-h-28 sm:max-w-28 md:max-h-40 md:max-w-40 object-contain" />
-              </div>
-              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={mosheLogo} alt="משה" className="max-h-16 max-w-16 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain" style={{borderRadius: '20%'}} />
-              </div>
-              <div className="flex items-center justify-center h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 mx-1 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={officeLogo} alt="משרד עורכי דין" className="max-h-24 max-w-24 sm:max-h-32 sm:max-w-32 md:max-h-48 md:max-w-48 object-contain" style={{borderRadius: '4%', border: '1px solid white'}} />
-              </div>
-            </div>
-            {/* Row 2 — 3 logos */}
-            <div className="flex justify-center items-center gap-1 sm:gap-6 md:gap-8">
-              <div className="flex items-center justify-center h-16 w-24 sm:h-30 sm:w-44 md:h-34 md:w-52 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={codersClanLogo} alt="Coders Clan" className="max-h-14 max-w-[5.5rem] sm:max-h-34 sm:max-w-44 md:max-h-48 md:max-w-56 object-contain" style={{borderRadius: '20%'}} />
-              </div>
-              <div className="flex items-center justify-center h-16 w-16 sm:h-36 sm:w-36 md:h-48 md:w-48 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <img src={amiBirdLogo} alt="עמי-חי" className="max-h-14 max-w-14 sm:max-h-32 sm:max-w-32 md:max-h-40 md:max-w-40 object-contain" style={{filter: 'invert(1)'}} />
-              </div>
-              <div className="flex items-center justify-center h-16 w-16 sm:h-28 sm:w-28 md:h-40 md:w-40 sm:mx-2 p-1 sm:p-2 md:p-3">
-                <div className="relative max-h-14 max-w-14 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32">
-                  <img src={meiravLogo} alt="מירב דולה" className="max-h-14 max-w-14 sm:max-h-24 sm:max-w-24 md:max-h-32 md:max-w-32 object-contain block" />
-                  <img src={meiravLogo} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-contain" style={{ filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' }} />
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-[#1a79f6] text-center">מבין לקוחותינו המרוצים</h2>
+          </div>
+          {/* Infinite horizontal carousel — full viewport width */}
+          <div className="clients-carousel-wrapper">
+            <div className="animate-client-carousel">
+              {[
+                { src: benjiLogo, alt: 'בנג\'י', style: {} },
+                { src: maakafLogo, alt: 'מעקף', style: {} },
+                { src: mosheLogo, alt: 'משה', style: { borderRadius: '20%' } },
+                { src: officeLogo, alt: 'משרד עורכי דין', style: { borderRadius: '4%', border: '1px solid rgba(255,255,255,0.4)' } },
+                { src: codersClanLogo, alt: 'Coders Clan', style: { borderRadius: '20%' } },
+                { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)' } },
+                { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(40%) invert(1)', clipPath: 'inset(0 48% 0 0)' } },
+                { src: benjiLogo, alt: 'בנג\'י', style: {} },
+                { src: maakafLogo, alt: 'מעקף', style: {} },
+                { src: mosheLogo, alt: 'משה', style: { borderRadius: '20%' } },
+                { src: officeLogo, alt: 'משרד עורכי דין', style: { borderRadius: '4%', border: '1px solid rgba(255,255,255,0.4)' } },
+                { src: codersClanLogo, alt: 'Coders Clan', style: { borderRadius: '20%' } },
+                { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' } },
+                { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(40%) invert(1)' } },
+              ].map((logo, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 flex items-center justify-center"
+                  style={{ padding: '0 clamp(16px, 3vw, 48px)' }}
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="object-contain"
+                    style={{
+                      height: 'clamp(48px, 7vw, 90px)',
+                      width: 'auto',
+                      maxWidth: 'clamp(100px, 20vw, 260px)',
+                      ...logo.style
+                    }}
+                  />
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
       </div>
       </section>
 
