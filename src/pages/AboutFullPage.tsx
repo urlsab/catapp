@@ -89,7 +89,7 @@ const AboutFullPage: React.FC = () => {
             <p className="mb-4 md:mb-6 text-center text-sm sm:text-base text-white">
               <span className="font-bold text-[#1a79f6]">Catapp</span> נוסדה מתוך צורך אמיתי - 
               <span className="font-semibold"> לפתור את בעיית המהירות והגמישות</span> בבניית אתרים ופיתוח אתרים מקצועיים. 
-              בניגוד לפלטפורמות תבניתיות כמו WordPress, Wix או Shopify, אנו בונים כל אתר מאפס 
+              בניגוד לפלטפורמות תבניתיות כמו  Wix אנו בונים כל אתר מאפס
               <span className="font-bold text-[#1a79f6]"> בטכנולוגיות ההייטק המתקדמות ביותר</span>.
             </p>
             <p className="mb-4 md:mb-6 text-center text-base sm:text-lg md:text-xl font-semibold text-white">
@@ -117,9 +117,9 @@ const AboutFullPage: React.FC = () => {
               <span className="text-white">אנחנו בונים עם</span>
               <span className="text-[#1a79f6]"> World's Best</span>
             </p>
-            <p className="mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg text-gray-300">
-              פלטפורמות כמו WordPress, Wix ו-Shopify מגבילות אתכם לתבניות קבועות, איטיות וחסרות גמישות.
-            </p>
+            {/* <p className="mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg text-gray-300">
+              פלטפורמות כמו WordPress, Wix ו- מגבילות אתכם לתבניות קבועות, איטיות וחסרות גמישות.
+            </p> */}
           </div>
         </div>
       </section>
@@ -289,7 +289,7 @@ const AboutFullPage: React.FC = () => {
                   <Wrench className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 animate-spin" style={{animationDuration: '3s'}} />
                   תחזוקה מתמשכת ושיפור הקוד
                 </h2>
-                <p className="mb-4 md:mb-6 text-sm sm:text-base md:text-lg">
+                <p className="mb-4 md:mb-6 text-sm sm:text-base md:text-lg text-white">
                   <span className="font-bold text-[#1a79f6]">Catapp</span> משפרת ומעדכנת את הקוד שלכם באופן שוטף
                 </p>
                 <p className="text-gray-300 mb-3 md:mb-4 text-sm sm:text-base">

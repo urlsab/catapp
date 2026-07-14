@@ -895,29 +895,36 @@ const HomePage: React.FC = () => {
                 { src: mosheLogo, alt: 'משה', style: { borderRadius: '20%' } },
                 { src: officeLogo, alt: 'משרד עורכי דין', style: { borderRadius: '4%', border: '1px solid rgba(255,255,255,0.4)' } },
                 { src: codersClanLogo, alt: 'Coders Clan', style: { borderRadius: '20%' } },
-                { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)' } },
-                { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(40%) invert(1)', clipPath: 'inset(0 48% 0 0)' } },
+                { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)' }, sizeOverride: { height: 'clamp(144px, 21vw, 270px)', maxWidth: 'clamp(300px, 60vw, 780px)' } },
+                { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' } },
+                { src: meiravLogo, alt: 'מירב דולה', style: { clipPath: 'inset(0 0 0 53%)', transform: 'translateX(clamp(-180px, -14vw, -90px))' } },
                 { src: benjiLogo, alt: 'בנג\'י', style: {} },
                 { src: maakafLogo, alt: 'מעקף', style: {} },
                 { src: mosheLogo, alt: 'משה', style: { borderRadius: '20%' } },
                 { src: officeLogo, alt: 'משרד עורכי דין', style: { borderRadius: '4%', border: '1px solid rgba(255,255,255,0.4)' } },
                 { src: codersClanLogo, alt: 'Coders Clan', style: { borderRadius: '20%' } },
-                { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' } },
-                { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(40%) invert(1)' } },
+                { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)'}, sizeOverride: { height: 'clamp(144px, 21vw, 270px)', maxWidth: 'clamp(300px, 60vw, 780px)' } },
+                { src: meiravLogo, alt: 'מירב דולה', style: { clipPath: 'inset(0 0 0 53%)', transform: 'translateX(clamp(-180px, -14vw, -90px))' } },
+                { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' } }
               ].map((logo, i) => (
                 <div
                   key={i}
                   className="flex-shrink-0 flex items-center justify-center"
-                  style={{ padding: '0 clamp(16px, 3vw, 48px)' }}
+                  style={{
+                    padding:
+                      logo.alt === 'מירב דולה'
+                        ? '0'
+                        : '0 clamp(16px, 3vw, 48px)',
+                  }}
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     className="object-contain"
                     style={{
-                      height: 'clamp(48px, 7vw, 90px)',
+                      height: (logo as any).sizeOverride?.height ?? 'clamp(48px, 7vw, 90px)',
                       width: 'auto',
-                      maxWidth: 'clamp(100px, 20vw, 260px)',
+                      maxWidth: (logo as any).sizeOverride?.maxWidth ?? 'clamp(100px, 20vw, 260px)',
                       ...logo.style
                     }}
                   />
