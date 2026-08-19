@@ -12,6 +12,9 @@ export interface Article {
   icon: string;
   title: string;
   summary: string;
+  datePublished: string;
+  dateModified: string;
+  ogImage?: string;
   sections: ArticleSection[];
 }
 
@@ -25,6 +28,9 @@ export const articles: Article[] = [
     icon: '♿',
     title: 'נגישות אתרים - למה זה חשוב ואיך מיישמים?',
     summary: 'נגישות אתרים היא הבסיס לחוויית משתמש שוויונית. למדו מה הם תקני WCAG, מה החוק בישראל מחייב ואיך לבנות אתר נגיש מהיסוד.',
+    datePublished: '2026-03-10',
+    dateModified: '2026-08-19',
+    ogImage: '/og/accessibility.png',
     sections: [
       {
         title: 'מהי נגישות אתרים ולמה היא חשובה?',
@@ -69,6 +75,9 @@ export const articles: Article[] = [
     icon: '🔓',
     title: 'הנגשת אתרים - המדריך המלא לעמידה בחוק הישראלי',
     summary: 'כיצד להנגיש אתר קיים? מה ההבדל בין נגישות מובנית לבין תוסף הנגשה? כל מה שצריך לדעת על הנגשת אתרים בישראל.',
+    datePublished: '2026-04-15',
+    dateModified: '2026-08-19',
+    ogImage: '/og/web-accessibility-guide.png',
     sections: [
       {
         title: 'מהי הנגשת אתרים ומדוע היא הכרחית?',
@@ -112,6 +121,9 @@ export const articles: Article[] = [
     icon: '⚡',
     title: 'פיתוח אתרים בטכנולוגיות ההייטק - React, Next.js ועוד',
     summary: 'מה ההבדל בין אתר Wix לאתר React? למה עסקים חכמים בוחרים בטכנולוגיות ההייטק לבניית האתר שלהם? גלו את היתרונות.',
+    datePublished: '2026-05-20',
+    dateModified: '2026-08-19',
+    ogImage: '/og/hi-tech-web-development.png',
     sections: [
       {
         title: 'מהפכת טכנולוגיות ההייטק בבניית אתרים',
@@ -156,6 +168,9 @@ export const articles: Article[] = [
     icon: '🎨',
     title: 'עיצוב אתרים - בין אסתטיקה לחוויית משתמש',
     summary: 'עיצוב אתר טוב הוא הרבה יותר ממראה יפה. גלו כיצד UX/UI מקצועי משפיע על המרות, שהייה באתר ואמינות עסקית.',
+    datePublished: '2026-06-08',
+    dateModified: '2026-08-19',
+    ogImage: '/og/web-design.png',
     sections: [
       {
         title: 'מדוע עיצוב אתרים הוא הרבה יותר ממראה יפה',
@@ -244,6 +259,12 @@ export const articles: Article[] = [
     icon: '⚖️',
     title: 'אתרים לעורכי דין - המדריך המלא לנוכחות דיגיטלית מקצועית ויוקרתית',
     summary: 'בניית אתר לעורך דין היא הרבה יותר מ"נוכחות אינטרנטית" - זו ויטרינה מקצועית שמשדרת אמינות, יוקרה ומומחיות ללקוחות פוטנציאלים. גלו מה הופך אתר לעורך דין לאמצעי שיווק עוצמתי.',
+    datePublished: '2026-08-05',
+    dateModified: '2026-08-19',
+    ogImage: '/og/lawyer-websites.png',
+    ogImage: '/og/ai-web-development.png',
+    datePublished: '2026-07-14',
+    dateModified: '2026-08-19',
     sections: [
       {
         title: 'הביקוש לאתרים לעורכי דין - למה זה חיוני',

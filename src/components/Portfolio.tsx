@@ -69,6 +69,7 @@ const Portfolio: React.FC = () => {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">

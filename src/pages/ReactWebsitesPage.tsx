@@ -6,7 +6,7 @@ const benefits = [
   {
     icon: Zap,
     title: 'ביצועים מהירים פי 10',
-    description: 'React טוען רק את מה שצריך — Virtual DOM ו-lazy loading מבטיחים טעינה מהירה, ציון Lighthouse גבוה ו-Core Web Vitals ירוקים.',
+    description: 'React טוען רק מה שצריך — Virtual DOM ו-lazy loading מבטיחים טעינה מהירה, ציון Lighthouse גבוה ו-Core Web Vitals ירוקים, בניגוד ל-WordPress שנטען עם עשרות תוספים.',
   },
   {
     icon: Shield,

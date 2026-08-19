@@ -213,6 +213,25 @@ const seoData: Record<string, PageSeoData> = {
       }
     }
   },
+  '/web-development': {
+    title: 'פיתוח Web בהתאמה אישית | SaaS, Dashboard, API - Catapp',
+    description: 'פיתוח Web מלא — מערכות SaaS, Dashboards, אינטגרציות AI, Back Office ו-API. React, Node.js, Supabase, MongoDB. הצעת מחיר בחינם.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "פיתוח Web בהתאמה אישית",
+      "description": "פיתוח מערכות Web מותאמות — SaaS, Dashboards, API ואינטגרציות AI",
+      "url": `${SITE_URL}/web-development`,
+      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "פיתוח Web", "item": `${SITE_URL}/web-development` }
+        ]
+      }
+    }
+  },
   '/articles': {
     title: 'מאמרים על בניית אתרים, עיצוב אתרים וקידום אתרים | Catapp',
     description: 'מאמרים מקצועיים על בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל וקידום אתרים אורגני. טכנולוגיות פיתוח, קורות חיים ו-ATS, הנגשת אתרים ועוד. טיפים ומדריכים מעשיים לבעלי עסקים.',
@@ -251,6 +270,11 @@ export function usePageSeo() {
       : null;
     const article = articleSlug ? articles.find((a) => a.slug === articleSlug) : null;
 
+    // Dynamic SEO for case study pages (/portfolio/:slug)
+    const caseStudySlug = pathname.startsWith('/portfolio/')
+      ? pathname.slice('/portfolio/'.length)
+      : null;
+
     let title: string;
     let description: string;
     let schema: object | object[] | undefined;
@@ -264,9 +288,9 @@ export function usePageSeo() {
         "headline": article.title,
         "description": article.summary,
         "url": `${SITE_URL}/articles/${article.slug}`,
-        "datePublished": "2026-01-01",
-        "dateModified": "2026-08-19",
-        "author": { "@type": "Person", "name": "Catapp", "url": SITE_URL },
+        "datePublished": article.datePublished,
+        "dateModified": article.dateModified,
+        "author": { "@type": "Person", "name": "Uriel Sabag", "url": `${SITE_URL}/about-full` },
         "publisher": {
           "@type": "Organization",
           "name": "Catapp",
@@ -319,6 +343,11 @@ export function usePageSeo() {
       ogType.setAttribute('content', article ? 'article' : 'website');
     }
 
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage && article?.ogImage) {
+      ogImage.setAttribute('content', `${SITE_URL}${article.ogImage}`);
+    }
+
     // Twitter
     const twTitle = document.querySelector('meta[name="twitter:title"]');
     if (twTitle) {
@@ -334,6 +363,17 @@ export function usePageSeo() {
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
       canonical.setAttribute('href', `${SITE_URL}${pathname === '/' ? '/' : pathname}`);
+    }
+
+    // noindex for tool pages that should not rank
+    const metaRobots = document.querySelector('meta[name="robots"]');
+    if (metaRobots) {
+      metaRobots.setAttribute(
+        'content',
+        pathname === '/ask-ai'
+          ? 'noindex, nofollow'
+          : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+      );
     }
 
     // Per-page structured data (JSON-LD) - remove all previously injected page schemas

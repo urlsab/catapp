@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 // import Values from '../components/Values';
 // import KnowledgeHub from '../components/KnowledgeHub';
 // import logo from '../../Assets/Catapp logo no bg.png';
-import benjiLogo from '../../Assets/benjilogo1-no bg.png';
-import maakafLogo from '../../Assets/hebrew_horizontal_dark.png';
-import mosheLogo from '../../Assets/moshelogo.png';
+import benjiLogo from '../../Assets/benjilogo1-no bg.webp';
+import maakafLogo from '../../Assets/hebrew_horizontal_dark.webp';
+import mosheLogo from '../../Assets/moshelogo.webp';
 import officeLogo from '../../Assets/office logo.webp';
-import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.png';
-import amiBirdLogo from '../../Assets/logo_ami-removebg-preview.png';
-import meiravLogo from '../../Assets/logo-meirav.png';
+import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.webp';
+import amiBirdLogo from '../../Assets/logo_ami-removebg-preview.webp';
+import meiravLogo from '../../Assets/logo-meirav.webp';
 
 import logoCenter from '../../Assets/logoiCatapp.png';
 import Footer from '../components/Footer';
@@ -84,7 +84,6 @@ const HomePage: React.FC = () => {
   const [heroTextMobileVisible, setHeroTextMobileVisible] = React.useState(false);
   const [heroImagesMobileVisible, setHeroImagesMobileVisible] = React.useState(false);
   const [heroStatsDesktopVisible, setHeroStatsDesktopVisible] = React.useState(false);
-  const [seoContentVisible, setSeoContentVisible] = React.useState(false);
   const snapContainerRef = React.useRef<HTMLDivElement>(null);
 
   // Hide body scroll and global footer when snap container is active
@@ -236,9 +235,6 @@ const HomePage: React.FC = () => {
           }
           if (entry.target === heroStatsDesktopRef.current) {
             setHeroStatsDesktopVisible(entry.isIntersecting);
-          }
-          if (entry.target === seoContentRef.current) {
-            setSeoContentVisible(entry.isIntersecting);
           }
         });
       },
@@ -561,6 +557,23 @@ const HomePage: React.FC = () => {
                       >
                         למחירון
                       </Link>
+                    </div>
+                    {/* Service page chip links — internal linking for SEO + discoverability */}
+                    <div className="flex flex-wrap gap-2 mt-3 justify-center max-w-[340px]">
+                      {([
+                        ['/business-websites', 'אתרים לעסקים'],
+                        ['/landing-pages', 'דפי נחיתה'],
+                        ['/react-websites', 'אתרי React'],
+                        ['/web-development', 'פיתוח Web'],
+                      ] as [string, string][]).map(([to, label]) => (
+                        <Link
+                          key={to}
+                          to={to}
+                          className="text-xs text-gray-400 hover:text-[#1a79f6] border border-gray-700 hover:border-[#1a79f6]/50 px-3 py-1 rounded-full transition-all"
+                        >
+                          {label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                   <div 

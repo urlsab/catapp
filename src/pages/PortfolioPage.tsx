@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import resumeBuilderImage from '../../Assets/resumes builder website.webp';
 import orBenjiImage from '../../Assets/benji website.webp';
@@ -18,18 +19,19 @@ interface Project {
   title: string;
   image: string;
   url?: string;
+  caseStudy?: string;
 }
 
 const projects: Project[] = [
-  { id: 1, title: 'בונה קו"ח', image: resumeBuilderImage, url: 'https://resumes-builder.web.app' },
-  { id: 2, title: "אור בנג'י", image: orBenjiImage, url: 'https://orbenji.com' },
-  { id: 3, title: 'רפאל סבג - עו"ד', image: refaelLawImage, url: 'https://refael-law.com' },
-  { id: 4, title: 'אטליז למהדרין', image: atlizImage, url: 'https://atliz.co.il' },
+  { id: 1, title: 'בונה קו"'ח', image: resumeBuilderImage, url: 'https://resumes-builder.web.app' },
+  { id: 2, title: "אור בנג'י", image: orBenjiImage, url: 'https://orbenji.com', caseStudy: 'or-benji' },
+  { id: 3, title: 'רפאל סבג - עו"'ד', image: refaelLawImage, url: 'https://refael-law.com', caseStudy: 'refael-law' },
+  { id: 4, title: 'אטליז למהדרין', image: atlizImage, url: 'https://atliz.co.il', caseStudy: 'atliz' },
   { id: 5, title: 'רשת חברתית', image: campNetworkImage, url: 'https://yelp--camp--project.herokuapp.com' },
   { id: 6, title: 'משחק צבעים', image: colorGameImage, url: 'https://color-game-react.vercel.app' },
   { id: 7, title: 'אתר פורטפוליו', image: portfolioImage, url: 'https://portfolio-uriel-yair-sabag.vercel.app' },
   { id: 8, title: 'עמי-חי', image: amiChaiImage, url: 'https://ami-chai.com' },
-  { id: 9, title: 'מירב דולה', image: meiravImage, url: 'https://merav-dula.com/' },
+  { id: 9, title: 'מירב דולה', image: meiravImage, url: 'https://merav-dula.com/', caseStudy: 'meirav-dula' },
 ];
 
 /* ==================== COMPONENT ==================== */
@@ -124,8 +126,15 @@ const PortfolioPage: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
                 צפה באתר
-              </span>
-            </div>
+              </span>              {p.caseStudy && (
+                <Link
+                  to={`/portfolio/${p.caseStudy}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-lg transition-colors"
+                >
+                  Case Study →
+                </Link>
+              )}            </div>
           </div>
         </a>
       </div>

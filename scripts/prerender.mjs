@@ -46,6 +46,11 @@ const ROUTES = [
   '/business-websites',
   '/landing-pages',
   '/react-websites',
+  '/web-development',
+  '/portfolio/refael-law',
+  '/portfolio/atliz',
+  '/portfolio/or-benji',
+  '/portfolio/meirav-dula',
   ...articleSlugs.map((slug) => `/articles/${slug}`),
 ];
 

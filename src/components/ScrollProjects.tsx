@@ -116,6 +116,7 @@ const ScrollProjects: React.FC = () => {
               <img
                 src={projects[index].image}
                 alt={projects[index].title}
+                loading="lazy"
                 className="object-cover w-full h-full transition-all duration-700"
                 draggable={false}
               />

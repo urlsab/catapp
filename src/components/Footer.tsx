@@ -62,30 +62,23 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="footer-heading text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 lg:mb-4">ניווט</h4>
             <div className="footer-nav-grid grid grid-cols-2 gap-x-3 sm:gap-x-5 gap-y-1.5 sm:gap-y-2">
-              <Link to="/" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                בית
-              </Link>
-              <Link to="/pricing" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                מחירון
-              </Link>
-              <Link to="/about-full" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                אודות
-              </Link>
-              <Link to="/testimonials" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                המלצות
-              </Link>
-              <Link to="/portfolio" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                פרוייקטים
-              </Link>
-              <Link to="/contact" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                צור קשר
-              </Link>
-              <Link to="/ask-ai" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                שאל AI
-              </Link>
-              <Link to="/articles" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">
-                מאמרים
-              </Link>
+              <Link to="/" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">בית</Link>
+              <Link to="/pricing" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">מחירון</Link>
+              <Link to="/about-full" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">אודות</Link>
+              <Link to="/testimonials" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">המלצות</Link>
+              <Link to="/portfolio" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">פרוייקטים</Link>
+              <Link to="/contact" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">צור קשר</Link>
+              <Link to="/ask-ai" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">שאל AI</Link>
+              <Link to="/articles" className="footer-link text-gray-400 hover:text-white transition-colors text-sm sm:text-base lg:text-lg">מאמרים</Link>
+            </div>
+            <div className="mt-3 pt-3 border-t border-white/10">
+              <p className="text-gray-500 text-xs font-semibold mb-1.5">שירותים</p>
+              <div className="flex flex-col gap-1">
+                <Link to="/business-websites" className="footer-link text-gray-400 hover:text-white transition-colors text-sm">בניית אתרים לעסקים</Link>
+                <Link to="/landing-pages" className="footer-link text-gray-400 hover:text-white transition-colors text-sm">דפי נחיתה</Link>
+                <Link to="/react-websites" className="footer-link text-gray-400 hover:text-white transition-colors text-sm">בניית אתרי React</Link>
+                <Link to="/web-development" className="footer-link text-gray-400 hover:text-white transition-colors text-sm">פיתוח Web מותאם</Link>
+              </div>
             </div>
           </div>
 

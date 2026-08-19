@@ -13,6 +13,7 @@ const Header: React.FC = () => {
   const [isClosing, setIsClosing] = React.useState(false);
   const [shouldRender, setShouldRender] = React.useState(false);
   const [scrollProgress, setScrollProgress] = React.useState(0);
+  const [isServicesOpen, setIsServicesOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (isMenuOpen) {
@@ -130,6 +131,44 @@ const Header: React.FC = () => {
                 className={`absolute left-0 right-0 -bottom-1 h-0.5 bg-[#1a79f6] rounded transition-all duration-300 ${isActive('/portfolio') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}`}
               />
             </Link>
+
+            {/* Services dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button
+                className={`relative px-2 py-1 font-medium transition-colors duration-200 flex items-center gap-1 ${
+                  ['/business-websites', '/landing-pages', '/react-websites', '/web-development'].some(p => isActive(p))
+                    ? 'text-[#1a79f6]'
+                    : 'text-white hover:text-[#1a79f6]'
+                }`}
+              >
+                שירותים
+                <span className="text-[10px] opacity-60 leading-none">▾</span>
+              </button>
+              {isServicesOpen && (
+                <div className="absolute top-full right-0 mt-1 w-52 bg-gray-900/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl py-2 z-50" dir="rtl">
+                  {([
+                    ['/business-websites', 'בניית אתרים לעסקים'],
+                    ['/landing-pages', 'דפי נחיתה'],
+                    ['/react-websites', 'בניית אתרי React'],
+                    ['/web-development', 'פיתוח Web מותאם'],
+                  ] as [string, string][]).map(([to, label]) => (
+                    <Link
+                      key={to}
+                      to={to}
+                      className={`block px-4 py-2 text-sm transition-colors hover:bg-white/5 ${
+                        isActive(to) ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'
+                      }`}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
             <Link
               to="/pricing"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/pricing') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
@@ -274,6 +313,15 @@ const Header: React.FC = () => {
                 <Sparkles size={18} />
                 שאל AI
               </Link>
+              <div className="px-3 py-2 border-t border-gray-200 dark:border-gray-700 mt-1">
+                <p className="text-xs text-gray-500 font-semibold mb-1">שירותים</p>
+                <div className="flex flex-col gap-1">
+                  <Link to="/business-websites" onClick={handleMenuToggle} className="text-gray-700 dark:text-gray-300 hover:text-[#1a79f6] text-sm py-0.5">בניית אתרים לעסקים</Link>
+                  <Link to="/landing-pages" onClick={handleMenuToggle} className="text-gray-700 dark:text-gray-300 hover:text-[#1a79f6] text-sm py-0.5">דפי נחיתה</Link>
+                  <Link to="/react-websites" onClick={handleMenuToggle} className="text-gray-700 dark:text-gray-300 hover:text-[#1a79f6] text-sm py-0.5">בניית אתרי React</Link>
+                  <Link to="/web-development" onClick={handleMenuToggle} className="text-gray-700 dark:text-gray-300 hover:text-[#1a79f6] text-sm py-0.5">פיתוח Web</Link>
+                </div>
+              </div>
             </div>
           </div>
         )}
