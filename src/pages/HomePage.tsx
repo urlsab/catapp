@@ -23,8 +23,8 @@ import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstruct
 import { FaReact, FaNodeJs, FaGithub, FaGitAlt, FaSass, FaBolt } from 'react-icons/fa';
 import { SiMongodb, SiMui, SiTypescript, SiJavascript, SiVite, SiExpress, SiVercel, SiTailwindcss, SiFirebase, SiGodaddy, SiHeroku, SiStyledcomponents, SiGooglegemini, SiGooglecloud } from 'react-icons/si';
 import { BsBootstrapFill } from "react-icons/bs";
-import codeServiceImage from '../../Assets/code service.jpg';
-import refaelResponsiveImage from '../../Assets/refael website responsive no bg.png';
+import codeServiceImage from '../../Assets/code service.webp';
+import refaelResponsiveImage from '../../Assets/refael website responsive no bg.webp';
 
 
 
@@ -426,13 +426,15 @@ const HomePage: React.FC = () => {
             }`}>
 
               {/* Main Headline */}
-              <h1
+              <p
                 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight text-center"
+                role="heading"
+                aria-level={1}
               >
                 בניית אתרים ופיתוח תוכנה
                 <br />
                 <span className="text-[#1a79f6]">לעסקים ובעלי מקצוע</span>
-              </h1>
+              </p>
 
               {/* Hero Image */}
               <div className="flex justify-center w-full max-w-xl mx-auto">
@@ -537,7 +539,7 @@ const HomePage: React.FC = () => {
                     }`}
                   >
                     <div className="relative w-full max-w-[340px] h-[160px] sm:h-[200px] md:h-[280px] mb-2 sm:mb-4 border-2 border-[#1a79f6] rounded-2xl">
-                      <img src={codeServiceImage} alt="פיתוח אתרים" className="w-full h-full object-cover rounded-2xl shadow-lg" />
+                      <img src={codeServiceImage} alt="פיתוח אתרים" loading="lazy" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                       <div className="absolute inset-0 w-full h-full rounded-2xl bg-black/50"></div>
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl md:text-5xl font-bold text-center drop-shadow-lg z-10 w-full px-4 leading-tight">
                         בניית אתרים
@@ -714,6 +716,7 @@ const HomePage: React.FC = () => {
                         <img 
                           src={logoCenter} 
                           alt="Catapp Logo" 
+                          loading="lazy"
                           className="w-10 h-10 min-w-[40px] min-h-[40px] sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain opacity-90"
                         />
                       </div>

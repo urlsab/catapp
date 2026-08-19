@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
-import contactUsImage from '../../Assets/contact us 2.png';
+import contactUsImage from '../../Assets/contact us 2.webp';
 import '../styles/contactSnap.css';
 
 /* ==================== DATA ==================== */
@@ -125,7 +125,7 @@ const ContactPage: React.FC = () => {
             </div>
             <div className="flex-shrink-0">
               <div className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden border-4 border-white shadow-lg bg-white flex items-center justify-center">
-                <img src={contactUsImage} alt="צור קשר" className="w-full h-full object-cover object-center" />
+                <img src={contactUsImage} alt="צור קשר" loading="lazy" className="w-full h-full object-cover object-center" />
               </div>
             </div>
             <div className="flex-shrink-0">

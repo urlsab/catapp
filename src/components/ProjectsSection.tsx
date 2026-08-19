@@ -1,12 +1,12 @@
 ﻿import React from 'react';
-import resumeBuilderImage from '../../Assets/resumes builder website.png';
-import orBenjiImage from '../../Assets/benji website.png';
-import refaelLawImage from '../../Assets/refael website.png';
-import atlizImage from '../../Assets/atliz website.png';
-import campNetworkImage from '../../Assets/camps website.png';
-import colorGameImage from '../../Assets/color game website.png';
-import portfolioImage from '../../Assets/portfolio website.png';
-import amiChaiImage from '../../Assets/ami-story.png';
+import resumeBuilderImage from '../../Assets/resumes builder website.webp';
+import orBenjiImage from '../../Assets/benji website.webp';
+import refaelLawImage from '../../Assets/refael website.webp';
+import atlizImage from '../../Assets/atliz website.webp';
+import campNetworkImage from '../../Assets/camps website.webp';
+import colorGameImage from '../../Assets/color game website.webp';
+import portfolioImage from '../../Assets/portfolio website.webp';
+import amiChaiImage from '../../Assets/ami-story.webp';
 
 interface Project {
   id: number;

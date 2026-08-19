@@ -20,13 +20,17 @@
 //   "scripts": { "postbuild": "node scripts/prerender.mjs" }
 
 import { execSync, spawn } from 'node:child_process';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
 const PORT = 4173;
+
+// קורא slugs של מאמרים מקובץ המקור כדי שנתיב חדש יתוסף אוטומטית
+const articlesSource = readFileSync(join(__dirname, '..', 'src', 'data', 'articles.ts'), 'utf-8');
+const articleSlugs = [...articlesSource.matchAll(/^\s+slug:\s+'([^']+)'/gm)].map((m) => m[1]);
 
 // כל הנתיבים הציבוריים באתר (בהתאם ל-App.tsx / sitemap.xml)
 const ROUTES = [
@@ -39,6 +43,10 @@ const ROUTES = [
   '/faq',
   '/articles',
   '/quote',
+  '/business-websites',
+  '/landing-pages',
+  '/react-websites',
+  ...articleSlugs.map((slug) => `/articles/${slug}`),
 ];
 
 async function main() {
@@ -94,7 +102,7 @@ async function main() {
     serveProcess.kill();
   }
 
-  console.log('\n✨ סיום - כל 9 הנתיבים כוללים כעת HTML סטטי ומלא לבוטים.');
+  console.log(`\n✨ סיום - ${ROUTES.length} נתיבים כוללים כעת HTML סטטי ומלא לבוטים.`);
 }
 
 main().catch((err) => {

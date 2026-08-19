@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { articles } from '../data/articles';
 
 const SITE_URL = 'https://catapp.it.com';
 
@@ -13,49 +14,20 @@ const seoData: Record<string, PageSeoData> = {
   '/': {
     title: 'בניית אתרים | עיצוב אתרים | קידום אתרים בגוגל - Catapp',
     description: 'בניית אתרים, עיצוב אתרים וקידום אתרים בגוגל. קידום אתרים אורגני מקצועי. Catapp - בניית אתרים מקצועיים עם React, ביצועים גבוהים וקידום SEO. בניית אתר לעסק קטן, אתר תדמית, חנות אינטרנטית, דף נחיתה. בונה אתרים מומלץ בישראל.',
-    // מערך: WebPage לדף עצמו + FAQPage שממופה בדיוק לשאלות הנפוצות שמוצגות בפועל בעמוד הבית
-    schema: [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "בניית אתרים | עיצוב אתרים | קידום אתרים | Catapp",
-        "description": "בניית אתרים, עיצוב אתרים וקידום אתרים אורגני בגוגל לעסקים בישראל",
-        "url": SITE_URL,
-        "isPartOf": { "@type": "WebSite", "name": "Catapp", "url": SITE_URL },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL }
-          ]
-        }
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "כמה עולה לבנות אתר ב-2026?",
-            "acceptedAnswer": { "@type": "Answer", "text": "מחירי בניית אתר משתנים: דף נחיתה מ-2,000₪, אתר תדמית מ-5,000₪, חנות אינטרנטית מ-10,000₪." }
-          },
-          {
-            "@type": "Question",
-            "name": "Wix vs אתר מותאם אישית - מה עדיף?",
-            "acceptedAnswer": { "@type": "Answer", "text": "אתר מותאם אישית עם React מהיר פי 10, מאובטח יותר, ניתן להתאמה מלאה ומקודם טוב יותר בגוגל." }
-          },
-          {
-            "@type": "Question",
-            "name": "למה React עדיף לעסק?",
-            "acceptedAnswer": { "@type": "Answer", "text": "React מאפשר ביצועים מעולים, חוויית משתמש חלקה וקידום SEO מתקדם שמביא יותר לקוחות." }
-          },
-          {
-            "@type": "Question",
-            "name": "איך לבחור מפתח אתרים?",
-            "acceptedAnswer": { "@type": "Answer", "text": "בדקו ניסיון, תיק עבודות, טכנולוגיות, ביקורות לקוחות ותנאי שירות ותחזוקה." }
-          }
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "בניית אתרים | עיצוב אתרים | קידום אתרים | Catapp",
+      "description": "בניית אתרים, עיצוב אתרים וקידום אתרים אורגני בגוגל לעסקים בישראל",
+      "url": SITE_URL,
+      "isPartOf": { "@type": "WebSite", "name": "Catapp", "url": SITE_URL },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL }
         ]
       }
-    ]
+    }
   },
   '/pricing': {
     title: 'מחירון בניית אתרים ועיצוב אתרים 2026 | קידום אתרים בגוגל - Catapp',
@@ -151,44 +123,17 @@ const seoData: Record<string, PageSeoData> = {
     description: 'תשובות לשאלות נפוצות: בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל וקידום אתרים אורגני. כמה עולה לבנות אתר? מה ההבדל בין Wix לאתר מותאם אישית? למה React עדיף לעסק? שאלות על קידום SEO ותחזוקה.',
     schema: {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "מה היתרון של Catapp על פני חברות אחרות?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Catapp מתמחה בפיתוח אתרים חכמים, עיצוב מותאם אישית, קידום SEO, תחזוקה שוטפת ושירותי תוכן. אנו עובדים עם טכנולוגיות מתקדמות ומספקים שירות אישי וזמין." }
-        },
-        {
-          "@type": "Question",
-          "name": "האם האתר שלי יהיה מותאם לכל סוגי המכשירים?",
-          "acceptedAnswer": { "@type": "Answer", "text": "בהחלט! כל אתר שנבנה ב-Catapp מותאם באופן מלא למובייל, טאבלט ודסקטופ." }
-        },
-        {
-          "@type": "Question",
-          "name": "האם אתם מספקים שירותי תחזוקה ותמיכה לאחר ההשקה?",
-          "acceptedAnswer": { "@type": "Answer", "text": "כן, אנו מספקים שירותי תחזוקה, תיקון באגים, עדכוני אבטחה ותמיכה שוטפת לכל לקוח." }
-        },
-        {
-          "@type": "Question",
-          "name": "האם אפשר לקבל הצעת מחיר מותאמת אישית?",
-          "acceptedAnswer": { "@type": "Answer", "text": "בוודאי! ניתן לפנות אלינו דרך עמוד קבלת הצעת מחיר ואנו נתאים את ההצעה לצרכים שלך." }
-        },
-        {
-          "@type": "Question",
-          "name": "האם אתם מספקים שירותי קידום בגוגל (SEO)?",
-          "acceptedAnswer": { "@type": "Answer", "text": "כן, אנו מתמחים בקידום אתרים בגוגל ומספקים שירותי SEO מתקדמים." }
-        },
-        {
-          "@type": "Question",
-          "name": "כמה עולה לבנות אתר ב-2026?",
-          "acceptedAnswer": { "@type": "Answer", "text": "מחיר בניית אתר ב-2026: דף נחיתה מ-2,000₪, אתר תדמית מ-5,000₪, אתר מכירות עם סליקה מ-10,000₪. המחיר תלוי בהיקף הפרויקט ובדרישות הייחודיות." }
-        },
-        {
-          "@type": "Question",
-          "name": "מה ההבדל בין Wix לאתר מותאם אישית?",
-          "acceptedAnswer": { "@type": "Answer", "text": "אתר מותאם אישית עם React מהיר פי 10, מאובטח יותר, ניתן להתאמה מלאה ומקודם טוב יותר בגוגל. Wix מוגבל בעיצוב, ביצועים ואפשרויות פיתוח." }
-        }
-      ]
+      "@type": "WebPage",
+      "name": "שאלות נפוצות על בניית אתרים | Catapp",
+      "description": "תשובות לשאלות נפוצות על בניית אתרים, עיצוב אתרים וקידום אתרים",
+      "url": `${SITE_URL}/faq`,
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "שאלות נפוצות", "item": `${SITE_URL}/faq` }
+        ]
+      }
     }
   },
   '/quote': {
@@ -204,6 +149,66 @@ const seoData: Record<string, PageSeoData> = {
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
           { "@type": "ListItem", "position": 2, "name": "הצעת מחיר", "item": `${SITE_URL}/quote` }
+        ]
+      }
+    }
+  },
+  '/business-websites': {
+    title: 'בניית אתרים לעסקים קטנים ובינוניים | Catapp',
+    description: 'בניית אתר מקצועי לעסק קטן ובינוני עם SEO מובנה, עיצוב ייחודי ומהירות גבוהה. מחיר בניית אתר תדמית מ-5,000 ₪. הצעת מחיר בחינם.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "בניית אתרים לעסקים",
+      "description": "בניית אתר מקצועי לעסק קטן ובינוני עם SEO מובנה ועיצוב ייחודי",
+      "url": `${SITE_URL}/business-websites`,
+      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "areaServed": { "@type": "Country", "name": "Israel" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "בניית אתרים לעסקים", "item": `${SITE_URL}/business-websites` }
+        ]
+      }
+    }
+  },
+  '/landing-pages': {
+    title: 'בניית דפי נחיתה לעסקים | מחיר דף נחיתה - Catapp',
+    description: 'בניית דף נחיתה לעסק עם המרה גבוהה. מתאים לקמפיינים ממומנים, מוצרים חדשים ואירועים. מחיר מ-2,000 ₪. הצעת מחיר בחינם.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "בניית דפי נחיתה",
+      "description": "בניית דף נחיתה לעסק עם המרה גבוהה לקמפיינים ממומנים",
+      "url": `${SITE_URL}/landing-pages`,
+      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "areaServed": { "@type": "Country", "name": "Israel" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "בניית דפי נחיתה", "item": `${SITE_URL}/landing-pages` }
+        ]
+      }
+    }
+  },
+  '/react-websites': {
+    title: 'בניית אתרים עם React | אתר React לעסק - Catapp',
+    description: 'בניית אתר בהתאמה אישית עם React ו-TypeScript. מהיר פי 10 מ-WordPress, SEO מלא עם prerender, ביצועים מעולים. הצעת מחיר בחינם.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "בניית אתרי React",
+      "description": "בניית אתר בהתאמה אישית עם React ו-TypeScript — ביצועים גבוהים ו-SEO מלא",
+      "url": `${SITE_URL}/react-websites`,
+      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "areaServed": { "@type": "Country", "name": "Israel" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "בניית אתרי React", "item": `${SITE_URL}/react-websites` }
         ]
       }
     }
@@ -240,26 +245,68 @@ export function usePageSeo() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const data = seoData[pathname] || defaultSeo;
+    // Dynamic SEO for individual article pages
+    const articleSlug = pathname.startsWith('/articles/')
+      ? pathname.slice('/articles/'.length)
+      : null;
+    const article = articleSlug ? articles.find((a) => a.slug === articleSlug) : null;
+
+    let title: string;
+    let description: string;
+    let schema: object | object[] | undefined;
+
+    if (article) {
+      title = `${article.title} | Catapp`;
+      description = article.summary;
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": article.title,
+        "description": article.summary,
+        "url": `${SITE_URL}/articles/${article.slug}`,
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-08-19",
+        "author": { "@type": "Person", "name": "Catapp", "url": SITE_URL },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Catapp",
+          "logo": { "@type": "ImageObject", "url": `${SITE_URL}/Assets/logoiCatapp.png` }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}/articles/${article.slug}` },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+            { "@type": "ListItem", "position": 2, "name": "מאמרים", "item": `${SITE_URL}/articles` },
+            { "@type": "ListItem", "position": 3, "name": article.title, "item": `${SITE_URL}/articles/${article.slug}` }
+          ]
+        }
+      };
+    } else {
+      const data = seoData[pathname] || defaultSeo;
+      title = data.title;
+      description = data.description;
+      schema = data.schema;
+    }
 
     // Title
-    document.title = data.title;
+    document.title = title;
 
     // Meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', data.description);
+      metaDesc.setAttribute('content', description);
     }
 
     // Open Graph
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', data.title);
+      ogTitle.setAttribute('content', title);
     }
 
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) {
-      ogDesc.setAttribute('content', data.description);
+      ogDesc.setAttribute('content', description);
     }
 
     const ogUrl = document.querySelector('meta[property="og:url"]');
@@ -267,15 +314,20 @@ export function usePageSeo() {
       ogUrl.setAttribute('content', `${SITE_URL}${pathname === '/' ? '' : pathname}`);
     }
 
+    const ogType = document.querySelector('meta[property="og:type"]');
+    if (ogType) {
+      ogType.setAttribute('content', article ? 'article' : 'website');
+    }
+
     // Twitter
     const twTitle = document.querySelector('meta[name="twitter:title"]');
     if (twTitle) {
-      twTitle.setAttribute('content', data.title);
+      twTitle.setAttribute('content', title);
     }
 
     const twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) {
-      twDesc.setAttribute('content', data.description);
+      twDesc.setAttribute('content', description);
     }
 
     // Canonical
@@ -287,8 +339,8 @@ export function usePageSeo() {
     // Per-page structured data (JSON-LD) - remove all previously injected page schemas
     document.querySelectorAll('script[data-page-schema]').forEach((el) => el.remove());
 
-    if (data.schema) {
-      const schemas = Array.isArray(data.schema) ? data.schema : [data.schema];
+    if (schema) {
+      const schemas = Array.isArray(schema) ? schema : [schema];
       schemas.forEach((schemaObj, i) => {
         const script = document.createElement('script');
         script.dataset.pageSchema = String(i);

@@ -25,6 +25,9 @@ const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
 const AskAIPage = lazy(() => import('./pages/AskAIPage'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
 const QuotePage = lazy(() => import('./pages/QuotePage'));
+const BusinessWebsitesPage = lazy(() => import('./pages/BusinessWebsitesPage'));
+const LandingPagesPage = lazy(() => import('./pages/LandingPagesPage'));
+const ReactWebsitesPage = lazy(() => import('./pages/ReactWebsitesPage'));
 
 function usePageLoading() {
   const { pathname } = useLocation();
@@ -111,6 +114,9 @@ function AppContent() {
               <Route path="/articles" element={<ArticlesPage />} />
               <Route path="/articles/:slug" element={<ArticlePage />} />
               <Route path="/quote" element={<QuotePage />} />
+              <Route path="/business-websites" element={<BusinessWebsitesPage />} />
+              <Route path="/landing-pages" element={<LandingPagesPage />} />
+              <Route path="/react-websites" element={<ReactWebsitesPage />} />
             </Routes>
           </Suspense>
           {!isAskAI && <Footer />}
