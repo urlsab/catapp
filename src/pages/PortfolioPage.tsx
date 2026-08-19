@@ -23,9 +23,9 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1, title: 'בונה קו"'ח', image: resumeBuilderImage, url: 'https://resumes-builder.web.app' },
+  { id: 1, title: "בונה קו״ח", image: resumeBuilderImage, url: 'https://resumes-builder.web.app' },
   { id: 2, title: "אור בנג'י", image: orBenjiImage, url: 'https://orbenji.com', caseStudy: 'or-benji' },
-  { id: 3, title: 'רפאל סבג - עו"'ד', image: refaelLawImage, url: 'https://refael-law.com', caseStudy: 'refael-law' },
+  { id: 3, title: "רפאל סבג - עו״ד", image: refaelLawImage, url: 'https://refael-law.com', caseStudy: 'refael-law' },
   { id: 4, title: 'אטליז למהדרין', image: atlizImage, url: 'https://atliz.co.il', caseStudy: 'atliz' },
   { id: 5, title: 'רשת חברתית', image: campNetworkImage, url: 'https://yelp--camp--project.herokuapp.com' },
   { id: 6, title: 'משחק צבעים', image: colorGameImage, url: 'https://color-game-react.vercel.app' },
