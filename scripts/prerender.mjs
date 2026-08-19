@@ -47,8 +47,6 @@ async function main() {
     process.exit(1);
   }
 
-  const { default: puppeteer } = await import('puppeteer');
-
   // מגישים את ה-build המקומי כדי שהדפדפן יוכל לטעון אותו
   const serveProcess = spawn('npx', ['serve', DIST_DIR, '-l', String(PORT), '-s'], {
     stdio: 'ignore',
@@ -57,7 +55,22 @@ async function main() {
 
   await new Promise((r) => setTimeout(r, 2000)); // המתנה לעליית השרת
 
-  const browser = await puppeteer.launch({ headless: true });
+  // @sparticuz/chromium מספק Chromium סטטי שעובד ב-Vercel/Lambda ללא תלויות מערכת
+  const isVercel = !!process.env.VERCEL;
+  let browser;
+  if (isVercel) {
+    const chromium = (await import('@sparticuz/chromium')).default;
+    const { default: puppeteerCore } = await import('puppeteer-core');
+    browser = await puppeteerCore.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
+  } else {
+    const { default: puppeteer } = await import('puppeteer');
+    browser = await puppeteer.launch({ headless: true });
+  }
 
   try {
     for (const route of ROUTES) {
