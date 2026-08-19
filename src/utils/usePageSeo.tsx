@@ -6,27 +6,56 @@ const SITE_URL = 'https://catapp.it.com';
 interface PageSeoData {
   title: string;
   description: string;
-  schema?: object;
+  schema?: object | object[];
 }
 
 const seoData: Record<string, PageSeoData> = {
   '/': {
     title: 'בניית אתרים | עיצוב אתרים | קידום אתרים בגוגל - Catapp',
     description: 'בניית אתרים, עיצוב אתרים וקידום אתרים בגוגל. קידום אתרים אורגני מקצועי. Catapp - בניית אתרים מקצועיים עם React, ביצועים גבוהים וקידום SEO. בניית אתר לעסק קטן, אתר תדמית, חנות אינטרנטית, דף נחיתה. בונה אתרים מומלץ בישראל.',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "בניית אתרים | עיצוב אתרים | קידום אתרים | Catapp",
-      "description": "בניית אתרים, עיצוב אתרים וקידום אתרים אורגני בגוגל לעסקים בישראל",
-      "url": SITE_URL,
-      "isPartOf": { "@type": "WebSite", "name": "Catapp", "url": SITE_URL },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL }
+    // מערך: WebPage לדף עצמו + FAQPage שממופה בדיוק לשאלות הנפוצות שמוצגות בפועל בעמוד הבית
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "בניית אתרים | עיצוב אתרים | קידום אתרים | Catapp",
+        "description": "בניית אתרים, עיצוב אתרים וקידום אתרים אורגני בגוגל לעסקים בישראל",
+        "url": SITE_URL,
+        "isPartOf": { "@type": "WebSite", "name": "Catapp", "url": SITE_URL },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL }
+          ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "כמה עולה לבנות אתר ב-2026?",
+            "acceptedAnswer": { "@type": "Answer", "text": "מחירי בניית אתר משתנים: דף נחיתה מ-2,000₪, אתר תדמית מ-5,000₪, חנות אינטרנטית מ-10,000₪." }
+          },
+          {
+            "@type": "Question",
+            "name": "Wix vs אתר מותאם אישית - מה עדיף?",
+            "acceptedAnswer": { "@type": "Answer", "text": "אתר מותאם אישית עם React מהיר פי 10, מאובטח יותר, ניתן להתאמה מלאה ומקודם טוב יותר בגוגל." }
+          },
+          {
+            "@type": "Question",
+            "name": "למה React עדיף לעסק?",
+            "acceptedAnswer": { "@type": "Answer", "text": "React מאפשר ביצועים מעולים, חוויית משתמש חלקה וקידום SEO מתקדם שמביא יותר לקוחות." }
+          },
+          {
+            "@type": "Question",
+            "name": "איך לבחור מפתח אתרים?",
+            "acceptedAnswer": { "@type": "Answer", "text": "בדקו ניסיון, תיק עבודות, טכנולוגיות, ביקורות לקוחות ותנאי שירות ותחזוקה." }
+          }
         ]
       }
-    }
+    ]
   },
   '/pricing': {
     title: 'מחירון בניית אתרים ועיצוב אתרים 2026 | קידום אתרים בגוגל - Catapp',
@@ -255,18 +284,18 @@ export function usePageSeo() {
       canonical.setAttribute('href', `${SITE_URL}${pathname === '/' ? '/' : pathname}`);
     }
 
-    // Per-page structured data (JSON-LD)
-    const existingPageSchema = document.getElementById('page-schema');
-    if (existingPageSchema) {
-      existingPageSchema.remove();
-    }
+    // Per-page structured data (JSON-LD) - remove all previously injected page schemas
+    document.querySelectorAll('script[data-page-schema]').forEach((el) => el.remove());
 
     if (data.schema) {
-      const script = document.createElement('script');
-      script.id = 'page-schema';
-      script.type = 'application/ld+json';
-      script.textContent = JSON.stringify(data.schema);
-      document.head.appendChild(script);
+      const schemas = Array.isArray(data.schema) ? data.schema : [data.schema];
+      schemas.forEach((schemaObj, i) => {
+        const script = document.createElement('script');
+        script.dataset.pageSchema = String(i);
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(schemaObj);
+        document.head.appendChild(script);
+      });
     }
   }, [pathname]);
 }
