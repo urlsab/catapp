@@ -215,6 +215,8 @@ export const articles: Article[] = [
     icon: '🤖',
     title: 'בינה מלאכותית בפיתוח אתרים - המהפכה שכבר כאן',
     summary: 'AI משנה את עולם פיתוח האתרים מהיסוד. מ-GitHub Copilot ועד צ\'אטבוטים חכמים - גלו כיצד הבינה המלאכותית הופכת אתרים לחכמים יותר.',
+    datePublished: '2026-07-01',
+    dateModified: '2026-08-19',
     sections: [
       {
         title: 'AI ובניית אתרים - שינוי פרדיגמה',
@@ -262,9 +264,6 @@ export const articles: Article[] = [
     datePublished: '2026-08-05',
     dateModified: '2026-08-19',
     ogImage: '/og/lawyer-websites.png',
-    ogImage: '/og/ai-web-development.png',
-    datePublished: '2026-07-14',
-    dateModified: '2026-08-19',
     sections: [
       {
         title: 'הביקוש לאתרים לעורכי דין - למה זה חיוני',
