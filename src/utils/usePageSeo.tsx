@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { articles } from '../data/articles';
+import { caseStudies } from '../data/case-studies';
 
 const SITE_URL = 'https://catapp.it.com';
 
@@ -12,8 +13,8 @@ interface PageSeoData {
 
 const seoData: Record<string, PageSeoData> = {
   '/': {
-    title: 'בניית אתרים | עיצוב אתרים | קידום אתרים בגוגל - Catapp',
-    description: 'בניית אתרים, עיצוב אתרים וקידום אתרים בגוגל. קידום אתרים אורגני מקצועי. Catapp - בניית אתרים מקצועיים עם React, ביצועים גבוהים וקידום SEO. בניית אתר לעסק קטן, אתר תדמית, חנות אינטרנטית, דף נחיתה. בונה אתרים מומלץ בישראל.',
+    title: 'בניית אתרים מקצועיים לעסקים | Catapp',
+    description: 'Catapp בונה אתרים מקצועיים לעסקים בישראל. React, SEO מובנה, נגישות וביצועים גבוהים. אתרי תדמית, דפי נחיתה ומערכות Web מהיום הראשון.',
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -48,8 +49,8 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/portfolio': {
-    title: 'תיק עבודות בניית אתרים ועיצוב אתרים | קידום אתרים - Catapp',
-    description: 'תיק עבודות בניית אתרים ועיצוב אתרים. קידום אתרים בגוגל וקידום אתרים אורגני. אתרים לעורכי דין, אתרים לבעלי עסקים, דפי נחיתה, אתרי תדמית, חנויות אינטרנטיות ופיתוח אפליקציות.',
+    title: 'תיק עבודות בניית אתרים | Catapp',
+    description: 'פרויקטים שבנינו: אתרים לעורכי דין, עסקים מקומיים, בעלי מקצוע ופרויקטים מורכבים. עיצוב מותאם אישית, React, SEO וביצועים גבוהים.',
     schema: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -66,8 +67,8 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/about-full': {
-    title: 'אודות Catapp | בניית אתרים, עיצוב אתרים וקידום אתרים בגוגל',
-    description: 'Catapp - בניית אתרים, עיצוב אתרים וקידום אתרים אורגני בגוגל. מפתח React פרילנסר מקצועי בישראל. בניית אתרים בהתאמה אישית עם טכנולוגיות מתקדמות. פיתוח אתרים, אפליקציות ותוכנה.',
+    title: 'אודות | בונה אתרים מקצועי בישראל - Catapp',
+    description: 'אוריאל סבג - מפתח אתרים מקצועי בישראל. בונה אתרים בהתאמה אישית עם React, SEO מובנה, נגישות וביצועים גבוהים.',
     schema: {
       "@context": "https://schema.org",
       "@type": "AboutPage",
@@ -84,8 +85,8 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/testimonials': {
-    title: 'המלצות לקוחות על בניית אתרים ועיצוב אתרים | קידום אתרים - Catapp',
-    description: 'המלצות מלקוחות מרוצים: בניית אתרים, עיצוב אתרים וקידום אתרים בגוגל. עורכי דין, בעלי עסקים ומנהלים שבחרו ב-Catapp. דירוג 5 כוכבים מכל הלקוחות.',
+    title: 'המלצות לקוחות על בניית אתרים | Catapp',
+    description: 'לקוחות מרוצים מספרים על העבודה עם Catapp. עורכי דין, בעלי עסקים ומנהלים שבנו להם אתרים יעילים. דירוג 5 כוכבים.',
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -101,8 +102,8 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/contact': {
-    title: 'צור קשר | בניית אתרים, עיצוב אתרים וקידום אתרים - Catapp',
-    description: 'צרו קשר עם Catapp לבניית אתרים, עיצוב אתרים וקידום אתרים בגוגל. טלפון: 055-6611594. קידום אתרים אורגני. בונה אתרים לעסקים, עורכי דין ובעלי עסקים. שירות אישי ומהיר.',
+    title: 'צור קשר | בניית אתרים לעסק - Catapp',
+    description: 'צרו קשר לקבלת יעוץ ראשוני והצעת מחיר לבניית אתר לעסק. טלפון: 055-6611594. מענים תוך 24 שעות.',
     schema: {
       "@context": "https://schema.org",
       "@type": "ContactPage",
@@ -119,8 +120,8 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/faq': {
-    title: 'שאלות נפוצות על בניית אתרים, עיצוב אתרים וקידום אתרים | FAQ - Catapp',
-    description: 'תשובות לשאלות נפוצות: בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל וקידום אתרים אורגני. כמה עולה לבנות אתר? מה ההבדל בין Wix לאתר מותאם אישית? למה React עדיף לעסק? שאלות על קידום SEO ותחזוקה.',
+    title: 'שאלות נפוצות על בניית אתרים | Catapp',
+    description: 'תשובות לשאלות נפוצות: כמה עולה לבנות אתר? כמה זמן לוקח? מה ההבדל בין Wix לאתר מותאם אישית? למה React עדיף?',
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -257,8 +258,8 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/articles': {
-    title: 'מאמרים על בניית אתרים, עיצוב אתרים וקידום אתרים | Catapp',
-    description: 'מאמרים מקצועיים על בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל וקידום אתרים אורגני. טכנולוגיות פיתוח, הנגשת אתרים ועוד. טיפים ומדריכים מעשיים לבעלי עסקים.',
+    title: 'מאמרים על בניית אתרים ו-SEO | Catapp',
+    description: 'מדריכים מקצועיים לבניית אתרים, קידום SEO, נגישות ועיצוב אתרים. טיפים מעשיים לבעלי עסקים.',
     schema: {
       "@context": "https://schema.org",
       "@type": "Blog",
@@ -296,12 +297,13 @@ const seoData: Record<string, PageSeoData> = {
     description: 'תנאי השימוש של Catapp - תנאי שירות, תשלום, אחריות וביטול. קראו את התנאים לפני הזמנת שירותי בניית אתרים.',
   },
   '/ask-ai': {
-    title: 'שאל AI | עוזר חכם לבניית אתרים, עיצוב אתרים וקידום אתרים - Catapp',
-    description: 'שאלו את ה-AI של Catapp על בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל, קידום אתרים אורגני, מחירי בניית אתר ועוד. תשובות מיידיות 24/7.',
+    title: 'שאל AI על בניית אתרים | Catapp',
+    description: 'שאלו את ה-AI של Catapp על בניית אתרים, עיצוב, SEO ומחירים. תשובות מיידיות 24/7.',
   },
 };
 
 const defaultSeo = seoData['/'];
+void defaultSeo; // kept for reference; fallback is now inline in usePageSeo
 
 export function usePageSeo() {
   const { pathname } = useLocation();
@@ -312,6 +314,12 @@ export function usePageSeo() {
       ? pathname.slice('/articles/'.length)
       : null;
     const article = articleSlug ? articles.find((a) => a.slug === articleSlug) : null;
+
+    // Dynamic SEO for case study pages
+    const caseStudySlug = pathname.startsWith('/portfolio/')
+      ? pathname.slice('/portfolio/'.length)
+      : null;
+    const caseStudy = caseStudySlug ? caseStudies.find((c) => c.slug === caseStudySlug) : null;
 
     let title: string;
     let description: string;
@@ -352,8 +360,27 @@ export function usePageSeo() {
           ]
         }
       };
+    } else if (caseStudy) {
+      title = caseStudy.seoTitle;
+      description = caseStudy.seoDescription;
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": caseStudy.h1,
+        "description": caseStudy.seoDescription,
+        "url": `${SITE_URL}/portfolio/${caseStudy.slug}`,
+        "author": { "@type": "Person", "name": "אוריאל סבג", "url": `${SITE_URL}/about-full` },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+            { "@type": "ListItem", "position": 2, "name": "תיק עבודות", "item": `${SITE_URL}/portfolio` },
+            { "@type": "ListItem", "position": 3, "name": caseStudy.clientName, "item": `${SITE_URL}/portfolio/${caseStudy.slug}` }
+          ]
+        }
+      };
     } else {
-      const data = seoData[pathname] || defaultSeo;
+      const data = seoData[pathname] ?? seoData['/'];
       title = data.title;
       description = data.description;
       schema = data.schema;

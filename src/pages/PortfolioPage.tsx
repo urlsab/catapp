@@ -112,7 +112,7 @@ const PortfolioPage: React.FC = () => {
         >
           <img
             src={p.image}
-            alt={p.title}
+            alt={`${p.title} — פרויקט בניית אתר שנבנה על ידי Catapp`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />

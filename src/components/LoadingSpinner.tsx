@@ -15,7 +15,8 @@ const LoadingSpinner: React.FC = () => (
       ></span>
       <img
         src={logo}
-        alt="Logo"
+        alt=""
+        aria-hidden="true"
         className="relative z-10 object-contain"
         style={{
           width: '70%',

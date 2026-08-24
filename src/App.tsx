@@ -38,24 +38,21 @@ function usePageLoading() {
   const [canScrollToTop, setCanScrollToTop] = useState(false);
 
   useEffect(() => {
-    // Reset states on route change
     setLoading(true);
     setSpinnerVisible(true);
     setCanScrollToTop(false);
-    
+
     const loadTimer = setTimeout(() => {
       setLoading(false);
-      // Hide spinner after loading is complete
       setTimeout(() => {
         setSpinnerVisible(false);
-        // Enable scroll to top only after spinner is hidden with smooth scroll
         setTimeout(() => {
           setCanScrollToTop(true);
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 900); // 0.9s delay for smooth scroll
-      }, 200);
-    }, 800);
-    
+        }, 100);
+      }, 100);
+    }, 200);
+
     return () => {
       clearTimeout(loadTimer);
     };

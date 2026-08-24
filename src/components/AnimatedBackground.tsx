@@ -2,11 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const AnimatedBackground: React.FC = () => {
-  // Mouse position state
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-  
-  // Each bubble gets its own state for position
-  const NUM_BUBBLES = 15;
+  // Respect user's motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const NUM_BUBBLES = 8;
   const blueShades = [
     "#1a79f6",
     "#0e2a47",
@@ -40,16 +39,6 @@ const AnimatedBackground: React.FC = () => {
     }))
   );
 
-  // Track mouse position
-  React.useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   // When a bubble finishes its animation, move it to a new random destination
   const handleComplete = (i: number) => {
     setBubbles(prev => {
@@ -68,6 +57,10 @@ const AnimatedBackground: React.FC = () => {
       return next;
     });
   };
+
+  if (prefersReducedMotion) {
+    return <div className="fixed inset-0 bg-black z-10" />;
+  }
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-black z-10">
@@ -111,27 +104,6 @@ const AnimatedBackground: React.FC = () => {
           />
         );
       })}
-      
-      {/* Mouse follower circle - constant light */}
-      <motion.div
-        className="absolute rounded-full border border-white/30 pointer-events-none"
-        style={{
-          width: 80,
-          height: 80,
-          background: `radial-gradient(circle, ${blueShades[0]} 40%, ${blueShades[3]} 100%)`,
-          filter: 'blur(15px)',
-          zIndex: 10,
-          opacity: 0.6
-        }}
-        animate={{
-          x: mousePosition.x - 10,
-          y: mousePosition.y - 10
-        }}
-        transition={{
-          x: { type: "spring", stiffness: 150, damping: 15 },
-          y: { type: "spring", stiffness: 150, damping: 15 }
-        }}
-      />
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90" />
     </div>

@@ -120,6 +120,27 @@ const ArticlePage: React.FC = () => {
             {article.summary}
           </p>
 
+          {/* Author + dates — also reinforce Article schema signals */}
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm text-gray-400 text-right justify-end border-t border-white/10 pt-4">
+            <span className="flex items-center gap-1.5">
+              <span className="text-[#1a79f6]">✍️</span>
+              <span>אוריאל סבג</span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-[#1a79f6]">📅</span>
+              <time dateTime={article.datePublished}>
+                {new Date(article.datePublished).toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+            </span>
+            {article.dateModified !== article.datePublished && (
+              <span className="flex items-center gap-1.5 text-gray-500">
+                <span>עודכן:</span>
+                <time dateTime={article.dateModified}>
+                  {new Date(article.dateModified).toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </span>
+            )}
+          </div>
 
         </div>
       </section>
@@ -186,6 +207,20 @@ const ArticlePage: React.FC = () => {
             >
               צור קשר
             </Link>
+          </div>
+
+          {/* E-E-A-T author bio */}
+          <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 text-right mb-8">
+            <div className="w-12 h-12 rounded-full bg-[#1a79f6]/20 border border-[#1a79f6]/40 flex items-center justify-center flex-shrink-0 text-xl">
+              👨‍💻
+            </div>
+            <div>
+              <p className="text-white font-bold text-sm sm:text-base">אוריאל סבג</p>
+              <p className="text-[#1a79f6] text-xs sm:text-sm mb-1">Full Stack Developer &amp; בונה אתרים | Catapp</p>
+              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                מפתח אתרים עם ניסיון של 5+ שנים בבניית אתרים לעסקים בישראל. מתמחה ב-React, SEO טכני ונגישות.
+              </p>
+            </div>
           </div>
 
           {/* Prev / Next navigation */}
