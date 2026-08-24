@@ -38,10 +38,8 @@ const staticRoutes = [
   { loc: '/testimonials',     lastmod: TODAY,       changefreq: 'monthly', priority: '0.7' },
   { loc: '/contact',          lastmod: TODAY,       changefreq: 'monthly', priority: '0.8' },
   { loc: '/faq',              lastmod: TODAY,       changefreq: 'monthly', priority: '0.7' },
-  { loc: '/articles',         lastmod: TODAY,       changefreq: 'weekly',  priority: '0.8' },
+  { loc: '/articles',         lastmod: TODAY,       changefreq: 'weekly',  priority: '0.9' },
   { loc: '/quote',            lastmod: TODAY,       changefreq: 'monthly', priority: '0.8' },
-  { loc: '/privacy',          lastmod: '2026-01-01',changefreq: 'yearly',  priority: '0.3' },
-  { loc: '/terms',            lastmod: '2026-01-01',changefreq: 'yearly',  priority: '0.3' },
 ];
 
 const articleRoutes = slugMatches.map((slug, i) => ({

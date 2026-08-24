@@ -163,7 +163,15 @@ const seoData: Record<string, PageSeoData> = {
       "description": "בניית אתר מקצועי לעסק קטן ובינוני עם SEO מובנה ועיצוב ייחודי",
       "url": `${SITE_URL}/business-websites`,
       "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
-      "areaServed": { "@type": "Country", "name": "Israel" },
+      "areaServed": [
+        { "@type": "Country", "name": "Israel" },
+        { "@type": "State", "name": "מחוז המרכז" },
+        { "@type": "City", "name": "לוד" },
+        { "@type": "City", "name": "תל אביב" },
+        { "@type": "City", "name": "ראשון לציון" },
+        { "@type": "City", "name": "פתח תקווה" },
+        { "@type": "City", "name": "רמת גן" }
+      ],
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -183,7 +191,15 @@ const seoData: Record<string, PageSeoData> = {
       "description": "בניית דף נחיתה לעסק עם המרה גבוהה לקמפיינים ממומנים",
       "url": `${SITE_URL}/landing-pages`,
       "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
-      "areaServed": { "@type": "Country", "name": "Israel" },
+      "areaServed": [
+        { "@type": "Country", "name": "Israel" },
+        { "@type": "State", "name": "מחוז המרכז" },
+        { "@type": "City", "name": "לוד" },
+        { "@type": "City", "name": "תל אביב" },
+        { "@type": "City", "name": "ראשון לציון" },
+        { "@type": "City", "name": "פתח תקווה" },
+        { "@type": "City", "name": "רמת גן" }
+      ],
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -195,15 +211,23 @@ const seoData: Record<string, PageSeoData> = {
   },
   '/react-websites': {
     title: 'בניית אתרים עם React | אתר React לעסק - Catapp',
-    description: 'בניית אתר בהתאמה אישית עם React ו-TypeScript. מהיר פי 10 מ-WordPress, SEO מלא עם prerender, ביצועים מעולים. הצעת מחיר בחינם.',
+    description: 'בניית אתר בהתאמה אישית עם React ו-TypeScript. ארכיטקטורת קומפוננטות, SEO מלא עם prerender, Core Web Vitals גבוהים וביצועים מעולים. הצעת מחיר בחינם.',
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
       "name": "בניית אתרי React",
-      "description": "בניית אתר בהתאמה אישית עם React ו-TypeScript — ביצועים גבוהים ו-SEO מלא",
+      "description": "בניית אתר בהתאמה אישית עם React ו-TypeScript — ארכיטקטורת קומפוננטות, Core Web Vitals גבוהים ו-SEO מלא עם prerender",
       "url": `${SITE_URL}/react-websites`,
       "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
-      "areaServed": { "@type": "Country", "name": "Israel" },
+      "areaServed": [
+        { "@type": "Country", "name": "Israel" },
+        { "@type": "State", "name": "מחוז המרכז" },
+        { "@type": "City", "name": "לוד" },
+        { "@type": "City", "name": "תל אביב" },
+        { "@type": "City", "name": "ראשון לציון" },
+        { "@type": "City", "name": "פתח תקווה" },
+        { "@type": "City", "name": "רמת גן" }
+      ],
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -234,14 +258,33 @@ const seoData: Record<string, PageSeoData> = {
   },
   '/articles': {
     title: 'מאמרים על בניית אתרים, עיצוב אתרים וקידום אתרים | Catapp',
-    description: 'מאמרים מקצועיים על בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל וקידום אתרים אורגני. טכנולוגיות פיתוח, קורות חיים ו-ATS, הנגשת אתרים ועוד. טיפים ומדריכים מעשיים לבעלי עסקים.',
+    description: 'מאמרים מקצועיים על בניית אתרים, עיצוב אתרים, קידום אתרים בגוגל וקידום אתרים אורגני. טכנולוגיות פיתוח, הנגשת אתרים ועוד. טיפים ומדריכים מעשיים לבעלי עסקים.',
     schema: {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "בלוג Catapp - מאמרים על בניית אתרים",
       "description": "מאמרים מקצועיים על בניית אתרים, פיתוח תוכנה וקידום דיגיטלי",
       "url": `${SITE_URL}/articles`,
-      "blogPost": []
+      "publisher": {
+        "@type": "Organization",
+        "name": "Catapp",
+        "logo": { "@type": "ImageObject", "url": `${SITE_URL}/Assets/logoiCatapp.png` }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "מאמרים", "item": `${SITE_URL}/articles` }
+        ]
+      },
+      "blogPost": articles.map((a) => ({
+        "@type": "BlogPosting",
+        "headline": a.title,
+        "description": a.summary,
+        "url": `${SITE_URL}/articles/${a.slug}`,
+        "datePublished": a.datePublished,
+        "dateModified": a.dateModified,
+      }))
     }
   },
   '/privacy': {
@@ -270,11 +313,6 @@ export function usePageSeo() {
       : null;
     const article = articleSlug ? articles.find((a) => a.slug === articleSlug) : null;
 
-    // Dynamic SEO for case study pages (/portfolio/:slug)
-    const caseStudySlug = pathname.startsWith('/portfolio/')
-      ? pathname.slice('/portfolio/'.length)
-      : null;
-
     let title: string;
     let description: string;
     let schema: object | object[] | undefined;
@@ -290,6 +328,14 @@ export function usePageSeo() {
         "url": `${SITE_URL}/articles/${article.slug}`,
         "datePublished": article.datePublished,
         "dateModified": article.dateModified,
+        ...(article.ogImage && {
+          "image": {
+            "@type": "ImageObject",
+            "url": `${SITE_URL}${article.ogImage}`,
+            "width": 1200,
+            "height": 630
+          }
+        }),
         "author": { "@type": "Person", "name": "Uriel Sabag", "url": `${SITE_URL}/about-full` },
         "publisher": {
           "@type": "Organization",
@@ -357,6 +403,11 @@ export function usePageSeo() {
     const twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) {
       twDesc.setAttribute('content', description);
+    }
+
+    const twImage = document.querySelector('meta[name="twitter:image"]');
+    if (twImage && article?.ogImage) {
+      twImage.setAttribute('content', `${SITE_URL}${article.ogImage}`);
     }
 
     // Canonical
