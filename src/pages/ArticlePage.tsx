@@ -207,6 +207,12 @@ const ArticlePage: React.FC = () => {
             >
               צור קשר
             </Link>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 mt-5 pt-4 border-t border-white/10">
+              <Link to="/pricing" className="text-[#1a79f6] hover:underline text-sm">כמה עולה לבנות אתר? ←</Link>
+              <Link to="/business-websites" className="text-[#1a79f6] hover:underline text-sm">בניית אתרים לעסקים ←</Link>
+              <Link to="/portfolio" className="text-[#1a79f6] hover:underline text-sm">תיק עבודות ←</Link>
+              <Link to="/faq" className="text-[#1a79f6] hover:underline text-sm">שאלות נפוצות ←</Link>
+            </div>
           </div>
 
           {/* E-E-A-T author bio */}
@@ -248,6 +254,29 @@ const ArticlePage: React.FC = () => {
                 </p>
               </Link>
             ) : <div className="flex-1" />}
+          </div>
+
+          {/* Related articles */}
+          <div className="mb-6 p-5 rounded-2xl bg-white/5 border border-white/10 text-right">
+            <h2 className="text-white font-bold text-base sm:text-lg mb-4">מאמרים נוספים</h2>
+            <div className="space-y-3">
+              {articles
+                .filter((a) => a.slug !== article.slug)
+                .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
+                .slice(0, 3)
+                .map((a) => (
+                  <Link
+                    key={a.slug}
+                    to={`/articles/${a.slug}`}
+                    className="flex items-start gap-3 group hover:bg-white/5 rounded-xl p-2 -mx-2 transition-colors"
+                  >
+                    <span className="text-xl flex-shrink-0 mt-0.5">{a.icon}</span>
+                    <span className="text-gray-300 group-hover:text-[#1a79f6] transition-colors text-sm leading-snug">
+                      {a.title}
+                    </span>
+                  </Link>
+                ))}
+            </div>
           </div>
 
           {/* Back to all articles */}

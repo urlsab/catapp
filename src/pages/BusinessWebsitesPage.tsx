@@ -46,6 +46,29 @@ const faqs = [
   { q: 'האם האתר יקודם בגוגל?', a: 'כל אתר שאנחנו בונים כולל SEO טכני מובנה — מבנה URL, meta tags, schema, ומהירות. קידום SEO פעיל (מאמרים, קישורים) הוא שירות נוסף מ-400 ₪ לחודש.' },
 ];
 
+const businessTypes = [
+  { emoji: '⚖️', label: 'עורכי דין' },
+  { emoji: '🏥', label: 'רופאים ומרפאות' },
+  { emoji: '🔨', label: 'קבלנים ובנייה' },
+  { emoji: '💼', label: 'יועצים ומאמנים' },
+  { emoji: '🏪', label: 'עסקים מקומיים' },
+  { emoji: '🍽️', label: 'מסעדות ובתי קפה' },
+  { emoji: '🏠', label: 'נדל"ן ומתווכים' },
+  { emoji: '💆', label: 'קוסמטיקה ויופי' },
+  { emoji: '🧘', label: 'מטפלים ופסיכולוגים' },
+  { emoji: '📚', label: 'מורים ומדריכים' },
+  { emoji: '🔧', label: 'אינסטלטורים וחשמלאים' },
+  { emoji: '🐾', label: 'וטרינרים ומטפחים' },
+];
+
+const processSteps = [
+  { step: '01', title: 'שיחת ייעוץ חינמית', desc: 'מבינים את העסק, הקהל, המתחרים והמטרות. מגדירים יחד את מבנה האתר ואסטרטגיית ה-SEO.' },
+  { step: '02', title: 'הצעת מחיר ואישור', desc: 'מקבלים הצעת מחיר מפורטת עם לוח זמנים ברור. מתחילים רק אחרי אישורכם המלא.' },
+  { step: '03', title: 'עיצוב ואב טיפוס', desc: 'מציגים Wireframe ועיצוב ויזואלי ראשוני. מתאימים עד שאתם מרוצים לגמרי.' },
+  { step: '04', title: 'בנייה ופיתוח', desc: 'בונים את האתר ב-React עם SEO, נגישות, מהירות ואבטחה — מובנים מהקוד הראשון.' },
+  { step: '05', title: 'השקה ומעקב', desc: 'בדיקות על כל המכשירים, ציוני Core Web Vitals, שליחה לגוגל והשקה חלקה.' },
+];
+
 const BusinessWebsitesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -100,6 +123,24 @@ const BusinessWebsitesPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Business types */}
+      <section className="mb-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+          למי מתאים אתר תדמית?
+        </h2>
+        <p className="text-gray-400 text-center mb-8 max-w-xl mx-auto">
+          כמעט כל עסק מרוויח מנוכחות דיגיטלית מקצועית — הנה חלק מהסוגים שעבדנו איתם:
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {businessTypes.map((type, i) => (
+            <div key={i} className="rounded-xl border border-[#1a79f6]/20 bg-white/5 p-4 text-center hover:border-[#1a79f6]/50 transition-colors">
+              <div className="text-2xl mb-2">{type.emoji}</div>
+              <div className="text-white font-semibold text-sm">{type.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* What's included */}
       <section className="mb-16 rounded-2xl border border-[#1a79f6]/30 bg-white/5 backdrop-blur-sm p-8">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
@@ -113,6 +154,26 @@ const BusinessWebsitesPage: React.FC = () => {
             </li>
           ))}
         </ul>
+      </section>
+
+      {/* Process steps */}
+      <section className="mb-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+          איך עובד התהליך?
+        </h2>
+        <div className="space-y-4">
+          {processSteps.map((s, i) => (
+            <div key={i} className="flex gap-4 items-start rounded-2xl border border-[#1a79f6]/20 bg-white/5 backdrop-blur-sm p-5">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#1a79f6] flex items-center justify-center text-white font-bold text-sm">
+                {s.step}
+              </div>
+              <div>
+                <h3 className="text-white font-bold text-lg mb-1">{s.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Pricing teaser */}
@@ -136,6 +197,32 @@ const BusinessWebsitesPage: React.FC = () => {
         <Link to="/pricing" className="inline-block bg-white/10 hover:bg-white/20 border border-[#1a79f6]/40 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all">
           למחירון המלא ←
         </Link>
+      </section>
+
+      {/* Case study examples */}
+      <section className="mb-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+          פרויקטים לדוגמה
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <Link to="/portfolio/refael-law" className="group rounded-2xl border border-[#1a79f6]/30 bg-white/5 backdrop-blur-sm p-6 hover:border-[#1a79f6]/60 transition-all">
+            <div className="text-[#1a79f6] text-xs font-bold uppercase tracking-wide mb-2">עורך דין</div>
+            <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#1a79f6] transition-colors">בניית אתר לעורך דין — רפאל סבג</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">אתר תדמית ב-React עם SEO ממוקד לחיפושים משפטיים. הגדיל את הפניות מגוגל תוך חודשיים.</p>
+            <span className="inline-block mt-4 text-[#1a79f6] text-sm font-medium">לקריאת ה-Case Study ←</span>
+          </Link>
+          <Link to="/portfolio/atliz" className="group rounded-2xl border border-[#1a79f6]/30 bg-white/5 backdrop-blur-sm p-6 hover:border-[#1a79f6]/60 transition-all">
+            <div className="text-[#1a79f6] text-xs font-bold uppercase tracking-wide mb-2">עסק מקומי</div>
+            <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#1a79f6] transition-colors">בניית אתר תדמית — אטליז למהדרין</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">אתר עם גלריית מוצרים, LocalBusiness schema ו-SEO מקומי שהגדיל את הלקוחות החדשים.</p>
+            <span className="inline-block mt-4 text-[#1a79f6] text-sm font-medium">לקריאת ה-Case Study ←</span>
+          </Link>
+        </div>
+        <div className="text-center mt-6">
+          <Link to="/portfolio" className="text-[#1a79f6] hover:text-blue-400 transition-colors font-medium text-sm">
+            לכל תיק העבודות ←
+          </Link>
+        </div>
       </section>
 
       {/* FAQ */}

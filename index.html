@@ -23,8 +23,6 @@
     <meta name="description" content="Catapp בונה אתרים מקצועיים לעסקים בישראל. React, SEO מובנה, נגישות וביצועים גבוהים. אתרי תדמית, דפי נחיתה ומערכות Web מהיום הראשון." />
     <meta name="author" content="Catapp" />
     <link rel="canonical" href="https://catapp.it.com/" />
-    <link rel="alternate" hreflang="he" href="https://catapp.it.com/" />
-    <link rel="alternate" hreflang="x-default" href="https://catapp.it.com/" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="בניית אתרים מקצועיים לעסקים | Catapp" />
@@ -44,12 +42,6 @@
     
     <!-- Additional SEO -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="language" content="Hebrew" />
-    <meta name="geo.region" content="IL" />
-    <meta name="geo.country" content="Israel" />
-    <meta name="geo.placename" content="Lod, Israel" />
-    <meta name="rating" content="general" />
-    <meta name="revisit-after" content="7 days" />
     
     <!-- Structured Data - Organization -->
     <script type="application/ld+json">
@@ -90,6 +82,9 @@
         "https://www.linkedin.com/in/uriel-sabag",
         "https://github.com/uriel-sabag"
       ],
+      "founder": {
+        "@id": "https://catapp.it.com/#person"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "שירותי בניית אתרים ופיתוח Web",
@@ -98,104 +93,40 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "בניית אתרים",
-              "description": "בניית אתרים מקצועיים בטכנולוגיות מתקדמות - אתרי תדמית, דפי נחיתה, חנויות אינטרנטיות ואתרים לעסקים."
+              "@id": "https://catapp.it.com/business-websites#service",
+              "name": "בניית אתרים לעסקים",
+              "url": "https://catapp.it.com/business-websites",
+              "provider": { "@id": "https://catapp.it.com/#organization" }
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "עיצוב אתרים",
-              "description": "עיצוב אתרים מקצועי וייחודי לכל עסק - עיצוב UI/UX מותאם אישית, עיצוב רספונסיבי לכל מכשיר"
+              "@id": "https://catapp.it.com/landing-pages#service",
+              "name": "בניית דפי נחיתה",
+              "url": "https://catapp.it.com/landing-pages",
+              "provider": { "@id": "https://catapp.it.com/#organization" }
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "קידום אתרים בגוגל",
-              "description": "קידום אתרים בגוגל - SEO מקצועי, קידום אתרים אורגני, אופטימיזציה למנועי חיפוש, הגדלת חשיפות ומכירות דרך האתר"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "קידום אתרים אורגני",
-              "description": "קידום אתרים אורגני מקצועי - העלאת האתר לעמוד הראשון בגוגל בצורה טבעית וארוכת טווח"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "בניית אתרי תדמית",
-              "description": "בניית אתר תדמית מקצועי עם עיצוב ייחודי שמייצג את העסק שלך ומביא לקוחות חדשים"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
+              "@id": "https://catapp.it.com/react-websites#service",
               "name": "בניית אתרי React",
-              "description": "בניית אתר עם React לעסק - ביצועים מהירים, ארכיטקטורה מודרנית, חוויית משתמש מעולה ו-SEO מתקדם עם prerender"
+              "url": "https://catapp.it.com/react-websites",
+              "provider": { "@id": "https://catapp.it.com/#organization" }
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "פיתוח אתרים",
-              "description": "פיתוח אתרים מותאם אישית עם עיצוב ייחודי וביצועים מעולים. בניית אתר בהתאמה אישית לצרכי העסק."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "פיתוח אפליקציות",
-              "description": "פיתוח אפליקציות ובניית אפליקציות מותאמות לצרכי העסק"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "פיתוח תוכנה",
-              "description": "פיתוח תוכנה מותאם אישית - מערכות SaaS, מערכות ניהול ופתרונות טכנולוגיים"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "תחזוקת אתרים",
-              "description": "תחזוקת אתרים שוטפת - עדכוני אבטחה, גיבויים, ניטור ביצועים ותיקון באגים"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "קידום אתרים",
-              "description": "קידום אתרים בגוגל - SEO אורגני, אופטימיזציה למנועי חיפוש, הגדלת מכירות דרך האתר"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "אתרים לעורכי דין",
-              "description": "בניית אתרים מקצועיים לעורכי דין ומשרדי עורכי דין - אתר תדמית, דף נחיתה ואתר משרד עורכי דין"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "אתרים לבעלי עסקים",
-              "description": "בניית אתרים לבעלי עסקים מכל הסוגים - אתר לעסק, אתר תדמית, חנות אינטרנטית ודף נחיתה"
+              "@id": "https://catapp.it.com/web-development#service",
+              "name": "פיתוח Web בהתאמה אישית",
+              "url": "https://catapp.it.com/web-development",
+              "provider": { "@id": "https://catapp.it.com/#organization" }
             }
           }
         ]

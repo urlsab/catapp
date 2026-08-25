@@ -7,7 +7,8 @@
     "dev": "vite",
     "prebuild": "node scripts/generate-sitemap.mjs && node scripts/generate-og-images.mjs",
     "build": "vite build",
-    "postbuild": "node scripts/prerender.mjs",
+    "postbuild": "node scripts/prerender.mjs && node scripts/seo-audit.mjs",
+    "seo-audit": "node scripts/seo-audit.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize-images": "node scripts/optimize-images.mjs"

@@ -151,7 +151,7 @@ const PortfolioPage: React.FC = () => {
           className={`text-center transition-all duration-700 px-4 ${isVis('title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
-            הפרויקטים <span className="text-[#1a79f6]">שלנו</span>
+            תיק עבודות <span className="text-[#1a79f6]">בניית אתרים</span>
           </h1>
           <p className="text-gray-400 text-base sm:text-lg">לחצו על פרויקט לביקור באתר</p>
         </div>

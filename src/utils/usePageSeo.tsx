@@ -18,8 +18,8 @@ const seoData: Record<string, PageSeoData> = {
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "בניית אתרים | עיצוב אתרים | קידום אתרים | Catapp",
-      "description": "בניית אתרים, עיצוב אתרים וקידום אתרים אורגני בגוגל לעסקים בישראל",
+      "name": "בניית אתרים מקצועיים לעסקים | Catapp",
+      "description": "בניית אתרים מקצועיים לעסקים בישראל — React, SEO מובנה ונגישות",
       "url": SITE_URL,
       "isPartOf": { "@type": "WebSite", "name": "Catapp", "url": SITE_URL },
       "breadcrumb": {
@@ -31,40 +31,103 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/pricing': {
-    title: 'מחירון בניית אתרים ועיצוב אתרים 2026 | קידום אתרים בגוגל - Catapp',
-    description: 'מחירון בניית אתרים ועיצוב אתרים 2026. קידום אתרים בגוגל, קידום אתרים אורגני. דף נחיתה לעסק מ-2,000₪, אתר תדמית מ-5,000₪, אתר מכירות עם סליקה מ-10,000₪. הצעת מחיר לבניית אתר בהתאמה אישית.',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "מחירון בניית אתרים 2026",
-      "description": "מחירון בניית אתרים מעודכן - כמה עולה לבנות אתר לעסק",
-      "url": `${SITE_URL}/pricing`,
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
+    title: 'כמה עולה לבנות אתר ב-2026? מחירון בניית אתרים | Catapp',
+    description: 'כמה עולה לבנות אתר ב-2026? דף נחיתה מ-2,000 ₪, אתר תדמית מ-5,000 ₪, אתר מכירות עם סליקה מ-10,000 ₪. מחירון מלא ועדכני לבניית אתר לעסק. הצעת מחיר בחינם.',
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "כמה עולה לבנות אתר ב-2026? מחירון בניית אתרים",
+        "description": "מחירון בניית אתרים מעודכן לשנת 2026 - כמה עולה לבנות אתר לעסק לפי סוג האתר",
+        "url": `${SITE_URL}/pricing`,
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+            { "@type": "ListItem", "position": 2, "name": "מחירון בניית אתרים", "item": `${SITE_URL}/pricing` }
+          ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "מחירון בניית אתרים 2026",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
-          { "@type": "ListItem", "position": 2, "name": "מחירון בניית אתרים", "item": `${SITE_URL}/pricing` }
+          {
+            "@type": "ListItem", "position": 1,
+            "item": {
+              "@type": "Service",
+              "name": "בניית דף נחיתה לעסק",
+              "url": `${SITE_URL}/landing-pages`,
+              "provider": { "@id": `${SITE_URL}/#organization` },
+              "offers": { "@type": "Offer", "priceCurrency": "ILS", "price": "2000", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2000", "priceCurrency": "ILS" } }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 2,
+            "item": {
+              "@type": "Service",
+              "name": "בניית אתר תדמית לעסק",
+              "url": `${SITE_URL}/business-websites`,
+              "provider": { "@id": `${SITE_URL}/#organization` },
+              "offers": { "@type": "Offer", "priceCurrency": "ILS", "price": "5000", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "5000", "priceCurrency": "ILS" } }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 3,
+            "item": {
+              "@type": "Service",
+              "name": "בניית אתר מכירות עם סליקה",
+              "url": `${SITE_URL}/business-websites`,
+              "provider": { "@id": `${SITE_URL}/#organization` },
+              "offers": { "@type": "Offer", "priceCurrency": "ILS", "price": "10000", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "10000", "priceCurrency": "ILS" } }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 4,
+            "item": {
+              "@type": "Service",
+              "name": "בניית אתר React בהתאמה אישית",
+              "url": `${SITE_URL}/react-websites`,
+              "provider": { "@id": `${SITE_URL}/#organization` },
+              "offers": { "@type": "Offer", "priceCurrency": "ILS", "price": "8000", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "8000", "priceCurrency": "ILS" } }
+            }
+          }
         ]
       }
-    }
+    ]
   },
   '/portfolio': {
     title: 'תיק עבודות בניית אתרים | Catapp',
     description: 'פרויקטים שבנינו: אתרים לעורכי דין, עסקים מקומיים, בעלי מקצוע ופרויקטים מורכבים. עיצוב מותאם אישית, React, SEO וביצועים גבוהים.',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "תיק עבודות בניית אתרים",
-      "description": "פרויקטי בניית אתרים ופיתוח תוכנה שביצענו",
-      "url": `${SITE_URL}/portfolio`,
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
-          { "@type": "ListItem", "position": 2, "name": "תיק עבודות", "item": `${SITE_URL}/portfolio` }
-        ]
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "תיק עבודות בניית אתרים",
+        "description": "פרויקטי בניית אתרים ופיתוח תוכנה שביצענו",
+        "url": `${SITE_URL}/portfolio`,
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+            { "@type": "ListItem", "position": 2, "name": "תיק עבודות", "item": `${SITE_URL}/portfolio` }
+          ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "תיק עבודות — פרויקטי בניית אתרים",
+        "url": `${SITE_URL}/portfolio`,
+        "itemListElement": caseStudies.map((cs, idx) => ({
+          "@type": "ListItem",
+          "position": idx + 1,
+          "url": `${SITE_URL}/portfolio/${cs.slug}`,
+          "name": cs.h1,
+        }))
       }
-    }
+    ]
   },
   '/about-full': {
     title: 'אודות | בונה אתרים מקצועי בישראל - Catapp',
@@ -121,25 +184,63 @@ const seoData: Record<string, PageSeoData> = {
   },
   '/faq': {
     title: 'שאלות נפוצות על בניית אתרים | Catapp',
-    description: 'תשובות לשאלות נפוצות: כמה עולה לבנות אתר? כמה זמן לוקח? מה ההבדל בין Wix לאתר מותאם אישית? למה React עדיף?',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "שאלות נפוצות על בניית אתרים | Catapp",
-      "description": "תשובות לשאלות נפוצות על בניית אתרים, עיצוב אתרים וקידום אתרים",
-      "url": `${SITE_URL}/faq`,
-      "breadcrumb": {
+    description: 'תשובות לשאלות נפוצות: כמה עולה לבנות אתר? כמה זמן לוקח? מה ההבדל בין React ל-WordPress? האם האתר מותאם ל-SEO? קראו תשובות מפורטות.',
+    schema: [
+      {
+        "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
           { "@type": "ListItem", "position": 2, "name": "שאלות נפוצות", "item": `${SITE_URL}/faq` }
         ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "url": `${SITE_URL}/faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "כמה עולה לבנות אתר לעסק?",
+            "acceptedAnswer": { "@type": "Answer", "text": "מחיר בניית אתר לעסק תלוי בסוג האתר ובמורכבותו. דף נחיתה פשוט עולה החל מ-2,000 ₪, אתר תדמית עם עד 10 עמודים עולה החל מ-5,000 ₪, אתר React מותאם אישית עולה החל מ-8,000 ₪, ואתר מכירות עם סליקה עולה החל מ-10,000 ₪. המחיר הסופי נקבע לאחר שיחת ייעוץ ותיאור מלא של הפרויקט." }
+          },
+          {
+            "@type": "Question",
+            "name": "כמה זמן לוקח לבנות אתר?",
+            "acceptedAnswer": { "@type": "Answer", "text": "זמן בניית האתר תלוי בהיקף הפרויקט. דף נחיתה נבנה תוך 3-7 ימי עבודה, אתר תדמית בינוני לוקח 2-4 שבועות, ואתר מורכב עם מערכות ניהול או חנות אינטרנטית יכול לקחת 4-8 שבועות. אנו שומרים על לוח זמנים ברור ומעדכנים את הלקוח בכל שלב." }
+          },
+          {
+            "@type": "Question",
+            "name": "מה ההבדל בין אתר ב-React לאתר ב-WordPress?",
+            "acceptedAnswer": { "@type": "Answer", "text": "React הוא פריימוורק JavaScript מודרני המאפשר ביצועים גבוהים יותר, אנימציות חלקות, ואינטגרציות מורכבות. אתר React טוען מהיר יותר, מקבל ציוני Core Web Vitals גבוהים ב-Google, ומאפשר שליטה מלאה בקוד. WordPress מתאים יותר לאתרים שהלקוח מנהל בעצמו ולבלוגים עם תוכן מרובה. עבור עסקים שרוצים אתר מהיר, מוביל ומותאם SEO לחלוטין - React הוא הבחירה הנכונה." }
+          },
+          {
+            "@type": "Question",
+            "name": "האם האתר שנבנה יהיה מותאם ל-SEO?",
+            "acceptedAnswer": { "@type": "Answer", "text": "כן. כל אתר שנבנה ב-Catapp כולל SEO טכני מלא: structured data (Schema.org), meta tags, Open Graph, sitemap.xml, robots.txt, canonical URLs, prerender לאינדוקס מלא של React, ו-Core Web Vitals גבוהים. בנוסף, האתר מגיע עם מבנה כותרות נכון (H1-H6) ותוכן ממוקד לפי כוונת חיפוש." }
+          },
+          {
+            "@type": "Question",
+            "name": "האם האתר נבנה ב-React?",
+            "acceptedAnswer": { "@type": "Answer", "text": "ברוב המקרים כן. Catapp מתמחה בבניית אתרים עם React ו-TypeScript. כך מקבלים ביצועים מהירים, קוד נקי ומתוחזק, ו-SEO מלא באמצעות prerender. לפרויקטים מסוימים ניתן גם להשתמש ב-Next.js לצורכי SSR." }
+          },
+          {
+            "@type": "Question",
+            "name": "האם אתם מספקים תחזוקה לאחר ההשקה?",
+            "acceptedAnswer": { "@type": "Answer", "text": "כן. אנו מציעים מסלולי תחזוקה חודשיים הכוללים ניטור 24/7, עדכוני אבטחה, גיבויים יומיים ותיקון באגים. המחיר מתחיל מ-300 ₪ לחודש. ניתן גם לרכוש שעות תמיכה לפי הצורך." }
+          },
+          {
+            "@type": "Question",
+            "name": "האם האתר נגיש לאנשים עם מוגבלויות?",
+            "acceptedAnswer": { "@type": "Answer", "text": "כן. כל אתר שנבנה ב-Catapp עומד בתקן WCAG 2.1 ובחוק הנגישות הישראלי. זה כולל תמיכה בקוראי מסך, ניגודיות צבעים תקנית, ניווט מקלדת ותפריט נגישות מובנה." }
+          }
+        ]
       }
-    }
+    ]
   },
   '/quote': {
-    title: 'הצעת מחיר לבניית אתרים ועיצוב אתרים | קידום אתרים - Catapp',
-    description: 'קבלו הצעת מחיר לבניית אתרים, עיצוב אתרים וקידום אתרים בגוגל. אתר תדמית, חנות אינטרנטית, דף נחיתה או פיתוח אפליקציה. מלאו את הטופס וקבלו הצעה תוך 24 שעות.',
+    title: 'הצעת מחיר לבניית אתר | Catapp',
+    description: 'קבלו הצעת מחיר לבניית אתר לעסק תוך 24 שעות. אתר תדמית, דף נחיתה, חנות אינטרנטית או פיתוח Web מותאם. ייעוץ ראשוני חינמי וללא התחייבות.',
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -211,7 +312,7 @@ const seoData: Record<string, PageSeoData> = {
     }
   },
   '/react-websites': {
-    title: 'בניית אתרים עם React | אתר React לעסק - Catapp',
+    title: 'בניית אתרי React לעסקים | Catapp',
     description: 'בניית אתר בהתאמה אישית עם React ו-TypeScript. ארכיטקטורת קומפוננטות, SEO מלא עם prerender, Core Web Vitals גבוהים וביצועים מעולים. הצעת מחיר בחינם.',
     schema: {
       "@context": "https://schema.org",
@@ -363,22 +464,45 @@ export function usePageSeo() {
     } else if (caseStudy) {
       title = caseStudy.seoTitle;
       description = caseStudy.seoDescription;
-      schema = {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": caseStudy.h1,
-        "description": caseStudy.seoDescription,
-        "url": `${SITE_URL}/portfolio/${caseStudy.slug}`,
-        "author": { "@type": "Person", "name": "אוריאל סבג", "url": `${SITE_URL}/about-full` },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
-            { "@type": "ListItem", "position": 2, "name": "תיק עבודות", "item": `${SITE_URL}/portfolio` },
-            { "@type": "ListItem", "position": 3, "name": caseStudy.clientName, "item": `${SITE_URL}/portfolio/${caseStudy.slug}` }
-          ]
+      const caseStudySchemas: object[] = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": caseStudy.h1,
+          "description": caseStudy.seoDescription,
+          "url": `${SITE_URL}/portfolio/${caseStudy.slug}`,
+          "author": { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "אוריאל סבג" },
+          "about": {
+            "@type": "Service",
+            "name": caseStudy.relatedServiceLabel,
+            "url": `${SITE_URL}${caseStudy.relatedService}`,
+            "provider": { "@id": `${SITE_URL}/#organization` }
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+              { "@type": "ListItem", "position": 2, "name": "תיק עבודות", "item": `${SITE_URL}/portfolio` },
+              { "@type": "ListItem", "position": 3, "name": caseStudy.clientName, "item": `${SITE_URL}/portfolio/${caseStudy.slug}` }
+            ]
+          }
         }
-      };
+      ];
+      if (caseStudy.testimonial) {
+        caseStudySchemas.push({
+          "@context": "https://schema.org",
+          "@type": "Review",
+          "reviewBody": caseStudy.testimonial.text,
+          "author": { "@type": "Person", "name": caseStudy.testimonial.author },
+          "itemReviewed": {
+            "@type": "Service",
+            "name": caseStudy.relatedServiceLabel,
+            "url": `${SITE_URL}${caseStudy.relatedService}`,
+            "provider": { "@id": `${SITE_URL}/#organization` }
+          }
+        });
+      }
+      schema = caseStudySchemas;
     } else {
       const data = seoData[pathname] ?? seoData['/'];
       title = data.title;

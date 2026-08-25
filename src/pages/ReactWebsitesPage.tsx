@@ -73,7 +73,7 @@ const ReactWebsitesPage: React.FC = () => {
           טכנולוגיה מתקדמת
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-          בניית אתרים בהתאמה אישית עם React
+          בניית אתרי React מקצועיים
         </h1>
         <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">
           אתרים מהירים, גמישים ומאובטחים עם React ו-TypeScript — הבידול האמיתי בעולם הבנייה האינטרנטית.

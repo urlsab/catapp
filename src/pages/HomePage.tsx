@@ -318,9 +318,9 @@ const HomePage: React.FC = () => {
               <h1
                 className={`text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out ${headlineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}
               >
-                בניית אתרים ופיתוח תוכנה
+                בניית אתרים מקצועיים
                 <br />
-                <span className="text-[#1a79f6]">לעסקים ובעלי מקצוע</span>
+                <span className="text-[#1a79f6]">לעסקים בישראל</span>
               </h1>
             </div>
 
@@ -427,9 +427,9 @@ const HomePage: React.FC = () => {
                 role="heading"
                 aria-level={1}
               >
-                בניית אתרים ופיתוח תוכנה
+                בניית אתרים מקצועיים
                 <br />
-                <span className="text-[#1a79f6]">לעסקים ובעלי מקצוע</span>
+                <span className="text-[#1a79f6]">לעסקים בישראל</span>
               </p>
 
               {/* Hero Image */}

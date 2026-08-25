@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { CheckCircle, ExternalLink, ArrowRight } from 'lucide-react';
 import { caseStudyBySlug } from '../data/case-studies';
+import { articles } from '../data/articles';
 
 const CaseStudyPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -132,6 +133,27 @@ const CaseStudyPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
             לכל הפרויקטים
           </Link>
+          <Link to="/pricing" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+            <ArrowRight className="w-4 h-4" />
+            מחירון
+          </Link>
+        </div>
+
+        {/* Related articles */}
+        <div className="mt-8 pt-6 border-t border-white/10 text-right">
+          <p className="text-white font-bold text-sm mb-3">מאמרים קשורים</p>
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
+            {articles.slice(0, 4).map((a) => (
+              <Link
+                key={a.slug}
+                to={`/articles/${a.slug}`}
+                className="text-gray-400 hover:text-[#1a79f6] transition-colors text-sm flex items-center gap-1"
+              >
+                <span>{a.icon}</span>
+                <span className="hover:underline">{a.title.split('–')[0].trim()}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>
