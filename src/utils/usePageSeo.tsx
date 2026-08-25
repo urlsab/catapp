@@ -261,10 +261,12 @@ const seoData: Record<string, PageSeoData> = {
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
+      "@id": `${SITE_URL}/business-websites#service`,
+      "serviceType": "Website Development",
       "name": "בניית אתרים לעסקים",
       "description": "בניית אתר מקצועי לעסק קטן ובינוני עם SEO מובנה ועיצוב ייחודי",
       "url": `${SITE_URL}/business-websites`,
-      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "provider": { "@id": `${SITE_URL}/#organization` },
       "areaServed": [
         { "@type": "Country", "name": "Israel" },
         { "@type": "State", "name": "מחוז המרכז" },
@@ -289,10 +291,12 @@ const seoData: Record<string, PageSeoData> = {
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
+      "@id": `${SITE_URL}/landing-pages#service`,
+      "serviceType": "Landing Page Development",
       "name": "בניית דפי נחיתה",
       "description": "בניית דף נחיתה לעסק עם המרה גבוהה לקמפיינים ממומנים",
       "url": `${SITE_URL}/landing-pages`,
-      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "provider": { "@id": `${SITE_URL}/#organization` },
       "areaServed": [
         { "@type": "Country", "name": "Israel" },
         { "@type": "State", "name": "מחוז המרכז" },
@@ -317,10 +321,12 @@ const seoData: Record<string, PageSeoData> = {
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
+      "@id": `${SITE_URL}/react-websites#service`,
+      "serviceType": "React Website Development",
       "name": "בניית אתרי React",
       "description": "בניית אתר בהתאמה אישית עם React ו-TypeScript — ארכיטקטורת קומפוננטות, Core Web Vitals גבוהים ו-SEO מלא עם prerender",
       "url": `${SITE_URL}/react-websites`,
-      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "provider": { "@id": `${SITE_URL}/#organization` },
       "areaServed": [
         { "@type": "Country", "name": "Israel" },
         { "@type": "State", "name": "מחוז המרכז" },
@@ -339,16 +345,40 @@ const seoData: Record<string, PageSeoData> = {
       }
     }
   },
+  '/website-for-lawyers': {
+    title: 'בניית אתר לעורך דין | אתר מקצועי למשרד עו"ד — Catapp',
+    description: 'בניית אתר לעורך דין עם עיצוב שמשדר אמינות, SEO לחיפושים משפטיים, תחומי עיסוק, טופס ייעוץ ראשוני ו-LegalService schema. ראו Case Study אמיתי. הצעת מחיר בחינם.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${SITE_URL}/website-for-lawyers#service`,
+      "serviceType": "Law Firm Website Development",
+      "name": 'בניית אתר לעורך דין',
+      "description": 'בניית אתר מקצועי למשרד עורכי דין — עיצוב שמשדר סמכות, SEO לחיפושים משפטיים ו-LegalService schema',
+      "url": `${SITE_URL}/website-for-lawyers`,
+      "provider": { "@id": `${SITE_URL}/#organization` },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "בניית אתרים לעסקים", "item": `${SITE_URL}/business-websites` },
+          { "@type": "ListItem", "position": 3, "name": "בניית אתר לעורך דין", "item": `${SITE_URL}/website-for-lawyers` }
+        ]
+      }
+    }
+  },
   '/web-development': {
     title: 'פיתוח Web בהתאמה אישית | SaaS, Dashboard, API - Catapp',
     description: 'פיתוח Web מלא — מערכות SaaS, Dashboards, אינטגרציות AI, Back Office ו-API. React, Node.js, Supabase, MongoDB. הצעת מחיר בחינם.',
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
+      "@id": `${SITE_URL}/web-development#service`,
+      "serviceType": "Custom Web Development",
       "name": "פיתוח Web בהתאמה אישית",
       "description": "פיתוח מערכות Web מותאמות — SaaS, Dashboards, API ואינטגרציות AI",
       "url": `${SITE_URL}/web-development`,
-      "provider": { "@type": "Organization", "name": "Catapp", "url": SITE_URL },
+      "provider": { "@id": `${SITE_URL}/#organization` },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -445,12 +475,8 @@ export function usePageSeo() {
             "height": 630
           }
         }),
-        "author": { "@type": "Person", "name": "Uriel Sabag", "url": `${SITE_URL}/about-full` },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Catapp",
-          "logo": { "@type": "ImageObject", "url": `${SITE_URL}/Assets/logoiCatapp.png` }
-        },
+        "author": { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "אוריאל סבג" },
+        "publisher": { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
         "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}/articles/${article.slug}` },
         "breadcrumb": {
           "@type": "BreadcrumbList",
@@ -541,8 +567,10 @@ export function usePageSeo() {
     }
 
     const ogImage = document.querySelector('meta[property="og:image"]');
-    if (ogImage && article?.ogImage) {
-      ogImage.setAttribute('content', `${SITE_URL}${article.ogImage}`);
+    if (ogImage) {
+      ogImage.setAttribute('content',
+        article?.ogImage ? `${SITE_URL}${article.ogImage}` : `${SITE_URL}/Assets/logoiCatapp.png`
+      );
     }
 
     // Twitter
@@ -557,14 +585,17 @@ export function usePageSeo() {
     }
 
     const twImage = document.querySelector('meta[name="twitter:image"]');
-    if (twImage && article?.ogImage) {
-      twImage.setAttribute('content', `${SITE_URL}${article.ogImage}`);
+    if (twImage) {
+      twImage.setAttribute('content',
+        article?.ogImage ? `${SITE_URL}${article.ogImage}` : `${SITE_URL}/Assets/logoiCatapp.png`
+      );
     }
 
-    // Canonical
+    // Canonical — normalize trailing slashes so /pricing/ and /pricing get the same canonical
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
-      canonical.setAttribute('href', `${SITE_URL}${pathname === '/' ? '/' : pathname}`);
+      const canonicalPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+      canonical.setAttribute('href', `${SITE_URL}${canonicalPath}`);
     }
 
     // noindex for tool pages that should not rank

@@ -23,36 +23,13 @@ import { execSync, spawn } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildAllPaths } from './routes.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
 const PORT = 4173;
 
-// קורא slugs של מאמרים מקובץ המקור כדי שנתיב חדש יתוסף אוטומטית
-const articlesSource = readFileSync(join(__dirname, '..', 'src', 'data', 'articles.ts'), 'utf-8');
-const articleSlugs = [...articlesSource.matchAll(/^\s+slug:\s+'([^']+)'/gm)].map((m) => m[1]);
-
-// כל הנתיבים הציבוריים באתר (בהתאם ל-App.tsx / sitemap.xml)
-const ROUTES = [
-  '/',
-  '/pricing',
-  '/portfolio',
-  '/about-full',
-  '/testimonials',
-  '/contact',
-  '/faq',
-  '/articles',
-  '/quote',
-  '/business-websites',
-  '/landing-pages',
-  '/react-websites',
-  '/web-development',
-  '/portfolio/refael-law',
-  '/portfolio/atliz',
-  '/portfolio/or-benji',
-  '/portfolio/meirav-dula',
-  ...articleSlugs.map((slug) => `/articles/${slug}`),
-];
+const ROUTES = buildAllPaths();
 
 async function main() {
   if (!existsSync(DIST_DIR)) {

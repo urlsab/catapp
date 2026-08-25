@@ -30,6 +30,7 @@ const LandingPagesPage = lazy(() => import('./pages/LandingPagesPage'));
 const ReactWebsitesPage = lazy(() => import('./pages/ReactWebsitesPage'));
 const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
 const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
+const LawyerWebsitesPage = lazy(() => import('./pages/LawyerWebsitesPage'));
 
 function usePageLoading() {
   const { pathname } = useLocation();
@@ -117,6 +118,7 @@ function AppContent() {
               <Route path="/landing-pages" element={<LandingPagesPage />} />
               <Route path="/react-websites" element={<ReactWebsitesPage />} />
               <Route path="/web-development" element={<WebDevelopmentPage />} />
+              <Route path="/website-for-lawyers" element={<LawyerWebsitesPage />} />
               <Route path="/portfolio/:slug" element={<CaseStudyPage />} />
             </Routes>
           </Suspense>

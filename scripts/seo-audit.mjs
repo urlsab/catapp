@@ -5,12 +5,14 @@
 //   - exactly one H1
 //   - no duplicate titles/descriptions across pages
 //   - all JSON-LD schemas are valid JSON
+//   - every expected route (from routes.mjs) was actually prerendered
 //
 // Exit code 1 on any critical failure.
 
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildAllPaths } from './routes.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
@@ -98,6 +100,15 @@ for (const filePath of files) {
   pageResults.push({ pagePath, errors, warnings });
 }
 
+// ─── Route coverage check ─────────────────────────────────────────────────
+const expectedPaths = buildAllPaths();
+const renderedPaths = new Set(
+  files.map((f) =>
+    f.replace(DIST_DIR, '').replace(/\\/g, '/').replace(/\/index\.html$/, '') || '/'
+  )
+);
+const missingRoutes = expectedPaths.filter((p) => !renderedPaths.has(p));
+
 // ─── Report ───────────────────────────────────────────────────────────────
 console.log('\n🔍 SEO Audit\n' + '─'.repeat(60));
 
@@ -114,6 +125,13 @@ console.log('\n' + '─'.repeat(60));
 console.log(`  ✅ Passed:   ${okPages.length} / ${files.length} pages`);
 if (warningCount > 0) console.log(`  ⚠️  Warnings: ${warningCount}`);
 if (criticalCount > 0) console.log(`  ❌ Errors:   ${criticalCount}`);
+
+if (missingRoutes.length > 0) {
+  console.log(`\n  🗺️  Missing prerendered files for ${missingRoutes.length} route(s):`);
+  for (const r of missingRoutes) console.log(`     ❌ ${r}`);
+  criticalCount += missingRoutes.length;
+}
+
 console.log('');
 
 if (criticalCount > 0) {
