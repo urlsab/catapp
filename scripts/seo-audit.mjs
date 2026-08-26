@@ -106,8 +106,9 @@ for (const filePath of files) {
     }
   }
 
-  // — H1 count
-  const h1Count = (html.match(/<h1[\s>]/g) || []).length;
+  // — H1 count (strip noscript fallback blocks — they're non-JS crawler content, not real page structure)
+  const htmlWithoutNoscript = html.replace(/<noscript[\s\S]*?<\/noscript>/gi, '');
+  const h1Count = (htmlWithoutNoscript.match(/<h1[\s>]/g) || []).length;
   if (h1Count === 0) {
     errors.push('no <h1> found');
   } else if (h1Count > 1) {
