@@ -204,6 +204,7 @@ const WebDevelopmentPage: React.FC = () => {
           <Link to="/business-websites" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">בניית אתרים לעסקים ←</Link>
           <Link to="/articles/hi-tech-web-development" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">פיתוח אתרים בהייטק ←</Link>
           <Link to="/articles/ai-web-development" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">AI בפיתוח אתרים ←</Link>
+          <Link to="/ai-website-development" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">בניית אתרים עם AI ←</Link>
         </div>
       </section>
 

@@ -1,10 +1,13 @@
 // scripts/seo-audit.mjs
 //
 // Reads every index.html in dist/ after prerender and verifies:
-//   - title, description, canonical present
+//   - title, description, canonical (value-correct), robots
+//   - OG tags: og:title, og:description, og:url, og:image
+//   - Twitter Cards: twitter:card, twitter:title, twitter:description, twitter:image
 //   - exactly one H1
 //   - no duplicate titles/descriptions across pages
 //   - all JSON-LD schemas are valid JSON
+//   - Article schema fields on /articles/* pages
 //   - every expected route (from routes.mjs) was actually prerendered
 //
 // Exit code 1 on any critical failure.
@@ -16,6 +19,7 @@ import { buildAllPaths } from './routes.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
+const SITE_URL = 'https://catapp.it.com';
 
 if (!existsSync(DIST_DIR)) {
   console.error('❌ dist/ not found — run npm run build first');
@@ -72,9 +76,34 @@ for (const filePath of files) {
     }
   }
 
-  // — canonical
-  if (!html.includes('rel="canonical"')) {
+  // — canonical (presence + correct URL)
+  const canonicalMatch = html.match(/rel="canonical"\s+href="([^"]*)"/);
+  if (!canonicalMatch) {
     warnings.push('missing canonical link');
+  } else {
+    const expectedCanonical = `${SITE_URL}${pagePath === '/' ? '/' : pagePath}`;
+    if (canonicalMatch[1] !== expectedCanonical) {
+      warnings.push(`canonical mismatch: got "${canonicalMatch[1]}", expected "${expectedCanonical}"`);
+    }
+  }
+
+  // — robots
+  if (!html.includes('name="robots"')) {
+    warnings.push('missing robots meta tag');
+  }
+
+  // — OG tags
+  for (const prop of ['og:title', 'og:description', 'og:url', 'og:image']) {
+    if (!html.includes(`property="${prop}"`)) {
+      warnings.push(`missing <meta property="${prop}">`);
+    }
+  }
+
+  // — Twitter Cards
+  for (const name of ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image']) {
+    if (!html.includes(`name="${name}"`)) {
+      warnings.push(`missing <meta name="${name}">`);
+    }
   }
 
   // — H1 count
@@ -87,11 +116,28 @@ for (const filePath of files) {
 
   // — JSON-LD validity
   const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  const parsedSchemas = [];
   for (const [, raw] of jsonLdBlocks) {
     try {
-      JSON.parse(raw);
+      parsedSchemas.push(JSON.parse(raw));
     } catch {
       errors.push('invalid JSON-LD schema');
+    }
+  }
+
+  // — Article schema fields on /articles/* pages
+  if (pagePath.startsWith('/articles/') && !pagePath.endsWith('/articles/')) {
+    const articleSchema = parsedSchemas.find(
+      (s) => s['@type'] === 'Article' || s['@type'] === 'BlogPosting'
+    );
+    if (!articleSchema) {
+      errors.push('missing Article/BlogPosting JSON-LD schema on article page');
+    } else {
+      for (const field of ['headline', 'datePublished', 'dateModified', 'author', 'publisher', 'mainEntityOfPage']) {
+        if (!articleSchema[field]) {
+          warnings.push(`Article schema missing field: ${field}`);
+        }
+      }
     }
   }
 

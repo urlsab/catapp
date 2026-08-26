@@ -32,6 +32,8 @@ const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
 const WebDevelopmentPage = lazy(() => import('./pages/WebDevelopmentPage'));
 const LawyerWebsitesPage = lazy(() => import('./pages/LawyerWebsitesPage'));
 const WebsiteForDoctorsPage = lazy(() => import('./pages/WebsiteForDoctorsPage'));
+const AiWebDevelopmentPage = lazy(() => import('./pages/AiWebDevelopmentPage'));
+const AiReadyWebsitesPage = lazy(() => import('./pages/AiReadyWebsitesPage'));
 
 function usePageLoading() {
   const { pathname } = useLocation();
@@ -121,6 +123,8 @@ function AppContent() {
               <Route path="/web-development" element={<WebDevelopmentPage />} />
               <Route path="/website-for-doctors" element={<WebsiteForDoctorsPage />} />
               <Route path="/website-for-lawyers" element={<LawyerWebsitesPage />} />
+              <Route path="/ai-website-development" element={<AiWebDevelopmentPage />} />
+              <Route path="/ai-ready-websites" element={<AiReadyWebsitesPage />} />
               <Route path="/portfolio/:slug" element={<CaseStudyPage />} />
             </Routes>
           </Suspense>

@@ -389,6 +389,50 @@ const seoData: Record<string, PageSeoData> = {
       }
     }
   },
+  '/ai-ready-websites': {
+    title: 'בניית אתרים מוכנים לעידן ה-AI | GEO ו-AI Search Optimization | Catapp',
+    description: 'בניית אתרים עם Structured Data מלא, E-E-A-T, Semantic HTML ו-Core Web Vitals גבוהים — מוכנים לחיפוש AI של Google, ChatGPT ו-Perplexity.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${SITE_URL}/ai-ready-websites#service`,
+      "serviceType": "GEO-Optimized Web Development",
+      "name": "בניית אתרים מוכנים לעידן החיפוש החדש",
+      "description": "בניית אתרים עם Structured Data, E-E-A-T ו-Semantic HTML לאופטימיזציה בחיפוש AI",
+      "url": `${SITE_URL}/ai-ready-websites`,
+      "provider": { "@id": `${SITE_URL}/#organization` },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "בניית אתרים עם AI", "item": `${SITE_URL}/ai-website-development` },
+          { "@type": "ListItem", "position": 3, "name": "אתרים מוכנים לעידן ה-AI", "item": `${SITE_URL}/ai-ready-websites` }
+        ]
+      }
+    }
+  },
+  '/ai-website-development': {
+    title: 'בניית אתרים עם AI | פיתוח מהיר יותר בלי לוותר על איכות | Catapp',
+    description: 'בניית אתרים בעזרת כלי AI ומפתח Full Stack מנוסה. שילוב AI לקיצור זמני פיתוח יחד עם SEO, נגישות, ביצועים, אבטחה וקוד מותאם אישית.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${SITE_URL}/ai-website-development#service`,
+      "serviceType": "AI-Assisted Web Development",
+      "name": "בניית אתרים עם AI",
+      "description": "שילוב AI עם מפתח Full Stack לפיתוח אתרים מהיר, מאובטח ומותאם SEO",
+      "url": `${SITE_URL}/ai-website-development`,
+      "provider": { "@id": `${SITE_URL}/#organization` },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "פיתוח Web", "item": `${SITE_URL}/web-development` },
+          { "@type": "ListItem", "position": 3, "name": "בניית אתרים עם AI", "item": `${SITE_URL}/ai-website-development` }
+        ]
+      }
+    }
+  },
   '/web-development': {
     title: 'פיתוח Web בהתאמה אישית | SaaS, Dashboard, API - Catapp',
     description: 'פיתוח Web מלא — מערכות SaaS, Dashboards, אינטגרציות AI, Back Office ו-API. React, Node.js, Supabase, MongoDB. הצעת מחיר בחינם.',
@@ -483,10 +527,11 @@ export function usePageSeo() {
       description = article.summary;
       schema = {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "Article",
         "headline": article.title,
         "description": article.summary,
         "url": `${SITE_URL}/articles/${article.slug}`,
+        "inLanguage": "he",
         "datePublished": article.datePublished,
         "dateModified": article.dateModified,
         ...(article.ogImage && {

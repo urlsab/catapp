@@ -25,7 +25,10 @@ export const STATIC_ROUTES = [
   { loc: '/testimonials',      lastmod: '2026-07-01', changefreq: 'monthly', priority: '0.7' },
   { loc: '/contact',           lastmod: '2026-05-01', changefreq: 'monthly', priority: '0.8' },
   { loc: '/quote',             lastmod: '2026-05-01', changefreq: 'monthly', priority: '0.8' },
-  { loc: '/website-for-lawyers', lastmod: '2026-08-25', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/website-for-lawyers',  lastmod: '2026-08-25', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/website-for-doctors',       lastmod: '2026-08-26', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/ai-website-development',     lastmod: '2026-08-26', changefreq: 'monthly', priority: '0.9' },
+  { loc: '/ai-ready-websites',           lastmod: '2026-08-26', changefreq: 'monthly', priority: '0.9' },
 ];
 
 function readArticleRoutes() {

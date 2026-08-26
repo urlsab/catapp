@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import AnimatedBackground from '../components/AnimatedBackground';
-import Footer from '../components/Footer';
 import { articles } from '../data/articles';
 import '../styles/articleSnap.css';
 
@@ -169,9 +168,9 @@ const ArticlePage: React.FC = () => {
 
             <div className="w-full h-px bg-[#1a79f6]/30 mb-5 sm:mb-7" />
 
-            {/* Paragraphs - max 2 per section */}
+            {/* Paragraphs */}
             <div className="space-y-4 sm:space-y-6">
-              {section.paragraphs.slice(0, 2).map((para, pIdx) => (
+              {section.paragraphs.map((para, pIdx) => (
                 <p
                   key={pIdx}
                   className="text-gray-200 text-base sm:text-lg md:text-xl leading-[1.85] text-right"

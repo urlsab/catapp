@@ -45,13 +45,13 @@ const Hero: React.FC = () => {
               Catapp
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium fade-in">
-              בניית אתרים | פיתוח אתרים | פיתוח אפליקציות
+              בניית אתרים מהירה יותר. חכמה יותר. בלי לוותר על איכות.
             </h2>
           </div>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed fade-in">
-            בונה אתרים מקצועי - בניית אתרים לעסקים, פיתוח תוכנה, בניית אפליקציות ופיתוח אפליקציות לבעלי עסקים ועורכי דין
+            אנחנו משלבים כלי AI מתקדמים עם פיתוח Full Stack מקצועי כדי לבנות אתרים מהר יותר — עם SEO, נגישות, ביצועים וקוד מותאם אישית. AI מאיץ את הפיתוח. אנחנו אחראים על התוצאה.
           </p>
 
           {/* Feature Icons */}
@@ -79,10 +79,10 @@ const Hero: React.FC = () => {
           {/* CTA Button */}
           <div className="mb-16 fade-in">
             <Link
-              to="/contact"
+              to="/quote"
               className="inline-block bg-gradient-to-r from-[#1a79f6] to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 fade-in"
             >
-              צור קשר
+              🚀 בואו נבנה את האתר שלכם
             </Link>
           </div>
 
