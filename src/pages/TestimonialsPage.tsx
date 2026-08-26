@@ -254,6 +254,9 @@ const TestimonialsPage: React.FC = () => {
   return (
     <div ref={snapContainerRef} className="testimonials-snap-container">
 
+      {/* Visually-hidden H1 for SEO — snap layout has no visible primary heading */}
+      <h1 className="sr-only">המלצות לקוחות על בניית אתרים | Catapp</h1>
+
       {/* ================== DESKTOP SECTIONS (≥1024px) ================== */}
 
       {/* DC: Counter */}
