@@ -345,6 +345,28 @@ const seoData: Record<string, PageSeoData> = {
       }
     }
   },
+  '/website-for-doctors': {
+    title: 'בניית אתר לרופא ומרפאה | SEO רפואי וקביעת תור אונליין — Catapp',
+    description: 'בניית אתר לרופא ומרפאה עם Physician schema, עמוד לכל התמחות, שילוב מערכת תורים ו-SEO ל"רופא [התמחות] [עיר]". הצעת מחיר בחינם תוך 24 שעות.',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${SITE_URL}/website-for-doctors#service`,
+      "serviceType": "Medical Website Development",
+      "name": 'בניית אתר לרופא ומרפאה',
+      "description": 'בניית אתר מקצועי לרופאים ומרפאות — Physician schema, SEO רפואי מקומי וקביעת תור אונליין',
+      "url": `${SITE_URL}/website-for-doctors`,
+      "provider": { "@id": `${SITE_URL}/#organization` },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": SITE_URL },
+          { "@type": "ListItem", "position": 2, "name": "בניית אתרים לעסקים", "item": `${SITE_URL}/business-websites` },
+          { "@type": "ListItem", "position": 3, "name": "בניית אתר לרופא ומרפאה", "item": `${SITE_URL}/website-for-doctors` }
+        ]
+      }
+    }
+  },
   '/website-for-lawyers': {
     title: 'בניית אתר לעורך דין | אתר מקצועי למשרד עו"ד — Catapp',
     description: 'בניית אתר לעורך דין עם עיצוב שמשדר אמינות, SEO לחיפושים משפטיים, תחומי עיסוק, טופס ייעוץ ראשוני ו-LegalService schema. ראו Case Study אמיתי. הצעת מחיר בחינם.',

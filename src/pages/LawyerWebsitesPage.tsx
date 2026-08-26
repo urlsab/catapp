@@ -258,6 +258,7 @@ const LawyerWebsitesPage: React.FC = () => {
         <h2 className="text-xl font-bold text-white mb-4">עמודים קשורים</h2>
         <div className="flex flex-wrap gap-3">
           <Link to="/business-websites" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">בניית אתרים לעסקים ←</Link>
+          <Link to="/website-for-doctors" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">בניית אתר לרופא ←</Link>
           <Link to="/pricing" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">מחירון בניית אתרים ←</Link>
           <Link to="/portfolio" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">תיק עבודות ←</Link>
           <Link to="/faq" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">שאלות נפוצות ←</Link>

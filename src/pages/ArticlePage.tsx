@@ -21,7 +21,7 @@ const ArticlePage: React.FC = () => {
       return;
     }
     // header + sections + cta section
-    setSectionVisible(new Array(article.sections.length + 2).fill(false));
+    setSectionVisible(new Array(article.sections.length + 3).fill(false));
   }, [article, navigate]);
 
   // Scroll to top when navigating between articles
@@ -31,7 +31,7 @@ const ArticlePage: React.FC = () => {
     }
     // Reset section visibility so animations re-trigger on the new article
     if (article) {
-      setSectionVisible(new Array(article.sections.length + 2).fill(false));
+      setSectionVisible(new Array(article.sections.length + 3).fill(false));
     }
   }, [slug]);
 
@@ -68,8 +68,11 @@ const ArticlePage: React.FC = () => {
       { root: container, threshold: 0.15 }
     );
 
-    sectionRefs.current.forEach((el) => { if (el) observer.observe(el); });
-    return () => observer.disconnect();
+    // delay ensures all refs are mounted before observing (matches ContactPage pattern)
+    const t = setTimeout(() => {
+      sectionRefs.current.forEach((el) => { if (el) observer.observe(el); });
+    }, 50);
+    return () => { clearTimeout(t); observer.disconnect(); };
   }, [article, sectionVisible.length]);
 
   if (!article) return null;
@@ -97,7 +100,7 @@ const ArticlePage: React.FC = () => {
           {/* Back button */}
           <Link
             to="/articles"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#1a79f6] transition-colors mb-6 text-base font-medium group w-fit"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#1a79f6] transition-colors mb-2 text-base font-medium group w-fit"
           >
             <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
             חזרה למאמרים
@@ -189,7 +192,7 @@ const ArticlePage: React.FC = () => {
         </section>
       ))}
 
-      {/* ===== CTA + NAVIGATION SECTION ===== */}
+      {/* ===== SECTION: CTA + AUTHOR ===== */}
       <section className="article-snap-section article-snap-content">
         <div
           ref={setRef(article.sections.length + 1)}
@@ -208,6 +211,9 @@ const ArticlePage: React.FC = () => {
               צור קשר
             </Link>
             <div className="flex flex-wrap gap-x-5 gap-y-2 mt-5 pt-4 border-t border-white/10">
+              {article.relatedService && (
+                <Link to={article.relatedService.url} className="text-[#1a79f6] hover:underline text-sm font-semibold">{article.relatedService.label} ←</Link>
+              )}
               <Link to="/pricing" className="text-[#1a79f6] hover:underline text-sm">כמה עולה לבנות אתר? ←</Link>
               <Link to="/business-websites" className="text-[#1a79f6] hover:underline text-sm">בניית אתרים לעסקים ←</Link>
               <Link to="/portfolio" className="text-[#1a79f6] hover:underline text-sm">תיק עבודות ←</Link>
@@ -216,7 +222,7 @@ const ArticlePage: React.FC = () => {
           </div>
 
           {/* E-E-A-T author bio */}
-          <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 text-right mb-8">
+          <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 text-right">
             <div className="w-12 h-12 rounded-full bg-[#1a79f6]/20 border border-[#1a79f6]/40 flex items-center justify-center flex-shrink-0 text-xl">
               👨‍💻
             </div>
@@ -228,7 +234,17 @@ const ArticlePage: React.FC = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* ===== SECTION: NAVIGATION + RELATED ARTICLES ===== */}
+      <section className="article-snap-section article-snap-content">
+        <div
+          ref={setRef(article.sections.length + 2)}
+          className={`relative z-10 w-full max-w-3xl mx-auto px-4 py-4 transition-all duration-1000 ${
+            sectionVisible[article.sections.length + 2] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Prev / Next navigation */}
           <div className="flex justify-between gap-4 mb-6">
             {nextArticle ? (

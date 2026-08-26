@@ -15,6 +15,7 @@ export interface Article {
   datePublished: string;
   dateModified: string;
   ogImage?: string;
+  relatedService?: { url: string; label: string };
   sections: ArticleSection[];
 }
 
@@ -124,6 +125,7 @@ export const articles: Article[] = [
     datePublished: '2026-05-20',
     dateModified: '2026-08-19',
     ogImage: '/og/hi-tech-web-development.png',
+    relatedService: { url: '/web-development', label: 'פיתוח Web מותאם אישית' },
     sections: [
       {
         title: 'מהפכת טכנולוגיות ההייטק בבניית אתרים',
@@ -217,6 +219,7 @@ export const articles: Article[] = [
     summary: 'AI משנה את עולם פיתוח האתרים מהיסוד. מ-GitHub Copilot ועד צ\'אטבוטים חכמים - גלו כיצד הבינה המלאכותית הופכת אתרים לחכמים יותר.',
     datePublished: '2026-07-01',
     dateModified: '2026-08-19',
+    relatedService: { url: '/web-development', label: 'פיתוח Web מותאם אישית' },
     sections: [
       {
         title: 'AI ובניית אתרים - שינוי פרדיגמה',
@@ -264,6 +267,7 @@ export const articles: Article[] = [
     datePublished: '2026-08-05',
     dateModified: '2026-08-19',
     ogImage: '/og/lawyer-websites.png',
+    relatedService: { url: '/website-for-lawyers', label: 'בניית אתר לעורך דין' },
     sections: [
       {
         title: 'הביקוש לאתרים לעורכי דין - למה זה חיוני',
@@ -310,6 +314,7 @@ export const articles: Article[] = [
     summary: 'כל מה שבעל עסק צריך לדעת לפני בניית אתר: אפיון, תוכן, עיצוב, פיתוח, SEO, נגישות, בדיקות ותחזוקה.',
     datePublished: '2026-08-24',
     dateModified: '2026-08-24',
+    relatedService: { url: '/business-websites', label: 'בניית אתרים לעסקים' },
     sections: [
       {
         title: 'למה עסק צריך אתר מקצועי?',
@@ -356,6 +361,7 @@ export const articles: Article[] = [
     summary: 'מה משפיע על מחיר אתר, מה ההבדל בין אתר תדמית לחנות ומה צריך לכלול בהצעת מחיר מקצועית.',
     datePublished: '2026-08-24',
     dateModified: '2026-08-24',
+    relatedService: { url: '/pricing', label: 'מחירון בניית אתרים' },
     sections: [
       {
         title: 'אין מחיר אחד לבניית אתר',
@@ -494,6 +500,7 @@ export const articles: Article[] = [
     summary: 'השוואה מעשית לפי ביצועים, גמישות, תחזוקה, SEO, עלויות והתאמה לעסק.',
     datePublished: '2026-08-24',
     dateModified: '2026-08-24',
+    relatedService: { url: '/react-websites', label: 'בניית אתרי React' },
     sections: [
       {
         title: 'אין תשובה אחת - יש שאלה נכונה',
@@ -540,6 +547,7 @@ export const articles: Article[] = [
     summary: 'מדריך טכני לבעלי אתרי React: rendering, meta tags, URLs, sitemap, structured data וקישורים פנימיים.',
     datePublished: '2026-08-24',
     dateModified: '2026-08-24',
+    relatedService: { url: '/react-websites', label: 'בניית אתרי React' },
     sections: [
       {
         title: 'למה אתר React דורש תשומת לב מיוחדת ב-SEO',
@@ -678,6 +686,7 @@ export const articles: Article[] = [
     summary: 'מתי כדאי להשקיע בדף נחיתה ממוקד ומתי צריך אתר מלא עם מספר עמודים.',
     datePublished: '2026-08-24',
     dateModified: '2026-08-24',
+    relatedService: { url: '/landing-pages', label: 'בניית דפי נחיתה' },
     sections: [
       {
         title: 'מה ההבדל בין דף נחיתה לאתר מלא?',

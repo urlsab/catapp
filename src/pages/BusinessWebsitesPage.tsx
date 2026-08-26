@@ -253,8 +253,9 @@ const BusinessWebsitesPage: React.FC = () => {
       <section className="mb-16">
         <h2 className="text-xl font-bold text-white mb-4">מאמרים קשורים</h2>
         <div className="flex flex-wrap gap-3">
+          <Link to="/website-for-lawyers" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">בניית אתר לעורך דין ←</Link>
+          <Link to="/website-for-doctors" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">בניית אתר לרופא ←</Link>
           <Link to="/articles/web-design" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">עיצוב אתרים לעסקים ←</Link>
-          <Link to="/articles/accessibility" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">נגישות אתרים ←</Link>
           <Link to="/articles/lawyer-websites" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">אתרים לעורכי דין ←</Link>
           <Link to="/pricing" className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-[#1a79f6] hover:border-[#1a79f6]/30 transition-all text-sm">מחירון מלא ←</Link>
         </div>
