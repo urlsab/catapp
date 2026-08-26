@@ -114,8 +114,8 @@ for (const filePath of files) {
     warnings.push(`${h1Count} <h1> elements (expected 1)`);
   }
 
-  // — JSON-LD validity
-  const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  // — JSON-LD validity (regex allows data-page-schema and other attributes)
+  const jsonLdBlocks = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
   const parsedSchemas = [];
   for (const [, raw] of jsonLdBlocks) {
     try {
@@ -124,6 +124,7 @@ for (const filePath of files) {
       errors.push('invalid JSON-LD schema');
     }
   }
+
 
   // — Article schema fields on /articles/* pages
   if (pagePath.startsWith('/articles/') && !pagePath.endsWith('/articles/')) {

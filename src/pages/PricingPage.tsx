@@ -269,7 +269,7 @@ const PricingPage: React.FC = () => {
       {/* M1: Website Title + Card 0 */}
       <section className="pricing-snap-section pricing-mobile-only">
         <div className="w-full max-w-md mx-auto px-4 sm:px-6">
-          {renderHeader('m-wh', '', 'כמה עולה לבנות אתר ב-2026?', 'מחירי בניית אתר לעסק לפי סוג — דפי נחיתה, אתרי תדמית, חנויות אינטרנטיות ופיתוח Web', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', true)}
+          {renderHeader('m-wh', '', 'כמה עולה לבנות אתר ב-2026?', 'מחירי בניית אתר לעסק לפי סוג — דפי נחיתה, אתרי תדמית, חנויות אינטרנטיות ופיתוח Web', 'from-blue-400 to-purple-600', 'from-[#1a79f6] via-purple-500 to-pink-500', false)}
           {renderWebCard(0, 'm', 1)}
         </div>
       </section>
