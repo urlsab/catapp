@@ -47,6 +47,11 @@
   align-items: center;
 }
 
+/* Header section — overflow hidden so one wheel scroll snaps immediately to next section */
+.article-snap-section.article-snap-header {
+  overflow: hidden;
+}
+
 /* Content sections - allow scroll on overflow for small screens */
 .article-snap-section.article-snap-content {
   overflow-y: auto;

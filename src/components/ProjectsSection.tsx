@@ -3,9 +3,6 @@ import resumeBuilderImage from '../../Assets/resumes builder website.webp';
 import orBenjiImage from '../../Assets/benji website.webp';
 import refaelLawImage from '../../Assets/refael website.webp';
 import atlizImage from '../../Assets/atliz website.webp';
-import campNetworkImage from '../../Assets/camps website.webp';
-import colorGameImage from '../../Assets/color game website.webp';
-import portfolioImage from '../../Assets/portfolio website.webp';
 import amiChaiImage from '../../Assets/ami-story.webp';
 
 interface Project {
@@ -43,24 +40,6 @@ const ProjectsSection: React.FC = () => {
     },
     {
       id: 5,
-      title: 'רשת חברתית',
-      image: campNetworkImage,
-      url: 'https://yelp--camp--project.herokuapp.com'
-    },
-    {
-      id: 6,
-      title: 'משחק צבעים',
-      image: colorGameImage,
-      url: 'https://color-game-react.vercel.app'
-    },
-    {
-      id: 7,
-      title: 'אתר פורטפוליו',
-      image: portfolioImage,
-      url: 'https://portfolio-uriel-yair-sabag.vercel.app'
-    },
-    {
-      id: 8,
       title: 'עמי-חי',
       image: amiChaiImage,
       url: 'https://ami-chai.com'

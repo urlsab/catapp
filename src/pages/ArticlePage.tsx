@@ -89,7 +89,7 @@ const ArticlePage: React.FC = () => {
       <AnimatedBackground />
 
       {/* ===== SECTION 0: Article Header ===== */}
-      <section className="article-snap-section article-snap-content">
+      <section className="article-snap-section article-snap-header">
         <div
           ref={setRef(0)}
           className={`relative z-10 w-full max-w-3xl mx-auto px-4 flex flex-col justify-center transition-all duration-1000 ${

@@ -9,6 +9,7 @@ import officeLogo from '../../Assets/office logo.webp';
 import codersClanLogo from '../../Assets/coders_clan_logo-removebg-preview.webp';
 import amiBirdLogo from '../../Assets/logo_ami-removebg-preview.webp';
 import meiravLogo from '../../Assets/logo-meirav.webp';
+import peleLogo from '../../Assets/pele_text_and_heart-removebg-preview.png';
 
 import logoCenter from '../../Assets/logoiCatapp.png';
 import Footer from '../components/Footer';
@@ -914,6 +915,7 @@ const HomePage: React.FC = () => {
                 { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)' }, sizeOverride: { height: 'clamp(144px, 21vw, 270px)', maxWidth: 'clamp(300px, 60vw, 780px)' } },
                 { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' } },
                 { src: meiravLogo, alt: 'מירב דולה', style: { clipPath: 'inset(0 0 0 53%)', transform: 'translateX(clamp(-180px, -14vw, -90px))' } },
+                { src: peleLogo, alt: 'פלה', style: {} },
                 { src: benjiLogo, alt: 'בנג\'י', style: {} },
                 { src: maakafLogo, alt: 'מעקף', style: {} },
                 { src: mosheLogo, alt: 'משה', style: { borderRadius: '20%' } },
@@ -921,6 +923,7 @@ const HomePage: React.FC = () => {
                 { src: codersClanLogo, alt: 'Coders Clan', style: { borderRadius: '20%' } },
                 { src: amiBirdLogo, alt: 'עמי-חי', style: { filter: 'brightness(0) invert(1)'}, sizeOverride: { height: 'clamp(144px, 21vw, 270px)', maxWidth: 'clamp(300px, 60vw, 780px)' } },
                 { src: meiravLogo, alt: 'מירב דולה', style: { clipPath: 'inset(0 0 0 53%)', transform: 'translateX(clamp(-180px, -14vw, -90px))' } },
+                { src: peleLogo, alt: 'פלה', style: {} },
                 { src: meiravLogo, alt: 'מירב דולה', style: { filter: 'brightness(0) invert(1)', clipPath: 'inset(0 48% 0 0)' } }
               ].map((logo, i) => (
                 <div

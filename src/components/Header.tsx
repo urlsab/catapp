@@ -102,7 +102,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 rtl:space-x-reverse fade-in">
+          <nav className="hidden lg:flex space-x-8 rtl:space-x-reverse fade-in">
             <Link
               to="/"
               className={`relative px-2 py-1 font-medium transition-colors duration-200 ${isActive('/') ? 'text-[#1a79f6]' : 'text-white hover:text-[#1a79f6]'} group`}
@@ -228,7 +228,7 @@ const Header: React.FC = () => {
             {/* Mobile menu button */}
             <button
               onClick={handleMenuToggle}
-              className="md:hidden p-2 text-gray-500 dark:text-gray-400 hover:text-[#1a79f6]"
+              className="lg:hidden p-2 text-gray-500 dark:text-gray-400 hover:text-[#1a79f6]"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -237,7 +237,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {shouldRender && (
-          <div className={`md:hidden ${isClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}>
+          <div className={`lg:hidden ${isClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}>
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-700">
               <Link 
                 to="/"
