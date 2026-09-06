@@ -73,9 +73,6 @@ const TestimonialsPage: React.FC = () => {
   const elementRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const elementToKey = useRef<WeakMap<Element, string>>(new WeakMap());
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
-  const [displayRating, setDisplayRating] = useState(0);
-  const [displayCount, setDisplayCount] = useState(0);
-  const counterStartedRef = useRef(false);
 
   const getRef = (key: string) => (el: HTMLDivElement | null) => {
     if (el) {
@@ -85,33 +82,6 @@ const TestimonialsPage: React.FC = () => {
   };
 
   const isVis = (key: string) => visibleElements.has(key);
-
-  // Animated counter when header becomes visible
-  useEffect(() => {
-    const headerVisible = visibleElements.has('dc') || visibleElements.has('mc');
-    if (headerVisible && !counterStartedRef.current) {
-      counterStartedRef.current = true;
-      const ratingTarget = 5.0;
-      const countTarget = 37;
-      const duration = 1600;
-      const steps = 60;
-      const intervalMs = duration / steps;
-      let step = 0;
-      const timer = setInterval(() => {
-        step++;
-        const progress = step / steps;
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setDisplayRating(parseFloat((ratingTarget * eased).toFixed(1)));
-        setDisplayCount(Math.min(Math.round(countTarget * eased), countTarget));
-        if (step >= steps) {
-          clearInterval(timer);
-          setDisplayRating(ratingTarget);
-          setDisplayCount(countTarget);
-        }
-      }, intervalMs);
-      return () => clearInterval(timer);
-    }
-  }, [visibleElements]);
 
   // Hide body scroll and global footer
   useEffect(() => {
@@ -155,46 +125,6 @@ const TestimonialsPage: React.FC = () => {
 
   const staggerDelay = (key: string, idx: number): React.CSSProperties =>
     ({ transitionDelay: isVis(key) ? `${idx * 150}ms` : '0ms' });
-
-  // Counter section
-  const renderCounter = (key: string) => (
-    <div
-      ref={getRef(key)}
-      className={`flex gap-10 sm:gap-16 lg:gap-24 items-center transition-all duration-700 ${isVis(key) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-    >
-      {/* Rating */}
-      <div className="flex flex-col items-center gap-3">
-        <span className="text-8xl sm:text-9xl font-black text-white tabular-nums leading-none">{displayRating.toFixed(1)}</span>
-        <div className="flex gap-1.5 my-1">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} size={22} className="fill-yellow-400 text-yellow-400" />
-          ))}
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-            <span className="text-[11px] font-black" style={{ color: '#4285F4' }}>G</span>
-          </div>
-          <span className="text-sm text-gray-400">דירוג Google</span>
-        </div>
-      </div>
-      {/* Divider */}
-      <div className="w-px h-28 bg-white/15 rounded-full" />
-      {/* Count */}
-      <div className="flex flex-col items-center gap-3">
-        <span className="text-8xl sm:text-9xl font-black text-white tabular-nums leading-none">{displayCount}</span>
-        <span className="text-sm text-gray-400 mt-1">ביקורות מאומתות</span>
-        <a
-          href={GOOGLE_REVIEWS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-[#1a79f6] hover:underline flex items-center gap-1"
-        >
-          <span>צפה בגוגל</span>
-          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-        </a>
-      </div>
-    </div>
-  );
 
   // Testimonial Card
   const renderCard = (idx: number, prefix: string, stagger = 0) => {
@@ -259,13 +189,6 @@ const TestimonialsPage: React.FC = () => {
 
       {/* ================== DESKTOP SECTIONS (≥1024px) ================== */}
 
-      {/* DC: Counter */}
-      <section className="testimonials-snap-section testimonials-desktop-only">
-        <div className="w-full flex justify-center items-center">
-          {renderCounter('dc')}
-        </div>
-      </section>
-
       {/* D1–D4: 2 cards per section */}
       {Array.from({ length: Math.ceil(testimonials.length / 2) }, (_, idx) => {
         const first = idx * 2;
@@ -283,13 +206,6 @@ const TestimonialsPage: React.FC = () => {
       })}
 
       {/* ================== MOBILE SECTIONS (<1024px) ================== */}
-
-      {/* MC: Counter */}
-      <section className="testimonials-snap-section testimonials-mobile-only">
-        <div className="w-full flex justify-center items-center">
-          {renderCounter('mc')}
-        </div>
-      </section>
 
       {/* M1–M4: 2 cards per section */}
       {Array.from({ length: Math.ceil(testimonials.length / 2) }, (_, idx) => {
